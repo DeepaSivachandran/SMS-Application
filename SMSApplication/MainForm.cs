@@ -41,7 +41,21 @@ namespace SMSApplication
         //------- Form object declaration
         public static MainForm objMainForm;
         public static Start objStart;
-        public static ServerSettings objServerSettings; 
+        public static ServerSettings objServerSettings;
+        public static MR_SenderID objMR_SenderID;
+        public static MR_SenderIDList objMR_SenerIDList;
+        public static MR_TemplateList objMR_TemplateList;
+        public static MR_Template objMR_Template;
+        public static MR_GeneralSettings objMR_GeneralSettings;
+        public static MR_ChangePwd objMR_ChangePwd;
+        public static MR_Staff objMR_Staff;
+        public static MR_StaffList objMR_StaffList;
+        public static MR_StudentsList objMR_StudentsList;
+        public static MR_Student objMR_Student;
+        public static MR_StudentImport objMR_StudentImport;
+        public static TRN_SMS_Student objTRN_SMS_Student;
+        public static TRN_SMS_Staff objTRN_SMS_Staff;
+        public static TRN_SMS_General objTRN_SMS_General;
         public MainForm()
         {
             try
@@ -89,7 +103,7 @@ namespace SMSApplication
             {
                 GetLocalIPAddress();
                 this.Text = "SMS Application" + " - " + pbVersion;
-                lblAcademicYear.Text =  pbAcademicMonth + " - " + pbCurrentYear;
+                //lblAcademicYear.Text =  pbAcademicMonth + " - " + pbCurrentYear;
                 timer1_Tick(sender, e);
                 udfnCloseChildForms();
                 objStart = new Start();
@@ -279,124 +293,149 @@ namespace SMSApplication
             }
         }
 
-        private void tsbCollegeProfile_Click(object sender, EventArgs e)
+        private void TsmSenderID_Click(object sender, EventArgs e)
         {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_SenerIDList = new MR_SenderIDList();
+                MainForm.objMR_SenerIDList.MdiParent = this;
+                MainForm.objMR_SenerIDList.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmTemplate_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_TemplateList = new MR_TemplateList();
+                MainForm.objMR_TemplateList.MdiParent = this;
+                MainForm.objMR_TemplateList.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmGeneralSettings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_GeneralSettings = new MR_GeneralSettings();
+                MainForm.objMR_GeneralSettings.MdiParent = this;
+                MainForm.objMR_GeneralSettings.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmChangePwd_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_ChangePwd = new MR_ChangePwd();
+                MainForm.objMR_ChangePwd.MdiParent = this;
+                MainForm.objMR_ChangePwd.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void ToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_StaffList = new MR_StaffList();
+                MainForm.objMR_StaffList.MdiParent = this;
+                MainForm.objMR_StaffList.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmStudent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objMR_StudentsList = new MR_StudentsList();
+                MainForm.objMR_StudentsList.MdiParent = this;
+                MainForm.objMR_StudentsList.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmSMSStudents_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objTRN_SMS_Student = new TRN_SMS_Student();
+                MainForm.objTRN_SMS_Student.MdiParent = this;
+                MainForm.objTRN_SMS_Student.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void TsmSMSStaff_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objTRN_SMS_Staff = new TRN_SMS_Staff();
+                MainForm.objTRN_SMS_Staff.MdiParent = this;
+                MainForm.objTRN_SMS_Staff.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
 
         }
 
-        private void tsbScheme_Click(object sender, EventArgs e)
+        private void TsmSMSGeneral_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void tsbBranch_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbLocationName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbHall_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbFee_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbReasonMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbSettings_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbUserProfileMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbResultDataDownload_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbDiplomaEligibilityReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbpasspercentage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbStudentPhotoDownload_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbClassWiseRank_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbSubjectWiseRank_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbStatisticsComparision_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbFailedCandidates_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbPassPer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbCombinedStudentSignature_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbConsolidateStudentSignature_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbStatisticReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbConsolidateMarksheetOG_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbDiplomanotcompleted_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tsbTotalMarkRange_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                udfnCloseChildForms();
+                MainForm.objTRN_SMS_General = new TRN_SMS_General();
+                MainForm.objTRN_SMS_General.MdiParent = this;
+                MainForm.objTRN_SMS_General.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
         }
     } 
 }

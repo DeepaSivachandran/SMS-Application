@@ -55,11 +55,89 @@
     <Compile Include="Authentication.designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
-    <Compile Include="CP_ChangePassword.cs">
+    <Compile Include="MR_StudentImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CP_ChangePassword.Designer.cs">
-      <DependentUpon>CP_ChangePassword.cs</DependentUpon>
+    <Compile Include="MR_StudentImport.designer.cs">
+      <DependentUpon>MR_StudentImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_GeneralSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_GeneralSettings.Designer.cs">
+      <DependentUpon>MR_GeneralSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_ChangePwd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_ChangePwd.Designer.cs">
+      <DependentUpon>MR_ChangePwd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_Student.designer.cs">
+      <DependentUpon>MR_Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_Staff.designer.cs">
+      <DependentUpon>MR_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRN_SMS_Staff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRN_SMS_Staff.designer.cs">
+      <DependentUpon>TRN_SMS_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRN_SMS_General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRN_SMS_General.designer.cs">
+      <DependentUpon>TRN_SMS_General.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRN_SMS_Student.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRN_SMS_Student.designer.cs">
+      <DependentUpon>TRN_SMS_Student.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_StudentsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_StudentsList.designer.cs">
+      <DependentUpon>MR_StudentsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_StaffList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_StaffList.designer.cs">
+      <DependentUpon>MR_StaffList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_Template.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_Template.designer.cs">
+      <DependentUpon>MR_Template.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_SenderID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_SenderID.designer.cs">
+      <DependentUpon>MR_SenderID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_TemplateList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_TemplateList.designer.cs">
+      <DependentUpon>MR_TemplateList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MR_SenderIDList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_SenderIDList.designer.cs">
+      <DependentUpon>MR_SenderIDList.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -97,8 +175,47 @@
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CP_ChangePassword.resx">
-      <DependentUpon>CP_ChangePassword.cs</DependentUpon>
+    <EmbeddedResource Include="MR_StudentImport.resx">
+      <DependentUpon>MR_StudentImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_GeneralSettings.resx">
+      <DependentUpon>MR_GeneralSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_ChangePwd.resx">
+      <DependentUpon>MR_ChangePwd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_Student.resx">
+      <DependentUpon>MR_Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_Staff.resx">
+      <DependentUpon>MR_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRN_SMS_Staff.resx">
+      <DependentUpon>TRN_SMS_Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRN_SMS_General.resx">
+      <DependentUpon>TRN_SMS_General.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRN_SMS_Student.resx">
+      <DependentUpon>TRN_SMS_Student.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_StudentsList.resx">
+      <DependentUpon>MR_StudentsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_StaffList.resx">
+      <DependentUpon>MR_StaffList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_Template.resx">
+      <DependentUpon>MR_Template.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_SenderID.resx">
+      <DependentUpon>MR_SenderID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_TemplateList.resx">
+      <DependentUpon>MR_TemplateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_SenderIDList.resx">
+      <DependentUpon>MR_SenderIDList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

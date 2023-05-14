@@ -12,7 +12,7 @@ using System.IO;
 
 namespace SMSApplication
 {
-    public partial class CP_ChangePassword : Form
+    public partial class MR_ChangePwd : Form
     {
         // Author : DEEPA
         // Created Date: 01/06/2019
@@ -32,7 +32,7 @@ namespace SMSApplication
         public int pbCharCount = 0;
         public string pbPwdType = "";
 
-        public CP_ChangePassword()
+        public MR_ChangePwd()
         {
             InitializeComponent();
             //************ Form Resolution **************

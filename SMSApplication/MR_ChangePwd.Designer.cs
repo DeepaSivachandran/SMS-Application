@@ -1,6 +1,6 @@
 ﻿namespace SMSApplication
 {
-    partial class CP_ChangePassword
+    partial class MR_ChangePwd
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CP_ChangePassword));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_ChangePwd));
             this.lblDOldPassword = new System.Windows.Forms.Label();
             this.txtOldPwd = new System.Windows.Forms.TextBox();
             this.gbCollegeProfile = new System.Windows.Forms.GroupBox();
@@ -179,7 +179,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 29);
             this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Update";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -210,12 +210,12 @@
             this.tspHeader.Size = new System.Drawing.Size(128, 22);
             this.tspHeader.Text = "Change Password";
             // 
-            // CP_ChangePassword
+            // MR_ChangePwd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1360, 620);
+            this.ClientSize = new System.Drawing.Size(1360, 607);
             this.Controls.Add(this.tsCollegeProfile);
             this.Controls.Add(this.gbCollegeProfile);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -223,7 +223,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CP_ChangePassword";
+            this.Name = "MR_ChangePwd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "College Profile";
             this.Load += new System.EventHandler(this.CP_ChangePassword_Load);

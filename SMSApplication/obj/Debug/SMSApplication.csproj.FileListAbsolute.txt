@@ -48,7 +48,6 @@ G:\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.Com
 G:\SMS-Application\SMSApplication\bin\Debug\stdole.dll
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojAssemblyReference.cache
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Authentication.resources
-G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.CP_ChangePassword.resources
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MainForm.resources
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Properties.Resources.resources
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.ServerSettings.resources
@@ -58,3 +57,17 @@ G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.CoreCompileInp
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.CopyComplete
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderID.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderIDList.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Template.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_TemplateList.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_GeneralSettings.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_ChangePwd.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Staff.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffList.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Student.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentsList.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentImport.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Staff.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_General.resources
+G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Student.resources
