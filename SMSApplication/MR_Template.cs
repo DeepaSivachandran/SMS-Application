@@ -463,7 +463,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Deepa
+        //Author : Lavanya
         //Created Date : 06/07/2019
         private void cmbFromYear_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -507,7 +507,7 @@ namespace SMSApplication
             }
          }
 
-        //Author : lavanya
+        //Author : Lavanya
         //Created Date : 17/04/2019
         private void txtSchemeName_KeyPress(object sender, KeyPressEventArgs e)
         {

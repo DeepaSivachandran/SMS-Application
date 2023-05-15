@@ -71,3 +71,42 @@ G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentImport.reso
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Staff.resources
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_General.resources
 G:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Student.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.pdb
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\bin\Debug\stdole.dll
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojResolveAssemblyReference.cache
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Authentication.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentImport.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_GeneralSettings.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_ChangePwd.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Student.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Staff.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Staff.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_General.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Student.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentsList.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffList.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Template.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderID.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_TemplateList.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderIDList.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MainForm.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Properties.Resources.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.ServerSettings.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Start.resources
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache

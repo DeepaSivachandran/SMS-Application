@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,14 +42,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentImport));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbStudentImport = new System.Windows.Forms.GroupBox();
             this.lblDublicate = new System.Windows.Forms.Label();
             this.lblMismatch = new System.Windows.Forms.Label();
@@ -95,15 +94,14 @@
             this.clmRegAadharno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmStudentCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmadmission = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRollNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegisterNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmScheme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmFatherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmclass = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmblood = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmmobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaltermobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmrfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbStudentImport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudentImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudentImportRollNo)).BeginInit();
@@ -198,6 +196,7 @@
             // btnImport
             // 
             this.btnImport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImport.Image = global::SMSApplication.Properties.Resources.import;
             this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnImport.Location = new System.Drawing.Point(1072, 513);
             this.btnImport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -212,6 +211,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Image = global::SMSApplication.Properties.Resources.clear1;
             this.btnClear.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClear.Location = new System.Drawing.Point(1155, 513);
             this.btnClear.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -257,26 +257,25 @@
             this.grdStudentImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdStudentImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmsno,
-            this.clmStudentCode,
+            this.clmadmission,
             this.clmStudentName,
-            this.clmRollNo,
-            this.clmRegisterNumber,
-            this.clmScheme,
-            this.clmBranch,
-            this.clmTerm,
-            this.clmDOB,
-            this.clmFatherName});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdStudentImport.DefaultCellStyle = dataGridViewCellStyle8;
+            this.clmclass,
+            this.clmblood,
+            this.clmaddress,
+            this.clmmobile,
+            this.clmaltermobile,
+            this.clmrfid});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdStudentImport.DefaultCellStyle = dataGridViewCellStyle7;
             this.grdStudentImport.EnableHeadersVisualStyles = false;
             this.grdStudentImport.GridColor = System.Drawing.Color.White;
-            this.grdStudentImport.Location = new System.Drawing.Point(9, 58);
+            this.grdStudentImport.Location = new System.Drawing.Point(8, 58);
             this.grdStudentImport.Name = "grdStudentImport";
             this.grdStudentImport.ReadOnly = true;
             this.grdStudentImport.RowHeadersVisible = false;
@@ -289,6 +288,7 @@
             // btnDownloadTemplate
             // 
             this.btnDownloadTemplate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloadTemplate.Image = global::SMSApplication.Properties.Resources.download;
             this.btnDownloadTemplate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDownloadTemplate.Location = new System.Drawing.Point(819, 21);
             this.btnDownloadTemplate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -303,6 +303,7 @@
             // btnPreview
             // 
             this.btnPreview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Image = global::SMSApplication.Properties.Resources.view1;
             this.btnPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPreview.Location = new System.Drawing.Point(712, 21);
             this.btnPreview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -317,6 +318,7 @@
             // btnBrowse
             // 
             this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Image = global::SMSApplication.Properties.Resources.browse;
             this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBrowse.Location = new System.Drawing.Point(607, 21);
             this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -367,14 +369,14 @@
             this.grdStudentImportRollNo.AllowUserToResizeRows = false;
             this.grdStudentImportRollNo.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdStudentImportRollNo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdStudentImportRollNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdStudentImportRollNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.grdStudentImportRollNo.ColumnHeadersHeight = 30;
             this.grdStudentImportRollNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdStudentImportRollNo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -404,14 +406,14 @@
             this.clmRegGrandTotal,
             this.clmRegCastNameDetailed,
             this.clmRegAadharno});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdStudentImportRollNo.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdStudentImportRollNo.DefaultCellStyle = dataGridViewCellStyle19;
             this.grdStudentImportRollNo.EnableHeadersVisualStyles = false;
             this.grdStudentImportRollNo.GridColor = System.Drawing.Color.White;
             this.grdStudentImportRollNo.Location = new System.Drawing.Point(9, 58);
@@ -426,8 +428,8 @@
             // 
             // clmregsno
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmregsno.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmregsno.DefaultCellStyle = dataGridViewCellStyle9;
             this.clmregsno.HeaderText = "S.No.";
             this.clmregsno.Name = "clmregsno";
             this.clmregsno.ReadOnly = true;
@@ -450,8 +452,8 @@
             // 
             // clmRegRollno
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegRollno.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegRollno.DefaultCellStyle = dataGridViewCellStyle10;
             this.clmRegRollno.HeaderText = "Roll No.";
             this.clmRegRollno.Name = "clmRegRollno";
             this.clmRegRollno.ReadOnly = true;
@@ -459,8 +461,8 @@
             // 
             // clmRegRegNo
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegRegNo.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegRegNo.DefaultCellStyle = dataGridViewCellStyle11;
             this.clmRegRegNo.HeaderText = "Reg. No.";
             this.clmRegRegNo.Name = "clmRegRegNo";
             this.clmRegRegNo.ReadOnly = true;
@@ -469,16 +471,16 @@
             // 
             // clmRegScheme
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegScheme.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegScheme.DefaultCellStyle = dataGridViewCellStyle12;
             this.clmRegScheme.HeaderText = "Scheme";
             this.clmRegScheme.Name = "clmRegScheme";
             this.clmRegScheme.ReadOnly = true;
             // 
             // clmRegBranch
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegBranch.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegBranch.DefaultCellStyle = dataGridViewCellStyle13;
             this.clmRegBranch.HeaderText = "Branch";
             this.clmRegBranch.Name = "clmRegBranch";
             this.clmRegBranch.ReadOnly = true;
@@ -486,16 +488,16 @@
             // 
             // clmRegTerm
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegTerm.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegTerm.DefaultCellStyle = dataGridViewCellStyle14;
             this.clmRegTerm.HeaderText = "Term";
             this.clmRegTerm.Name = "clmRegTerm";
             this.clmRegTerm.ReadOnly = true;
             // 
             // clmRegDOB
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegDOB.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmRegDOB.DefaultCellStyle = dataGridViewCellStyle15;
             this.clmRegDOB.HeaderText = "DOB";
             this.clmRegDOB.Name = "clmRegDOB";
             this.clmRegDOB.ReadOnly = true;
@@ -551,8 +553,8 @@
             // 
             // clmRegPincode
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegPincode.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmRegPincode.DefaultCellStyle = dataGridViewCellStyle16;
             this.clmRegPincode.HeaderText = "Pincode";
             this.clmRegPincode.Name = "clmRegPincode";
             this.clmRegPincode.ReadOnly = true;
@@ -566,8 +568,8 @@
             // 
             // clmRegDirectSecondYear
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegDirectSecondYear.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmRegDirectSecondYear.DefaultCellStyle = dataGridViewCellStyle17;
             this.clmRegDirectSecondYear.HeaderText = "Direct II Year";
             this.clmRegDirectSecondYear.Name = "clmRegDirectSecondYear";
             this.clmRegDirectSecondYear.ReadOnly = true;
@@ -599,8 +601,8 @@
             // 
             // clmRegGrandTotal
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegGrandTotal.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmRegGrandTotal.DefaultCellStyle = dataGridViewCellStyle18;
             this.clmRegGrandTotal.HeaderText = "Total Marks";
             this.clmRegGrandTotal.Name = "clmRegGrandTotal";
             this.clmRegGrandTotal.ReadOnly = true;
@@ -641,12 +643,12 @@
             this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.clmsno.Width = 65;
             // 
-            // clmStudentCode
+            // clmadmission
             // 
-            this.clmStudentCode.HeaderText = "Admission No.";
-            this.clmStudentCode.Name = "clmStudentCode";
-            this.clmStudentCode.ReadOnly = true;
-            this.clmStudentCode.Visible = false;
+            this.clmadmission.HeaderText = "Admission No.";
+            this.clmadmission.Name = "clmadmission";
+            this.clmadmission.ReadOnly = true;
+            this.clmadmission.Visible = false;
             // 
             // clmStudentName
             // 
@@ -655,62 +657,53 @@
             this.clmStudentName.ReadOnly = true;
             this.clmStudentName.Width = 180;
             // 
-            // clmRollNo
+            // clmclass
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRollNo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmRollNo.HeaderText = "Class";
-            this.clmRollNo.Name = "clmRollNo";
-            this.clmRollNo.ReadOnly = true;
-            this.clmRollNo.Width = 110;
+            this.clmclass.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmclass.HeaderText = "Class & Section";
+            this.clmclass.Name = "clmclass";
+            this.clmclass.ReadOnly = true;
+            this.clmclass.Width = 120;
             // 
-            // clmRegisterNumber
+            // clmblood
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegisterNumber.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmRegisterNumber.HeaderText = "Section";
-            this.clmRegisterNumber.Name = "clmRegisterNumber";
-            this.clmRegisterNumber.ReadOnly = true;
-            this.clmRegisterNumber.Width = 110;
+            this.clmblood.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmblood.HeaderText = "Blood Group";
+            this.clmblood.Name = "clmblood";
+            this.clmblood.ReadOnly = true;
             // 
-            // clmScheme
+            // clmaddress
+            // 
+            this.clmaddress.HeaderText = "Address";
+            this.clmaddress.Name = "clmaddress";
+            this.clmaddress.ReadOnly = true;
+            this.clmaddress.Width = 150;
+            // 
+            // clmmobile
             // 
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmScheme.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmScheme.HeaderText = "Blood Group";
-            this.clmScheme.Name = "clmScheme";
-            this.clmScheme.ReadOnly = true;
+            this.clmmobile.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmmobile.HeaderText = "Mobile No.";
+            this.clmmobile.Name = "clmmobile";
+            this.clmmobile.ReadOnly = true;
             // 
-            // clmBranch
-            // 
-            this.clmBranch.HeaderText = "Address";
-            this.clmBranch.Name = "clmBranch";
-            this.clmBranch.ReadOnly = true;
-            this.clmBranch.Width = 150;
-            // 
-            // clmTerm
+            // clmaltermobile
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmTerm.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmTerm.HeaderText = "Contact No.";
-            this.clmTerm.Name = "clmTerm";
-            this.clmTerm.ReadOnly = true;
+            this.clmaltermobile.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmaltermobile.HeaderText = "Alternative Mobile No.";
+            this.clmaltermobile.Name = "clmaltermobile";
+            this.clmaltermobile.ReadOnly = true;
+            this.clmaltermobile.Width = 200;
             // 
-            // clmDOB
+            // clmrfid
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmDOB.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clmDOB.HeaderText = "Alternative Contact No.";
-            this.clmDOB.Name = "clmDOB";
-            this.clmDOB.ReadOnly = true;
-            this.clmDOB.Width = 200;
-            // 
-            // clmFatherName
-            // 
-            this.clmFatherName.HeaderText = "Attendance Card No.";
-            this.clmFatherName.Name = "clmFatherName";
-            this.clmFatherName.ReadOnly = true;
-            this.clmFatherName.Width = 150;
+            this.clmrfid.HeaderText = "RF ID Card No.";
+            this.clmrfid.Name = "clmrfid";
+            this.clmrfid.ReadOnly = true;
+            this.clmrfid.Width = 150;
             // 
             // MR_StudentImport
             // 
@@ -787,14 +780,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmRegCastNameDetailed;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmRegAadharno;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmStudentCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmadmission;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRollNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegisterNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmScheme;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmBranch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmTerm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDOB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmFatherName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmclass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmblood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmmobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaltermobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmrfid;
     }
 }

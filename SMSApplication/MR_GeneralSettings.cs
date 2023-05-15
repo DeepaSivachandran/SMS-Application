@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace SMSApplication
 {
     public partial class MR_GeneralSettings : Form
     {
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
 
         //********* Object for Service Classed Initialisation ***********
@@ -38,7 +39,7 @@ namespace SMSApplication
             //************ Form Resolution **************
             objValidation.resolutionsettingsForm(this);
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void MR_GeneralSettings_Load(object sender, EventArgs e)
         {
@@ -79,7 +80,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_Enter(object sender, EventArgs e)
         {
@@ -93,7 +94,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -124,7 +125,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_Leave(object sender, EventArgs e)
         {
@@ -149,7 +150,7 @@ namespace SMSApplication
             }
         }
 
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         //********* get form close confirmation **********
         public void udfnclose()
@@ -169,7 +170,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -183,7 +184,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void MR_GeneralSettings_Leave(object sender, EventArgs e)
         {
@@ -197,7 +198,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }      
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtNewPwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -228,7 +229,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtNewPwd_Enter(object sender, EventArgs e)
         {
@@ -242,7 +243,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         //*********** Save password **********
         private void btnSave_Click(object sender, EventArgs e)
@@ -372,7 +373,7 @@ namespace SMSApplication
                 btnSave.Enabled = true;
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-06-01
         // Clear Data
         public void udfnclear()
@@ -391,6 +392,27 @@ namespace SMSApplication
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+            }
+        }
+
+        private void txtStaffReportnumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+               // e.Handled = true;
+            }
+        }
+
+        private void txtStaffReportnumber_TextChanged(object sender, EventArgs e)
+        {
+            string text = txtStaffReportnumber.Text;
+            string filteredText = Regex.Replace(text, "[^0-9,]", "");
+
+            if (filteredText != text)
+            {
+                int selectionStart = txtStaffReportnumber.SelectionStart - (text.Length - filteredText.Length);
+                txtStaffReportnumber.Text = filteredText;
+                txtStaffReportnumber.SelectionStart = selectionStart > 0 ? selectionStart : 0;
             }
         }
     }

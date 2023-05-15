@@ -173,28 +173,29 @@ namespace SMSApplication
             // tsmStudent
             // 
             this.tsmStudent.Name = "tsmStudent";
-            this.tsmStudent.Size = new System.Drawing.Size(133, 22);
+            this.tsmStudent.Size = new System.Drawing.Size(152, 22);
             this.tsmStudent.Text = "Student";
             this.tsmStudent.Click += new System.EventHandler(this.TsmStudent_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(133, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem4.Text = "Staff";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
             // tsmSenderID
             // 
             this.tsmSenderID.Name = "tsmSenderID";
-            this.tsmSenderID.Size = new System.Drawing.Size(133, 22);
+            this.tsmSenderID.Size = new System.Drawing.Size(152, 22);
             this.tsmSenderID.Text = "Sender ID";
+            this.tsmSenderID.Visible = false;
             this.tsmSenderID.Click += new System.EventHandler(this.TsmSenderID_Click);
             // 
             // tsmTemplate
             // 
             this.tsmTemplate.Name = "tsmTemplate";
-            this.tsmTemplate.Size = new System.Drawing.Size(133, 22);
+            this.tsmTemplate.Size = new System.Drawing.Size(152, 22);
             this.tsmTemplate.Text = "Template";
             this.tsmTemplate.Click += new System.EventHandler(this.TsmTemplate_Click);
             // 
@@ -232,21 +233,21 @@ namespace SMSApplication
             // tsmSMSStudents
             // 
             this.tsmSMSStudents.Name = "tsmSMSStudents";
-            this.tsmSMSStudents.Size = new System.Drawing.Size(180, 22);
-            this.tsmSMSStudents.Text = "Students";
+            this.tsmSMSStudents.Size = new System.Drawing.Size(204, 22);
+            this.tsmSMSStudents.Text = "Attendance - Students";
             this.tsmSMSStudents.Click += new System.EventHandler(this.TsmSMSStudents_Click);
             // 
             // tsmSMSStaff
             // 
             this.tsmSMSStaff.Name = "tsmSMSStaff";
-            this.tsmSMSStaff.Size = new System.Drawing.Size(180, 22);
-            this.tsmSMSStaff.Text = "Staff";
+            this.tsmSMSStaff.Size = new System.Drawing.Size(204, 22);
+            this.tsmSMSStaff.Text = "Attendance - Staff";
             this.tsmSMSStaff.Click += new System.EventHandler(this.TsmSMSStaff_Click);
             // 
             // tsmSMSGeneral
             // 
             this.tsmSMSGeneral.Name = "tsmSMSGeneral";
-            this.tsmSMSGeneral.Size = new System.Drawing.Size(180, 22);
+            this.tsmSMSGeneral.Size = new System.Drawing.Size(152, 22);
             this.tsmSMSGeneral.Text = "General";
             this.tsmSMSGeneral.Click += new System.EventHandler(this.TsmSMSGeneral_Click);
             // 

@@ -438,14 +438,16 @@ namespace SMSApplication
                         switch (varExtension)
                         {
                             case ".xls":
-                                //varExcelcon = string.Format(System.Configuration.ConfigurationManager.AppSettings["Excel2003"], varFilename);
+                                varExcelcon = string.Format(System.Configuration.ConfigurationManager.AppSettings["Excel2003"], varFilename);
                                 oledbcon = new OleDbConnection(varExcelcon);
                                 break;
                             case ".xlsx":
-                               // varExcelcon = string.Format(System.Configuration.ConfigurationManager.AppSettings["Excel2007"], varFilename);
+                                //
+                               varExcelcon = string.Format(System.Configuration.ConfigurationManager.AppSettings["Excel2007"], varFilename);
                                 oledbcon = new OleDbConnection(varExcelcon);
                                 break;
                         }
+                        //  
                         oledbcon.Open();
                         //************ Read excel sheet name ***************
                         DataTable dtExcelSchema;
@@ -470,208 +472,84 @@ namespace SMSApplication
                                 lblNoRecordsFound.Visible = false;
                                 lblNoRecordsFound.SendToBack();
                                 int varcolumnflag = 0;
-                                if(objDs.Tables[0].Columns[1].ColumnName== "Student Name")
-                                {                                   
+                                if(objDs.Tables[0].Columns[0].ColumnName== "S#No#")
+                                {             
+                                    
+                                                        
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[2].ColumnName == "Roll No#")
+                                if (objDs.Tables[0].Columns[1].ColumnName == "Student Name")
+                                {
+                                     
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[2].ColumnName == "Class & Section")
                                 {                                    
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[3].ColumnName == "Reg# No#")
+                                if (objDs.Tables[0].Columns[3].ColumnName == "Blood Group")
                                 {                                   
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[4].ColumnName == "Scheme")
-                                {                                 
+                                if (objDs.Tables[0].Columns[4].ColumnName == "Address")
+                                {
+
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[5].ColumnName == "Branch")
+                                if (objDs.Tables[0].Columns[5].ColumnName == "Mobile No#")
+                                {
+                                     
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[6].ColumnName == "Alternative Mobile No#")
                                 {                                   
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[6].ColumnName == "Term")
+                                if (objDs.Tables[0].Columns[7].ColumnName == "RF ID Card No#")
                                 {                                   
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[7].ColumnName == "DOB")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[8].ColumnName == "Father's Name")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[9].ColumnName == "Mother's Name")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[10].ColumnName == "ADD_1")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[11].ColumnName == "ADD_2")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[12].ColumnName == "ADD_3")
-                                {                                  
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[13].ColumnName == "City")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[14].ColumnName == "State")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[15].ColumnName == "Pincode")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[16].ColumnName == "Gender")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[17].ColumnName == "Direct II Year")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[18].ColumnName == "Contact No#")
-                                {                                  
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[19].ColumnName == "Caste Category")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[20].ColumnName == "Religion")
-                                {
-                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[21].ColumnName == "Date of Admission")
-                                {                                    
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[22].ColumnName == "Total Marks")
-                                {                                  
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[23].ColumnName == "Caste Name")
-                                {                                  
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[24].ColumnName == "AadharNo")
-                                {                                  
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
+                              
                                 if (varcolumnflag == 0)
                                 {
                                     for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
                                     {
-                                        item[0] = (i + 1).ToString();
+                                        item[0] = objDs.Tables[0].Rows[i]["S#No#"].ToString();
                                         item[1] = "";
                                         item[2] = objDs.Tables[0].Rows[i]["Student Name"].ToString();
-                                        item[3] = objDs.Tables[0].Rows[i]["Roll No#"].ToString();
-                                        item[4] = objDs.Tables[0].Rows[i]["Reg# No#"].ToString();
-                                        item[5] = objDs.Tables[0].Rows[i]["Scheme"].ToString();
-                                        item[6] = objDs.Tables[0].Rows[i]["Branch"].ToString();
-                                        item[7] = objDs.Tables[0].Rows[i]["Term"].ToString();
-                                        item[8] = objDs.Tables[0].Rows[i]["DOB"].ToString();
-                                        item[9] = objDs.Tables[0].Rows[i]["Father's Name"].ToString();
-                                        item[10] = objDs.Tables[0].Rows[i]["Mother's Name"].ToString();
-                                        item[11] = objDs.Tables[0].Rows[i]["ADD_1"].ToString();
-                                        item[12] = objDs.Tables[0].Rows[i]["ADD_2"].ToString();
-                                        item[13] = objDs.Tables[0].Rows[i]["ADD_3"].ToString();
-                                        item[14] = objDs.Tables[0].Rows[i]["City"].ToString();
-                                        item[15] = objDs.Tables[0].Rows[i]["State"].ToString();
-                                        item[16] = objDs.Tables[0].Rows[i]["Pincode"].ToString();
-                                        item[17] = objDs.Tables[0].Rows[i]["Gender"].ToString();
-                                        item[18] = objDs.Tables[0].Rows[i]["Direct II Year"].ToString();
-                                        item[19] = objDs.Tables[0].Rows[i]["Contact No#"].ToString();
-                                        item[20] = objDs.Tables[0].Rows[i]["Caste Category"].ToString();
-                                        item[21] = objDs.Tables[0].Rows[i]["Religion"].ToString();
-                                        item[22] = objDs.Tables[0].Rows[i]["Date of Admission"].ToString();
-                                        item[23] = objDs.Tables[0].Rows[i]["Total Marks"].ToString();
-                                        // item[24] = objDs.Tables[0].Rows[i]["Caste_Name"].ToString();
-                                        item[24] = objDs.Tables[0].Rows[i]["Caste Name"].ToString();
-                                        item[25] = objDs.Tables[0].Rows[i]["AadharNo"].ToString();
+                                        item[3] = objDs.Tables[0].Rows[i]["Class & Section"].ToString();
+                                        item[4] = objDs.Tables[0].Rows[i]["Blood Group"].ToString(); 
+                                        item[5] = objDs.Tables[0].Rows[i]["Address"].ToString();
+                                        item[6] = objDs.Tables[0].Rows[i]["Mobile No#"].ToString();
+                                        item[7] = objDs.Tables[0].Rows[i]["Alternative Mobile No#"].ToString();
+                                        item[8] = objDs.Tables[0].Rows[i]["RF ID Card No#"].ToString();
+                                        
                                         listitem = new ListViewItem(item);
-                                        grdStudentImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15], item[16], item[17], item[18], item[19], item[20], item[21], item[22], item[23], item[24], item[25]);
+                                        grdStudentImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8]);
                                     }
                                 }
                                 else
@@ -693,24 +571,69 @@ namespace SMSApplication
                         //**************Find total records,dublicate records and mismatch records ****************
                         for (int i = 0; i < grdStudentImport.Rows.Count; i++)
                         {
-                            string varCount = "";
+                            string varCount = "0";
                             DataService objDataService = new DataService();
-                            varCount = objDataService.displaydata("SELECT COUNT(*) FROM CP_STUDENT WHERE RollNumber='" + grdStudentImport.Rows[i].Cells["clmrollno"].Value.ToString() + "'");
+                          //  varCount = objDataService.displaydata("SELECT COUNT(*) FROM CP_STUDENT WHERE RollNumber='" + grdStudentImport.Rows[i].Cells["clmrollno"].Value.ToString() + "'");
                             objDataService.CloseConnection();
                             if (varCount != "0")
                             {
                                 grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#f7bbbb");
                                 vardublicate++;                        
                             }
-                            if(grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString()=="" && grdStudentImport.Rows[i].Cells["clmRollNo"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmRegNo"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmScheme"].Value.ToString()=="" && grdStudentImport.Rows[i].Cells["clmBranch"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmTerm"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmAddress1"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmCity"].Value.ToString() == "")
+                            if(grdStudentImport.Rows[i].Cells["clmsno"].Value.ToString()=="" && grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString()==""  && grdStudentImport.Rows[i].Cells["clmaddress"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == "")
                             {
                                 varMismatch++;
                             }
                         }
+
+                        DataTable dataTable = objDs.Tables[0];
+                        int rowIndex = -1;
+                        var duplicates = dataTable.AsEnumerable()
+                                  .GroupBy(row => row.Field<string>("RF ID Card No#"))
+                                  .Where(g => g.Count() > 1)
+                                  .SelectMany(g => g);
+
+                        if (duplicates.Any())
+                        {
+                            vardublicate++;
+                            foreach (var duplicate in duplicates)
+                            {
+
+                                string code = duplicate.Field<string>("RF ID Card No#");
+                                foreach (DataGridViewRow row in grdStudentImport.Rows)
+                                {
+
+                                    //if (row.Cells["clmaddress"].Value.ToString() == code)
+                                    //{
+                                    //    rowIndex = row.Index;
+                                    //    break;
+                                    //}
+                                }
+
+                                if (rowIndex != -1)
+                                {
+                                    grdStudentImport.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                                }
+                            }
+                        }
+
+
+                        else
+                        {
+                            vardublicate = 0;
+                        }
+
                         oledbcon.Close();
                         lblDublicate.Text =Convert.ToString(vardublicate);
                         lblTotal.Text =Convert.ToString(grdStudentImport.Rows.Count);
                         lblMismatch.Text = Convert.ToString(varMismatch);
+                        if (varMismatch != 0 || vardublicate != 0)
+                        {
+                            btnImport.Enabled = false;
+                        }
+                        else {
+                            btnImport.Enabled = true;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -778,7 +701,7 @@ namespace SMSApplication
                 {
                     //********** Copy your file to objSFD.FileName ****************
                     string s = objSFD.FileName;
-                    File.Copy(Application.StartupPath + "\\Templates\\Student RegNo. Import Template.xlsx", s);
+                    File.Copy(Application.StartupPath + "\\Templates\\Student Master Template Import.xlsx", s);
                     MessageBox.Show("Template Downloaded Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -819,14 +742,7 @@ namespace SMSApplication
         {
             try
             {
-                if(varsettingflag=="0")
-                {
-                    udndownload();
-                }
-                else
-                {
-                    udndownloadReg();
-                }
+                   udndownload(); 
             }
             catch(Exception ex)
             {
@@ -1198,14 +1114,9 @@ namespace SMSApplication
                 lblNoRecordsFound.Visible = false;
                 picLoader.Visible = true;
                 Application.DoEvents();
-                if (varsettingflag=="0")
-                {
+                
                     udfnImport();
-                }
-                else
-                {
-                    udfnImportreg();
-                }
+               
             }
             catch(Exception ex)
             {

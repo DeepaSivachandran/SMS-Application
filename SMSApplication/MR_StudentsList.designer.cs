@@ -30,9 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentsList));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentsList));
             this.grdSchemeList = new System.Windows.Forms.DataGridView();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
@@ -43,23 +43,20 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnView = new System.Windows.Forms.Button();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnWipeOut = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.picLoader = new System.Windows.Forms.PictureBox();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.picLoader = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,7 +85,6 @@
             this.Column1,
             this.clmSchemeName,
             this.Column2,
-            this.Column3,
             this.C,
             this.clmShortName});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -135,7 +131,7 @@
             this.tsbNew});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
-            this.tspMenu.Size = new System.Drawing.Size(1360, 25);
+            this.tspMenu.Size = new System.Drawing.Size(1360, 31);
             this.tspMenu.TabIndex = 958722;
             this.tspMenu.Text = "toolStrip1";
             // 
@@ -145,19 +141,22 @@
             this.tspFormHeader.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspFormHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspFormHeader.Name = "tspFormHeader";
-            this.tspFormHeader.Size = new System.Drawing.Size(52, 22);
+            this.tspFormHeader.Size = new System.Drawing.Size(52, 28);
             this.tspFormHeader.Text = "Student";
             // 
             // tsbDelete
             // 
             this.tsbDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbDelete.Image = global::SMSApplication.Properties.Resources.delete16X16;
+            this.tsbDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(49, 22);
+            this.tsbDelete.Size = new System.Drawing.Size(65, 28);
             this.tsbDelete.Text = "Delete";
+            this.tsbDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // toolStripSeparator1
@@ -165,18 +164,21 @@
             this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // tsbEdit
             // 
             this.tsbEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbEdit.Image = global::SMSApplication.Properties.Resources.edit__2_;
+            this.tsbEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
             this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(34, 22);
+            this.tsbEdit.Size = new System.Drawing.Size(50, 28);
             this.tsbEdit.Text = "Edit";
+            this.tsbEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
             // toolStripSeparator2
@@ -184,18 +186,21 @@
             this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // tsbNew
             // 
             this.tsbNew.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbNew.Image = global::SMSApplication.Properties.Resources.New;
+            this.tsbNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbNew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
             this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(38, 22);
+            this.tsbNew.Size = new System.Drawing.Size(62, 28);
             this.tsbNew.Text = "New";
+            this.tsbNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // lblDcolumnIndex
@@ -207,6 +212,98 @@
             this.lblDcolumnIndex.TabIndex = 958723;
             this.lblDcolumnIndex.Text = "0";
             this.lblDcolumnIndex.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnView);
+            this.groupBox1.Controls.Add(this.cmbClass);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(31, 38);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(453, 58);
+            this.groupBox1.TabIndex = 958788;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter by";
+            // 
+            // btnView
+            // 
+            this.btnView.Image = global::SMSApplication.Properties.Resources.view2;
+            this.btnView.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnView.Location = new System.Drawing.Point(362, 18);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(74, 30);
+            this.btnView.TabIndex = 1;
+            this.btnView.Text = "View";
+            this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnView.UseVisualStyleBackColor = true;
+            // 
+            // cmbClass
+            // 
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Location = new System.Drawing.Point(144, 21);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(192, 25);
+            this.cmbClass.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Class && Section";
+            // 
+            // btnWipeOut
+            // 
+            this.btnWipeOut.Image = global::SMSApplication.Properties.Resources.clear;
+            this.btnWipeOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnWipeOut.Location = new System.Drawing.Point(1171, 57);
+            this.btnWipeOut.Name = "btnWipeOut";
+            this.btnWipeOut.Size = new System.Drawing.Size(153, 30);
+            this.btnWipeOut.TabIndex = 958791;
+            this.btnWipeOut.Text = "Wipe Out Contacts";
+            this.btnWipeOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnWipeOut.UseVisualStyleBackColor = true;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Image = global::SMSApplication.Properties.Resources.excel;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(978, 57);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(136, 30);
+            this.btnExport.TabIndex = 958790;
+            this.btnExport.Text = "Export Contacts";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Image = global::SMSApplication.Properties.Resources.import;
+            this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImport.Location = new System.Drawing.Point(785, 57);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(136, 30);
+            this.btnImport.TabIndex = 958789;
+            this.btnImport.Text = "Import Contacts";
+            this.btnImport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // picLoader
+            // 
+            this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picLoader.ErrorImage = null;
+            this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
+            this.picLoader.InitialImage = null;
+            this.picLoader.Location = new System.Drawing.Point(17, 28);
+            this.picLoader.Name = "picLoader";
+            this.picLoader.Size = new System.Drawing.Size(1325, 559);
+            this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLoader.TabIndex = 958787;
+            this.picLoader.TabStop = false;
+            this.picLoader.Visible = false;
             // 
             // clmsno
             // 
@@ -237,19 +334,14 @@
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Class";
+            this.Column2.HeaderText = "Class & Section";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Section";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.Column2.Width = 150;
             // 
             // C
             // 
-            this.C.HeaderText = "Contact No.";
+            this.C.HeaderText = "Mobile No.";
             this.C.Name = "C";
             this.C.ReadOnly = true;
             this.C.Width = 200;
@@ -261,114 +353,15 @@
             this.clmShortName.ReadOnly = true;
             this.clmShortName.Width = 150;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(31, 38);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(637, 58);
-            this.groupBox1.TabIndex = 958788;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter by";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Class";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(265, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Section";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(334, 21);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 25);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(88, 21);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 25);
-            this.comboBox2.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(697, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 30);
-            this.button1.TabIndex = 958789;
-            this.button1.Text = "Import Contacts";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(928, 57);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(144, 30);
-            this.button2.TabIndex = 958790;
-            this.button2.Text = "Export Contacts";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(1156, 57);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(144, 30);
-            this.button3.TabIndex = 958791;
-            this.button3.Text = "Wipe Out Contacts";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(539, 18);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 30);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "View";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // picLoader
-            // 
-            this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picLoader.ErrorImage = null;
-            this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
-            this.picLoader.InitialImage = null;
-            this.picLoader.Location = new System.Drawing.Point(17, 28);
-            this.picLoader.Name = "picLoader";
-            this.picLoader.Size = new System.Drawing.Size(1325, 559);
-            this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLoader.TabIndex = 958787;
-            this.picLoader.TabStop = false;
-            this.picLoader.Visible = false;
-            // 
             // MR_StudentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1360, 607);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnWipeOut);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
@@ -407,21 +400,18 @@
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.Label lblDcolumnIndex;
         private System.Windows.Forms.PictureBox picLoader;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbClass;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnWipeOut;
+        private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSchemeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn C;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmShortName;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
     }
 }

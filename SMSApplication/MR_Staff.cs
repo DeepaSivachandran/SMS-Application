@@ -40,7 +40,7 @@ namespace SMSApplication
                  //   MainForm.objMR_Staff.Text = "Edit Scheme";
                     //********** combobox Enable & disable ***************  
                 } 
-                this.ActiveControl = txtSchemeName;      
+                this.ActiveControl = txtStaffName;      
              }
             catch (Exception ex)
             {
@@ -71,7 +71,7 @@ namespace SMSApplication
             {
                 epMR_Staff.Clear();
                 tpSchemeName.Active = false;
-                txtSchemeName.BackColor = Color.White;
+                txtStaffName.BackColor = Color.White;
                 DialogResult dialogResult = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -91,7 +91,7 @@ namespace SMSApplication
             try
             {
               
-                txtSchemeName.BackColor = Color.LemonChiffon;
+                txtStaffName.BackColor = Color.LemonChiffon;
             }
             catch (Exception ex)
             {
@@ -127,19 +127,19 @@ namespace SMSApplication
         {
             try
             {
-                if (txtSchemeName.Text == "")
+                if (txtStaffName.Text == "")
                 {
-                    epMR_Staff.SetError(txtSchemeName, "Please enter scheme name");
-                    txtSchemeName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    epMR_Staff.SetError(txtStaffName, "Please enter scheme name");
+                    txtStaffName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                     tpSchemeName.ShowAlways = true;
-                    tpSchemeName.Show("Please enter scheme name", txtSchemeName, 5000);
+                    tpSchemeName.Show("Please enter scheme name", txtStaffName, 5000);
                 }
                 else
                 {
-                    if (objValidation.FormatAlphbeticNumericAndSpecialchar(txtSchemeName.Text))
+                    if (objValidation.FormatAlphbeticNumericAndSpecialchar(txtStaffName.Text))
                     {
                         epMR_Staff.Clear();
-                        txtSchemeName.BackColor = Color.White;
+                        txtStaffName.BackColor = Color.White;
                         if (btnSave.Text == "Save")
                         {
                            
@@ -147,12 +147,12 @@ namespace SMSApplication
                     }
                     else
                     {
-                        if (txtSchemeName.Text != "")
+                        if (txtStaffName.Text != "")
                         {
-                            epMR_Staff.SetError(txtSchemeName, "Please enter valid scheme name");
-                            txtSchemeName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                            epMR_Staff.SetError(txtStaffName, "Please enter valid scheme name");
+                            txtStaffName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                             tpSchemeName.ShowAlways = true;
-                            tpSchemeName.Show("Please enter valid scheme name", txtSchemeName, 5000);
+                            tpSchemeName.Show("Please enter valid scheme name", txtStaffName, 5000);
                         }
                     }
                 }
@@ -239,7 +239,7 @@ namespace SMSApplication
         {
             try
             {
-                txtSchemeName.Text = "";
+                txtStaffName.Text = "";
                 rbActive.Checked = true;
                 lblDStatus.Visible = false;
                 lblSchemeCode.Text = "0";
@@ -293,7 +293,7 @@ namespace SMSApplication
                 epMR_Staff.Clear();
                 tpSchemeName.Active = false;
                 tpShortName.Active = false;
-                txtSchemeName.BackColor = Color.White;
+                txtStaffName.BackColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -463,7 +463,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Deepa
+        //Author : Lavanya
         //Created Date : 06/07/2019
         private void cmbFromYear_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -506,6 +506,14 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
          }
+
+        private void txtMobileNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
 
         //Author : lavanya
         //Created Date : 17/04/2019

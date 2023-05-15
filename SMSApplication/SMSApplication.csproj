@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SMSApplication</RootNamespace>
     <AssemblyName>SMSApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,8 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
@@ -255,6 +258,7 @@
     <Content Include="Resources\browse.jpg" />
     <Content Include="Resources\browse1.jpg" />
     <Content Include="Resources\cancel.png" />
+    <None Include="Resources\clear.png" />
     <Content Include="Resources\continue.png" />
     <Content Include="Resources\control_panel.png" />
     <Content Include="Resources\control_panel1.png" />
@@ -300,6 +304,8 @@
     <Content Include="Resources\reset.png" />
     <Content Include="Resources\save.png" />
     <Content Include="Resources\save1.png" />
+    <None Include="Resources\send-message.png" />
+    <None Include="Resources\send-message %281%29.png" />
     <Content Include="Resources\signin.png" />
     <Content Include="Resources\skip.png" />
     <Content Include="Resources\sss_logo %282%29.png" />

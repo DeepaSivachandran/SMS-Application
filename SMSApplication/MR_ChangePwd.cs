@@ -14,7 +14,7 @@ namespace SMSApplication
 {
     public partial class MR_ChangePwd : Form
     {
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
 
         //********* Object for Service Classed Initialisation ***********
@@ -38,7 +38,7 @@ namespace SMSApplication
             //************ Form Resolution **************
             objValidation.resolutionsettingsForm(this);
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void CP_ChangePassword_Load(object sender, EventArgs e)
         {
@@ -64,7 +64,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtOldPwd_Enter(object sender, EventArgs e)
         {
@@ -78,7 +78,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtOldPwd_Leave(object sender, EventArgs e)
         {
@@ -103,7 +103,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtOldPwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -134,7 +134,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void CP_ChangePassword_KeyDown(object sender, KeyEventArgs e)
         {
@@ -151,7 +151,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_Enter(object sender, EventArgs e)
         {
@@ -165,7 +165,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -196,7 +196,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtConfirmPwd_Leave(object sender, EventArgs e)
         {
@@ -221,7 +221,7 @@ namespace SMSApplication
             }
         }
 
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         //********* get form close confirmation **********
         public void udfnclose()
@@ -241,7 +241,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -255,7 +255,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void CP_ChangePassword_Leave(object sender, EventArgs e)
         {
@@ -269,7 +269,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }      
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtNewPwd_Leave(object sender, EventArgs e)
         {
@@ -294,7 +294,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtNewPwd_KeyDown(object sender, KeyEventArgs e)
         {
@@ -325,7 +325,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         private void txtNewPwd_Enter(object sender, EventArgs e)
         {
@@ -339,7 +339,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : DEEPA
+        // Author : Lavanya
         // Created Date: 01/06/2019
         //*********** Save password **********
         private void btnSave_Click(object sender, EventArgs e)
@@ -482,7 +482,7 @@ namespace SMSApplication
                 btnSave.Enabled = true;
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-06-01
         // Clear Data
         public void udfnclear()

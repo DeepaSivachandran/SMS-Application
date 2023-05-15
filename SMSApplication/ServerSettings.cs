@@ -22,7 +22,7 @@ namespace SMSApplication
 {
     public partial class ServerSettings : Form
     {
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
 
         private SecurityController _security;
@@ -45,7 +45,7 @@ namespace SMSApplication
             _security = new SecurityController();
         }
         // ********** String Encryption **********
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         public string GenerateMD5(string HashString)
         {
@@ -63,7 +63,7 @@ namespace SMSApplication
                 objError = new DataError();objError.WriteFile(EX);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         public void UdfnEdit() {
             try {
@@ -85,7 +85,7 @@ namespace SMSApplication
                 }
             } catch (Exception ex) { objError = new DataError();objError.WriteFile(ex); }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         private void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -185,7 +185,7 @@ namespace SMSApplication
             }
             catch (Exception ex) { objError = new DataError();objError.WriteFile(ex); }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         public static string Encrypt(string input, string key)
         {
@@ -203,7 +203,7 @@ namespace SMSApplication
             }
             catch (Exception ex) { return ""; }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         private void Form1_Leave(object sender, EventArgs e)
         {
@@ -214,7 +214,7 @@ namespace SMSApplication
             tpServierName.Active = false;
             tpWebServiceName.Active = false;
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06 10:22:51.840
         private void btncancel_Click(object sender, EventArgs e)
         {

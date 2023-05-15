@@ -10,7 +10,7 @@ using SMSApplication.ServiceClass;
 
 namespace SMSApplication
 {  
-    //Author : Deepa
+    //Author : Lavanya
     //CreatedDate : 2019-04-06
     public partial class MainForm : Form
     {
@@ -297,10 +297,10 @@ namespace SMSApplication
         {
             try
             {
-                udfnCloseChildForms();
-                MainForm.objMR_SenerIDList = new MR_SenderIDList();
-                MainForm.objMR_SenerIDList.MdiParent = this;
-                MainForm.objMR_SenerIDList.Show();
+                //udfnCloseChildForms();
+                //MainForm.objMR_SenerIDList = new MR_SenderIDList();
+                //MainForm.objMR_SenerIDList.MdiParent = this;
+                //MainForm.objMR_SenerIDList.Show();
             }
             catch (Exception ex)
             {

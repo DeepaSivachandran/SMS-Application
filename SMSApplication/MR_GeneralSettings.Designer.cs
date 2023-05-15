@@ -33,7 +33,7 @@
             this.lblDOldPassword = new System.Windows.Forms.Label();
             this.gbCollegeProfile = new System.Windows.Forms.GroupBox();
             this.gbChangePassword = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtStaffReportnumber = new System.Windows.Forms.TextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,11 +58,12 @@
             // lblDOldPassword
             // 
             this.lblDOldPassword.AutoSize = true;
-            this.lblDOldPassword.Location = new System.Drawing.Point(28, 35);
+            this.lblDOldPassword.Location = new System.Drawing.Point(28, 238);
             this.lblDOldPassword.Name = "lblDOldPassword";
-            this.lblDOldPassword.Size = new System.Drawing.Size(53, 17);
+            this.lblDOldPassword.Size = new System.Drawing.Size(76, 17);
             this.lblDOldPassword.TabIndex = 1;
-            this.lblDOldPassword.Text = "IN Time";
+            this.lblDOldPassword.Text = "FROM Time";
+            this.lblDOldPassword.Visible = false;
             // 
             // gbCollegeProfile
             // 
@@ -70,7 +71,6 @@
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoPath);
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoFileName);
             this.gbCollegeProfile.Controls.Add(this.lblCollegeLogoPath);
-            this.gbCollegeProfile.Controls.Add(this.btnSave);
             this.gbCollegeProfile.Location = new System.Drawing.Point(20, 33);
             this.gbCollegeProfile.Name = "gbCollegeProfile";
             this.gbCollegeProfile.Size = new System.Drawing.Size(1321, 572);
@@ -79,47 +79,52 @@
             // 
             // gbChangePassword
             // 
-            this.gbChangePassword.Controls.Add(this.textBox1);
+            this.gbChangePassword.Controls.Add(this.txtStaffReportnumber);
             this.gbChangePassword.Controls.Add(this.maskedTextBox2);
             this.gbChangePassword.Controls.Add(this.maskedTextBox1);
             this.gbChangePassword.Controls.Add(this.label2);
+            this.gbChangePassword.Controls.Add(this.btnSave);
             this.gbChangePassword.Controls.Add(this.label1);
             this.gbChangePassword.Controls.Add(this.txtNewPwd);
             this.gbChangePassword.Controls.Add(this.lblDNewPassword);
             this.gbChangePassword.Controls.Add(this.lblDOldPassword);
             this.gbChangePassword.Controls.Add(this.txtConfirmPwd);
             this.gbChangePassword.Controls.Add(this.lblDConfirmPassword);
-            this.gbChangePassword.Location = new System.Drawing.Point(442, 147);
+            this.gbChangePassword.Location = new System.Drawing.Point(442, 181);
             this.gbChangePassword.Name = "gbChangePassword";
-            this.gbChangePassword.Size = new System.Drawing.Size(444, 232);
+            this.gbChangePassword.Size = new System.Drawing.Size(444, 147);
             this.gbChangePassword.TabIndex = 0;
             this.gbChangePassword.TabStop = false;
             // 
-            // textBox1
+            // txtStaffReportnumber
             // 
-            this.textBox1.Location = new System.Drawing.Point(233, 70);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(190, 72);
-            this.textBox1.TabIndex = 254;
+            this.txtStaffReportnumber.Location = new System.Drawing.Point(174, 30);
+            this.txtStaffReportnumber.Multiline = true;
+            this.txtStaffReportnumber.Name = "txtStaffReportnumber";
+            this.txtStaffReportnumber.Size = new System.Drawing.Size(249, 72);
+            this.txtStaffReportnumber.TabIndex = 254;
+            this.txtStaffReportnumber.TextChanged += new System.EventHandler(this.txtStaffReportnumber_TextChanged);
+            this.txtStaffReportnumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStaffReportnumber_KeyPress);
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(100, 32);
+            this.maskedTextBox2.Location = new System.Drawing.Point(100, 235);
             this.maskedTextBox2.Mask = "00:00";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(32, 25);
             this.maskedTextBox2.TabIndex = 253;
             this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox2.Visible = false;
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(233, 32);
+            this.maskedTextBox1.Location = new System.Drawing.Point(233, 235);
             this.maskedTextBox1.Mask = "00:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(32, 25);
             this.maskedTextBox1.TabIndex = 252;
             this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBox1.Visible = false;
             // 
             // label2
             // 
@@ -129,6 +134,7 @@
             this.label2.Size = new System.Drawing.Size(189, 17);
             this.label2.TabIndex = 251;
             this.label2.Text = "Single SMS Length for Unicode";
+            this.label2.Visible = false;
             // 
             // label1
             // 
@@ -138,6 +144,7 @@
             this.label1.Size = new System.Drawing.Size(182, 17);
             this.label1.TabIndex = 250;
             this.label1.Text = "Single SMS Length for Engilsh";
+            this.label1.Visible = false;
             // 
             // txtNewPwd
             // 
@@ -146,17 +153,19 @@
             this.txtNewPwd.Name = "txtNewPwd";
             this.txtNewPwd.Size = new System.Drawing.Size(32, 25);
             this.txtNewPwd.TabIndex = 2;
+            this.txtNewPwd.Visible = false;
             this.txtNewPwd.Enter += new System.EventHandler(this.txtNewPwd_Enter);
             this.txtNewPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNewPwd_KeyDown);
             // 
             // lblDNewPassword
             // 
             this.lblDNewPassword.AutoSize = true;
-            this.lblDNewPassword.Location = new System.Drawing.Point(151, 35);
+            this.lblDNewPassword.Location = new System.Drawing.Point(151, 238);
             this.lblDNewPassword.Name = "lblDNewPassword";
-            this.lblDNewPassword.Size = new System.Drawing.Size(66, 17);
+            this.lblDNewPassword.Size = new System.Drawing.Size(56, 17);
             this.lblDNewPassword.TabIndex = 249;
-            this.lblDNewPassword.Text = "OUT Time";
+            this.lblDNewPassword.Text = "TO Time";
+            this.lblDNewPassword.Visible = false;
             // 
             // txtConfirmPwd
             // 
@@ -165,6 +174,7 @@
             this.txtConfirmPwd.Name = "txtConfirmPwd";
             this.txtConfirmPwd.Size = new System.Drawing.Size(32, 25);
             this.txtConfirmPwd.TabIndex = 3;
+            this.txtConfirmPwd.Visible = false;
             this.txtConfirmPwd.Enter += new System.EventHandler(this.txtConfirmPwd_Enter);
             this.txtConfirmPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPwd_KeyDown);
             this.txtConfirmPwd.Leave += new System.EventHandler(this.txtConfirmPwd_Leave);
@@ -172,11 +182,11 @@
             // lblDConfirmPassword
             // 
             this.lblDConfirmPassword.AutoSize = true;
-            this.lblDConfirmPassword.Location = new System.Drawing.Point(28, 74);
+            this.lblDConfirmPassword.Location = new System.Drawing.Point(28, 34);
             this.lblDConfirmPassword.Name = "lblDConfirmPassword";
-            this.lblDConfirmPassword.Size = new System.Drawing.Size(127, 17);
+            this.lblDConfirmPassword.Size = new System.Drawing.Size(140, 17);
             this.lblDConfirmPassword.TabIndex = 247;
-            this.lblDConfirmPassword.Text = "Staff Report Send to";
+            this.lblDConfirmPassword.Text = "Send Staff Report To : ";
             // 
             // lblProfilePhotoPath
             // 
@@ -210,7 +220,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(807, 394);
+            this.btnSave.Location = new System.Drawing.Point(344, 111);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(79, 29);
@@ -296,6 +306,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtStaffReportnumber;
     }
 }

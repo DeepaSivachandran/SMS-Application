@@ -30,32 +30,31 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbScheme = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbBloodGroup = new System.Windows.Forms.ComboBox();
+            this.txtAlternativeMobileNo = new System.Windows.Forms.TextBox();
+            this.txtMobileno = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRfCardno = new System.Windows.Forms.TextBox();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtstudentname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSchemeCode = new System.Windows.Forms.Label();
             this.lblDStatus = new System.Windows.Forms.Label();
             this.gbStatus = new System.Windows.Forms.GroupBox();
             this.rbInActive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.txtSchemeName = new System.Windows.Forms.TextBox();
+            this.txtAdmisssionno = new System.Windows.Forms.TextBox();
             this.lblobjDschemeName = new System.Windows.Forms.Label();
             this.epMR_Student = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.lblbloodgroup = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.gbStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_Student)).BeginInit();
@@ -63,46 +62,167 @@
             // 
             // gbScheme
             // 
-            this.gbScheme.Controls.Add(this.textBox6);
-            this.gbScheme.Controls.Add(this.textBox5);
+            this.gbScheme.Controls.Add(this.lblbloodgroup);
+            this.gbScheme.Controls.Add(this.cmbBloodGroup);
+            this.gbScheme.Controls.Add(this.txtAlternativeMobileNo);
+            this.gbScheme.Controls.Add(this.txtMobileno);
             this.gbScheme.Controls.Add(this.label8);
             this.gbScheme.Controls.Add(this.label7);
-            this.gbScheme.Controls.Add(this.textBox4);
+            this.gbScheme.Controls.Add(this.txtAddress);
             this.gbScheme.Controls.Add(this.label6);
-            this.gbScheme.Controls.Add(this.textBox3);
-            this.gbScheme.Controls.Add(this.textBox2);
-            this.gbScheme.Controls.Add(this.comboBox2);
-            this.gbScheme.Controls.Add(this.comboBox1);
+            this.gbScheme.Controls.Add(this.txtRfCardno);
+            this.gbScheme.Controls.Add(this.cmbClass);
             this.gbScheme.Controls.Add(this.label5);
             this.gbScheme.Controls.Add(this.label4);
-            this.gbScheme.Controls.Add(this.label3);
             this.gbScheme.Controls.Add(this.label2);
-            this.gbScheme.Controls.Add(this.textBox1);
+            this.gbScheme.Controls.Add(this.txtstudentname);
             this.gbScheme.Controls.Add(this.label1);
             this.gbScheme.Controls.Add(this.lblSchemeCode);
             this.gbScheme.Controls.Add(this.lblDStatus);
             this.gbScheme.Controls.Add(this.gbStatus);
-            this.gbScheme.Controls.Add(this.txtSchemeName);
+            this.gbScheme.Controls.Add(this.txtAdmisssionno);
             this.gbScheme.Controls.Add(this.lblobjDschemeName);
             this.gbScheme.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbScheme.Location = new System.Drawing.Point(8, 5);
             this.gbScheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gbScheme.Name = "gbScheme";
             this.gbScheme.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbScheme.Size = new System.Drawing.Size(689, 252);
+            this.gbScheme.Size = new System.Drawing.Size(689, 230);
             this.gbScheme.TabIndex = 0;
             this.gbScheme.TabStop = false;
             // 
-            // textBox1
+            // cmbBloodGroup
             // 
-            this.textBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(136, 62);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.MaxLength = 100;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(187, 25);
-            this.textBox1.TabIndex = 9;
+            this.cmbBloodGroup.FormattingEnabled = true;
+            this.cmbBloodGroup.Location = new System.Drawing.Point(136, 135);
+            this.cmbBloodGroup.Name = "cmbBloodGroup";
+            this.cmbBloodGroup.Size = new System.Drawing.Size(187, 25);
+            this.cmbBloodGroup.TabIndex = 3;
+            // 
+            // txtAlternativeMobileNo
+            // 
+            this.txtAlternativeMobileNo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtAlternativeMobileNo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlternativeMobileNo.Location = new System.Drawing.Point(485, 135);
+            this.txtAlternativeMobileNo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAlternativeMobileNo.MaxLength = 10;
+            this.txtAlternativeMobileNo.Name = "txtAlternativeMobileNo";
+            this.txtAlternativeMobileNo.Size = new System.Drawing.Size(187, 25);
+            this.txtAlternativeMobileNo.TabIndex = 7;
+            this.txtAlternativeMobileNo.TextChanged += new System.EventHandler(this.txtAlternativeMobileNo_TextChanged);
+            this.txtAlternativeMobileNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlternativeMobileNo_KeyPress);
+            // 
+            // txtMobileno
+            // 
+            this.txtMobileno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMobileno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMobileno.Location = new System.Drawing.Point(485, 98);
+            this.txtMobileno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtMobileno.MaxLength = 10;
+            this.txtMobileno.Name = "txtMobileno";
+            this.txtMobileno.Size = new System.Drawing.Size(187, 25);
+            this.txtMobileno.TabIndex = 6;
+            this.txtMobileno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileno_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(340, 140);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(139, 17);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Alternative Mobile No.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(340, 103);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 17);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "Mobile No.";
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(485, 24);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAddress.Size = new System.Drawing.Size(187, 62);
+            this.txtAddress.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(340, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 17);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Address";
+            // 
+            // txtRfCardno
+            // 
+            this.txtRfCardno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRfCardno.Location = new System.Drawing.Point(136, 172);
+            this.txtRfCardno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRfCardno.MaxLength = 100;
+            this.txtRfCardno.Name = "txtRfCardno";
+            this.txtRfCardno.Size = new System.Drawing.Size(187, 25);
+            this.txtRfCardno.TabIndex = 4;
+            this.txtRfCardno.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // cmbClass
+            // 
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Location = new System.Drawing.Point(136, 98);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(187, 25);
+            this.cmbClass.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 177);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "RF ID Card No.\r\n";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(13, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 17);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Blood Group";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(13, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Class && Section";
+            // 
+            // txtstudentname
+            // 
+            this.txtstudentname.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtstudentname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtstudentname.Location = new System.Drawing.Point(136, 61);
+            this.txtstudentname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtstudentname.MaxLength = 100;
+            this.txtstudentname.Name = "txtstudentname";
+            this.txtstudentname.Size = new System.Drawing.Size(187, 25);
+            this.txtstudentname.TabIndex = 1;
+            this.txtstudentname.TextChanged += new System.EventHandler(this.txtstudentname_TextChanged);
             // 
             // label1
             // 
@@ -140,7 +260,7 @@
             this.gbStatus.Location = new System.Drawing.Point(485, 164);
             this.gbStatus.Name = "gbStatus";
             this.gbStatus.Size = new System.Drawing.Size(187, 42);
-            this.gbStatus.TabIndex = 5;
+            this.gbStatus.TabIndex = 8;
             this.gbStatus.TabStop = false;
             // 
             // rbInActive
@@ -169,51 +289,21 @@
             this.rbActive.UseVisualStyleBackColor = true;
             this.rbActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbActive_KeyDown);
             // 
-            // btnClose
+            // txtAdmisssionno
             // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(600, 265);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(83, 29);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(513, 265);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(87, 29);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtSchemeName
-            // 
-            this.txtSchemeName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSchemeName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSchemeName.Location = new System.Drawing.Point(136, 24);
-            this.txtSchemeName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSchemeName.MaxLength = 100;
-            this.txtSchemeName.Name = "txtSchemeName";
-            this.txtSchemeName.Size = new System.Drawing.Size(187, 25);
-            this.txtSchemeName.TabIndex = 0;
-            this.txtSchemeName.Enter += new System.EventHandler(this.txtSchemeName_Enter);
-            this.txtSchemeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
-            this.txtSchemeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
-            this.txtSchemeName.Leave += new System.EventHandler(this.txtSchemeName_Leave);
+            this.txtAdmisssionno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtAdmisssionno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdmisssionno.Location = new System.Drawing.Point(136, 24);
+            this.txtAdmisssionno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAdmisssionno.MaxLength = 100;
+            this.txtAdmisssionno.Name = "txtAdmisssionno";
+            this.txtAdmisssionno.Size = new System.Drawing.Size(187, 25);
+            this.txtAdmisssionno.TabIndex = 0;
+            this.txtAdmisssionno.TextChanged += new System.EventHandler(this.txtAdmisssionno_TextChanged);
+            this.txtAdmisssionno.Enter += new System.EventHandler(this.txtSchemeName_Enter);
+            this.txtAdmisssionno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
+            this.txtAdmisssionno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
+            this.txtAdmisssionno.Leave += new System.EventHandler(this.txtSchemeName_Leave);
             // 
             // lblobjDschemeName
             // 
@@ -229,150 +319,53 @@
             // 
             this.epMR_Student.ContainerControl = this;
             // 
-            // label2
+            // btnClose
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Class";
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(600, 246);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(83, 29);
+            this.btnClose.TabIndex = 10;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // label3
+            // btnSave
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 140);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 17);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Section";
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(513, 246);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(87, 29);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label4
+            // lblbloodgroup
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 177);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Blood Group";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(13, 212);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 17);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Admission Card No.\r\n";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(136, 99);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 25);
-            this.comboBox1.TabIndex = 14;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(136, 136);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 25);
-            this.comboBox2.TabIndex = 15;
-            // 
-            // textBox2
-            // 
-            this.textBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(136, 173);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.MaxLength = 100;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(187, 25);
-            this.textBox2.TabIndex = 16;
-            // 
-            // textBox3
-            // 
-            this.textBox3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(136, 208);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox3.MaxLength = 100;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(187, 25);
-            this.textBox3.TabIndex = 17;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(340, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 17);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "Address";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(485, 25);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(187, 62);
-            this.textBox4.TabIndex = 19;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(340, 103);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 17);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "Contact No.";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(340, 140);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 17);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Alternative Contact No.";
-            // 
-            // textBox5
-            // 
-            this.textBox5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(485, 99);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox5.MaxLength = 100;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(187, 25);
-            this.textBox5.TabIndex = 22;
-            // 
-            // textBox6
-            // 
-            this.textBox6.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.textBox6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(485, 136);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox6.MaxLength = 100;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(187, 25);
-            this.textBox6.TabIndex = 23;
+            this.lblbloodgroup.AutoSize = true;
+            this.lblbloodgroup.Location = new System.Drawing.Point(399, 164);
+            this.lblbloodgroup.Name = "lblbloodgroup";
+            this.lblbloodgroup.Size = new System.Drawing.Size(15, 17);
+            this.lblbloodgroup.TabIndex = 22;
+            this.lblbloodgroup.Text = "0";
+            this.lblbloodgroup.Visible = false;
             // 
             // MR_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(706, 305);
+            this.ClientSize = new System.Drawing.Size(706, 291);
             this.Controls.Add(this.gbScheme);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
@@ -404,7 +397,7 @@
         private System.Windows.Forms.GroupBox gbScheme;
         private System.Windows.Forms.Button btnClose;
         public System.Windows.Forms.Button btnSave;
-        public System.Windows.Forms.TextBox txtSchemeName;
+        public System.Windows.Forms.TextBox txtAdmisssionno;
         private System.Windows.Forms.Label lblobjDschemeName;
         private System.Windows.Forms.ErrorProvider epMR_Student;
         public System.Windows.Forms.Label lblSchemeCode;
@@ -412,21 +405,20 @@
         public System.Windows.Forms.GroupBox gbStatus;
         public System.Windows.Forms.RadioButton rbInActive;
         public System.Windows.Forms.RadioButton rbActive;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtstudentname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        public System.Windows.Forms.TextBox textBox3;
-        public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ComboBox cmbClass;
+        public System.Windows.Forms.TextBox txtRfCardno;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label6;
-        public System.Windows.Forms.TextBox textBox6;
-        public System.Windows.Forms.TextBox textBox5;
+        public System.Windows.Forms.TextBox txtAlternativeMobileNo;
+        public System.Windows.Forms.TextBox txtMobileno;
+        private System.Windows.Forms.ComboBox cmbBloodGroup;
+        public System.Windows.Forms.Label lblbloodgroup;
     }
 }

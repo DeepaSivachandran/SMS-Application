@@ -15,7 +15,7 @@ using SMSApplication.ServiceClass;
 
 //[assembly: XmlConfigurator(Watch = true)]
 //[assembly: Repository()]
-// Author : Deepa
+// Author : Lavanya
 // Created Date: 2019-04-13
 namespace SMSApplication
 {
@@ -36,7 +36,7 @@ namespace SMSApplication
             InitializeComponent();
             _security = new SecurityController();
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)
         {
@@ -53,7 +53,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtUsername_Enter(object sender, EventArgs e)
         {
@@ -67,7 +67,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtUsername_Leave(object sender, EventArgs e)
         {
@@ -81,7 +81,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
@@ -98,7 +98,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtPassword_Enter(object sender, EventArgs e)
         {
@@ -112,7 +112,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void txtPassword_Leave(object sender, EventArgs e)
         {
@@ -126,7 +126,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void btnSignin_Click(object sender, EventArgs e)
         {
@@ -219,7 +219,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         // ***** Check newer version with server *****
         public void checknewversion()
@@ -286,7 +286,7 @@ namespace SMSApplication
             catch (Exception ex) { objError = new DataError(); objError.WriteFile(ex); this.Close(); }
             finally { this.Enabled = true; }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         public void Authentication_Load(object sender, EventArgs e)
         {
@@ -384,7 +384,7 @@ namespace SMSApplication
             }
             else { Application.Run(new ServerSettings()); }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         public void udfnclose()
         {
@@ -402,7 +402,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void Authentication_KeyDown(object sender, KeyEventArgs e)
         {
@@ -420,7 +420,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -434,7 +434,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void linkLabel1_Click(object sender, EventArgs e)
         {
@@ -447,7 +447,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Deepa
+        // Author : Lavanya
         // Created Date: 2019-04-06
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
