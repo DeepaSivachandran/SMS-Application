@@ -137,47 +137,48 @@ namespace SMSApplication
                 {
                     // Check user details exists or not
                     DataService objDserv = new DataService();
-                    objDataset = objDserv.GetDataset("select Userid,RoleID,UserName from CP_UserProfile where Userid='" + txtUserName.Text + "' and Password='" + _security.Encrypt(txtUserName.Text, txtPassword.Text) + "'");
+                    objDataset = objDserv.GetDataset("select UM_loginName,um_id,UM_DisplayName from MR_User where UM_loginName='" + txtUserName.Text + "' and um_Password='" + _security.Encrypt(txtUserName.Text, txtPassword.Text) + "'");
                     objDserv.CloseConnection();
                     if (objDataset.Tables[0].Rows.Count == 1)
                     {
                         // Assign values to variable for further process
-                        MainForm.pbUserID = objDataset.Tables[0].Rows[0]["Userid"].ToString();
-                        MainForm.pbUserRoleId = objDataset.Tables[0].Rows[0]["RoleID"].ToString();
-                        MainForm.pbUserName = objDataset.Tables[0].Rows[0]["UserName"].ToString();
+                        MainForm.pbUserID = objDataset.Tables[0].Rows[0]["um_id"].ToString();
+                       // MainForm.pbUserRoleId = objDataset.Tables[0].Rows[0]["RoleID"].ToString();
+                        MainForm.pbUserName = objDataset.Tables[0].Rows[0]["UM_DisplayName"].ToString();
                         MainForm.pbVersion = lblDVersion.Text;
+                        MainForm.pbUsername= objDataset.Tables[0].Rows[0]["UM_loginName"].ToString();
                         DataSet objAcademicdetails = new DataSet();
                         //objAcademicdetails = objDserv.GetDataset("IF (SELECT COUNT( *) FROM EXAM_NextSemGeneration) = 0  SELECT TOP 1 AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth, frommonth AS AcademicMonth , FromYear AS CurrentYear FROM CP_AcademicYear ORDER BY AcademicCode DESC   ELSE   SELECT DERV.AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN tomonth ELSE frommonth END AS AcademicMonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS CurrentYear FROM   (SELECT TOP 1 AcademicCode, AcademicMonth FROM EXAM_NextSemGeneration ORDER BY AcademicCode DESC, AcademicMonth DESC)   DERV INNER JOIN CP_AcademicYear AS DERV2 ON CASE WHEN DERV.AcademicMonth = frommonth THEN DERV.AcademicCode ELSE DERV.AcademicCode - 1  END = DERV2.AcademicCode");
                         //  objAcademicdetails = objDserv.GetDataset("IF (SELECT COUNT( *) FROM EXAM_NextSemGeneration) = 0  SELECT TOP 1 AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth, frommonth AS AcademicMonth , FromYear AS CurrentYear FROM CP_AcademicYear ORDER BY AcademicCode DESC   ELSE   SELECT DERV.AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN tomonth ELSE frommonth END AS AcademicMonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS CurrentYear FROM   (SELECT TOP 1 AcademicCode, AcademicMonth FROM EXAM_NextSemGeneration ORDER BY AcademicCode DESC, AcademicMonth DESC)   DERV INNER JOIN CP_AcademicYear AS DERV2 ON derv.AcademicCode=DERV2.AcademicCode");
-                        objAcademicdetails = objDserv.GetDataset("IF (SELECT COUNT( *) FROM EXAM_NextSemGeneration) = 0  SELECT TOP 1 AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth, frommonth AS AcademicMonth , FromYear AS CurrentYear FROM CP_AcademicYear ORDER BY AcademicCode DESC   ELSE   SELECT DERV.AcademicCode, CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS AcademicYear, FromYear, ToYear, frommonth, tomonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN tomonth ELSE frommonth END AS AcademicMonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS CurrentYear FROM   (SELECT TOP 1 AcademicCode, AcademicMonth FROM EXAM_NextSemGeneration ORDER BY AcademicCode DESC, AcademicMonth DESC)   DERV INNER JOIN CP_AcademicYear AS DERV2 ON derv.AcademicCode=DERV2.AcademicCode");
+                      //  objAcademicdetails = objDserv.GetDataset("IF (SELECT COUNT( *) FROM EXAM_NextSemGeneration) = 0  SELECT TOP 1 AcademicCode, CONCAT(FromYear, ' - ', ToYear) AS AcademicYear, FromYear, ToYear, frommonth, tomonth, frommonth AS AcademicMonth , FromYear AS CurrentYear FROM CP_AcademicYear ORDER BY AcademicCode DESC   ELSE   SELECT DERV.AcademicCode, CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS AcademicYear, FromYear, ToYear, frommonth, tomonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN tomonth ELSE frommonth END AS AcademicMonth,   CASE WHEN DERV.AcademicMonth = frommonth THEN ToYear ELSE FromYear END AS CurrentYear FROM   (SELECT TOP 1 AcademicCode, AcademicMonth FROM EXAM_NextSemGeneration ORDER BY AcademicCode DESC, AcademicMonth DESC)   DERV INNER JOIN CP_AcademicYear AS DERV2 ON derv.AcademicCode=DERV2.AcademicCode");
 
-                        objDserv.CloseConnection();
-                        if (objAcademicdetails != null) {
-                            if (objAcademicdetails.Tables.Count > 0) {
-                                MainForm.pbAcademicCode = Convert.ToInt16(objAcademicdetails.Tables[0].Rows[0]["AcademicCode"]);
-                                MainForm.pbAcademicYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["AcademicYear"]);
-                                MainForm.pbFromYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["FromYear"]);
-                                MainForm.pbToYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["ToYear"]);
-                                MainForm.pbFromMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["frommonth"]);
-                                MainForm.pbToMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["tomonth"]);
-                                MainForm.pbAcademicMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["AcademicMonth"]);
-                                MainForm.pbCurrentYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["CurrentYear"]);
-                            }
-                        }
-                        DataSet objSchemeDetails = new DataSet();
-                        objSchemeDetails = objDserv.GetDataset("SELECT TOP 1 SchemeName,SchemeCode FROM CP_Scheme WHERE ToYear IS NULL");
-                        objDserv.CloseConnection();
-                        if (objSchemeDetails != null)
-                        {
-                            if (objSchemeDetails.Tables.Count > 0)
-                            {
-                                if (objSchemeDetails.Tables[0].Rows.Count > 0)
-                                {
-                                    MainForm.pbSchemeCode = Convert.ToInt16(objSchemeDetails.Tables[0].Rows[0]["SchemeCode"]);
-                                    MainForm.pbSchemeName = Convert.ToString(objSchemeDetails.Tables[0].Rows[0]["SchemeName"]);
-                                }
-                            }
-                        }
+                       // objDserv.CloseConnection();
+                        //if (objAcademicdetails != null) {
+                        //    if (objAcademicdetails.Tables.Count > 0) {
+                        //        MainForm.pbAcademicCode = Convert.ToInt16(objAcademicdetails.Tables[0].Rows[0]["AcademicCode"]);
+                        //        MainForm.pbAcademicYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["AcademicYear"]);
+                        //        MainForm.pbFromYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["FromYear"]);
+                        //        MainForm.pbToYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["ToYear"]);
+                        //        MainForm.pbFromMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["frommonth"]);
+                        //        MainForm.pbToMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["tomonth"]);
+                        //        MainForm.pbAcademicMonth = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["AcademicMonth"]);
+                        //        MainForm.pbCurrentYear = Convert.ToString(objAcademicdetails.Tables[0].Rows[0]["CurrentYear"]);
+                        //    }
+                        //}
+                        //DataSet objSchemeDetails = new DataSet();
+                        //objSchemeDetails = objDserv.GetDataset("SELECT TOP 1 SchemeName,SchemeCode FROM CP_Scheme WHERE ToYear IS NULL");
+                        //objDserv.CloseConnection();
+                        //if (objSchemeDetails != null)
+                        //{
+                        //    if (objSchemeDetails.Tables.Count > 0)
+                        //    {
+                        //        if (objSchemeDetails.Tables[0].Rows.Count > 0)
+                        //        {
+                        //            MainForm.pbSchemeCode = Convert.ToInt16(objSchemeDetails.Tables[0].Rows[0]["SchemeCode"]);
+                        //            MainForm.pbSchemeName = Convert.ToString(objSchemeDetails.Tables[0].Rows[0]["SchemeName"]);
+                        //        }
+                        //    }
+                        //}
                         this.Hide();
                         MainForm objMainForm = new MainForm();
                         objMainForm.Show();

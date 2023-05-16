@@ -23,6 +23,7 @@ namespace SMSApplication
         public static string pbVersion;
         public static string pbUserID;
         public static string pbUserName;
+        public static string pbUsername; 
         public static string pbUserRoleId;
         public static string pbView;
         public static string pbSelectedMenu;

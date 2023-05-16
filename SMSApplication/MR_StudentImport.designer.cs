@@ -648,7 +648,6 @@
             this.clmadmission.HeaderText = "Admission No.";
             this.clmadmission.Name = "clmadmission";
             this.clmadmission.ReadOnly = true;
-            this.clmadmission.Visible = false;
             // 
             // clmStudentName
             // 

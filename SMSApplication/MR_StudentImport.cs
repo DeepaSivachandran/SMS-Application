@@ -481,29 +481,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[1].ColumnName == "Student Name")
-                                {
-                                     
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[2].ColumnName == "Class & Section")
-                                {                                    
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[3].ColumnName == "Blood Group")
-                                {                                   
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[4].ColumnName == "Address")
+                                if (objDs.Tables[0].Columns[1].ColumnName == "Admission No#")
                                 {
 
                                 }
@@ -511,7 +489,8 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[5].ColumnName == "Mobile No#")
+
+                                if (objDs.Tables[0].Columns[2].ColumnName == "Student Name")
                                 {
                                      
                                 }
@@ -519,14 +498,44 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[6].ColumnName == "Alternative Mobile No#")
+                                if (objDs.Tables[0].Columns[3].ColumnName == "Class & Section")
+                                {                                    
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[4].ColumnName == "Blood Group")
                                 {                                   
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[7].ColumnName == "RF ID Card No#")
+                                if (objDs.Tables[0].Columns[5].ColumnName == "Address")
+                                {
+
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[6].ColumnName == "Mobile No#")
+                                {
+                                     
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[7].ColumnName == "Alternative Mobile No#")
+                                {                                   
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[8].ColumnName == "RF ID Card No#")
                                 {                                   
                                 }
                                 else
@@ -539,7 +548,7 @@ namespace SMSApplication
                                     for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
                                     {
                                         item[0] = objDs.Tables[0].Rows[i]["S#No#"].ToString();
-                                        item[1] = "";
+                                        item[1] = objDs.Tables[0].Rows[i]["Admission No#"].ToString();
                                         item[2] = objDs.Tables[0].Rows[i]["Student Name"].ToString();
                                         item[3] = objDs.Tables[0].Rows[i]["Class & Section"].ToString();
                                         item[4] = objDs.Tables[0].Rows[i]["Blood Group"].ToString(); 
@@ -549,7 +558,7 @@ namespace SMSApplication
                                         item[8] = objDs.Tables[0].Rows[i]["RF ID Card No#"].ToString();
                                         
                                         listitem = new ListViewItem(item);
-                                        grdStudentImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8]);
+                                        grdStudentImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8] );
                                     }
                                 }
                                 else
@@ -589,7 +598,7 @@ namespace SMSApplication
                         DataTable dataTable = objDs.Tables[0];
                         int rowIndex = -1;
                         var duplicates = dataTable.AsEnumerable()
-                                  .GroupBy(row => row.Field<string>("RF ID Card No#"))
+                                  .GroupBy(row => row.Field<double>("Admission no#"))
                                   .Where(g => g.Count() > 1)
                                   .SelectMany(g => g);
 
@@ -599,21 +608,21 @@ namespace SMSApplication
                             foreach (var duplicate in duplicates)
                             {
 
-                                string code = duplicate.Field<string>("RF ID Card No#");
-                                foreach (DataGridViewRow row in grdStudentImport.Rows)
-                                {
+                                //string code = duplicate.Field<string>("Admission no#");
+                                //foreach (DataGridViewRow row in grdStudentImport.Rows)
+                                //{
 
-                                    //if (row.Cells["clmaddress"].Value.ToString() == code)
-                                    //{
-                                    //    rowIndex = row.Index;
-                                    //    break;
-                                    //}
-                                }
+                                //    //if (row.Cells["clmaddress"].Value.ToString() == code)
+                                //    //{
+                                //    //    rowIndex = row.Index;
+                                //    //    break;
+                                //    //}
+                                //}
 
-                                if (rowIndex != -1)
-                                {
-                                    grdStudentImport.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
-                                }
+                                //if (rowIndex != -1)
+                                //{
+                                //    grdStudentImport.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
+                                //}
                             }
                         }
 

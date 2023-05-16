@@ -186,5 +186,78 @@ namespace SMSApplication.ServiceClass
             }
             return ds;
         }
-       }
+
+
+
+        //--  change password ---
+      
+
+        public string udfnchangepassword(string paraUserID, string paraOldPassword, string paranewpassword, string paraoriginator)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_CHANGE_PASSWORD]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paranewpassword", paranewpassword);
+                varSqlCommand.Parameters.AddWithValue("@paraOldPassword", paraOldPassword);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID); 
+                varSqlCommand.Parameters.AddWithValue("@paraoriginator", paraoriginator);
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+        
+             public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID, 
+                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STAFF]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@ParaStaffId", parastaffid);
+                varSqlCommand.Parameters.AddWithValue("@paraStaffName", parastaffname);
+                varSqlCommand.Parameters.AddWithValue("@paramobile", paramobile);
+                varSqlCommand.Parameters.AddWithValue("@paraDOB", paraDOB);
+                varSqlCommand.Parameters.AddWithValue("@paraBloodGroup", paraBloodGroup);
+                varSqlCommand.Parameters.AddWithValue("@paraDesignation", paraDesignation);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraStatus", paraStatus);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress1", paraaddress1);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress2", paraaddress2);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress3", paraaddress3);
+                varSqlCommand.Parameters.AddWithValue("@paracity", paracity);
+                varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode); 
+
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+
+    }
 }
