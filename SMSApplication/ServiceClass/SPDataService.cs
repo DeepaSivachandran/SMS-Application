@@ -218,9 +218,11 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-        
-             public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID, 
-                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode)
+
+
+        //--  staff master ---
+        public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID, 
+                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode,string paraRfCardno)
         {
             string result = "";
             try
@@ -242,7 +244,85 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraaddress2", paraaddress2);
                 varSqlCommand.Parameters.AddWithValue("@paraaddress3", paraaddress3);
                 varSqlCommand.Parameters.AddWithValue("@paracity", paracity);
-                varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode); 
+                varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode);
+                varSqlCommand.Parameters.AddWithValue("@paraRfCardno", paraRfCardno);
+                
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+        
+
+        public DataSet udfnStaffMasterLIST(string paraprocess, string parastaffid, string paraUserID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STAFF_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@ParaStaffId", parastaffid);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
+
+
+        //--  student master ---
+
+        public string udfnStudentMaster(string paraprocess, string paraStudentId, string paraStudentname,string paraAdmissinno, string paramobile,string paraalternativemobile, string paraDOB,
+            string paraBloodGroup, string paraclassSection, string paraUserID,
+            string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity, string parapincode,string paraparentname,string pararfidno,string parasource)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_Student]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@paraStudentId", paraStudentId);
+                varSqlCommand.Parameters.AddWithValue("@paraStudentname", paraStudentname);
+                varSqlCommand.Parameters.AddWithValue("@paraAdmissinno", paraAdmissinno);
+                varSqlCommand.Parameters.AddWithValue("@paraDOB", paraDOB); 
+                varSqlCommand.Parameters.AddWithValue("@paraBloodGroup", paraBloodGroup); 
+                varSqlCommand.Parameters.AddWithValue("@paramobile", paramobile); 
+                varSqlCommand.Parameters.AddWithValue("@paraalternativemobile", paraalternativemobile); 
+                varSqlCommand.Parameters.AddWithValue("@paraclassSection", paraclassSection);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraStatus", paraStatus);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress1", paraaddress1);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress2", paraaddress2);
+                varSqlCommand.Parameters.AddWithValue("@paraaddress3", paraaddress3);
+                varSqlCommand.Parameters.AddWithValue("@paracity", paracity);
+                varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode);
+                varSqlCommand.Parameters.AddWithValue("@paraparentname", paraparentname); 
+                varSqlCommand.Parameters.AddWithValue("@pararfidno", pararfidno);
+                varSqlCommand.Parameters.AddWithValue("@parasource", parasource);
 
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -259,5 +339,33 @@ namespace SMSApplication.ServiceClass
             return result;
         }
 
+
+
+        public DataSet udfnStudentMasterlist(string paraprocess, string paraStudentid, string paraUserID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_Student_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@ParastudentId", paraStudentid);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
     }
 }

@@ -477,7 +477,7 @@ namespace SMSApplication
                     string varresult = "";
                     varresult = objspdservice.udfnchangepassword(MainForm.pbUserID, _security.Encrypt(MainForm.pbUsername,txtOldPwd.Text), _security.Encrypt(MainForm.pbUsername, txtNewPwd.Text), "Change Pwd");
                     objspdservice.CloseConnection();
-                    if (varresult.Contains("Success"))
+                    if (varresult.Contains("Password changed successfully."))
                     {
                         MessageBox.Show(varresult, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                         udfnclear();

@@ -18,9 +18,9 @@ namespace SMSApplication
         //  **********Tooltip Initialisation**********
         private ToolTip tpSchemeName = new ToolTip();
         private ToolTip tpShortName = new ToolTip();
-
+         
         //********* Declare the variable*************
-        public string pbflag="0",pbFromYear="";
+        public string pbflag="0",pbFromYear="", VARSTAFFCODE = "";
         public MR_Staff()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace SMSApplication
                 objDataBind.BindComboBoxListSelected("MR_BloodGroup", " Bg_Code Not in (0) Order by Bg_Code", "BG_Name,Bg_Code", cmbBloodGroup, "", "BG_Name", "Bg_Code");
                 objDataBind.BindComboBoxListSelected("MR_Designation", " dn_Code Not in (0) Order by dn_Code", "DN_Name,DN_Code", cmbdesignation, "", "DN_Name", "DN_Code");
                 objDataBind = null;
-
+                udfnEdit();
                 if (btnSave.Text == "Update")
                 {
                     //******** if form is in update mode status will be show **********
@@ -53,6 +53,60 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+
+        private void udfnEdit()
+        {
+            try
+            {
+                if (VARSTAFFCODE != "")
+                {
+                    SPDataService objspservice = new SPDataService();
+                    DataSet objDS;
+                    objDS = objspservice.udfnStaffMasterLIST("Editload", VARSTAFFCODE, MainForm.pbUserID);
+                    objspservice.CloseConnection();
+                    string staffstatus = "0";
+                    if (objDS != null)
+                    {
+                        if (objDS.Tables[0].Rows.Count > 0)
+                        {
+                            txtStaffName.Text = objDS.Tables[0].Rows[0]["name"].ToString() ;
+                            txtMobileNo.Text = objDS.Tables[0].Rows[0]["mobile"].ToString() ; 
+                            dpFromDate.Text = objDS.Tables[0].Rows[0]["dob"].ToString();
+                            cmbBloodGroup.SelectedValue= objDS.Tables[0].Rows[0]["bloodgroup"].ToString(); 
+                            cmbdesignation.SelectedValue = objDS.Tables[0].Rows[0]["designation"].ToString();
+                            txtAddress.Text = objDS.Tables[0].Rows[0]["address1"].ToString();
+                            txtAddress2.Text = objDS.Tables[0].Rows[0]["address2"].ToString();
+                            textAddress3.Text = objDS.Tables[0].Rows[0]["address3"].ToString();
+                            txtpincode.Text = objDS.Tables[0].Rows[0]["PinCode"].ToString(); 
+                            txtcity.Text = objDS.Tables[0].Rows[0]["City"].ToString() ;
+                            staffstatus= objDS.Tables[0].Rows[0]["STATUS"].ToString();
+                           txtRfCardno.Text= objDS.Tables[0].Rows[0]["rfidno"].ToString();
+                            if (staffstatus == "1")
+                            {
+                                rbActive.Checked = true; ;
+                            }
+                            else {
+                                rbInActive.Checked = true;
+                            }
+
+                            btnSave.Text = "Update";
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+
+            }
+        }
+
         // Author : Venkat
         // Created Date: 16/05/2023
         private void btnClose_Click(object sender, EventArgs e)
@@ -217,7 +271,7 @@ namespace SMSApplication
         //************ Save data *************
         public void udfnsave()
         {
-            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != 0 && Convert.ToString(cmbdesignation.SelectedValue) != "-1" && txtStaffName.Text != "" && txtMobileNo.Text != "" && txtAddress.Text != "")
+            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != -1 && Convert.ToString(cmbdesignation.SelectedValue) != "-1" && txtStaffName.Text != "" && txtMobileNo.Text != "" && txtAddress.Text != "" && txtpincode.Text !="" && txtcity.Text !="" && txtRfCardno.Text!="")
             {
 
                 epMR_Staff.Clear();
@@ -225,6 +279,8 @@ namespace SMSApplication
                 txtMobileNo.BackColor = Color.White;
                 txtAddress.BackColor = Color.White;
                 cmbBloodGroup.BackColor = Color.White;
+                txtpincode.BackColor = Color.White;
+                txtcity.BackColor = Color.White; 
                 cmbdesignation.BackColor = Color.White;
                 SPDataService objspdservice = new SPDataService();
 
@@ -240,17 +296,35 @@ namespace SMSApplication
                 }
                 if (btnSave.Text == "Save")
                 {
-                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status,"Staff Create",txtAddress.Text,txtAddress2.Text,textAddress3.Text, txtcity.Text,txtpincode.Text);
+                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status,"Staff Create",txtAddress.Text,txtAddress2.Text,textAddress3.Text, txtcity.Text,txtpincode.Text, txtRfCardno.Text);
 
                 }
 
                 else
                 {
-                   // result = objspdservice.udfnSPUserMaster("Update", varusercode, txtLoginID.Text, txtUserName.Text, cmbUserRole.SelectedValue.ToString(), varpassword, varstatus, MainForm.pbUserID, MainForm.pbIpAddress, "User Update");
+                    result = objspdservice.udfnStaffMaster("edit", VARSTAFFCODE, txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Update", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text);
+                }
+
+                if (result.Contains("Saved Successfully.")|| result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
+                {
+                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    udfnclear();
+                    MainForm.objMR_StaffList.udfnList();
+                }
+                else  
+                {
+                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
                 }
             }
             else
             {
+                if (txtRfCardno.Text == "")
+                {
+                    epMR_Staff.SetError(txtRfCardno, "Please enter the RF ID No.");
+                    txtRfCardno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter the RF ID No.", txtRfCardno, 5000);
+                }
                 if (txtStaffName.Text == "")
                 {
                     epMR_Staff.SetError(txtStaffName, "Please enter the Staff Name");
@@ -271,6 +345,20 @@ namespace SMSApplication
                     txtAddress.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                     tpSchemeName.ShowAlways = true;
                     tpSchemeName.Show("Please enter Staff address", txtAddress, 5000); 
+                }
+                if (txtcity.Text == "")
+                {
+                    epMR_Staff.SetError(txtcity, "Please enter City name");
+                    txtcity.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter City name", txtcity, 5000);
+                }
+                if (txtpincode.Text == "")
+                {
+                    epMR_Staff.SetError(txtpincode, "Please enter pincode");
+                    txtpincode.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter pincode", txtpincode, 5000);
                 }
                 if (Convert.ToString(cmbBloodGroup.SelectedValue) == "-1")
                 {
@@ -298,10 +386,21 @@ namespace SMSApplication
         {
             try
             {
+                txtRfCardno.Text = "";
+                txtStaffName.Text = ""; 
+                txtMobileNo.Text = "";
+                cmbBloodGroup.SelectedValue = "-1";
+                cmbdesignation.SelectedValue = "-1";
+                txtAddress.Text = "";
+                txtAddress2.Text = "";
+                textAddress3.Text = "";
                 txtStaffName.Text = "";
+                txtpincode.Text = "";
+                txtcity.Text = ""; 
                 rbActive.Checked = true;
                 lblDStatus.Visible = false;
                 lblSchemeCode.Text = "0";
+                dpFromDate.Value = DateTime.Now.Date;
             }
             catch (Exception ex)
             {
@@ -317,6 +416,7 @@ namespace SMSApplication
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    txtMobileNo.Focus();
                 }
                 if (e.Control && (e.KeyCode == Keys.A))
                 {
@@ -577,6 +677,91 @@ namespace SMSApplication
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtMobileNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dpFromDate.Focus();
+            }
+        }
+
+        private void dpFromDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cmbBloodGroup.Focus();
+            }
+        }
+
+        private void cmbBloodGroup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cmbdesignation.Focus();
+            }
+        }
+
+        private void cmbdesignation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtAddress.Focus();
+            }
+        }
+
+        private void txtAddress_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtAddress2.Focus();
+            }
+        }
+
+        private void txtAddress2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textAddress3.Focus();
+            }
+        }
+
+        private void textAddress3_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtcity.Focus();
+            }
+        }
+
+        private void txtcity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtpincode.Focus();
+            }
+        }
+
+        private void txtpincode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSave.Focus();
+            }
+        }
+
+        private void txtpincode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpincode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void cmbBloodGroup_SelectedIndexChanged(object sender, EventArgs e)

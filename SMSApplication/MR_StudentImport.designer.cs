@@ -30,24 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentImport));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentImport));
             this.gbStudentImport = new System.Windows.Forms.GroupBox();
             this.lblDublicate = new System.Windows.Forms.Label();
             this.lblMismatch = new System.Windows.Forms.Label();
@@ -59,40 +47,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.grdStudentImport = new System.Windows.Forms.DataGridView();
-            this.btnDownloadTemplate = new System.Windows.Forms.Button();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.lblDFileName = new System.Windows.Forms.Label();
-            this.txtFileName = new System.Windows.Forms.TextBox();
-            this.lblNoRecordsFound = new System.Windows.Forms.Label();
-            this.grdStudentImportRollNo = new System.Windows.Forms.DataGridView();
-            this.clmregsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegStudentCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegRollno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegRegNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegScheme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegBranch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegDOB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegFatherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegMotherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegAddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegAddress3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegCity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegPincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmregGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegDirectSecondYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegContactNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegCaste = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegReligion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegDateofAdmission = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegGrandTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegCastNameDetailed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmRegAadharno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.picLoader = new System.Windows.Forms.PictureBox();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmadmission = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,9 +56,15 @@
             this.clmmobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmaltermobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmrfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDownloadTemplate = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblDFileName = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.lblNoRecordsFound = new System.Windows.Forms.Label();
+            this.picLoader = new System.Windows.Forms.PictureBox();
             this.gbStudentImport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudentImport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdStudentImportRollNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +86,6 @@
             this.gbStudentImport.Controls.Add(this.lblDFileName);
             this.gbStudentImport.Controls.Add(this.txtFileName);
             this.gbStudentImport.Controls.Add(this.lblNoRecordsFound);
-            this.gbStudentImport.Controls.Add(this.grdStudentImportRollNo);
             this.gbStudentImport.Controls.Add(this.picLoader);
             this.gbStudentImport.Location = new System.Drawing.Point(7, 3);
             this.gbStudentImport.Name = "gbStudentImport";
@@ -280,10 +239,80 @@
             this.grdStudentImport.ReadOnly = true;
             this.grdStudentImport.RowHeadersVisible = false;
             this.grdStudentImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdStudentImport.Size = new System.Drawing.Size(1311, 448);
+            this.grdStudentImport.Size = new System.Drawing.Size(1312, 448);
             this.grdStudentImport.TabIndex = 37;
-            this.grdStudentImport.Visible = false;
             this.grdStudentImport.Validated += new System.EventHandler(this.grdStudentImport_Validated);
+            // 
+            // clmsno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 65;
+            // 
+            // clmadmission
+            // 
+            this.clmadmission.HeaderText = "Admission No.";
+            this.clmadmission.Name = "clmadmission";
+            this.clmadmission.ReadOnly = true;
+            // 
+            // clmStudentName
+            // 
+            this.clmStudentName.HeaderText = "Student Name";
+            this.clmStudentName.Name = "clmStudentName";
+            this.clmStudentName.ReadOnly = true;
+            this.clmStudentName.Width = 180;
+            // 
+            // clmclass
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmclass.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmclass.HeaderText = "Class & Section";
+            this.clmclass.Name = "clmclass";
+            this.clmclass.ReadOnly = true;
+            this.clmclass.Width = 120;
+            // 
+            // clmblood
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmblood.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmblood.HeaderText = "Blood Group";
+            this.clmblood.Name = "clmblood";
+            this.clmblood.ReadOnly = true;
+            // 
+            // clmaddress
+            // 
+            this.clmaddress.HeaderText = "Address";
+            this.clmaddress.Name = "clmaddress";
+            this.clmaddress.ReadOnly = true;
+            this.clmaddress.Width = 150;
+            // 
+            // clmmobile
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmmobile.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmmobile.HeaderText = "Mobile No.";
+            this.clmmobile.Name = "clmmobile";
+            this.clmmobile.ReadOnly = true;
+            // 
+            // clmaltermobile
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmaltermobile.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmaltermobile.HeaderText = "Alternative Mobile No.";
+            this.clmaltermobile.Name = "clmaltermobile";
+            this.clmaltermobile.ReadOnly = true;
+            this.clmaltermobile.Width = 200;
+            // 
+            // clmrfid
+            // 
+            this.clmrfid.HeaderText = "RF ID Card No.";
+            this.clmrfid.Name = "clmrfid";
+            this.clmrfid.ReadOnly = true;
+            this.clmrfid.Width = 150;
             // 
             // btnDownloadTemplate
             // 
@@ -362,263 +391,6 @@
             this.lblNoRecordsFound.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblNoRecordsFound.Visible = false;
             // 
-            // grdStudentImportRollNo
-            // 
-            this.grdStudentImportRollNo.AllowUserToAddRows = false;
-            this.grdStudentImportRollNo.AllowUserToDeleteRows = false;
-            this.grdStudentImportRollNo.AllowUserToResizeRows = false;
-            this.grdStudentImportRollNo.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grdStudentImportRollNo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdStudentImportRollNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.grdStudentImportRollNo.ColumnHeadersHeight = 30;
-            this.grdStudentImportRollNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdStudentImportRollNo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmregsno,
-            this.clmRegStudentCode,
-            this.clmRegStudentName,
-            this.clmRegRollno,
-            this.clmRegRegNo,
-            this.clmRegScheme,
-            this.clmRegBranch,
-            this.clmRegTerm,
-            this.clmRegDOB,
-            this.clmRegFatherName,
-            this.clmRegMotherName,
-            this.clmRegAddress1,
-            this.clmRegAddress2,
-            this.clmRegAddress3,
-            this.clmRegCity,
-            this.clmRegState,
-            this.clmRegPincode,
-            this.clmregGender,
-            this.clmRegDirectSecondYear,
-            this.clmRegContactNumber,
-            this.clmRegCaste,
-            this.clmRegReligion,
-            this.clmRegDateofAdmission,
-            this.clmRegGrandTotal,
-            this.clmRegCastNameDetailed,
-            this.clmRegAadharno});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdStudentImportRollNo.DefaultCellStyle = dataGridViewCellStyle19;
-            this.grdStudentImportRollNo.EnableHeadersVisualStyles = false;
-            this.grdStudentImportRollNo.GridColor = System.Drawing.Color.White;
-            this.grdStudentImportRollNo.Location = new System.Drawing.Point(9, 58);
-            this.grdStudentImportRollNo.Name = "grdStudentImportRollNo";
-            this.grdStudentImportRollNo.ReadOnly = true;
-            this.grdStudentImportRollNo.RowHeadersVisible = false;
-            this.grdStudentImportRollNo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdStudentImportRollNo.Size = new System.Drawing.Size(1310, 448);
-            this.grdStudentImportRollNo.TabIndex = 958772;
-            this.grdStudentImportRollNo.Visible = false;
-            this.grdStudentImportRollNo.Validated += new System.EventHandler(this.grdStudentImportRollNo_Validated);
-            // 
-            // clmregsno
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmregsno.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmregsno.HeaderText = "S.No.";
-            this.clmregsno.Name = "clmregsno";
-            this.clmregsno.ReadOnly = true;
-            this.clmregsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmregsno.Width = 65;
-            // 
-            // clmRegStudentCode
-            // 
-            this.clmRegStudentCode.HeaderText = "Student Code";
-            this.clmRegStudentCode.Name = "clmRegStudentCode";
-            this.clmRegStudentCode.ReadOnly = true;
-            this.clmRegStudentCode.Visible = false;
-            // 
-            // clmRegStudentName
-            // 
-            this.clmRegStudentName.HeaderText = "Student Name";
-            this.clmRegStudentName.Name = "clmRegStudentName";
-            this.clmRegStudentName.ReadOnly = true;
-            this.clmRegStudentName.Width = 180;
-            // 
-            // clmRegRollno
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegRollno.DefaultCellStyle = dataGridViewCellStyle10;
-            this.clmRegRollno.HeaderText = "Roll No.";
-            this.clmRegRollno.Name = "clmRegRollno";
-            this.clmRegRollno.ReadOnly = true;
-            this.clmRegRollno.Width = 110;
-            // 
-            // clmRegRegNo
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegRegNo.DefaultCellStyle = dataGridViewCellStyle11;
-            this.clmRegRegNo.HeaderText = "Reg. No.";
-            this.clmRegRegNo.Name = "clmRegRegNo";
-            this.clmRegRegNo.ReadOnly = true;
-            this.clmRegRegNo.Visible = false;
-            this.clmRegRegNo.Width = 110;
-            // 
-            // clmRegScheme
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegScheme.DefaultCellStyle = dataGridViewCellStyle12;
-            this.clmRegScheme.HeaderText = "Scheme";
-            this.clmRegScheme.Name = "clmRegScheme";
-            this.clmRegScheme.ReadOnly = true;
-            // 
-            // clmRegBranch
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegBranch.DefaultCellStyle = dataGridViewCellStyle13;
-            this.clmRegBranch.HeaderText = "Branch";
-            this.clmRegBranch.Name = "clmRegBranch";
-            this.clmRegBranch.ReadOnly = true;
-            this.clmRegBranch.Width = 150;
-            // 
-            // clmRegTerm
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegTerm.DefaultCellStyle = dataGridViewCellStyle14;
-            this.clmRegTerm.HeaderText = "Term";
-            this.clmRegTerm.Name = "clmRegTerm";
-            this.clmRegTerm.ReadOnly = true;
-            // 
-            // clmRegDOB
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmRegDOB.DefaultCellStyle = dataGridViewCellStyle15;
-            this.clmRegDOB.HeaderText = "DOB";
-            this.clmRegDOB.Name = "clmRegDOB";
-            this.clmRegDOB.ReadOnly = true;
-            // 
-            // clmRegFatherName
-            // 
-            this.clmRegFatherName.HeaderText = "Father\'s Name";
-            this.clmRegFatherName.Name = "clmRegFatherName";
-            this.clmRegFatherName.ReadOnly = true;
-            this.clmRegFatherName.Width = 150;
-            // 
-            // clmRegMotherName
-            // 
-            this.clmRegMotherName.HeaderText = "Mother\'s Name";
-            this.clmRegMotherName.Name = "clmRegMotherName";
-            this.clmRegMotherName.ReadOnly = true;
-            this.clmRegMotherName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmRegMotherName.Width = 150;
-            // 
-            // clmRegAddress1
-            // 
-            this.clmRegAddress1.HeaderText = "ADD_1";
-            this.clmRegAddress1.Name = "clmRegAddress1";
-            this.clmRegAddress1.ReadOnly = true;
-            this.clmRegAddress1.Width = 150;
-            // 
-            // clmRegAddress2
-            // 
-            this.clmRegAddress2.HeaderText = "ADD_2";
-            this.clmRegAddress2.Name = "clmRegAddress2";
-            this.clmRegAddress2.ReadOnly = true;
-            this.clmRegAddress2.Width = 150;
-            // 
-            // clmRegAddress3
-            // 
-            this.clmRegAddress3.HeaderText = "ADD_3";
-            this.clmRegAddress3.Name = "clmRegAddress3";
-            this.clmRegAddress3.ReadOnly = true;
-            this.clmRegAddress3.Width = 150;
-            // 
-            // clmRegCity
-            // 
-            this.clmRegCity.HeaderText = "City";
-            this.clmRegCity.Name = "clmRegCity";
-            this.clmRegCity.ReadOnly = true;
-            this.clmRegCity.Width = 120;
-            // 
-            // clmRegState
-            // 
-            this.clmRegState.HeaderText = "State";
-            this.clmRegState.Name = "clmRegState";
-            this.clmRegState.ReadOnly = true;
-            // 
-            // clmRegPincode
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegPincode.DefaultCellStyle = dataGridViewCellStyle16;
-            this.clmRegPincode.HeaderText = "Pincode";
-            this.clmRegPincode.Name = "clmRegPincode";
-            this.clmRegPincode.ReadOnly = true;
-            // 
-            // clmregGender
-            // 
-            this.clmregGender.HeaderText = "Gender";
-            this.clmregGender.Name = "clmregGender";
-            this.clmregGender.ReadOnly = true;
-            this.clmregGender.Width = 65;
-            // 
-            // clmRegDirectSecondYear
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegDirectSecondYear.DefaultCellStyle = dataGridViewCellStyle17;
-            this.clmRegDirectSecondYear.HeaderText = "Direct II Year";
-            this.clmRegDirectSecondYear.Name = "clmRegDirectSecondYear";
-            this.clmRegDirectSecondYear.ReadOnly = true;
-            // 
-            // clmRegContactNumber
-            // 
-            this.clmRegContactNumber.HeaderText = "Contact No.";
-            this.clmRegContactNumber.Name = "clmRegContactNumber";
-            this.clmRegContactNumber.ReadOnly = true;
-            // 
-            // clmRegCaste
-            // 
-            this.clmRegCaste.HeaderText = "Caste Category";
-            this.clmRegCaste.Name = "clmRegCaste";
-            this.clmRegCaste.ReadOnly = true;
-            // 
-            // clmRegReligion
-            // 
-            this.clmRegReligion.HeaderText = "Religion";
-            this.clmRegReligion.Name = "clmRegReligion";
-            this.clmRegReligion.ReadOnly = true;
-            // 
-            // clmRegDateofAdmission
-            // 
-            this.clmRegDateofAdmission.HeaderText = "Date of Admission";
-            this.clmRegDateofAdmission.Name = "clmRegDateofAdmission";
-            this.clmRegDateofAdmission.ReadOnly = true;
-            this.clmRegDateofAdmission.Width = 130;
-            // 
-            // clmRegGrandTotal
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmRegGrandTotal.DefaultCellStyle = dataGridViewCellStyle18;
-            this.clmRegGrandTotal.HeaderText = "Total Marks";
-            this.clmRegGrandTotal.Name = "clmRegGrandTotal";
-            this.clmRegGrandTotal.ReadOnly = true;
-            // 
-            // clmRegCastNameDetailed
-            // 
-            this.clmRegCastNameDetailed.HeaderText = "Caste Name";
-            this.clmRegCastNameDetailed.Name = "clmRegCastNameDetailed";
-            this.clmRegCastNameDetailed.ReadOnly = true;
-            // 
-            // clmRegAadharno
-            // 
-            this.clmRegAadharno.HeaderText = "Aadhar No.";
-            this.clmRegAadharno.Name = "clmRegAadharno";
-            this.clmRegAadharno.ReadOnly = true;
-            // 
             // picLoader
             // 
             this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -632,77 +404,6 @@
             this.picLoader.TabIndex = 958787;
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 65;
-            // 
-            // clmadmission
-            // 
-            this.clmadmission.HeaderText = "Admission No.";
-            this.clmadmission.Name = "clmadmission";
-            this.clmadmission.ReadOnly = true;
-            // 
-            // clmStudentName
-            // 
-            this.clmStudentName.HeaderText = "Student Name";
-            this.clmStudentName.Name = "clmStudentName";
-            this.clmStudentName.ReadOnly = true;
-            this.clmStudentName.Width = 180;
-            // 
-            // clmclass
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmclass.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmclass.HeaderText = "Class & Section";
-            this.clmclass.Name = "clmclass";
-            this.clmclass.ReadOnly = true;
-            this.clmclass.Width = 120;
-            // 
-            // clmblood
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmblood.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmblood.HeaderText = "Blood Group";
-            this.clmblood.Name = "clmblood";
-            this.clmblood.ReadOnly = true;
-            // 
-            // clmaddress
-            // 
-            this.clmaddress.HeaderText = "Address";
-            this.clmaddress.Name = "clmaddress";
-            this.clmaddress.ReadOnly = true;
-            this.clmaddress.Width = 150;
-            // 
-            // clmmobile
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmmobile.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmmobile.HeaderText = "Mobile No.";
-            this.clmmobile.Name = "clmmobile";
-            this.clmmobile.ReadOnly = true;
-            // 
-            // clmaltermobile
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmaltermobile.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmaltermobile.HeaderText = "Alternative Mobile No.";
-            this.clmaltermobile.Name = "clmaltermobile";
-            this.clmaltermobile.ReadOnly = true;
-            this.clmaltermobile.Width = 200;
-            // 
-            // clmrfid
-            // 
-            this.clmrfid.HeaderText = "RF ID Card No.";
-            this.clmrfid.Name = "clmrfid";
-            this.clmrfid.ReadOnly = true;
-            this.clmrfid.Width = 150;
             // 
             // MR_StudentImport
             // 
@@ -725,7 +426,6 @@
             this.gbStudentImport.ResumeLayout(false);
             this.gbStudentImport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudentImport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdStudentImportRollNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
             this.ResumeLayout(false);
 
@@ -750,34 +450,7 @@
         private System.Windows.Forms.Label lblDublicate;
         private System.Windows.Forms.Label lblMismatch;
         private System.Windows.Forms.Label lblTotal;
-        public System.Windows.Forms.DataGridView grdStudentImportRollNo;
         private System.Windows.Forms.PictureBox picLoader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmregsno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegStudentCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegStudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegRollno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegRegNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegScheme;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegBranch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegTerm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegDOB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegFatherName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegMotherName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegAddress1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegAddress2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegAddress3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegCity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegState;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegPincode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmregGender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegDirectSecondYear;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegContactNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegCaste;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegReligion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegDateofAdmission;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegGrandTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegCastNameDetailed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmRegAadharno;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmadmission;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStudentName;
