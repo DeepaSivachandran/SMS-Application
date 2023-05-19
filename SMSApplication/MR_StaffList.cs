@@ -197,7 +197,7 @@ namespace SMSApplication
                     {
 
                         SPDataService objspdservice = new SPDataService();
-                        result = objspdservice.udfnStaffMaster("Delete", delete, "", "", "", "", "", MainForm.pbUserID, "", "Staff Delete", "","", "", "", "","");
+                        result = objspdservice.udfnStaffMaster("Delete", delete, "", "", "", "", "", MainForm.pbUserID, "", "Staff Delete", "","", "", "", "","","");
 
 
                         if (result.Contains("Deleted Successfully."))
@@ -383,6 +383,21 @@ namespace SMSApplication
         private void tsbexport_Click_1(object sender, EventArgs e)
         {
             udfnexcel();
+        }
+
+        private void tspimport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MainForm.objMR_StaffImport = new MR_StaffImport();
+                MainForm.objMR_StaffImport.MdiParent = this.ParentForm;
+                MainForm.objMR_StaffImport.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
         }
     }
 }

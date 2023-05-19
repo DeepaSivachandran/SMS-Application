@@ -63,6 +63,12 @@
     <Compile Include="Authentication.designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="MR_StaffImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_StaffImport.designer.cs">
+      <DependentUpon>MR_StaffImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="MR_StudentImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </Compile>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_StaffImport.resx">
+      <DependentUpon>MR_StaffImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_StudentImport.resx">
       <DependentUpon>MR_StudentImport.cs</DependentUpon>

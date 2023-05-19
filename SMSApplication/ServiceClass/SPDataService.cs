@@ -222,7 +222,7 @@ namespace SMSApplication.ServiceClass
 
         //--  staff master ---
         public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID, 
-                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode,string paraRfCardno)
+                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode,string paraRfCardno,string parasource)
         {
             string result = "";
             try
@@ -246,7 +246,9 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paracity", paracity);
                 varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode);
                 varSqlCommand.Parameters.AddWithValue("@paraRfCardno", paraRfCardno);
+                varSqlCommand.Parameters.AddWithValue("@parasource", parasource);
                 
+
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
             }
@@ -367,5 +369,60 @@ namespace SMSApplication.ServiceClass
             }
             return ds;
         }
+
+        public string udfnstudentmasterimport(string paraProcess,  DataTable paramr_Student, string paraUserID,string paraOriginator)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STUDENT_IMPORT]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
+                varSqlCommand.Parameters.AddWithValue("@paramr_Student", paramr_Student);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+
+        public string udfnstaffmasterimport(string paraProcess, DataTable paramr_Staff, string paraUserID, string paraOriginator)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STAFF_IMPORT]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
+                varSqlCommand.Parameters.AddWithValue("@paramr_Staff", paramr_Staff);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+
     }
 }

@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbScheme = new System.Windows.Forms.GroupBox();
+            this.txtRfCardno = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.lblbloodgroup = new System.Windows.Forms.Label();
             this.txtcity = new System.Windows.Forms.TextBox();
             this.txtpincode = new System.Windows.Forms.TextBox();
@@ -59,8 +61,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.epMR_Staff = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtRfCardno = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.gbStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_Staff)).BeginInit();
@@ -103,6 +103,29 @@
             this.gbScheme.TabIndex = 0;
             this.gbScheme.TabStop = false;
             // 
+            // txtRfCardno
+            // 
+            this.txtRfCardno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRfCardno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRfCardno.Location = new System.Drawing.Point(108, 225);
+            this.txtRfCardno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtRfCardno.MaxLength = 100;
+            this.txtRfCardno.Name = "txtRfCardno";
+            this.txtRfCardno.Size = new System.Drawing.Size(187, 25);
+            this.txtRfCardno.TabIndex = 5;
+            this.txtRfCardno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRfCardno_KeyDown);
+            this.txtRfCardno.Leave += new System.EventHandler(this.txtRfCardno_Leave);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(13, 229);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 17);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "RF ID Card No.\r\n";
+            // 
             // lblbloodgroup
             // 
             this.lblbloodgroup.AutoSize = true;
@@ -124,6 +147,7 @@
             this.txtcity.Size = new System.Drawing.Size(187, 25);
             this.txtcity.TabIndex = 9;
             this.txtcity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcity_KeyDown);
+            this.txtcity.Leave += new System.EventHandler(this.txtcity_Leave);
             // 
             // txtpincode
             // 
@@ -138,6 +162,7 @@
             this.txtpincode.TextChanged += new System.EventHandler(this.txtpincode_TextChanged);
             this.txtpincode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpincode_KeyDown);
             this.txtpincode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpincode_KeyPress);
+            this.txtpincode.Leave += new System.EventHandler(this.txtpincode_Leave);
             // 
             // label9
             // 
@@ -167,6 +192,7 @@
             this.textAddress3.Size = new System.Drawing.Size(187, 24);
             this.textAddress3.TabIndex = 8;
             this.textAddress3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textAddress3_KeyDown);
+            this.textAddress3.Leave += new System.EventHandler(this.textAddress3_Leave);
             // 
             // label7
             // 
@@ -186,6 +212,7 @@
             this.txtAddress2.Size = new System.Drawing.Size(187, 24);
             this.txtAddress2.TabIndex = 7;
             this.txtAddress2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress2_KeyDown);
+            this.txtAddress2.Leave += new System.EventHandler(this.txtAddress2_Leave);
             // 
             // label5
             // 
@@ -206,6 +233,7 @@
             this.dpFromDate.Size = new System.Drawing.Size(187, 24);
             this.dpFromDate.TabIndex = 2;
             this.dpFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpFromDate_KeyDown);
+            this.dpFromDate.Leave += new System.EventHandler(this.dpFromDate_Leave);
             // 
             // cmbdesignation
             // 
@@ -215,6 +243,7 @@
             this.cmbdesignation.Size = new System.Drawing.Size(187, 25);
             this.cmbdesignation.TabIndex = 4;
             this.cmbdesignation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbdesignation_KeyDown);
+            this.cmbdesignation.Leave += new System.EventHandler(this.cmbdesignation_Leave);
             // 
             // label3
             // 
@@ -246,6 +275,7 @@
             this.cmbBloodGroup.TabIndex = 3;
             this.cmbBloodGroup.SelectedIndexChanged += new System.EventHandler(this.cmbBloodGroup_SelectedIndexChanged);
             this.cmbBloodGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBloodGroup_KeyDown);
+            this.cmbBloodGroup.Leave += new System.EventHandler(this.cmbBloodGroup_Leave);
             // 
             // txtAddress
             // 
@@ -255,6 +285,7 @@
             this.txtAddress.Size = new System.Drawing.Size(187, 24);
             this.txtAddress.TabIndex = 6;
             this.txtAddress.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAddress_KeyDown);
+            this.txtAddress.Leave += new System.EventHandler(this.txtAddress_Leave);
             // 
             // label6
             // 
@@ -288,6 +319,7 @@
             this.txtMobileNo.TabIndex = 1;
             this.txtMobileNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMobileNo_KeyDown);
             this.txtMobileNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMobileNo_KeyPress);
+            this.txtMobileNo.Leave += new System.EventHandler(this.txtMobileNo_Leave);
             // 
             // label1
             // 
@@ -335,7 +367,7 @@
             this.rbInActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbInActive.Name = "rbInActive";
             this.rbInActive.Size = new System.Drawing.Size(69, 21);
-            this.rbInActive.TabIndex = 1;
+            this.rbInActive.TabIndex = 12;
             this.rbInActive.Text = "Inactive";
             this.rbInActive.UseVisualStyleBackColor = true;
             this.rbInActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbInActive_KeyDown);
@@ -348,7 +380,7 @@
             this.rbActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbActive.Name = "rbActive";
             this.rbActive.Size = new System.Drawing.Size(60, 21);
-            this.rbActive.TabIndex = 0;
+            this.rbActive.TabIndex = 11;
             this.rbActive.TabStop = true;
             this.rbActive.Text = "Active";
             this.rbActive.UseVisualStyleBackColor = true;
@@ -364,6 +396,7 @@
             this.txtStaffName.Name = "txtStaffName";
             this.txtStaffName.Size = new System.Drawing.Size(187, 25);
             this.txtStaffName.TabIndex = 0;
+            this.txtStaffName.TextChanged += new System.EventHandler(this.txtStaffName_TextChanged);
             this.txtStaffName.Enter += new System.EventHandler(this.txtSchemeName_Enter);
             this.txtStaffName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
             this.txtStaffName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
@@ -413,27 +446,6 @@
             // epMR_Staff
             // 
             this.epMR_Staff.ContainerControl = this;
-            // 
-            // txtRfCardno
-            // 
-            this.txtRfCardno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRfCardno.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRfCardno.Location = new System.Drawing.Point(108, 225);
-            this.txtRfCardno.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtRfCardno.MaxLength = 100;
-            this.txtRfCardno.Name = "txtRfCardno";
-            this.txtRfCardno.Size = new System.Drawing.Size(187, 25);
-            this.txtRfCardno.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(13, 229);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 17);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "RF ID Card No.\r\n";
             // 
             // MR_Staff
             // 

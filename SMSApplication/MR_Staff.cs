@@ -296,13 +296,13 @@ namespace SMSApplication
                 }
                 if (btnSave.Text == "Save")
                 {
-                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status,"Staff Create",txtAddress.Text,txtAddress2.Text,textAddress3.Text, txtcity.Text,txtpincode.Text, txtRfCardno.Text);
+                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status,"Staff Create",txtAddress.Text,txtAddress2.Text,textAddress3.Text, txtcity.Text,txtpincode.Text, txtRfCardno.Text,"1");
 
                 }
 
                 else
                 {
-                    result = objspdservice.udfnStaffMaster("edit", VARSTAFFCODE, txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Update", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text);
+                    result = objspdservice.udfnStaffMaster("edit", VARSTAFFCODE, txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Update", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text,"1");
                 }
 
                 if (result.Contains("Saved Successfully.")|| result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
@@ -707,7 +707,7 @@ namespace SMSApplication
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtAddress.Focus();
+                txtRfCardno.Focus();
             }
         }
 
@@ -762,6 +762,80 @@ namespace SMSApplication
             {
                 e.Handled = true;
             }
+        }
+
+        private void txtStaffName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtRfCardno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtAddress.Focus();
+            }
+        }
+
+        private void txtMobileNo_Leave(object sender, EventArgs e)
+        {
+
+            txtMobileNo.BackColor = Color.White;
+        }
+
+        private void dpFromDate_Leave(object sender, EventArgs e)
+        {
+
+            dpFromDate.BackColor = Color.White;
+        }
+
+        private void cmbBloodGroup_Leave(object sender, EventArgs e)
+        {
+
+            cmbBloodGroup.BackColor = Color.White;
+        }
+
+        private void cmbdesignation_Leave(object sender, EventArgs e)
+        {
+
+            cmbdesignation.BackColor = Color.White;
+        }
+
+        private void txtRfCardno_Leave(object sender, EventArgs e)
+        {
+
+            txtRfCardno.BackColor = Color.White;
+        }
+
+        private void txtAddress_Leave(object sender, EventArgs e)
+        {
+
+
+            txtAddress.BackColor = Color.White;
+        }
+
+        private void txtAddress2_Leave(object sender, EventArgs e)
+        {
+
+            txtAddress2.BackColor = Color.White;
+        }
+
+        private void textAddress3_Leave(object sender, EventArgs e)
+        {
+
+            textAddress3.BackColor = Color.White;
+        }
+
+        private void txtcity_Leave(object sender, EventArgs e)
+        {
+
+            txtcity.BackColor = Color.White;
+        }
+
+        private void txtpincode_Leave(object sender, EventArgs e)
+        {
+
+            txtpincode.BackColor = Color.White;
         }
 
         private void cmbBloodGroup_SelectedIndexChanged(object sender, EventArgs e)
