@@ -110,3 +110,4 @@ F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplica
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.ServerSettings.resources
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Start.resources
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache
+F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffImport.resources

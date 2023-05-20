@@ -14,13 +14,13 @@ using SMSApplication.ServiceClass;
 
 namespace SMSApplication
 {
-    public partial class MR_StudentImport : Form
+    public partial class MR_StaffImport : Form
     { 
         DataValidation objValidation = new DataValidation();
         DataError objError;
         //******** Declare public variable ****************
         public string varsettingflag = "";
-        public MR_StudentImport()
+        public MR_StaffImport()
         {
             InitializeComponent();
             objValidation.resolutionsettingsForm(this);
@@ -32,7 +32,7 @@ namespace SMSApplication
             try
             {
                 txtFileName.Text = "";
-                grdStudentImport.Rows.Clear(); 
+                grdStaffImport.Rows.Clear(); 
                 txtFileName.Focus();
                 btnImport.Enabled = true;
                 lblTotal.Text = "0";
@@ -55,7 +55,7 @@ namespace SMSApplication
             {
                 Stream objStream = null;
                 OpenFileDialog objOPenFileDialog = new OpenFileDialog();
-                grdStudentImport.Rows.Clear(); 
+                grdStaffImport.Rows.Clear(); 
                 btnImport.Enabled = true;
                 objOPenFileDialog.InitialDirectory = "c:\\";
                 objOPenFileDialog.Filter = "Excel Files (*.xls, *.xlsx)|*.xls; *.xlsx";
@@ -134,7 +134,7 @@ namespace SMSApplication
                         DataSet objDs = new DataSet();
                         oledbda.Fill(objDs, "[Sheet1$]");
                         oledbcon.Close();
-                        grdStudentImport.Rows.Clear ();
+                        grdStaffImport.Rows.Clear ();
                         string[] item = new string[30];
                         ListViewItem listitem = new ListViewItem();
                         DataService dserv = new DataService();
@@ -157,16 +157,9 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[1].ColumnName == "Admission No#")
-                                {
+                                
 
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-
-                                if (objDs.Tables[0].Columns[2].ColumnName == "Student Name")
+                                if (objDs.Tables[0].Columns[1].ColumnName == "Staff Name")
                                 {
                                      
                                 }
@@ -174,7 +167,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[3].ColumnName == "Parent / Guardian Name")
+                                if (objDs.Tables[0].Columns[2].ColumnName == "Mobile No#")
                                 {
 
                                 }
@@ -182,28 +175,37 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[4].ColumnName == "Class & Section")
-                                {                                    
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[5].ColumnName == "Date Of Birth")
+
+                                if (objDs.Tables[0].Columns[3].ColumnName == "Date Of Birth")
                                 {
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[6].ColumnName == "Blood Group")
+                                if (objDs.Tables[0].Columns[4].ColumnName == "Blood Group")
                                 {                                   
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[7].ColumnName == "Mobile No#")
+                               
+                                if (objDs.Tables[0].Columns[5].ColumnName == "Designation")
+                                {
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[6].ColumnName == "RF ID Card No#")
+                                {
+                                }
+                                else
+                                {
+                                    varcolumnflag = 1;
+                                }
+                                if (objDs.Tables[0].Columns[7].ColumnName == "Address Line - 1")
                                 {
 
                                 }
@@ -211,21 +213,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[8].ColumnName == "Alternative Mobile No#")
-                                {
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[9].ColumnName == "RF ID Card No#")
-                                {
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[10].ColumnName == "Address Line - 1")
+                                if (objDs.Tables[0].Columns[8].ColumnName == "Address Line - 2")
                                 {
 
                                 }
@@ -233,7 +221,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[11].ColumnName == "Address Line - 2")
+                                if (objDs.Tables[0].Columns[9].ColumnName == "Address Line - 3")
                                 {
 
                                 }
@@ -241,7 +229,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[12].ColumnName == "Address Line - 3")
+                                if (objDs.Tables[0].Columns[10].ColumnName == "City")
                                 {
 
                                 }
@@ -249,7 +237,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[13].ColumnName == "City")
+                                if (objDs.Tables[0].Columns[11].ColumnName == "Pincode")
                                 {
 
                                 }
@@ -257,15 +245,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[14].ColumnName == "Pincode")
-                                {
-
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
-                                if (objDs.Tables[0].Columns[15].ColumnName == "Status")
+                                if (objDs.Tables[0].Columns[12].ColumnName == "Status")
                                 {
 
                                 }
@@ -277,25 +257,22 @@ namespace SMSApplication
                                 {
                                     for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
                                     {
-                                        item[0] = objDs.Tables[0].Rows[i]["S#No#"].ToString();
-                                        item[1] = objDs.Tables[0].Rows[i]["Admission No#"].ToString();
-                                        item[2] = objDs.Tables[0].Rows[i]["Student Name"].ToString();
-                                        item[3] = objDs.Tables[0].Rows[i]["parent / Guardian Name"].ToString();
-                                        item[4] = objDs.Tables[0].Rows[i]["Class & Section"].ToString();
-                                        item[5] = objDs.Tables[0].Rows[i]["Date Of Birth"].ToString(); 
-                                        item[6] = objDs.Tables[0].Rows[i]["Blood Group"].ToString(); 
-                                        item[7] = objDs.Tables[0].Rows[i]["Mobile No#"].ToString();
-                                        item[8] = objDs.Tables[0].Rows[i]["Alternative Mobile No#"].ToString();
-                                        item[9] = objDs.Tables[0].Rows[i]["RF ID Card No#"].ToString(); 
-                                        item[10] = objDs.Tables[0].Rows[i]["Address line - 1"].ToString();
-                                        item[11] = objDs.Tables[0].Rows[i]["Address line - 2"].ToString();
-                                        item[12] = objDs.Tables[0].Rows[i]["Address line - 3"].ToString();
-                                        item[13] = objDs.Tables[0].Rows[i]["City"].ToString();
-                                        item[14] = objDs.Tables[0].Rows[i]["pincode"].ToString();
-                                        item[15] = objDs.Tables[0].Rows[i]["Status"].ToString();
+                                        item[0] = objDs.Tables[0].Rows[i]["S#No#"].ToString(); 
+                                        item[1] = objDs.Tables[0].Rows[i]["Staff Name"].ToString();
+                                        item[2] = objDs.Tables[0].Rows[i]["Mobile No#"].ToString();
+                                        item[3] = objDs.Tables[0].Rows[i]["Date Of Birth"].ToString(); 
+                                        item[4] = objDs.Tables[0].Rows[i]["Blood Group"].ToString(); 
+                                        item[5] = objDs.Tables[0].Rows[i]["Designation"].ToString();
+                                        item[6] = objDs.Tables[0].Rows[i]["RF ID Card No#"].ToString(); 
+                                        item[7] = objDs.Tables[0].Rows[i]["Address line - 1"].ToString();
+                                        item[8] = objDs.Tables[0].Rows[i]["Address line - 2"].ToString();
+                                        item[9] = objDs.Tables[0].Rows[i]["Address line - 3"].ToString();
+                                        item[10] = objDs.Tables[0].Rows[i]["City"].ToString();
+                                        item[11] = objDs.Tables[0].Rows[i]["pincode"].ToString();
+                                        item[12] = objDs.Tables[0].Rows[i]["Status"].ToString();
 
                                         listitem = new ListViewItem(item);
-                                        grdStudentImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15]);
+                                        grdStaffImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12]);
                                     }
                                 }
                                 else
@@ -317,70 +294,54 @@ namespace SMSApplication
                             lblNoRecordsFound.BringToFront();
                         }
                         //**************Find total records,dublicate records and mismatch records ****************
-                        for (int i = 0; i < grdStudentImport.Rows.Count; i++)
+                        for (int i = 0; i < grdStaffImport.Rows.Count; i++)
                         {
                             string varCount = "0";
                             DataService objDataService = new DataService();
                             // 
-                            varCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_CardNo='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
+                            varCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Staff WHERE STM_CardNo='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
                             objDataService.CloseConnection();
                             if (varCount != "0")
                             {
-                                grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                                grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
                                 vardublicate++;                        
                             }
-                            if(grdStudentImport.Rows[i].Cells["clmsno"].Value.ToString()=="" && grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" 
-                                && grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString()==""  
-                                && grdStudentImport.Rows[i].Cells["clmaddress"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" && 
-                                grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmstatus"].Value.ToString() == "")
+                            if(  grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() == ""&& grdStaffImport.Rows[i].Cells["clmaddress"].Value.ToString() == ""
+                                && grdStaffImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" && grdStaffImport.Rows[i].Cells["clmdesignation"].Value.ToString() == "" && 
+                                grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
+                                 && grdStaffImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
+                                && grdStaffImport.Rows[i].Cells["clmblood"].Value.ToString() == "" && grdStaffImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
+                                && grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" && grdStaffImport.Rows[i].Cells["clmstatus"].Value.ToString() == "")
                             {
                                 varMismatch++;
                             }
-                        }
+                            DataTable dataTable = objDs.Tables[0];
+                            int rowIndex = -1;
+                            var duplicates = dataTable.AsEnumerable()
+                                      .GroupBy(row => row.Field<string>("RF ID Card No#"))
+                                      .Where(g => g.Count() > 1)
+                                      .SelectMany(g => g);
 
-                        DataTable dataTable = objDs.Tables[0];
-                        int rowIndex = -1;
-                        var duplicates = dataTable.AsEnumerable()
-                                  .GroupBy(row => row.Field<double>("Admission no#"))
-                                  .Where(g => g.Count() > 1)
-                                  .SelectMany(g => g);
-
-                        if (duplicates.Any())
-                        {
-                            vardublicate++;
-                            foreach (var duplicate in duplicates)
+                            if (duplicates.Any())
                             {
+                                vardublicate++;
 
-                                //string code = duplicate.Field<string>("Admission no#");
-                                //foreach (DataGridViewRow row in grdStudentImport.Rows)
-                                //{
+                                grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
 
-                                //    //if (row.Cells["clmaddress"].Value.ToString() == code)
-                                //    //{
-                                //    //    rowIndex = row.Index;
-                                //    //    break;
-                                //    //}
-                                //}
-
-                                //if (rowIndex != -1)
-                                //{
-                                //    grdStudentImport.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
-                                //}
                             }
+                            
+                            else
+                            {
+                                vardublicate = 0;
+                            }
+
                         }
 
-
-                        else
-                        {
-                            vardublicate = 0;
-                        }
+                      
 
                         oledbcon.Close();
                         lblDublicate.Text =Convert.ToString(vardublicate);
-                        lblTotal.Text =Convert.ToString(grdStudentImport.Rows.Count);
+                        lblTotal.Text =Convert.ToString(grdStaffImport.Rows.Count);
                         lblMismatch.Text = Convert.ToString(varMismatch);
                         if (varMismatch != 0 || vardublicate != 0)
                         {
@@ -413,7 +374,7 @@ namespace SMSApplication
             }
             finally
             {
-                grdStudentImport.ClearSelection();
+                grdStaffImport.ClearSelection();
             }
         }
         // Author : SIVARANJANA
@@ -426,10 +387,10 @@ namespace SMSApplication
                 picLoader.Visible = true;
                 Application.DoEvents();
                 
-                    grdStudentImport.BringToFront();
-                    grdStudentImport.SendToBack();
+                    grdStaffImport.BringToFront();
+                    grdStaffImport.SendToBack();
                     udfnList();
-                    grdStudentImport_Validated(sender, e);
+                    //grdStudentImport_Validated(sender, e);
                
             }
             catch (Exception ex)
@@ -455,7 +416,7 @@ namespace SMSApplication
                 {
                     //********** Copy your file to objSFD.FileName ****************
                     string s = objSFD.FileName;
-                    File.Copy(Application.StartupPath + "\\Templates\\Student Master Template Import.xlsx", s);
+                    File.Copy(Application.StartupPath + "\\Templates\\staff Master Template Import.xlsx", s);
                     MessageBox.Show("Template Downloaded Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -465,33 +426,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-
-        // Author : SIVARANJANA
-        // Created Date: 09/05/2019
-        //************** Download student template for register number based ******************
-        public void udndownloadReg()
-        {
-            try
-            {                
-                SaveFileDialog objSFD = new SaveFileDialog();
-                objSFD.Filter = "Excel files (*.xlsx)|*.xlsx";
-                if (objSFD.ShowDialog() == DialogResult.OK)
-                {
-                    //********** Copy your file to objSFD.FileName ****************
-                    string s = objSFD.FileName;
-                    File.Copy(Application.StartupPath + "\\Templates\\Student RollNo. Import Template.xlsx", s);
-                    MessageBox.Show("Template Downloaded Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        // Author : SIVARANJANA
-        // Created Date: 19/04/2019
-        //**************** download student master template download *****************
+         
         private void btnDownloadTemplate_Click(object sender, EventArgs e)
         {
             try
@@ -530,7 +465,7 @@ namespace SMSApplication
             try
             {
                 udfnclear();
-                grdStudentImport.Rows.Clear();
+                grdStaffImport.Rows.Clear();
             }
             catch(Exception ex)
             {
@@ -538,40 +473,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : SIVARANJANA
-        // Created Date: 19/04/2019
-        private void grdStudentImport_Validated(object sender, EventArgs e)
-        {
-            try
-            {
-                DataService objservice = new DataService();
-                if (grdStudentImport.Rows.Count > 0)
-                {
-                    foreach (ListViewItem item in grdStudentImport.Rows)
-                    {
-                        for (int i = 0; i <= item.SubItems.Count - 1; i++)
-                        {
-
-                            if (objservice.blnFindRecord("CP_Student", "RollNo='" + item.SubItems[1].Text + "'") == true)
-                            {
-                                item.SubItems[i].BackColor = Color.Pink;
-                                btnImport.Enabled = false;
-                            }
-                            else if (objValidation.FormatNumeric(item.SubItems[1].Text) == false || (item.SubItems[1].Text.Length != 6) || string.IsNullOrEmpty(item.SubItems[1].Text))
-                            {
-                                item.SubItems[i].BackColor = Color.Bisque;
-                                btnImport.Enabled = false;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        } 
+       
         
         //Author:SIVARANJANA
         //Created Date:09/05/2019
@@ -584,34 +486,32 @@ namespace SMSApplication
                 DataService objDataService = new DataService();
 
                 DataTable objDt = new DataTable();
-                objDt.TableName = "MR_STUDENT";
+                objDt.TableName = "MR_STAFF";
                 //  int varBranch = 0, varTerm = 0;
                 if (btnImport.Enabled == true)
                 {
-                    if (grdStudentImport.Rows.Count > 0)
+                    if (grdStaffImport.Rows.Count > 0)
                     {
                         //********** create datatable **************
                         //**************** add column in datatable  *****************
-                        objDt.Columns.Add("SM_Name", typeof(string));
-                        objDt.Columns.Add("SM_CLSID", typeof(string));
-                        objDt.Columns.Add("SM_DOB", typeof(string));
-                        objDt.Columns.Add("SM_RegNo", typeof(string));
-                        objDt.Columns.Add("SM_BloodGroup", typeof(string));
-                        objDt.Columns.Add("SM_Address1", typeof(string));
-                        objDt.Columns.Add("SM_Address2", typeof(string));
-                        objDt.Columns.Add("SM_Address3", typeof(string));
-                        objDt.Columns.Add("SM_City", typeof(string));
-                        objDt.Columns.Add("SM_Pincode", typeof(string));
-                        objDt.Columns.Add("SM_MobileNo", typeof(string));
-                        objDt.Columns.Add("SM_AltContactNo", typeof(string));
-                        objDt.Columns.Add("SM_CardNo", typeof(string)); 
-                        objDt.Columns.Add("SM_STSID", typeof(string));
-                        objDt.Columns.Add("SM_Source", typeof(int));
-                        objDt.Columns.Add("SM_parentname", typeof(string));
+                        objDt.Columns.Add("STM_Name", typeof(string)); 
+                        objDt.Columns.Add("STM_DOB", typeof(string)); 
+                        objDt.Columns.Add("STM_BloodGroup", typeof(string));
+                        objDt.Columns.Add("STM_Address1", typeof(string));
+                        objDt.Columns.Add("STM_Address2", typeof(string));
+                        objDt.Columns.Add("STM_Address3", typeof(string));
+                        objDt.Columns.Add("STM_City", typeof(string));
+                        objDt.Columns.Add("STM_Pincode", typeof(string));
+                        objDt.Columns.Add("STM_Mobile", typeof(string));
+                        objDt.Columns.Add("STM_Designation", typeof(string));
+                        objDt.Columns.Add("STM_CardNo", typeof(string)); 
+                        objDt.Columns.Add("STM_STSID", typeof(string));
+                        objDt.Columns.Add("STM_Source", typeof(int)); 
 
-                        for (int i = 0; i < grdStudentImport.Rows.Count; i++)
+
+                        for (int i = 0; i < grdStaffImport.Rows.Count; i++)
                         {
-                            if (objDataService.blnFindRecord("TEMP_MR_Student", "TEMP_SM_NAME='" + grdStudentImport.Rows[i].Cells["clmstudentname"].Value.ToString() + "' and TEMP_SM_CARDNO='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "' and ") == true)
+                            if (objDataService.blnFindRecord("TEMP_MR_Staff", "STM_NAME='" + grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() + "' and STM_CARDNO='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "' and ") == true)
                             {
                                 btnImport.Enabled = false;
                             }
@@ -619,10 +519,10 @@ namespace SMSApplication
                             {
                                 btnImport.Enabled = true;
 
-                               var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_CardNo='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
+                               var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Staff WHERE STM_CardNo='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
                                 if (varRegCount == "0")
                                 {
-                                    objDt.Rows.Add( grdStudentImport.Rows[i].Cells["clmstudentname"].Value, grdStudentImport.Rows[i].Cells["clmclass"].Value, grdStudentImport.Rows[i].Cells["clmdob"].Value, grdStudentImport.Rows[i].Cells["clmadmission"].Value, grdStudentImport.Rows[i].Cells["clmblood"].Value, grdStudentImport.Rows[i].Cells["clmAddress"].Value, grdStudentImport.Rows[i].Cells["clmAddress2"].Value, grdStudentImport.Rows[i].Cells["clmAddress3"].Value, grdStudentImport.Rows[i].Cells["clmCity"].Value,  grdStudentImport.Rows[i].Cells["clmpincode"].Value, grdStudentImport.Rows[i].Cells["clmmobile"].Value, grdStudentImport.Rows[i].Cells["clmaltermobile"].Value, grdStudentImport.Rows[i].Cells["clmrfid"].Value, grdStudentImport.Rows[i].Cells["clmstatus"].Value,2, grdStudentImport.Rows[i].Cells["clmparent"].Value);
+                                    objDt.Rows.Add( grdStaffImport.Rows[i].Cells["clmstaffname"].Value,grdStaffImport.Rows[i].Cells["clmdob"].Value, grdStaffImport.Rows[i].Cells["clmblood"].Value, grdStaffImport.Rows[i].Cells["clmAddress"].Value, grdStaffImport.Rows[i].Cells["clmAddress2"].Value, grdStaffImport.Rows[i].Cells["clmAddress3"].Value, grdStaffImport.Rows[i].Cells["clmCity"].Value,  grdStaffImport.Rows[i].Cells["clmpincode"].Value, grdStaffImport.Rows[i].Cells["clmmobile"].Value, grdStaffImport.Rows[i].Cells["clmdesignation"].Value, grdStaffImport.Rows[i].Cells["clmrfid"].Value, grdStaffImport.Rows[i].Cells["clmstatus"].Value,2);
                                 }
                                     
                                 }
@@ -644,7 +544,7 @@ namespace SMSApplication
                                 objSPService.CloseConnection();
                                 if (varResult.Contains("Success"))
                                 {
-                                    MessageBox.Show("Students Imported Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Staffs Imported Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     udfnclear();
                                 }
                                 else
@@ -658,11 +558,11 @@ namespace SMSApplication
                             SPDataService objSPService = new SPDataService();
 
                         //
-                        varResult = objSPService.udfnstudentmasterimport("Create", objDt, MainForm.pbUserID, "Import Student Details");
+                        varResult = objSPService.udfnstaffmasterimport("Create", objDt, MainForm.pbUserID, "Import Staff Details");
                             objSPService.CloseConnection();
                             if (varResult.Contains("Success"))
                             {
-                                MessageBox.Show("Students Imported Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Staffs Imported Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 udfnclear(); 
                             MainForm.objMR_StudentsList.udfnList();
                         }
@@ -722,15 +622,15 @@ namespace SMSApplication
             try
             {
                
-                grdStudentImport.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
+                grdStaffImport.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
                // txtDuplicate.BackColor= System.Drawing.ColorTranslator.FromHtml("#f7bbbb");
                 DataService objService = new DataService();
                 varsettingflag = objService.displaydata("SELECT COALESCE(SettingFlag,0) FROM CP_Settings WHERE SettingCode=1");
                 objService.CloseConnection();
               
-                    grdStudentImport.Visible = true;
-                    grdStudentImport.BringToFront(); 
-                    grdStudentImport.SendToBack();
+                    grdStaffImport.Visible = true;
+                    grdStaffImport.BringToFront(); 
+                    grdStaffImport.SendToBack();
               
                 lblNoRecordsFound.Visible = true;
                 lblNoRecordsFound.BringToFront();

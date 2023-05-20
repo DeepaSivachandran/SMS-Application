@@ -23,6 +23,7 @@ namespace SMSApplication
         public static string pbVersion;
         public static string pbUserID;
         public static string pbUserName;
+        public static string pbUsername; 
         public static string pbUserRoleId;
         public static string pbView;
         public static string pbSelectedMenu;
@@ -53,6 +54,8 @@ namespace SMSApplication
         public static MR_StudentsList objMR_StudentsList;
         public static MR_Student objMR_Student;
         public static MR_StudentImport objMR_StudentImport;
+        public static MR_StaffImport objMR_StaffImport;
+        
         public static TRN_SMS_Student objTRN_SMS_Student;
         public static TRN_SMS_Staff objTRN_SMS_Staff;
         public static TRN_SMS_General objTRN_SMS_General;

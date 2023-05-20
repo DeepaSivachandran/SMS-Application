@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
+using System.Security.Cryptography;
 using System.IO;
 
 namespace SMSApplication
@@ -21,12 +22,12 @@ namespace SMSApplication
         DataValidation objValidation = new DataValidation();
         DataError objError;
 
+        private SecurityController _security;
         //**************Tooltips Initialization ***************
         private ToolTip tpOldPwd = new ToolTip();
         private ToolTip tpNewPwd = new ToolTip();
         private ToolTip tpConfirmPwd = new ToolTip();
-
-        private SecurityController _security = new SecurityController();
+         
 
         //Declare public variable
         public int pbCharCount = 0;
@@ -35,7 +36,8 @@ namespace SMSApplication
         public MR_ChangePwd()
         {
             InitializeComponent();
-            //************ Form Resolution **************
+            //************ Form Resolution ************** 
+            _security = new SecurityController();
             objValidation.resolutionsettingsForm(this);
         }
         // Author : Lavanya
@@ -471,6 +473,22 @@ namespace SMSApplication
                     //    MessageBox.Show(varResult, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     //    txtOldPwd.Focus();
                     //}
+                    SPDataService objspdservice = new SPDataService();
+                    string varresult = "";
+                    varresult = objspdservice.udfnchangepassword(MainForm.pbUserID, _security.Encrypt(MainForm.pbUsername,txtOldPwd.Text), _security.Encrypt(MainForm.pbUsername, txtNewPwd.Text), "Change Pwd");
+                    objspdservice.CloseConnection();
+                    if (varresult.Contains("Password changed successfully."))
+                    {
+                        MessageBox.Show(varresult, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                        udfnclear();
+                        txtOldPwd.Focus();
+                    }
+                    else
+                    {
+                        MessageBox.Show(varresult, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtOldPwd.Focus();
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -481,6 +499,10 @@ namespace SMSApplication
             finally {
                 btnSave.Enabled = true;
             }
+        }
+        public string GenerateMD5(string HashString)
+        {
+            return string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(HashString)).Select(s => s.ToString("x2")));
         }
         // Author : Lavanya
         // Created Date: 2019-06-01

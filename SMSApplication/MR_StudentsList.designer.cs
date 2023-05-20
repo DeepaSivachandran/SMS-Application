@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentsList));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.grdSchemeList = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.grdStudentList = new System.Windows.Forms.DataGridView();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
@@ -51,61 +51,84 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnImport = new System.Windows.Forms.Button();
             this.picLoader = new System.Windows.Forms.PictureBox();
+            this.lblstudentcode = new System.Windows.Forms.Label();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmparent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmdob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmrfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmbloodgroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaltermobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).BeginInit();
+            this.CLMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudentList)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.SuspendLayout();
             // 
-            // grdSchemeList
+            // grdStudentList
             // 
-            this.grdSchemeList.AllowUserToAddRows = false;
-            this.grdSchemeList.AllowUserToDeleteRows = false;
-            this.grdSchemeList.AllowUserToResizeRows = false;
-            this.grdSchemeList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grdSchemeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdSchemeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdSchemeList.ColumnHeadersHeight = 30;
-            this.grdSchemeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdSchemeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grdStudentList.AllowUserToAddRows = false;
+            this.grdStudentList.AllowUserToDeleteRows = false;
+            this.grdStudentList.AllowUserToResizeRows = false;
+            this.grdStudentList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grdStudentList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdStudentList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.grdStudentList.ColumnHeadersHeight = 30;
+            this.grdStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.grdStudentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmsno,
             this.Column1,
             this.clmSchemeName,
+            this.clmparent,
             this.Column2,
+            this.clmdob,
+            this.clmrfid,
+            this.clmaddress1,
+            this.clmaddress2,
+            this.clmaddress3,
+            this.clmcity,
+            this.clmpincode,
+            this.clmbloodgroup,
             this.C,
-            this.clmShortName});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdSchemeList.DefaultCellStyle = dataGridViewCellStyle4;
-            this.grdSchemeList.EnableHeadersVisualStyles = false;
-            this.grdSchemeList.GridColor = System.Drawing.Color.White;
-            this.grdSchemeList.Location = new System.Drawing.Point(17, 102);
-            this.grdSchemeList.Name = "grdSchemeList";
-            this.grdSchemeList.ReadOnly = true;
-            this.grdSchemeList.RowHeadersVisible = false;
-            this.grdSchemeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdSchemeList.Size = new System.Drawing.Size(1325, 485);
-            this.grdSchemeList.TabIndex = 18;
-            this.grdSchemeList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
-            this.grdSchemeList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
+            this.clmaltermobile,
+            this.clmShortName,
+            this.CLMID});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdStudentList.DefaultCellStyle = dataGridViewCellStyle8;
+            this.grdStudentList.EnableHeadersVisualStyles = false;
+            this.grdStudentList.GridColor = System.Drawing.Color.White;
+            this.grdStudentList.Location = new System.Drawing.Point(17, 102);
+            this.grdStudentList.Name = "grdStudentList";
+            this.grdStudentList.ReadOnly = true;
+            this.grdStudentList.RowHeadersVisible = false;
+            this.grdStudentList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdStudentList.Size = new System.Drawing.Size(1325, 485);
+            this.grdStudentList.TabIndex = 18;
+            this.grdStudentList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
+            this.grdStudentList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
             // lblDNoRecordFound
             // 
@@ -265,6 +288,7 @@
             this.btnWipeOut.Text = "Wipe Out Contacts";
             this.btnWipeOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnWipeOut.UseVisualStyleBackColor = true;
+            this.btnWipeOut.Click += new System.EventHandler(this.btnWipeOut_Click);
             // 
             // btnExport
             // 
@@ -277,6 +301,7 @@
             this.btnExport.Text = "Export Contacts";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnImport
             // 
@@ -305,10 +330,20 @@
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
             // 
+            // lblstudentcode
+            // 
+            this.lblstudentcode.AutoSize = true;
+            this.lblstudentcode.Location = new System.Drawing.Point(667, 14);
+            this.lblstudentcode.Name = "lblstudentcode";
+            this.lblstudentcode.Size = new System.Drawing.Size(15, 17);
+            this.lblstudentcode.TabIndex = 958792;
+            this.lblstudentcode.Text = "0";
+            this.lblstudentcode.Visible = false;
+            // 
             // clmsno
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle6;
             this.clmsno.HeaderText = "S.No.";
             this.clmsno.Name = "clmsno";
             this.clmsno.ReadOnly = true;
@@ -324,27 +359,95 @@
             // 
             // clmSchemeName
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle7;
             this.clmSchemeName.HeaderText = "Student Name";
             this.clmSchemeName.Name = "clmSchemeName";
             this.clmSchemeName.ReadOnly = true;
             this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.clmSchemeName.Width = 200;
             // 
+            // clmparent
+            // 
+            this.clmparent.HeaderText = "Parent Name";
+            this.clmparent.Name = "clmparent";
+            this.clmparent.ReadOnly = true;
+            this.clmparent.Width = 200;
+            // 
             // Column2
             // 
             this.Column2.HeaderText = "Class & Section";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
+            this.Column2.Width = 120;
+            // 
+            // clmdob
+            // 
+            this.clmdob.HeaderText = "Date Of Birth";
+            this.clmdob.Name = "clmdob";
+            this.clmdob.ReadOnly = true;
+            // 
+            // clmrfid
+            // 
+            this.clmrfid.HeaderText = "RF ID No.";
+            this.clmrfid.Name = "clmrfid";
+            this.clmrfid.ReadOnly = true;
+            // 
+            // clmaddress1
+            // 
+            this.clmaddress1.HeaderText = "Address - 1";
+            this.clmaddress1.Name = "clmaddress1";
+            this.clmaddress1.ReadOnly = true;
+            this.clmaddress1.Visible = false;
+            // 
+            // clmaddress2
+            // 
+            this.clmaddress2.HeaderText = "Address - 2";
+            this.clmaddress2.Name = "clmaddress2";
+            this.clmaddress2.ReadOnly = true;
+            this.clmaddress2.Visible = false;
+            // 
+            // clmaddress3
+            // 
+            this.clmaddress3.HeaderText = "Address - 3";
+            this.clmaddress3.Name = "clmaddress3";
+            this.clmaddress3.ReadOnly = true;
+            this.clmaddress3.Visible = false;
+            // 
+            // clmcity
+            // 
+            this.clmcity.HeaderText = "City";
+            this.clmcity.Name = "clmcity";
+            this.clmcity.ReadOnly = true;
+            this.clmcity.Visible = false;
+            // 
+            // clmpincode
+            // 
+            this.clmpincode.HeaderText = "Pincode";
+            this.clmpincode.Name = "clmpincode";
+            this.clmpincode.ReadOnly = true;
+            this.clmpincode.Visible = false;
+            // 
+            // clmbloodgroup
+            // 
+            this.clmbloodgroup.HeaderText = "Blood Group";
+            this.clmbloodgroup.Name = "clmbloodgroup";
+            this.clmbloodgroup.ReadOnly = true;
+            this.clmbloodgroup.Visible = false;
             // 
             // C
             // 
             this.C.HeaderText = "Mobile No.";
             this.C.Name = "C";
             this.C.ReadOnly = true;
-            this.C.Width = 200;
+            this.C.Width = 150;
+            // 
+            // clmaltermobile
+            // 
+            this.clmaltermobile.HeaderText = "Alternative Mobile Number";
+            this.clmaltermobile.Name = "clmaltermobile";
+            this.clmaltermobile.ReadOnly = true;
+            this.clmaltermobile.Visible = false;
             // 
             // clmShortName
             // 
@@ -353,12 +456,21 @@
             this.clmShortName.ReadOnly = true;
             this.clmShortName.Width = 150;
             // 
+            // CLMID
+            // 
+            this.CLMID.HeaderText = "ID";
+            this.CLMID.Name = "CLMID";
+            this.CLMID.ReadOnly = true;
+            this.CLMID.Visible = false;
+            this.CLMID.Width = 5;
+            // 
             // MR_StudentsList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1360, 607);
+            this.Controls.Add(this.lblstudentcode);
             this.Controls.Add(this.btnWipeOut);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnImport);
@@ -366,7 +478,7 @@
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.lblDNoRecordFound);
-            this.Controls.Add(this.grdSchemeList);
+            this.Controls.Add(this.grdStudentList);
             this.Controls.Add(this.picLoader);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -376,7 +488,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CP_SchemeList";
             this.Load += new System.EventHandler(this.MR_StudentsList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdStudentList)).EndInit();
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -389,7 +501,7 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView grdSchemeList;
+        public System.Windows.Forms.DataGridView grdStudentList;
         private System.Windows.Forms.Label lblDNoRecordFound;
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripLabel tspFormHeader;
@@ -407,11 +519,23 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnWipeOut;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Label lblstudentcode;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSchemeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmparent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmdob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmrfid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaddress1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaddress2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaddress3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmcity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmpincode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmbloodgroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn C;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmaltermobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmShortName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLMID;
     }
 }
