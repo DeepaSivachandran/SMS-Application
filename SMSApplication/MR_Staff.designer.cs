@@ -58,9 +58,9 @@
             this.rbActive = new System.Windows.Forms.RadioButton();
             this.txtStaffName = new System.Windows.Forms.TextBox();
             this.lblobjDschemeName = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.epMR_Staff = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.gbScheme.SuspendLayout();
             this.gbStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_Staff)).BeginInit();
@@ -155,7 +155,7 @@
             this.txtpincode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpincode.Location = new System.Drawing.Point(429, 187);
             this.txtpincode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtpincode.MaxLength = 15;
+            this.txtpincode.MaxLength = 6;
             this.txtpincode.Name = "txtpincode";
             this.txtpincode.Size = new System.Drawing.Size(187, 25);
             this.txtpincode.TabIndex = 10;
@@ -237,6 +237,7 @@
             // 
             // cmbdesignation
             // 
+            this.cmbdesignation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbdesignation.FormattingEnabled = true;
             this.cmbdesignation.Location = new System.Drawing.Point(108, 187);
             this.cmbdesignation.Name = "cmbdesignation";
@@ -268,6 +269,7 @@
             // 
             // cmbBloodGroup
             // 
+            this.cmbBloodGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBloodGroup.FormattingEnabled = true;
             this.cmbBloodGroup.Location = new System.Drawing.Point(108, 146);
             this.cmbBloodGroup.Name = "cmbBloodGroup";
@@ -412,21 +414,9 @@
             this.lblobjDschemeName.TabIndex = 0;
             this.lblobjDschemeName.Text = "Staff Name";
             // 
-            // btnClose
+            // epMR_Staff
             // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(546, 271);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(79, 29);
-            this.btnClose.TabIndex = 11;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.epMR_Staff.ContainerControl = this;
             // 
             // btnSave
             // 
@@ -443,9 +433,21 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // epMR_Staff
+            // btnClose
             // 
-            this.epMR_Staff.ContainerControl = this;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(546, 271);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(79, 29);
+            this.btnClose.TabIndex = 11;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // MR_Staff
             // 

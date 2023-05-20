@@ -30,6 +30,9 @@ namespace SMSApplication
         {
             try
             {
+                DataBind objDataBind = new DataBind(); 
+                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_Id", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
+                objDataBind = null;
                 udfnList();
              //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
@@ -53,7 +56,7 @@ namespace SMSApplication
                 string[] item = new string[30];
                 ListViewItem listitem = new ListViewItem();
                 grdStudentList.Rows.Clear();
-                objDs = objdserv.udfnStudentMasterlist("List", "", MainForm.pbUserID);
+                objDs = objdserv.udfnStudentMasterlist("List", "", MainForm.pbUserID,"");
                 objdserv.CloseConnection();
                 if (objDs != null)
                 {
@@ -412,22 +415,17 @@ namespace SMSApplication
 
             try
             {
-                if (grdStudentList.SelectedRows.Count > 0)
+                if (grdStudentList.Rows.Count > 0)
                 {
                     string result = "";
-                    DialogResult dialogResult = MessageBox.Show("Do you want to delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Do you want to Wipeout all contacts ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
 
-                        SPDataService objspdservice = new SPDataService();
-                        result = objspdservice.udfnStudentMaster("Wipeout", "", "", "", "", "", "", "", "", MainForm.pbUserID, "", "Wipout student", "", "", "", "", "", "", "", "");
 
-
-                        if (result.Contains("Wipout Successfully."))
-                        {
-                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            udfnList();
-                        }
+                        MainForm.objMR_StudentWipout = new MR_StudentWipout();
+                        MainForm.objMR_StudentWipout.MdiParent = this.ParentForm;
+                        MainForm.objMR_StudentWipout.Show();
                     }
                 }
             }
@@ -438,5 +436,79 @@ namespace SMSApplication
             }
         }
 
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet objDs;
+                //**** To call the function from SP ***************
+                SPDataService objdserv = new SPDataService();
+                string[] item = new string[30];
+                ListViewItem listitem = new ListViewItem();
+                grdStudentList.Rows.Clear(); 
+                objDs = objdserv.udfnStudentMasterlist("Filter", "", MainForm.pbUserID,Convert.ToString(cmbClass.SelectedValue));
+                objdserv.CloseConnection();
+                if (objDs != null)
+                {
+                    grdStudentList.Rows.Clear();
+                    if (objDs.Tables.Count != 0)
+                    {
+                        grdStudentList.Rows.Clear();
+                        if (objDs.Tables[0].Rows.Count != 0)
+                        {
+                            grdStudentList.DataSource = null;
+                            lblDNoRecordFound.Visible = false;
+                            lblDNoRecordFound.SendToBack();
+                            for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                            {
+                                item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString();
+                                item[1] = objDs.Tables[0].Rows[i]["ADMISSION"].ToString();
+                                item[2] = objDs.Tables[0].Rows[i]["NAME"].ToString();
+                                item[3] = objDs.Tables[0].Rows[i]["PARENT"].ToString();
+                                item[4] = objDs.Tables[0].Rows[i]["CLASS"].ToString();
+                                item[5] = objDs.Tables[0].Rows[i]["DOB"].ToString();
+                                item[6] = objDs.Tables[0].Rows[i]["RFIDNO"].ToString();
+                                item[7] = objDs.Tables[0].Rows[i]["ADDRESS1"].ToString();
+                                item[8] = objDs.Tables[0].Rows[i]["ADDRESS2"].ToString();
+                                item[9] = objDs.Tables[0].Rows[i]["ADDRESS3"].ToString();
+                                item[10] = objDs.Tables[0].Rows[i]["CITY"].ToString();
+                                item[11] = objDs.Tables[0].Rows[i]["PINCODE"].ToString();
+                                item[12] = objDs.Tables[0].Rows[i]["BLOODGROUP"].ToString();
+                                item[13] = objDs.Tables[0].Rows[i]["mobile"].ToString();
+                                item[14] = objDs.Tables[0].Rows[i]["ALTMOBILENO"].ToString();
+                                item[15] = objDs.Tables[0].Rows[i]["STATUS"].ToString();
+                                item[16] = objDs.Tables[0].Rows[i]["ID"].ToString();
+                                listitem = new ListViewItem(item);
+                                grdStudentList.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12], item[13], item[14], item[15], item[16]);
+                            }
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblDNoRecordFound.BringToFront();
+                        lblDNoRecordFound.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblDNoRecordFound.BringToFront();
+                    lblDNoRecordFound.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                grdStudentList.ClearSelection();
+            }
+        }
     }
 }

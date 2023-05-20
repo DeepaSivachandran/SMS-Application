@@ -96,7 +96,7 @@ namespace SMSApplication
             {
                 try
                 {
-                    int vardublicate = 0,varMismatch=0, varenable=0;
+                    int vardublicate = 0,varMismatch=0, varenable=0, varflag=0;
                     if (!string.IsNullOrEmpty(txtFileName.Text))
                     {
                         string varExtension = Path.GetExtension(txtFileName.Text);
@@ -320,69 +320,62 @@ namespace SMSApplication
                         for (int i = 0; i < grdStudentImport.Rows.Count; i++)
                         {
                             string varCount = "0";
+                            vardublicate = 0; 
                             DataService objDataService = new DataService();
                             // 
-                            varCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_CardNo='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
+                            varCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_Regno='" + grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() + "'");
                             objDataService.CloseConnection();
                             if (varCount != "0")
                             {
                                 grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
-                                vardublicate++;                        
+                                vardublicate++;
+                                varflag++;
                             }
-                            if(grdStudentImport.Rows[i].Cells["clmsno"].Value.ToString()=="" && grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" 
-                                && grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString()==""  
-                                && grdStudentImport.Rows[i].Cells["clmaddress"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" && 
-                                grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
-                                && grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" && grdStudentImport.Rows[i].Cells["clmstatus"].Value.ToString() == "")
+                            if(grdStudentImport.Rows[i].Cells["clmsno"].Value.ToString()=="" || grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" 
+                                || grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString()==""  
+                                || grdStudentImport.Rows[i].Cells["clmaddress"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" || 
+                                grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
+                                || grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
+                                || grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
+                                || grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmstatus"].Value.ToString() == "")
                             {
                                 varMismatch++;
                             }
-                        }
 
-                        DataTable dataTable = objDs.Tables[0];
-                        int rowIndex = -1;
-                        var duplicates = dataTable.AsEnumerable()
-                                  .GroupBy(row => row.Field<double>("Admission no#"))
-                                  .Where(g => g.Count() > 1)
-                                  .SelectMany(g => g);
+                            DataTable dataTable = objDs.Tables[0];
+                            int rowIndex = -1;
+                            var duplicates = dataTable.AsEnumerable()
+                          .GroupBy(row => row.Field<string>("Admission no#"))
+                          .Where(g => g.Key.Equals(Convert.ToString(grdStudentImport.Rows[i].Cells["clmadmission"].Value)))
+                          .SelectMany(g => g);
 
-                        if (duplicates.Any())
-                        {
-                            vardublicate++;
-                            foreach (var duplicate in duplicates)
+
+
+                            if (duplicates.Count()>1)
                             {
-
-                                //string code = duplicate.Field<string>("Admission no#");
-                                //foreach (DataGridViewRow row in grdStudentImport.Rows)
-                                //{
-
-                                //    //if (row.Cells["clmaddress"].Value.ToString() == code)
-                                //    //{
-                                //    //    rowIndex = row.Index;
-                                //    //    break;
-                                //    //}
-                                //}
-
-                                //if (rowIndex != -1)
-                                //{
-                                //    grdStudentImport.Rows[rowIndex].DefaultCellStyle.BackColor = Color.Red;
-                                //}
+                                vardublicate++;
+                                varflag++;
+                            } 
+                            else
+                            {
+                                vardublicate = 0;
+                            }
+                            if (vardublicate != 0)
+                            {
+                                grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                            }
+                            if (varMismatch != 0)
+                            {
+                                grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
                             }
                         }
 
 
-                        else
-                        {
-                            vardublicate = 0;
-                        }
-
                         oledbcon.Close();
-                        lblDublicate.Text =Convert.ToString(vardublicate);
+                        lblDublicate.Text =Convert.ToString(varflag);
                         lblTotal.Text =Convert.ToString(grdStudentImport.Rows.Count);
                         lblMismatch.Text = Convert.ToString(varMismatch);
-                        if (varMismatch != 0 || vardublicate != 0)
+                        if (varMismatch != 0 || varflag != 0)
                         {
                             btnImport.Enabled = false;
                         }

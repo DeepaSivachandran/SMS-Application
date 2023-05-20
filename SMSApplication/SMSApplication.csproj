@@ -63,6 +63,12 @@
     <Compile Include="Authentication.designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="MR_StudentWipout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MR_StudentWipout.Designer.cs">
+      <DependentUpon>MR_StudentWipout.cs</DependentUpon>
+    </Compile>
     <Compile Include="MR_StaffImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
     </Compile>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MR_StudentWipout.resx">
+      <DependentUpon>MR_StudentWipout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_StaffImport.resx">
       <DependentUpon>MR_StaffImport.cs</DependentUpon>
@@ -321,6 +330,7 @@
     <Content Include="Resources\save1.png" />
     <None Include="Resources\send-message.png" />
     <None Include="Resources\send-message %281%29.png" />
+    <None Include="Resources\select.png" />
     <Content Include="Resources\signin.png" />
     <Content Include="Resources\skip.png" />
     <Content Include="Resources\sss_logo %282%29.png" />

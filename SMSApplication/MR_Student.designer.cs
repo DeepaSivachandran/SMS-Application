@@ -179,7 +179,7 @@
             this.txtpincode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpincode.Location = new System.Drawing.Point(486, 216);
             this.txtpincode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtpincode.MaxLength = 15;
+            this.txtpincode.MaxLength = 6;
             this.txtpincode.Name = "txtpincode";
             this.txtpincode.Size = new System.Drawing.Size(187, 25);
             this.txtpincode.TabIndex = 13;
@@ -262,6 +262,7 @@
             // 
             // cmbBloodGroup
             // 
+            this.cmbBloodGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBloodGroup.FormattingEnabled = true;
             this.cmbBloodGroup.Location = new System.Drawing.Point(158, 216);
             this.cmbBloodGroup.Name = "cmbBloodGroup";
@@ -361,6 +362,7 @@
             // 
             // cmbClass
             // 
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(158, 142);
             this.cmbClass.Name = "cmbClass";

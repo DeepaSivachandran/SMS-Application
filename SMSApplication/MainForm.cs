@@ -59,6 +59,9 @@ namespace SMSApplication
         public static TRN_SMS_Student objTRN_SMS_Student;
         public static TRN_SMS_Staff objTRN_SMS_Staff;
         public static TRN_SMS_General objTRN_SMS_General;
+        public static MR_StudentWipout objMR_StudentWipout;
+        
+
         public MainForm()
         {
             try

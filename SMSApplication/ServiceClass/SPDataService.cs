@@ -343,7 +343,7 @@ namespace SMSApplication.ServiceClass
 
 
 
-        public DataSet udfnStudentMasterlist(string paraprocess, string paraStudentid, string paraUserID)
+        public DataSet udfnStudentMasterlist(string paraprocess, string paraStudentid, string paraUserID,string paraclassid)
         {
             DataSet ds = new DataSet();
             try
@@ -354,6 +354,8 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
                 varSqlCommand.Parameters.AddWithValue("@ParastudentId", paraStudentid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraclassid", paraclassid);
+                
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
                 sa.Fill(ds);

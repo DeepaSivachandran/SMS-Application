@@ -30,10 +30,27 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentsList));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StudentsList));
             this.grdStudentList = new System.Windows.Forms.DataGridView();
+            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmparent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmdob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmrfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaddress3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmbloodgroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmaltermobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
@@ -52,23 +69,6 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.lblstudentcode = new System.Windows.Forms.Label();
-            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmparent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmdob = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmrfid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmaddress1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmaddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmaddress3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmbloodgroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmaltermobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLMID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdStudentList)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -129,6 +129,130 @@
             this.grdStudentList.TabIndex = 18;
             this.grdStudentList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
             this.grdStudentList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
+            // 
+            // clmsno
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle6;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 60;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Admission No.";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // clmSchemeName
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle7;
+            this.clmSchemeName.HeaderText = "Student Name";
+            this.clmSchemeName.Name = "clmSchemeName";
+            this.clmSchemeName.ReadOnly = true;
+            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmSchemeName.Width = 200;
+            // 
+            // clmparent
+            // 
+            this.clmparent.HeaderText = "Parent Name";
+            this.clmparent.Name = "clmparent";
+            this.clmparent.ReadOnly = true;
+            this.clmparent.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Class & Section";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 120;
+            // 
+            // clmdob
+            // 
+            this.clmdob.HeaderText = "Date Of Birth";
+            this.clmdob.Name = "clmdob";
+            this.clmdob.ReadOnly = true;
+            // 
+            // clmrfid
+            // 
+            this.clmrfid.HeaderText = "RF ID No.";
+            this.clmrfid.Name = "clmrfid";
+            this.clmrfid.ReadOnly = true;
+            // 
+            // clmaddress1
+            // 
+            this.clmaddress1.HeaderText = "Address - 1";
+            this.clmaddress1.Name = "clmaddress1";
+            this.clmaddress1.ReadOnly = true;
+            this.clmaddress1.Visible = false;
+            // 
+            // clmaddress2
+            // 
+            this.clmaddress2.HeaderText = "Address - 2";
+            this.clmaddress2.Name = "clmaddress2";
+            this.clmaddress2.ReadOnly = true;
+            this.clmaddress2.Visible = false;
+            // 
+            // clmaddress3
+            // 
+            this.clmaddress3.HeaderText = "Address - 3";
+            this.clmaddress3.Name = "clmaddress3";
+            this.clmaddress3.ReadOnly = true;
+            this.clmaddress3.Visible = false;
+            // 
+            // clmcity
+            // 
+            this.clmcity.HeaderText = "City";
+            this.clmcity.Name = "clmcity";
+            this.clmcity.ReadOnly = true;
+            this.clmcity.Visible = false;
+            // 
+            // clmpincode
+            // 
+            this.clmpincode.HeaderText = "Pincode";
+            this.clmpincode.Name = "clmpincode";
+            this.clmpincode.ReadOnly = true;
+            this.clmpincode.Visible = false;
+            // 
+            // clmbloodgroup
+            // 
+            this.clmbloodgroup.HeaderText = "Blood Group";
+            this.clmbloodgroup.Name = "clmbloodgroup";
+            this.clmbloodgroup.ReadOnly = true;
+            this.clmbloodgroup.Visible = false;
+            // 
+            // C
+            // 
+            this.C.HeaderText = "Mobile No.";
+            this.C.Name = "C";
+            this.C.ReadOnly = true;
+            this.C.Width = 150;
+            // 
+            // clmaltermobile
+            // 
+            this.clmaltermobile.HeaderText = "Alternative Mobile Number";
+            this.clmaltermobile.Name = "clmaltermobile";
+            this.clmaltermobile.ReadOnly = true;
+            this.clmaltermobile.Visible = false;
+            // 
+            // clmShortName
+            // 
+            this.clmShortName.HeaderText = "Status";
+            this.clmShortName.Name = "clmShortName";
+            this.clmShortName.ReadOnly = true;
+            this.clmShortName.Width = 150;
+            // 
+            // CLMID
+            // 
+            this.CLMID.HeaderText = "ID";
+            this.CLMID.Name = "CLMID";
+            this.CLMID.ReadOnly = true;
+            this.CLMID.Visible = false;
+            this.CLMID.Width = 5;
             // 
             // lblDNoRecordFound
             // 
@@ -259,9 +383,11 @@
             this.btnView.Text = "View";
             this.btnView.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // cmbClass
             // 
+            this.cmbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClass.FormattingEnabled = true;
             this.cmbClass.Location = new System.Drawing.Point(144, 21);
             this.cmbClass.Name = "cmbClass";
@@ -339,130 +465,6 @@
             this.lblstudentcode.TabIndex = 958792;
             this.lblstudentcode.Text = "0";
             this.lblstudentcode.Visible = false;
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle6;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 60;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Admission No.";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
-            // 
-            // clmSchemeName
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle7;
-            this.clmSchemeName.HeaderText = "Student Name";
-            this.clmSchemeName.Name = "clmSchemeName";
-            this.clmSchemeName.ReadOnly = true;
-            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmSchemeName.Width = 200;
-            // 
-            // clmparent
-            // 
-            this.clmparent.HeaderText = "Parent Name";
-            this.clmparent.Name = "clmparent";
-            this.clmparent.ReadOnly = true;
-            this.clmparent.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Class & Section";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 120;
-            // 
-            // clmdob
-            // 
-            this.clmdob.HeaderText = "Date Of Birth";
-            this.clmdob.Name = "clmdob";
-            this.clmdob.ReadOnly = true;
-            // 
-            // clmrfid
-            // 
-            this.clmrfid.HeaderText = "RF ID No.";
-            this.clmrfid.Name = "clmrfid";
-            this.clmrfid.ReadOnly = true;
-            // 
-            // clmaddress1
-            // 
-            this.clmaddress1.HeaderText = "Address - 1";
-            this.clmaddress1.Name = "clmaddress1";
-            this.clmaddress1.ReadOnly = true;
-            this.clmaddress1.Visible = false;
-            // 
-            // clmaddress2
-            // 
-            this.clmaddress2.HeaderText = "Address - 2";
-            this.clmaddress2.Name = "clmaddress2";
-            this.clmaddress2.ReadOnly = true;
-            this.clmaddress2.Visible = false;
-            // 
-            // clmaddress3
-            // 
-            this.clmaddress3.HeaderText = "Address - 3";
-            this.clmaddress3.Name = "clmaddress3";
-            this.clmaddress3.ReadOnly = true;
-            this.clmaddress3.Visible = false;
-            // 
-            // clmcity
-            // 
-            this.clmcity.HeaderText = "City";
-            this.clmcity.Name = "clmcity";
-            this.clmcity.ReadOnly = true;
-            this.clmcity.Visible = false;
-            // 
-            // clmpincode
-            // 
-            this.clmpincode.HeaderText = "Pincode";
-            this.clmpincode.Name = "clmpincode";
-            this.clmpincode.ReadOnly = true;
-            this.clmpincode.Visible = false;
-            // 
-            // clmbloodgroup
-            // 
-            this.clmbloodgroup.HeaderText = "Blood Group";
-            this.clmbloodgroup.Name = "clmbloodgroup";
-            this.clmbloodgroup.ReadOnly = true;
-            this.clmbloodgroup.Visible = false;
-            // 
-            // C
-            // 
-            this.C.HeaderText = "Mobile No.";
-            this.C.Name = "C";
-            this.C.ReadOnly = true;
-            this.C.Width = 150;
-            // 
-            // clmaltermobile
-            // 
-            this.clmaltermobile.HeaderText = "Alternative Mobile Number";
-            this.clmaltermobile.Name = "clmaltermobile";
-            this.clmaltermobile.ReadOnly = true;
-            this.clmaltermobile.Visible = false;
-            // 
-            // clmShortName
-            // 
-            this.clmShortName.HeaderText = "Status";
-            this.clmShortName.Name = "clmShortName";
-            this.clmShortName.ReadOnly = true;
-            this.clmShortName.Width = 150;
-            // 
-            // CLMID
-            // 
-            this.CLMID.HeaderText = "ID";
-            this.CLMID.Name = "CLMID";
-            this.CLMID.ReadOnly = true;
-            this.CLMID.Visible = false;
-            this.CLMID.Width = 5;
             // 
             // MR_StudentsList
             // 
