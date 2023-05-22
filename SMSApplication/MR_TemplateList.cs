@@ -32,30 +32,69 @@ namespace SMSApplication
                 udfnList();
              //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
-                grdSchemeList.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
+                grdTemplateList.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
             }
             catch (Exception ex)
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
+        } 
         public void udfnList()
         {
-           try
+            try
             {
-                picLoader.Visible = true;
-                Application.DoEvents();
-                //****** To display a data in a grid  ******************
-                grdSchemeList.Rows.Clear();
-                SPDataService objDserv = new SPDataService();
                 DataSet objDs;
-                //*********** To call the function from SP ***********
-             //   objDs = objDserv.udfn_MR_TemplateList(MainForm.pbUserID,MainForm.pbIpAddress);
-                objDserv.CloseConnection();
-                             
+                //**** To call the function from SP ***************
+                SPDataService objdserv = new SPDataService();
+                string[] item = new string[30];
+                ListViewItem listitem = new ListViewItem();
+                grdTemplateList.Rows.Clear();
+                objDs = objdserv.udfnTemplatemasterlist("List", "", MainForm.pbUserID);
+                objdserv.CloseConnection();
+                if (objDs != null)
+                {
+                    grdTemplateList.Rows.Clear();
+                    if (objDs.Tables.Count != 0)
+                    {
+                        grdTemplateList.Rows.Clear();
+                        if (objDs.Tables[0].Rows.Count != 0)
+                        {
+                            grdTemplateList.DataSource = null;
+                            lblDNoRecordFound.Visible = false;
+                            lblDNoRecordFound.SendToBack();
+                            for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                            {
+                                item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString();
+                                item[1] = objDs.Tables[0].Rows[i]["templatevalue"].ToString();
+                                item[2] = objDs.Tables[0].Rows[i]["NAME"].ToString();
+                                item[3] = objDs.Tables[0].Rows[i]["SENDER"].ToString();
+                                item[4] = objDs.Tables[0].Rows[i]["CONTANTTYPE"].ToString();
+                                item[5] = objDs.Tables[0].Rows[i]["content"].ToString();
+                                item[6] = objDs.Tables[0].Rows[i]["STATUS"].ToString(); 
+                                item[7] = objDs.Tables[0].Rows[i]["ID"].ToString(); 
+                                    
+                                 listitem = new ListViewItem(item);
+                                grdTemplateList.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7]);
+                            }
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblDNoRecordFound.BringToFront();
+                        lblDNoRecordFound.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblDNoRecordFound.BringToFront();
+                    lblDNoRecordFound.Visible = true;
+                }
             }
             catch (Exception ex)
             {
@@ -64,10 +103,10 @@ namespace SMSApplication
             }
             finally
             {
-                grdSchemeList.ClearSelection();
-                picLoader.Visible = false;
+                grdTemplateList.ClearSelection();
             }
         }
+
         //Author : Lavanya
         //created Date :11/04/2019
         private void tsbNew_Click(object sender, EventArgs e)
@@ -90,6 +129,7 @@ namespace SMSApplication
         {
             try
             {
+                udfnEdit();
             }
             catch (Exception ex)
             {
@@ -97,13 +137,19 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbDelete_Click(object sender, EventArgs e)
+
+        private void udfnEdit()
         {
             try
             {
-               // udfndelete();
+
+                if (grdTemplateList.SelectedRows.Count > 0)
+                {
+                    MainForm.objMR_Template = new MR_Template(); ;
+                    MainForm.objMR_Template.vartemplateid = grdTemplateList.SelectedRows[0].Cells["clmid"].Value.ToString();
+                    MainForm.objMR_Template.ShowDialog();
+                }
+
             }
             catch (Exception ex)
             {
@@ -112,21 +158,47 @@ namespace SMSApplication
             }
 
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void MR_TemplateList_KeyDown(object sender, KeyEventArgs e)
+
+         
+
+        private void tsbDelete_Click(object sender, EventArgs e)
         {
             try
             {
-                //************* short cut keys to open another form ***********
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.N))
+                udfndelete();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+
+        } 
+
+        public void udfndelete()
+        {
+
+            try
+            {
+                if (grdTemplateList.SelectedRows.Count > 0)
                 {
-                    tsbNew_Click(sender, e);
+                    string result = "";
+                    var delete = grdTemplateList.SelectedRows[0].Cells["clmid"].Value.ToString();
+                    DialogResult dialogResult = MessageBox.Show("Do you want to delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+
+                        SPDataService objspdservice = new SPDataService();
+                        result = objspdservice.udfntemplatemaster("Delete", delete,"","","","","","", MainForm.pbUserID, "Student Delete");
+
+
+                        if (result.Contains("Deleted Successfully."))
+                        {
+                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            udfnList();
+                        }
+                    }
                 }
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.E))
-                {
-                    tsbEdit_Click(sender, e);
-                }               
             }
             catch (Exception ex)
             {
@@ -134,33 +206,14 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        public void udfnClose()
-        {
-            try
-            {
-                DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (objDialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            catch(Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
+
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                   // udfnedit();
+                    udfnEdit();
                 }
             }
             catch (Exception ex)
@@ -177,10 +230,10 @@ namespace SMSApplication
            try
             {
                 //************ On Double Click Event ********
-                DataGridView.HitTestInfo hit = grdSchemeList.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                DataGridView.HitTestInfo hit = grdTemplateList.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
                 if (hit.RowIndex != -1)
                 {
-                  //  udfnedit();
+                    udfnEdit();
                 }
             }
             catch (Exception ex)

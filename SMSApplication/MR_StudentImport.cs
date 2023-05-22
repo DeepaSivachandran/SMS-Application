@@ -612,7 +612,7 @@ namespace SMSApplication
                             {
                                 btnImport.Enabled = true;
 
-                               var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_CardNo='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
+                               var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_regNo='" + grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() + "'");
                                 if (varRegCount == "0")
                                 {
                                     objDt.Rows.Add( grdStudentImport.Rows[i].Cells["clmstudentname"].Value, grdStudentImport.Rows[i].Cells["clmclass"].Value, grdStudentImport.Rows[i].Cells["clmdob"].Value, grdStudentImport.Rows[i].Cells["clmadmission"].Value, grdStudentImport.Rows[i].Cells["clmblood"].Value, grdStudentImport.Rows[i].Cells["clmAddress"].Value, grdStudentImport.Rows[i].Cells["clmAddress2"].Value, grdStudentImport.Rows[i].Cells["clmAddress3"].Value, grdStudentImport.Rows[i].Cells["clmCity"].Value,  grdStudentImport.Rows[i].Cells["clmpincode"].Value, grdStudentImport.Rows[i].Cells["clmmobile"].Value, grdStudentImport.Rows[i].Cells["clmaltermobile"].Value, grdStudentImport.Rows[i].Cells["clmrfid"].Value, grdStudentImport.Rows[i].Cells["clmstatus"].Value,2, grdStudentImport.Rows[i].Cells["clmparent"].Value);

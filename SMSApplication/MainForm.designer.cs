@@ -189,7 +189,6 @@ namespace SMSApplication
             this.tsmSenderID.Name = "tsmSenderID";
             this.tsmSenderID.Size = new System.Drawing.Size(152, 22);
             this.tsmSenderID.Text = "Sender ID";
-            this.tsmSenderID.Visible = false;
             this.tsmSenderID.Click += new System.EventHandler(this.TsmSenderID_Click);
             // 
             // tsmTemplate
@@ -247,7 +246,7 @@ namespace SMSApplication
             // tsmSMSGeneral
             // 
             this.tsmSMSGeneral.Name = "tsmSMSGeneral";
-            this.tsmSMSGeneral.Size = new System.Drawing.Size(152, 22);
+            this.tsmSMSGeneral.Size = new System.Drawing.Size(204, 22);
             this.tsmSMSGeneral.Text = "General";
             this.tsmSMSGeneral.Click += new System.EventHandler(this.TsmSMSGeneral_Click);
             // 

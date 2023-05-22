@@ -206,7 +206,7 @@ namespace SMSApplication
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    txtConfirmPwd.Focus();
+                    btnSave.Focus();
                 }
                 if (e.Control && (e.KeyCode == Keys.A))
                 {
@@ -249,120 +249,43 @@ namespace SMSApplication
         private void btnSave_Click(object sender, EventArgs e)
         {
             try {
-                btnSave.Enabled = false;
-                bool blnErrorFlag = false; 
-                if (txtNewPwd.Text == "")
+                if (txtStaffReportnumber.Text != "")
                 {
-                    epMR_GeneralSettings.SetError(txtNewPwd, "Please enter new password");
-                    txtNewPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                    tpNewPwd.ShowAlways = true;
-                    tpNewPwd.Show("Please enter new password", txtNewPwd, 5000);
-                    blnErrorFlag = true;
-                }
-                else
-                {
-                    epMR_GeneralSettings.Clear();
-                    txtNewPwd.BackColor = Color.White;
-                }
-                if (txtConfirmPwd.Text == "")
-                {
-                    epMR_GeneralSettings.SetError(txtConfirmPwd, "Please enter confirm password");
-                    txtConfirmPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                    tpConfirmPwd.ShowAlways = true;
-                    tpConfirmPwd.Show("Please enter confirm password", txtConfirmPwd, 5000);
-                    blnErrorFlag = true;
-                }
-                else
-                {
-                    epMR_GeneralSettings.Clear();
-                    txtConfirmPwd.BackColor = Color.White;
-                }
-                bool varSetting = true;
-                if (pbCharCount != 0)
-                {
-                    if (pbCharCount > txtNewPwd.Text.Length)
+                    txtStaffReportnumber.BackColor = Color.White;
+                    SPDataService objspdservice = new SPDataService();
+
+                    string result = "", status = "0";
+
+                   
+                    if (btnSave.Text == "Update")
                     {
-                        epMR_GeneralSettings.SetError(txtNewPwd, "Password length should be minimum " + pbCharCount + " charaters.");
-                        txtNewPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                        tpNewPwd.ShowAlways = true;
-                        tpNewPwd.Show("Password length should be minimum " + pbCharCount + " charaters.", txtNewPwd, 5000);
-                        blnErrorFlag = true;
-                        varSetting = false;
+                        result = objspdservice.udfngenralsettings("Create","0" ,txtStaffReportnumber.Text,  MainForm.pbUserID, "staff mobile number Entry");
+
+                    }
+
+                   
+
+                    if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") )
+                    {
+                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        udfnclear(); 
                     }
                     else
                     {
-                        epMR_GeneralSettings.Clear();
-                        txtNewPwd.BackColor = Color.White;
-                        if (pbPwdType != "")
-                        {
-                            if (pbPwdType == "AN")
-                            {
-                                //  A- alphabet N- Numeric
-                                varSetting = txtNewPwd.Text.Any(c => char.IsLetter(c)) && txtNewPwd.Text.Any(c => char.IsDigit(c));
-                            }
-                            else if (pbPwdType == "SCAN")
-                            {
-                                // S- Symbol C- Capital A- alphabet N- Numeric
-                                varSetting = txtNewPwd.Text.Any(c => char.IsLetter(c)) && txtNewPwd.Text.Any(c => char.IsDigit(c)) && txtNewPwd.Text.Any(c => char.IsSymbol(c)) && txtNewPwd.Text.Any(c => char.IsUpper(c));
-                            }
-                        }
+                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                }
-                if (varSetting == true)
-                {
-                    epMR_GeneralSettings.Clear();
-                    tpNewPwd.BackColor = Color.White;
                 }
                 else
                 {
-                    if (pbPwdType == "AN")
+                    if (txtStaffReportnumber.Text == "")
                     {
-                        //  A- alphabet N- Numeric
-                        epMR_GeneralSettings.SetError(txtNewPwd, "Password should contain alpha numeric charaters.");
-                        txtNewPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                        tpNewPwd.ShowAlways = true;
-                        tpNewPwd.Show("Password should contain alpha numeric charaters.", txtNewPwd, 5000);
+                        epMR_GeneralSettings.SetError(txtStaffReportnumber, "Please enter the Report staff number.");
+                        tpConfirmPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please enter the Report staff number.", txtStaffReportnumber, 5000);
                     }
-                    else if (pbPwdType == "SCAN")
-                    {
-                        // S- Symbol C- Capital A- alphabet N- Numeric
-                        epMR_GeneralSettings.SetError(txtNewPwd, "Password should contain atleast one symbol, capital, alphabet and numeric charater.");
-                        txtNewPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                        tpNewPwd.ShowAlways = true;
-                        tpNewPwd.Show("Password should contain atleast one symbol, capital, alphabet and numeric charater.", txtNewPwd, 5000);
-                    }
-                    blnErrorFlag = true;
                 }
-                if (txtConfirmPwd.Text != txtNewPwd.Text)
-                {
-                    epMR_GeneralSettings.SetError(txtConfirmPwd, "Password mismatched");
-                    txtConfirmPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                    tpConfirmPwd.ShowAlways = true;
-                    tpConfirmPwd.Show("Password mismatched", txtConfirmPwd, 5000);
-                    blnErrorFlag = true;
-                }
-                else {
-                    epMR_GeneralSettings.Clear();
-                    txtConfirmPwd.BackColor = Color.White;
-                }
-                if (blnErrorFlag == false) {
-                    ////create the object and access wcf 
-                    //MR_GeneralSettingsService.MR_GeneralSettingsService objChangePassword = new MR_GeneralSettingsService.MR_GeneralSettingsService();
-                    ////pass data to wcf and get the result
-                    //string varResult = objChangePassword.udfn_MR_GeneralSettings(_security.Encrypt(MainForm.pbUserID,txtOldPwd.Text), _security.Encrypt(MainForm.pbUserID, txtNewPwd.Text),MainForm.pbUserID,MainForm.pbIpAddress,"Change Password");
-                    //if (varResult.Contains("Success"))
-                    //{
-                    //    MessageBox.Show(varResult, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //   // Clear all controls in form
-                    //    udfnclear();
-                    //    txtOldPwd.Focus();
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show(varResult, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //    txtOldPwd.Focus();
-                    //}
-                }
+
             }
             catch (Exception ex)
             {
@@ -397,29 +320,7 @@ namespace SMSApplication
 
         private void txtStaffReportnumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-            // Allow digits, comma, backspace, and delete key
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '\b' && e.KeyChar != (char)Keys.Delete)
-            {
-                e.Handled = true; // Ignore the key press
-                return;
-            }
-
-            TextBox textBox = (TextBox)sender;
-            string currentText = textBox.Text;
-            int selectionStart = textBox.SelectionStart;
-
-            // Insert the pressed key at the current cursor position
-            string newText = currentText.Substring(0, selectionStart) + e.KeyChar + currentText.Substring(selectionStart);
-
-            // Validate the new text against the desired pattern
-            string pattern = @"^\d{0,10}(,\d{0,10})?$";
-            Regex regex = new Regex(pattern);
-
-            if (!regex.IsMatch(newText))
-            {
-                e.Handled = true; // Ignore the key press
-            }
+            
 
         }
 

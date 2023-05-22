@@ -28,17 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_TemplateList));
-            this.grdSchemeList = new System.Windows.Forms.DataGridView();
-            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.grdTemplateList = new System.Windows.Forms.DataGridView();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
@@ -49,94 +44,64 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
             this.picLoader = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).BeginInit();
+            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmtempid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmcontent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTemplateList)).BeginInit();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.SuspendLayout();
             // 
-            // grdSchemeList
+            // grdTemplateList
             // 
-            this.grdSchemeList.AllowUserToAddRows = false;
-            this.grdSchemeList.AllowUserToDeleteRows = false;
-            this.grdSchemeList.AllowUserToResizeRows = false;
-            this.grdSchemeList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grdSchemeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdSchemeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.grdSchemeList.ColumnHeadersHeight = 30;
-            this.grdSchemeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdSchemeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grdTemplateList.AllowUserToAddRows = false;
+            this.grdTemplateList.AllowUserToDeleteRows = false;
+            this.grdTemplateList.AllowUserToResizeRows = false;
+            this.grdTemplateList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grdTemplateList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdTemplateList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdTemplateList.ColumnHeadersHeight = 30;
+            this.grdTemplateList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.grdTemplateList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmsno,
+            this.clmtempid,
             this.clmSchemeName,
             this.Column1,
             this.Column2,
-            this.clmShortName});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdSchemeList.DefaultCellStyle = dataGridViewCellStyle16;
-            this.grdSchemeList.EnableHeadersVisualStyles = false;
-            this.grdSchemeList.GridColor = System.Drawing.Color.White;
-            this.grdSchemeList.Location = new System.Drawing.Point(17, 28);
-            this.grdSchemeList.Name = "grdSchemeList";
-            this.grdSchemeList.ReadOnly = true;
-            this.grdSchemeList.RowHeadersVisible = false;
-            this.grdSchemeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdSchemeList.Size = new System.Drawing.Size(1325, 559);
-            this.grdSchemeList.TabIndex = 18;
-            this.grdSchemeList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
-            this.grdSchemeList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle14;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 60;
-            // 
-            // clmSchemeName
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle15;
-            this.clmSchemeName.HeaderText = "Template Name";
-            this.clmSchemeName.Name = "clmSchemeName";
-            this.clmSchemeName.ReadOnly = true;
-            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmSchemeName.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Sender ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Content Type";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // clmShortName
-            // 
-            this.clmShortName.HeaderText = "Status";
-            this.clmShortName.Name = "clmShortName";
-            this.clmShortName.ReadOnly = true;
-            this.clmShortName.Width = 150;
+            this.clmcontent,
+            this.clmShortName,
+            this.clmid});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdTemplateList.DefaultCellStyle = dataGridViewCellStyle4;
+            this.grdTemplateList.EnableHeadersVisualStyles = false;
+            this.grdTemplateList.GridColor = System.Drawing.Color.White;
+            this.grdTemplateList.Location = new System.Drawing.Point(17, 28);
+            this.grdTemplateList.Name = "grdTemplateList";
+            this.grdTemplateList.ReadOnly = true;
+            this.grdTemplateList.RowHeadersVisible = false;
+            this.grdTemplateList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdTemplateList.Size = new System.Drawing.Size(1325, 559);
+            this.grdTemplateList.TabIndex = 18;
+            this.grdTemplateList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
+            this.grdTemplateList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
             // lblDNoRecordFound
             // 
@@ -258,6 +223,67 @@
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
             // 
+            // clmsno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 60;
+            // 
+            // clmtempid
+            // 
+            this.clmtempid.HeaderText = "Template Id";
+            this.clmtempid.Name = "clmtempid";
+            this.clmtempid.ReadOnly = true;
+            // 
+            // clmSchemeName
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmSchemeName.HeaderText = "Template Name";
+            this.clmSchemeName.Name = "clmSchemeName";
+            this.clmSchemeName.ReadOnly = true;
+            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmSchemeName.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Sender ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Content Type";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // clmcontent
+            // 
+            this.clmcontent.HeaderText = "Content";
+            this.clmcontent.Name = "clmcontent";
+            this.clmcontent.ReadOnly = true;
+            this.clmcontent.Width = 250;
+            // 
+            // clmShortName
+            // 
+            this.clmShortName.HeaderText = "Status";
+            this.clmShortName.Name = "clmShortName";
+            this.clmShortName.ReadOnly = true;
+            this.clmShortName.Width = 150;
+            // 
+            // clmid
+            // 
+            this.clmid.HeaderText = "ID";
+            this.clmid.Name = "clmid";
+            this.clmid.ReadOnly = true;
+            this.clmid.Visible = false;
+            // 
             // MR_TemplateList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -267,7 +293,7 @@
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.lblDNoRecordFound);
-            this.Controls.Add(this.grdSchemeList);
+            this.Controls.Add(this.grdTemplateList);
             this.Controls.Add(this.picLoader);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -277,7 +303,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CP_SchemeList";
             this.Load += new System.EventHandler(this.MR_TemplateList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTemplateList)).EndInit();
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
@@ -288,7 +314,7 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView grdSchemeList;
+        public System.Windows.Forms.DataGridView grdTemplateList;
         private System.Windows.Forms.Label lblDNoRecordFound;
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripLabel tspFormHeader;
@@ -300,9 +326,12 @@
         private System.Windows.Forms.Label lblDcolumnIndex;
         private System.Windows.Forms.PictureBox picLoader;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmtempid;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSchemeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmcontent;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmShortName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmid;
     }
 }

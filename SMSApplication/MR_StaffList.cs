@@ -341,12 +341,13 @@ namespace SMSApplication
                          
                         foreach (DataGridViewColumn col in grdStaffList.Columns)
                         {
-                            
+                            if (col.Name != "CLMSTAFFID")
+                            {
                                 cIndex += 1;
                                 ExcelSheet.Cells[3, cIndex] = col.HeaderText;
-                            ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;  
+                                ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;
 
-                            if (col.Name == "clmdob" )
+                                if (col.Name == "clmdob")
                                 {
                                     ExcelSheet.Columns[cIndex].NumberFormat = "@";
                                 }
@@ -354,7 +355,8 @@ namespace SMSApplication
                                 {
                                     ExcelSheet.Cells[rowa.Index + 4, cIndex] = rowa.Cells[col.Index].Value;
                                 }
-                            
+
+                            }
                         }
 
 

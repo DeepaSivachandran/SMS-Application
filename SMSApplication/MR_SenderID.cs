@@ -20,7 +20,7 @@ namespace SMSApplication
         private ToolTip tpShortName = new ToolTip();
 
         //********* Declare the variable*************
-        public string pbflag="0",pbFromYear="";
+        public string pbflag="0",pbFromYear="",senderid="";
         public MR_SenderID()
         {
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace SMSApplication
         {
             try
             {
+                udfnEdit();
                 if (btnSave.Text == "Update")
                 {
                     //******** if form is in update mode status will be show **********
@@ -40,7 +41,7 @@ namespace SMSApplication
                  //   MainForm.objMR_SenderID.Text = "Edit Scheme";
                     //********** combobox Enable & disable ***************  
                 } 
-                this.ActiveControl = txtSchemeName;      
+                this.ActiveControl = txtsendername;      
              }
             catch (Exception ex)
             {
@@ -71,7 +72,7 @@ namespace SMSApplication
             {
                 epMR_SenderID.Clear();
                 tpSchemeName.Active = false;
-                txtSchemeName.BackColor = Color.White;
+                txtsendername.BackColor = Color.White;
                 DialogResult dialogResult = MessageBox.Show("Do you want to exit?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -91,7 +92,7 @@ namespace SMSApplication
             try
             {
               
-                txtSchemeName.BackColor = Color.LemonChiffon;
+                txtsendername.BackColor = Color.LemonChiffon;
             }
             catch (Exception ex)
             {
@@ -127,19 +128,19 @@ namespace SMSApplication
         {
             try
             {
-                if (txtSchemeName.Text == "")
+                if (txtsendername.Text == "")
                 {
-                    epMR_SenderID.SetError(txtSchemeName, "Please enter scheme name");
-                    txtSchemeName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    epMR_SenderID.SetError(txtsendername, "Please enter sender id");
+                    txtsendername.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                     tpSchemeName.ShowAlways = true;
-                    tpSchemeName.Show("Please enter scheme name", txtSchemeName, 5000);
+                    tpSchemeName.Show("Please enter sender id name", txtsendername, 5000);
                 }
                 else
                 {
-                    if (objValidation.FormatAlphbeticNumericAndSpecialchar(txtSchemeName.Text))
+                    if (objValidation.FormatAlphbeticNumericAndSpecialchar(txtsendername.Text))
                     {
                         epMR_SenderID.Clear();
-                        txtSchemeName.BackColor = Color.White;
+                        txtsendername.BackColor = Color.White;
                         if (btnSave.Text == "Save")
                         {
                            
@@ -147,12 +148,12 @@ namespace SMSApplication
                     }
                     else
                     {
-                        if (txtSchemeName.Text != "")
+                        if (txtsendername.Text != "")
                         {
-                            epMR_SenderID.SetError(txtSchemeName, "Please enter valid scheme name");
-                            txtSchemeName.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                            epMR_SenderID.SetError(txtsendername, "Please enter  sender id");
+                            txtsendername.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                             tpSchemeName.ShowAlways = true;
-                            tpSchemeName.Show("Please enter valid scheme name", txtSchemeName, 5000);
+                            tpSchemeName.Show("Please enter sender id name", txtsendername, 5000);
                         }
                     }
                 }
@@ -165,22 +166,7 @@ namespace SMSApplication
         }
         // Author : Lavanya
         // Created Date: 2019-04-11
-        private void cmbFromYear_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        // Author : Lavanya
-        // Created Date: 2019-04-11
+        
         private void rbActive_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -221,6 +207,7 @@ namespace SMSApplication
             try
             {
                 btnSave.Enabled = false;
+                udfnsave();
             }
             catch (Exception ex)
             {
@@ -232,17 +219,113 @@ namespace SMSApplication
                 btnSave.Enabled = true;
             }
         }
-        // Author : Lavanya
-        // Created Date: 2019-04-11
-        //*************** Clear the data in MR_SenderID form **************
+
+        void udfnsave()
+        {
+            if (txtsendername.Text != "")
+            {
+                txtsendername.BackColor = Color.White; 
+                SPDataService objspdservice = new SPDataService();
+
+                string result = "", status = "0";
+
+                if (rbActive.Checked == true)
+                {
+                    status = "1";
+                }
+                else
+                {
+
+                    status = "0";
+                }
+                if (btnSave.Text == "Save")
+                {
+                    result = objspdservice.udfnsenderidmaster("Create", "0",txtsendername.Text, status, MainForm.pbUserID, "Sender Create");
+
+                }
+
+                else
+                {
+                    result = objspdservice.udfnsenderidmaster("Edit", senderid, txtsendername.Text, status, MainForm.pbUserID, "Sender Edit");
+                }
+
+                if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
+                {
+                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    udfnclear();
+                    MainForm.objMR_SenerIDList.udfnList();
+                }
+                else
+                {
+                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                if (txtsendername.Text == "")
+                {
+                    epMR_SenderID.SetError(txtsendername, "Please enter the sender id.");
+                    txtsendername.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter the sender id.", txtsendername, 5000);
+                }
+            }
+
+        }
+
+
+
+        private void udfnEdit()
+        {
+            try
+            {
+                if (senderid != "")
+                {
+                    SPDataService objspservice = new SPDataService();
+                    DataSet objDS;
+                    objDS = objspservice.udfnsenderidmasterlist("Editload", senderid, MainForm.pbUserID);
+                    objspservice.CloseConnection();
+                    string senderstatus = "0";
+                    if (objDS != null)
+                    {
+                        if (objDS.Tables[0].Rows.Count > 0)
+                        {
+                            txtsendername.Text = objDS.Tables[0].Rows[0]["name"].ToString(); 
+                            senderstatus = objDS.Tables[0].Rows[0]["STATUS"].ToString(); 
+                            if (senderstatus == "1")
+                            {
+                                rbActive.Checked = true; ;
+                            }
+                            else
+                            {
+                                rbInActive.Checked = true;
+                            }
+
+                            btnSave.Text = "Update";
+                        }
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+
+            }
+        }
+
+
         public void udfnclear()
         {
             try
             {
-                txtSchemeName.Text = "";
-                rbActive.Checked = true;
-                lblDStatus.Visible = false;
-                lblSchemeCode.Text = "0";
+                txtsendername.Text = "";
+                rbActive.Checked = true; 
             }
             catch (Exception ex)
             {
@@ -250,8 +333,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        // Author : Lavanya
-        // Created Date: 2019-04-11
+
         private void txtSchemeName_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -293,7 +375,7 @@ namespace SMSApplication
                 epMR_SenderID.Clear();
                 tpSchemeName.Active = false;
                 tpShortName.Active = false;
-                txtSchemeName.BackColor = Color.White;
+                txtsendername.BackColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -327,185 +409,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void txtShortName_Enter(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void txtShortName_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if(e.KeyCode==Keys.Enter)
-                {
-                }
-                if (e.Control && (e.KeyCode == Keys.A))
-                {
-                    if (sender != null)
-                        ((TextBox)sender).SelectAll();
-                    e.Handled = true;
-                }
-                if (e.KeyData == (Keys.Control | Keys.V))
-                {
-                    (sender as TextBox).Paste();
-                }
-                if (e.KeyData == (Keys.Control | Keys.C))
-                {
-                    (sender as TextBox).Copy();
-                }
-                if (e.KeyData == (Keys.Control | Keys.X))
-                {
-                    (sender as TextBox).Cut();
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void txtShortName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                bool varTest = objValidation.CheckSpecialCharacter(e);
-                if (varTest == true) { e.Handled = true; } else { e.Handled = false; }
-            }
-            catch (Exception ex) { objError = new DataError(); objError.WriteFile(ex); }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void txtShortName_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void chkBranchWise_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (btnSave.Text == "Save")
-                {
-                    if (e.KeyCode == Keys.Enter)
-                    {
-                    }
-                }
-                else
-                {
-                    if (e.KeyCode == Keys.Enter)
-                    {
-                       if(rbActive.Checked==true)
-                        {
-                            rbActive.Focus();
-                        }
-                        else
-                        {
-                            rbInActive.Focus();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void rbFirstYear_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : SIVARANJANA
-        //Created Date : 28/06/2019
-        private void rbDepartmentwise_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //Created Date : 06/07/2019
-        private void cmbFromYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-
-        private void chkCNCBranch_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (btnSave.Text == "Save")
-                    {
-                        btnSave.Focus();
-                    }
-                    else
-                    {
-                        if (rbActive.Checked == true)
-                        {
-                            rbActive.Focus();
-                        }
-                        else
-                        {
-                            rbInActive.Focus();
-                        }
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-         }
+     
 
         //Author : Lavanya
         //Created Date : 17/04/2019

@@ -303,10 +303,10 @@ namespace SMSApplication
         {
             try
             {
-                //udfnCloseChildForms();
-                //MainForm.objMR_SenerIDList = new MR_SenderIDList();
-                //MainForm.objMR_SenerIDList.MdiParent = this;
-                //MainForm.objMR_SenerIDList.Show();
+                udfnCloseChildForms();
+                MainForm.objMR_SenerIDList = new MR_SenderIDList();
+                MainForm.objMR_SenerIDList.MdiParent = this;
+                MainForm.objMR_SenerIDList.Show();
             }
             catch (Exception ex)
             {

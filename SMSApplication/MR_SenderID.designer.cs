@@ -37,9 +37,10 @@
             this.rbActive = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtSchemeName = new System.Windows.Forms.TextBox();
+            this.txtsendername = new System.Windows.Forms.TextBox();
             this.lblobjDschemeName = new System.Windows.Forms.Label();
             this.epMR_SenderID = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblsenderid = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.gbStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_SenderID)).BeginInit();
@@ -47,12 +48,13 @@
             // 
             // gbScheme
             // 
+            this.gbScheme.Controls.Add(this.lblsenderid);
             this.gbScheme.Controls.Add(this.lblSchemeCode);
             this.gbScheme.Controls.Add(this.lblDStatus);
             this.gbScheme.Controls.Add(this.gbStatus);
             this.gbScheme.Controls.Add(this.btnClose);
             this.gbScheme.Controls.Add(this.btnSave);
-            this.gbScheme.Controls.Add(this.txtSchemeName);
+            this.gbScheme.Controls.Add(this.txtsendername);
             this.gbScheme.Controls.Add(this.lblobjDschemeName);
             this.gbScheme.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbScheme.Location = new System.Drawing.Point(8, 5);
@@ -149,20 +151,20 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtSchemeName
+            // txtsendername
             // 
-            this.txtSchemeName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSchemeName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSchemeName.Location = new System.Drawing.Point(90, 24);
-            this.txtSchemeName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSchemeName.MaxLength = 100;
-            this.txtSchemeName.Name = "txtSchemeName";
-            this.txtSchemeName.Size = new System.Drawing.Size(187, 25);
-            this.txtSchemeName.TabIndex = 0;
-            this.txtSchemeName.Enter += new System.EventHandler(this.txtSchemeName_Enter);
-            this.txtSchemeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
-            this.txtSchemeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
-            this.txtSchemeName.Leave += new System.EventHandler(this.txtSchemeName_Leave);
+            this.txtsendername.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtsendername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtsendername.Location = new System.Drawing.Point(90, 24);
+            this.txtsendername.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtsendername.MaxLength = 100;
+            this.txtsendername.Name = "txtsendername";
+            this.txtsendername.Size = new System.Drawing.Size(187, 25);
+            this.txtsendername.TabIndex = 0;
+            this.txtsendername.Enter += new System.EventHandler(this.txtSchemeName_Enter);
+            this.txtsendername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
+            this.txtsendername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
+            this.txtsendername.Leave += new System.EventHandler(this.txtSchemeName_Leave);
             // 
             // lblobjDschemeName
             // 
@@ -177,6 +179,16 @@
             // epMR_SenderID
             // 
             this.epMR_SenderID.ContainerControl = this;
+            // 
+            // lblsenderid
+            // 
+            this.lblsenderid.AutoSize = true;
+            this.lblsenderid.Location = new System.Drawing.Point(13, 111);
+            this.lblsenderid.Name = "lblsenderid";
+            this.lblsenderid.Size = new System.Drawing.Size(15, 17);
+            this.lblsenderid.TabIndex = 8;
+            this.lblsenderid.Text = "0";
+            this.lblsenderid.Visible = false;
             // 
             // MR_SenderID
             // 
@@ -213,7 +225,7 @@
         private System.Windows.Forms.GroupBox gbScheme;
         private System.Windows.Forms.Button btnClose;
         public System.Windows.Forms.Button btnSave;
-        public System.Windows.Forms.TextBox txtSchemeName;
+        public System.Windows.Forms.TextBox txtsendername;
         private System.Windows.Forms.Label lblobjDschemeName;
         private System.Windows.Forms.ErrorProvider epMR_SenderID;
         public System.Windows.Forms.Label lblSchemeCode;
@@ -221,5 +233,6 @@
         public System.Windows.Forms.GroupBox gbStatus;
         public System.Windows.Forms.RadioButton rbInActive;
         public System.Windows.Forms.RadioButton rbActive;
+        private System.Windows.Forms.Label lblsenderid;
     }
 }

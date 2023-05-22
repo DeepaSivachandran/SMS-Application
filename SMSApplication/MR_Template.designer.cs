@@ -30,14 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbScheme = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txttempcontant = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.rbenglish = new System.Windows.Forms.RadioButton();
+            this.rbunicode = new System.Windows.Forms.RadioButton();
+            this.cmbsender = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblSchemeCode = new System.Windows.Forms.Label();
@@ -45,11 +43,13 @@
             this.gbStatus = new System.Windows.Forms.GroupBox();
             this.rbInActive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
-            this.txtSchemeName = new System.Windows.Forms.TextBox();
-            this.lblobjDschemeName = new System.Windows.Forms.Label();
-            this.epMR_Template = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.txtTempname = new System.Windows.Forms.TextBox();
+            this.lblobjDschemeName = new System.Windows.Forms.Label();
+            this.epMR_Template = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txttempid = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbStatus.SuspendLayout();
@@ -58,12 +58,12 @@
             // 
             // gbScheme
             // 
-            this.gbScheme.Controls.Add(this.textBox1);
-            this.gbScheme.Controls.Add(this.label4);
-            this.gbScheme.Controls.Add(this.comboBox2);
-            this.gbScheme.Controls.Add(this.groupBox1);
-            this.gbScheme.Controls.Add(this.comboBox1);
+            this.gbScheme.Controls.Add(this.txttempid);
             this.gbScheme.Controls.Add(this.label3);
+            this.gbScheme.Controls.Add(this.txttempcontant);
+            this.gbScheme.Controls.Add(this.label4);
+            this.gbScheme.Controls.Add(this.groupBox1);
+            this.gbScheme.Controls.Add(this.cmbsender);
             this.gbScheme.Controls.Add(this.label2);
             this.gbScheme.Controls.Add(this.label1);
             this.gbScheme.Controls.Add(this.lblSchemeCode);
@@ -71,7 +71,7 @@
             this.gbScheme.Controls.Add(this.gbStatus);
             this.gbScheme.Controls.Add(this.btnClose);
             this.gbScheme.Controls.Add(this.btnSave);
-            this.gbScheme.Controls.Add(this.txtSchemeName);
+            this.gbScheme.Controls.Add(this.txtTempname);
             this.gbScheme.Controls.Add(this.lblobjDschemeName);
             this.gbScheme.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbScheme.Location = new System.Drawing.Point(8, 5);
@@ -82,13 +82,14 @@
             this.gbScheme.TabIndex = 0;
             this.gbScheme.TabStop = false;
             // 
-            // textBox1
+            // txttempcontant
             // 
-            this.textBox1.Location = new System.Drawing.Point(123, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(498, 106);
-            this.textBox1.TabIndex = 14;
+            this.txttempcontant.Location = new System.Drawing.Point(123, 102);
+            this.txttempcontant.Multiline = true;
+            this.txttempcontant.Name = "txttempcontant";
+            this.txttempcontant.Size = new System.Drawing.Size(498, 106);
+            this.txttempcontant.TabIndex = 5;
+            this.txttempcontant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttempcontant_KeyDown);
             // 
             // label4
             // 
@@ -100,65 +101,51 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Content";
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(432, 62);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 25);
-            this.comboBox2.TabIndex = 12;
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton2);
+            this.groupBox1.Controls.Add(this.rbenglish);
+            this.groupBox1.Controls.Add(this.rbunicode);
             this.groupBox1.Location = new System.Drawing.Point(432, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 42);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // radioButton1
+            // rbenglish
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(98, 13);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(67, 21);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.Text = "English";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbenglish.AutoSize = true;
+            this.rbenglish.Location = new System.Drawing.Point(98, 13);
+            this.rbenglish.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbenglish.Name = "rbenglish";
+            this.rbenglish.Size = new System.Drawing.Size(67, 21);
+            this.rbenglish.TabIndex = 3;
+            this.rbenglish.Text = "English";
+            this.rbenglish.UseVisualStyleBackColor = true;
+            this.rbenglish.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbenglish_KeyDown);
             // 
-            // radioButton2
+            // rbunicode
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(12, 13);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(74, 21);
-            this.radioButton2.TabIndex = 0;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Unicode";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbunicode.AutoSize = true;
+            this.rbunicode.Checked = true;
+            this.rbunicode.Location = new System.Drawing.Point(12, 13);
+            this.rbunicode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rbunicode.Name = "rbunicode";
+            this.rbunicode.Size = new System.Drawing.Size(74, 21);
+            this.rbunicode.TabIndex = 2;
+            this.rbunicode.TabStop = true;
+            this.rbunicode.Text = "Unicode";
+            this.rbunicode.UseVisualStyleBackColor = true;
+            this.rbunicode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbunicode_KeyDown);
             // 
-            // comboBox1
+            // cmbsender
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(123, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 25);
-            this.comboBox1.TabIndex = 11;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(322, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 17);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "SMS Type";
+            this.cmbsender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbsender.FormattingEnabled = true;
+            this.cmbsender.Location = new System.Drawing.Point(432, 66);
+            this.cmbsender.Name = "cmbsender";
+            this.cmbsender.Size = new System.Drawing.Size(187, 25);
+            this.cmbsender.TabIndex = 4;
+            this.cmbsender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbsender_KeyDown);
             // 
             // label2
             // 
@@ -174,7 +161,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 63);
+            this.label1.Location = new System.Drawing.Point(322, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 17);
             this.label1.TabIndex = 8;
@@ -216,7 +203,7 @@
             this.rbInActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbInActive.Name = "rbInActive";
             this.rbInActive.Size = new System.Drawing.Size(69, 21);
-            this.rbInActive.TabIndex = 1;
+            this.rbInActive.TabIndex = 7;
             this.rbInActive.Text = "Inactive";
             this.rbInActive.UseVisualStyleBackColor = true;
             this.rbInActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbInActive_KeyDown);
@@ -229,25 +216,56 @@
             this.rbActive.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rbActive.Name = "rbActive";
             this.rbActive.Size = new System.Drawing.Size(60, 21);
-            this.rbActive.TabIndex = 0;
+            this.rbActive.TabIndex = 6;
             this.rbActive.TabStop = true;
             this.rbActive.Text = "Active";
             this.rbActive.UseVisualStyleBackColor = true;
             this.rbActive.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rbActive_KeyDown);
             // 
-            // txtSchemeName
+            // btnClose
             // 
-            this.txtSchemeName.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSchemeName.Location = new System.Drawing.Point(123, 24);
-            this.txtSchemeName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSchemeName.MaxLength = 100;
-            this.txtSchemeName.Name = "txtSchemeName";
-            this.txtSchemeName.Size = new System.Drawing.Size(187, 25);
-            this.txtSchemeName.TabIndex = 0;
-            this.txtSchemeName.Enter += new System.EventHandler(this.txtSchemeName_Enter);
-            this.txtSchemeName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
-            this.txtSchemeName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
-            this.txtSchemeName.Leave += new System.EventHandler(this.txtSchemeName_Leave);
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(531, 222);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(79, 29);
+            this.btnClose.TabIndex = 9;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(444, 222);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(83, 29);
+            this.btnSave.TabIndex = 8;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtTempname
+            // 
+            this.txtTempname.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTempname.Location = new System.Drawing.Point(123, 24);
+            this.txtTempname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTempname.MaxLength = 100;
+            this.txtTempname.Name = "txtTempname";
+            this.txtTempname.Size = new System.Drawing.Size(187, 25);
+            this.txtTempname.TabIndex = 0;
+            this.txtTempname.Enter += new System.EventHandler(this.txtSchemeName_Enter);
+            this.txtTempname.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSchemeName_KeyDown);
+            this.txtTempname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSchemeName_KeyPress);
+            this.txtTempname.Leave += new System.EventHandler(this.txtSchemeName_Leave);
             // 
             // lblobjDschemeName
             // 
@@ -263,36 +281,26 @@
             // 
             this.epMR_Template.ContainerControl = this;
             // 
-            // btnClose
+            // txttempid
             // 
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = global::SMSApplication.Properties.Resources.cancel;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(531, 222);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(79, 29);
-            this.btnClose.TabIndex = 7;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.txttempid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttempid.Location = new System.Drawing.Point(123, 66);
+            this.txttempid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txttempid.MaxLength = 100;
+            this.txttempid.Name = "txttempid";
+            this.txttempid.Size = new System.Drawing.Size(187, 25);
+            this.txttempid.TabIndex = 1;
+            this.txttempid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttempid_KeyDown);
             // 
-            // btnSave
+            // label3
             // 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(444, 222);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 29);
-            this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(13, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Template Id";
             // 
             // MR_Template
             // 
@@ -331,7 +339,7 @@
         private System.Windows.Forms.GroupBox gbScheme;
         private System.Windows.Forms.Button btnClose;
         public System.Windows.Forms.Button btnSave;
-        public System.Windows.Forms.TextBox txtSchemeName;
+        public System.Windows.Forms.TextBox txtTempname;
         private System.Windows.Forms.Label lblobjDschemeName;
         private System.Windows.Forms.ErrorProvider epMR_Template;
         public System.Windows.Forms.Label lblSchemeCode;
@@ -339,15 +347,15 @@
         public System.Windows.Forms.GroupBox gbStatus;
         public System.Windows.Forms.RadioButton rbInActive;
         public System.Windows.Forms.RadioButton rbActive;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.RadioButton radioButton1;
-        public System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.RadioButton rbenglish;
+        public System.Windows.Forms.RadioButton rbunicode;
+        private System.Windows.Forms.ComboBox cmbsender;
+        private System.Windows.Forms.TextBox txttempcontant;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        public System.Windows.Forms.TextBox txttempid;
+        private System.Windows.Forms.Label label3;
     }
 }

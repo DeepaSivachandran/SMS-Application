@@ -365,20 +365,21 @@ namespace SMSApplication
 
                         foreach (DataGridViewColumn col in grdStudentList.Columns)
                         {
-
-                            cIndex += 1;
-                            ExcelSheet.Cells[3, cIndex] = col.HeaderText;
-                            ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;
-
-                            if (col.Name == "clmdob")
+                            if (col.Name != "CLMID")
                             {
-                                ExcelSheet.Columns[cIndex].NumberFormat = "@";
-                            }
-                            foreach (DataGridViewRow rowa in grdStudentList.Rows)
-                            {
-                                ExcelSheet.Cells[rowa.Index + 4, cIndex] = rowa.Cells[col.Index].Value;
-                            }
+                                cIndex += 1;
+                                ExcelSheet.Cells[3, cIndex] = col.HeaderText;
+                                ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;
 
+                                if (col.Name == "clmdob")
+                                {
+                                    ExcelSheet.Columns[cIndex].NumberFormat = "@";
+                                }
+                                foreach (DataGridViewRow rowa in grdStudentList.Rows)
+                                {
+                                    ExcelSheet.Cells[rowa.Index + 4, cIndex] = rowa.Cells[col.Index].Value;
+                                }
+                            }
                         }
 
 
