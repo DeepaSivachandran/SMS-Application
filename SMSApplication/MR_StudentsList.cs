@@ -511,5 +511,18 @@ namespace SMSApplication
                 grdStudentList.ClearSelection();
             }
         }
+
+        private void grdStudentList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Convert the cell value to uppercase
+                string cellValue = e.Value.ToString().ToUpper();
+
+                // Update the formatted value
+                e.Value = cellValue;
+                e.FormattingApplied = true;
+            }
+        }
     }
 }

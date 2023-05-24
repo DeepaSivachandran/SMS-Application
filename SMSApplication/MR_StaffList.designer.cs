@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StaffList));
             this.grdStaffList = new System.Windows.Forms.DataGridView();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,18 +51,18 @@
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
+            this.tsbexport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspimport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
             this.LBLSTAFFCODE = new System.Windows.Forms.Label();
-            this.tsbexport = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.picLoader = new System.Windows.Forms.PictureBox();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspimport = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdStaffList)).BeginInit();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -75,14 +75,14 @@
             this.grdStaffList.AllowUserToResizeRows = false;
             this.grdStaffList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdStaffList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdStaffList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdStaffList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdStaffList.ColumnHeadersHeight = 30;
             this.grdStaffList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdStaffList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -100,14 +100,14 @@
             this.clmrfcardno,
             this.clmShortName,
             this.CLMSTAFFID});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdStaffList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdStaffList.DefaultCellStyle = dataGridViewCellStyle4;
             this.grdStaffList.EnableHeadersVisualStyles = false;
             this.grdStaffList.GridColor = System.Drawing.Color.White;
             this.grdStaffList.Location = new System.Drawing.Point(17, 28);
@@ -118,13 +118,14 @@
             this.grdStaffList.Size = new System.Drawing.Size(1325, 559);
             this.grdStaffList.TabIndex = 18;
             this.grdStaffList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdStaffList_CellContentClick);
+            this.grdStaffList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdStaffList_CellFormatting);
             this.grdStaffList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
             this.grdStaffList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
             // clmsno
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
             this.clmsno.Frozen = true;
             this.clmsno.HeaderText = "S.No.";
             this.clmsno.Name = "clmsno";
@@ -134,8 +135,8 @@
             // 
             // clmSchemeName
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle3;
             this.clmSchemeName.Frozen = true;
             this.clmSchemeName.HeaderText = "Staff Name";
             this.clmSchemeName.Name = "clmSchemeName";
@@ -269,12 +270,64 @@
             this.tspFormHeader.Size = new System.Drawing.Size(34, 28);
             this.tspFormHeader.Text = "Staff";
             // 
+            // tsbexport
+            // 
+            this.tsbexport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbexport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbexport.Image = global::SMSApplication.Properties.Resources.excel;
+            this.tsbexport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbexport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbexport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbexport.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbexport.Name = "tsbexport";
+            this.tsbexport.Size = new System.Drawing.Size(74, 28);
+            this.tsbexport.Text = "Export";
+            this.tsbexport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbexport.Click += new System.EventHandler(this.tsbexport_Click_1);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator3.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tspimport
+            // 
+            this.tspimport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tspimport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tspimport.Image = global::SMSApplication.Properties.Resources.import;
+            this.tspimport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tspimport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tspimport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tspimport.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tspimport.Name = "tspimport";
+            this.tspimport.Size = new System.Drawing.Size(75, 28);
+            this.tspimport.Text = "Import";
+            this.tspimport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tspimport.Click += new System.EventHandler(this.tspimport_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tsbDelete
+            // 
+            this.tsbDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbDelete.Image = global::SMSApplication.Properties.Resources.delete16X16;
+            this.tsbDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDelete.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.tsbDelete.Name = "tsbDelete";
+            this.tsbDelete.Size = new System.Drawing.Size(65, 28);
+            this.tsbDelete.Text = "Delete";
+            this.tsbDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // toolStripSeparator1
             // 
@@ -283,12 +336,42 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
+            // tsbEdit
+            // 
+            this.tsbEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbEdit.Image = global::SMSApplication.Properties.Resources.edit__2_;
+            this.tsbEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEdit.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
+            this.tsbEdit.Name = "tsbEdit";
+            this.tsbEdit.Size = new System.Drawing.Size(50, 28);
+            this.tsbEdit.Text = "Edit";
+            this.tsbEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // tsbNew
+            // 
+            this.tsbNew.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsbNew.Image = global::SMSApplication.Properties.Resources.New;
+            this.tsbNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbNew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbNew.Name = "tsbNew";
+            this.tsbNew.Size = new System.Drawing.Size(62, 28);
+            this.tsbNew.Text = "New";
+            this.tsbNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // lblDcolumnIndex
             // 
@@ -310,66 +393,6 @@
             this.LBLSTAFFCODE.Text = "0";
             this.LBLSTAFFCODE.Visible = false;
             // 
-            // tsbexport
-            // 
-            this.tsbexport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbexport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbexport.Image = global::SMSApplication.Properties.Resources.excel;
-            this.tsbexport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbexport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbexport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbexport.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbexport.Name = "tsbexport";
-            this.tsbexport.Size = new System.Drawing.Size(74, 28);
-            this.tsbexport.Text = "Export";
-            this.tsbexport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbexport.Click += new System.EventHandler(this.tsbexport_Click_1);
-            // 
-            // tsbDelete
-            // 
-            this.tsbDelete.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbDelete.Image = global::SMSApplication.Properties.Resources.delete16X16;
-            this.tsbDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbDelete.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDelete.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(65, 28);
-            this.tsbDelete.Text = "Delete";
-            this.tsbDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
-            // 
-            // tsbEdit
-            // 
-            this.tsbEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbEdit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbEdit.Image = global::SMSApplication.Properties.Resources.edit__2_;
-            this.tsbEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbEdit.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEdit.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
-            this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(50, 28);
-            this.tsbEdit.Text = "Edit";
-            this.tsbEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
-            // 
-            // tsbNew
-            // 
-            this.tsbNew.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbNew.Image = global::SMSApplication.Properties.Resources.New;
-            this.tsbNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbNew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(62, 28);
-            this.tsbNew.Text = "New";
-            this.tsbNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
-            // 
             // picLoader
             // 
             this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -383,28 +406,6 @@
             this.picLoader.TabIndex = 958787;
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator4.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
-            // 
-            // tspimport
-            // 
-            this.tspimport.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tspimport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tspimport.Image = global::SMSApplication.Properties.Resources.import;
-            this.tspimport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tspimport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tspimport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tspimport.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tspimport.Name = "tspimport";
-            this.tspimport.Size = new System.Drawing.Size(75, 28);
-            this.tspimport.Text = "Import";
-            this.tspimport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tspimport.Click += new System.EventHandler(this.tspimport_Click);
             // 
             // MR_StaffList
             // 

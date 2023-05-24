@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TRN_SMS_Staff));
-            this.grdSchemeList = new System.Windows.Forms.DataGridView();
+            this.grdstaffsms = new System.Windows.Forms.DataGridView();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,34 +41,37 @@
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnsendsms = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtsenderno = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_VIEW = new System.Windows.Forms.Button();
             this.lblDate = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.msktxtfrom = new System.Windows.Forms.MaskedTextBox();
+            this.msktxtto = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).BeginInit();
+            this.epMR_SMSStaff = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.grdstaffsms)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epMR_SMSStaff)).BeginInit();
             this.SuspendLayout();
             // 
-            // grdSchemeList
+            // grdstaffsms
             // 
-            this.grdSchemeList.AllowUserToAddRows = false;
-            this.grdSchemeList.AllowUserToDeleteRows = false;
-            this.grdSchemeList.AllowUserToResizeRows = false;
-            this.grdSchemeList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grdSchemeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.grdstaffsms.AllowUserToAddRows = false;
+            this.grdstaffsms.AllowUserToDeleteRows = false;
+            this.grdstaffsms.AllowUserToResizeRows = false;
+            this.grdstaffsms.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grdstaffsms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,10 +79,10 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdSchemeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdSchemeList.ColumnHeadersHeight = 30;
-            this.grdSchemeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdSchemeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grdstaffsms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdstaffsms.ColumnHeadersHeight = 30;
+            this.grdstaffsms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.grdstaffsms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmsno,
             this.Column1,
             this.Column2});
@@ -89,18 +93,19 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdSchemeList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.grdSchemeList.EnableHeadersVisualStyles = false;
-            this.grdSchemeList.GridColor = System.Drawing.Color.White;
-            this.grdSchemeList.Location = new System.Drawing.Point(17, 102);
-            this.grdSchemeList.Name = "grdSchemeList";
-            this.grdSchemeList.ReadOnly = true;
-            this.grdSchemeList.RowHeadersVisible = false;
-            this.grdSchemeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdSchemeList.Size = new System.Drawing.Size(1325, 485);
-            this.grdSchemeList.TabIndex = 18;
-            this.grdSchemeList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
-            this.grdSchemeList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
+            this.grdstaffsms.DefaultCellStyle = dataGridViewCellStyle3;
+            this.grdstaffsms.EnableHeadersVisualStyles = false;
+            this.grdstaffsms.GridColor = System.Drawing.Color.White;
+            this.grdstaffsms.Location = new System.Drawing.Point(17, 102);
+            this.grdstaffsms.Name = "grdstaffsms";
+            this.grdstaffsms.ReadOnly = true;
+            this.grdstaffsms.RowHeadersVisible = false;
+            this.grdstaffsms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdstaffsms.Size = new System.Drawing.Size(1325, 485);
+            this.grdstaffsms.TabIndex = 18;
+            this.grdstaffsms.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdstaffsms_CellFormatting);
+            this.grdstaffsms.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
+            this.grdstaffsms.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
             // clmsno
             // 
@@ -167,25 +172,26 @@
             this.lblDcolumnIndex.Text = "0";
             this.lblDcolumnIndex.Visible = false;
             // 
-            // button1
+            // btnsendsms
             // 
-            this.button1.Image = global::SMSApplication.Properties.Resources.send_message__1_;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(869, 56);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 30);
-            this.button1.TabIndex = 958791;
-            this.button1.Text = "Send SMS";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnsendsms.Image = global::SMSApplication.Properties.Resources.send_message__1_;
+            this.btnsendsms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnsendsms.Location = new System.Drawing.Point(952, 56);
+            this.btnsendsms.Name = "btnsendsms";
+            this.btnsendsms.Size = new System.Drawing.Size(97, 30);
+            this.btnsendsms.TabIndex = 958791;
+            this.btnsendsms.Text = "Send SMS";
+            this.btnsendsms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnsendsms.UseVisualStyleBackColor = true;
+            this.btnsendsms.Click += new System.EventHandler(this.btnsendsms_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(991, 38);
+            this.groupBox2.Location = new System.Drawing.Point(1052, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(346, 58);
+            this.groupBox2.Size = new System.Drawing.Size(286, 58);
             this.groupBox2.TabIndex = 958792;
             this.groupBox2.TabStop = false;
             // 
@@ -224,36 +230,50 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(399, 25);
+            this.label2.Location = new System.Drawing.Point(489, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 17);
             this.label2.TabIndex = 958794;
             this.label2.Text = "Send To :";
             // 
-            // textBox1
+            // txtsenderno
             // 
-            this.textBox1.Location = new System.Drawing.Point(472, 18);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(352, 30);
-            this.textBox1.TabIndex = 958795;
+            this.txtsenderno.Location = new System.Drawing.Point(562, 18);
+            this.txtsenderno.Multiline = true;
+            this.txtsenderno.Name = "txtsenderno";
+            this.txtsenderno.Size = new System.Drawing.Size(352, 30);
+            this.txtsenderno.TabIndex = 958795;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_VIEW);
             this.groupBox1.Controls.Add(this.lblDate);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.maskedTextBox2);
+            this.groupBox1.Controls.Add(this.txtsenderno);
+            this.groupBox1.Controls.Add(this.msktxtfrom);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
+            this.groupBox1.Controls.Add(this.msktxtto);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(22, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(839, 58);
+            this.groupBox1.Size = new System.Drawing.Size(924, 58);
             this.groupBox1.TabIndex = 958796;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by";
+            // 
+            // btn_VIEW
+            // 
+            this.btn_VIEW.Image = global::SMSApplication.Properties.Resources.view1;
+            this.btn_VIEW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_VIEW.Location = new System.Drawing.Point(383, 18);
+            this.btn_VIEW.Name = "btn_VIEW";
+            this.btn_VIEW.Size = new System.Drawing.Size(75, 30);
+            this.btn_VIEW.TabIndex = 958798;
+            this.btn_VIEW.Text = "View";
+            this.btn_VIEW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_VIEW.UseVisualStyleBackColor = true;
+            this.btn_VIEW.Click += new System.EventHandler(this.btn_VIEW_Click);
             // 
             // lblDate
             // 
@@ -264,23 +284,25 @@
             this.lblDate.TabIndex = 958797;
             this.lblDate.Text = "15/05/2023";
             // 
-            // maskedTextBox2
+            // msktxtfrom
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(223, 21);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(32, 25);
-            this.maskedTextBox2.TabIndex = 958796;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.msktxtfrom.Location = new System.Drawing.Point(223, 21);
+            this.msktxtfrom.Mask = "00:00";
+            this.msktxtfrom.Name = "msktxtfrom";
+            this.msktxtfrom.Size = new System.Drawing.Size(32, 25);
+            this.msktxtfrom.TabIndex = 958796;
+            this.msktxtfrom.ValidatingType = typeof(System.DateTime);
+            this.msktxtfrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtfrom_KeyDown);
             // 
-            // maskedTextBox1
+            // msktxtto
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(332, 21);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(32, 25);
-            this.maskedTextBox1.TabIndex = 958795;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.msktxtto.Location = new System.Drawing.Point(332, 21);
+            this.msktxtto.Mask = "00:00";
+            this.msktxtto.Name = "msktxtto";
+            this.msktxtto.Size = new System.Drawing.Size(32, 25);
+            this.msktxtto.TabIndex = 958795;
+            this.msktxtto.ValidatingType = typeof(System.DateTime);
+            this.msktxtto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtto_KeyDown);
             // 
             // label1
             // 
@@ -309,6 +331,10 @@
             this.label6.TabIndex = 958793;
             this.label6.Text = "Date :";
             // 
+            // epMR_SMSStaff
+            // 
+            this.epMR_SMSStaff.ContainerControl = this;
+            // 
             // TRN_SMS_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -317,11 +343,11 @@
             this.ClientSize = new System.Drawing.Size(1360, 607);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnsendsms);
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.lblDNoRecordFound);
-            this.Controls.Add(this.grdSchemeList);
+            this.Controls.Add(this.grdstaffsms);
             this.Controls.Add(this.picLoader);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -331,7 +357,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CP_SchemeList";
             this.Load += new System.EventHandler(this.TRN_SMS_Staff_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdstaffsms)).EndInit();
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -339,6 +365,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.epMR_SMSStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,13 +373,13 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView grdSchemeList;
+        public System.Windows.Forms.DataGridView grdstaffsms;
         private System.Windows.Forms.Label lblDNoRecordFound;
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripLabel tspFormHeader;
         private System.Windows.Forms.Label lblDcolumnIndex;
         private System.Windows.Forms.PictureBox picLoader;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnsendsms;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -360,13 +387,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtsenderno;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox msktxtfrom;
+        private System.Windows.Forms.MaskedTextBox msktxtto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_VIEW;
+        private System.Windows.Forms.ErrorProvider epMR_SMSStaff;
     }
 }

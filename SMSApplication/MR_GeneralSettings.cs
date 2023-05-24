@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,8 +44,10 @@ namespace SMSApplication
         private void MR_GeneralSettings_Load(object sender, EventArgs e)
         {
             try
-            {     
+            {
                 //***************Load password settings details******************
+
+                udfnlist();
                 DataSet objDs = new DataSet();
                 DataService objDser = new DataService();
                 objDs = objDser.GetDataset("SELECT TOP 1 [No.of.Chars], PasswordType FROM DEF_PasswordSettings WHERE StatusCode = 1 ORDER BY Autonum DESC");
@@ -65,6 +67,19 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+        public void udfnlist() {
+
+            DataService objdataservice = new DataService();
+            string  numbers = "0";
+            numbers = objdataservice.displaydata("Select ST_TOCONTACTNO from MR_Settings");
+
+            if (numbers.Length > 0)
+            {
+                txtStaffReportnumber.Text = numbers;
+            }
+                objdataservice.CloseConnection();
+        }
+
         private void MR_GeneralSettings_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -251,36 +266,59 @@ namespace SMSApplication
             try {
                 if (txtStaffReportnumber.Text != "")
                 {
+
+                    epMR_GeneralSettings.Clear(); 
                     txtStaffReportnumber.BackColor = Color.White;
                     SPDataService objspdservice = new SPDataService();
+                    DataService objdataservice = new DataService();
+                    string result = "", id = "0";
+                    id = objdataservice.displaydata("Select count(st_id) from MR_Settings");
 
-                    string result = "", status = "0";
+                    string input = txtStaffReportnumber.Text.Trim();
 
-                   
-                    if (btnSave.Text == "Update")
+                    // Define the regular expression pattern
+                    string pattern = @"^\d{10}(,\d{10})*$";
+                    string pattern1 = @"^\d{10},$";
+                    // Check if the input matches the pattern
+                    bool inputvalue = Regex.IsMatch(input, pattern); 
+                    bool inputvalue1 = Regex.IsMatch(input, pattern1);
+
+
+
+                    if (inputvalue || inputvalue1 || input.Length==10)
                     {
-                        result = objspdservice.udfngenralsettings("Create","0" ,txtStaffReportnumber.Text,  MainForm.pbUserID, "staff mobile number Entry");
+                        if (btnSave.Text == "Update")
+                        {
+                            result = objspdservice.udfngenralsettings("Create", id, input, MainForm.pbUserID, "staff mobile number Entry");
+                        }
 
+
+                        if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully."))
+                        {
+                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            udfnclear();
+                        }
+                        else
+                        {
+                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else {
+                        epMR_GeneralSettings.SetError(txtStaffReportnumber, "Please enter the Valid staff number.");
+                        txtStaffReportnumber.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please enter the valid staff number.", txtStaffReportnumber, 5000);
                     }
 
-                   
-
-                    if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") )
-                    {
-                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        udfnclear(); 
-                    }
-                    else
-                    {
-                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    objdataservice.CloseConnection();
+                    objspdservice.CloseConnection();
                 }
                 else
                 {
                     if (txtStaffReportnumber.Text == "")
                     {
                         epMR_GeneralSettings.SetError(txtStaffReportnumber, "Please enter the Report staff number.");
-                        tpConfirmPwd.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        txtStaffReportnumber.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                         tpConfirmPwd.ShowAlways = true;
                         tpConfirmPwd.Show("Please enter the Report staff number.", txtStaffReportnumber, 5000);
                     }
@@ -320,7 +358,11 @@ namespace SMSApplication
 
         private void txtStaffReportnumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '\b' && e.KeyChar != (char)Keys.Delete)
+            {
+                // Ignore the key press event
+                e.Handled = true;
+            }
 
         }
 

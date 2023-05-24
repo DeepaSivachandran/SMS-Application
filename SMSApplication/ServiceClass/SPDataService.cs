@@ -398,7 +398,7 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-
+        //--STAFF MASTER IMPORT--
         public string udfnstaffmasterimport(string paraProcess, DataTable paramr_Staff, string paraUserID, string paraOriginator)
         {
             string result = "";
@@ -425,7 +425,7 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-
+        //--SENDER MASTER --
         public string udfnsenderidmaster(string paraprocess,string parasenderid, string parasendername, string parastatus,string paraUserID,string paraOriginator)
         {   
             string result = "";
@@ -483,7 +483,7 @@ namespace SMSApplication.ServiceClass
             }
             return ds;
         }
-
+        //--TEMPLATE MASTER
         public string udfntemplatemaster(string paraprocess, string paratemplateid, string paratempname,string paratemplatevalue, string paraconenttype, string parasender, string paratempconent, string parastatus, string paraUserID, string paraOriginator)
         {
             string result = "";
@@ -575,6 +575,99 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
+        //--SMS MASTER LIST
+        public DataSet udfnsmsstudentmasterlist(string paraprocess, string paratudentid, string paraUserID,string paratotime,string parafromtime)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STUDENT_ATTENDANCE_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@paratudentid", paratudentid);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@parafromtime", parafromtime);
+                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime);
+                 
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
 
+        public DataSet udfnsmsstaffmasterlist(string paraprocess, string parastaffid, string paraUserID, string paratotime, string parafromtime)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_STAFF_ATTENDANCE_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@parastaffid", parastaffid);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@parafromtime", parafromtime);
+                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime);
+
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
+
+        //-- SNED SMS-- //
+
+        public string udfnsendsms(string paraProcess, string paradate, string paraintime, string paraabsent, string paraouttime, string parasmscount, string paraUserID, string paraOriginator)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_GenralSetting]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
+                varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
+                varSqlCommand.Parameters.AddWithValue("@paraintime", paraintime);
+                varSqlCommand.Parameters.AddWithValue("@paraabsent", paraabsent);
+                varSqlCommand.Parameters.AddWithValue("@paraouttime", paraouttime);
+                varSqlCommand.Parameters.AddWithValue("@parasmscount", parasmscount);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
     }
 }

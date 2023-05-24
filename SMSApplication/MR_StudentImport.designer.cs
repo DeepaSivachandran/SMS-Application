@@ -255,6 +255,7 @@
             this.grdStudentImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdStudentImport.Size = new System.Drawing.Size(1312, 448);
             this.grdStudentImport.TabIndex = 37;
+            this.grdStudentImport.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdStudentImport_CellFormatting);
             this.grdStudentImport.Validated += new System.EventHandler(this.grdStudentImport_Validated);
             // 
             // clmsno

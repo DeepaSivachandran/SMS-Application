@@ -191,7 +191,7 @@ namespace SMSApplication
                 if (grdStaffList.SelectedRows.Count > 0)
                 {
                     string result = "";
-                    var delete = grdStaffList.SelectedRows[0].Cells["STAFFID"].Value.ToString();
+                    var delete = grdStaffList.SelectedRows[0].Cells["clmstaffid"].Value.ToString();
                     DialogResult dialogResult = MessageBox.Show("Do you want to delete ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -399,6 +399,19 @@ namespace SMSApplication
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+            }
+        }
+
+        private void grdStaffList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Convert the cell value to uppercase
+                string cellValue = e.Value.ToString().ToUpper();
+
+                // Update the formatted value
+                e.Value = cellValue;
+                e.FormattingApplied = true;
             }
         }
     }

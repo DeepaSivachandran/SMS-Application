@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StaffImport));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbStudentImport = new System.Windows.Forms.GroupBox();
             this.lblDublicate = new System.Windows.Forms.Label();
             this.lblMismatch = new System.Windows.Forms.Label();
@@ -46,13 +46,6 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.grdStaffImport = new System.Windows.Forms.DataGridView();
-            this.btnDownloadTemplate = new System.Windows.Forms.Button();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.lblDFileName = new System.Windows.Forms.Label();
-            this.txtFileName = new System.Windows.Forms.TextBox();
-            this.lblNoRecordsFound = new System.Windows.Forms.Label();
-            this.picLoader = new System.Windows.Forms.PictureBox();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmstaffname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmmobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +59,13 @@
             this.clmcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmpincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDownloadTemplate = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblDFileName = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.lblNoRecordsFound = new System.Windows.Forms.Label();
+            this.picLoader = new System.Windows.Forms.PictureBox();
             this.gbStudentImport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStaffImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -207,14 +207,14 @@
             this.grdStaffImport.AllowUserToResizeRows = false;
             this.grdStaffImport.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdStaffImport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdStaffImport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdStaffImport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdStaffImport.ColumnHeadersHeight = 30;
             this.grdStaffImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdStaffImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -231,14 +231,14 @@
             this.clmcity,
             this.clmpincode,
             this.clmstatus});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdStaffImport.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdStaffImport.DefaultCellStyle = dataGridViewCellStyle6;
             this.grdStaffImport.EnableHeadersVisualStyles = false;
             this.grdStaffImport.GridColor = System.Drawing.Color.White;
             this.grdStaffImport.Location = new System.Drawing.Point(8, 58);
@@ -248,7 +248,100 @@
             this.grdStaffImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdStaffImport.Size = new System.Drawing.Size(1312, 448);
             this.grdStaffImport.TabIndex = 37;
-//            this.grdStaffImport.Validated += new System.EventHandler(this.grdStudentImport_Validated);
+            this.grdStaffImport.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdStaffImport_CellFormatting);
+            // 
+            // clmsno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 65;
+            // 
+            // clmstaffname
+            // 
+            this.clmstaffname.HeaderText = "Staff Name";
+            this.clmstaffname.Name = "clmstaffname";
+            this.clmstaffname.ReadOnly = true;
+            this.clmstaffname.Width = 180;
+            // 
+            // clmmobile
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmmobile.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmmobile.HeaderText = "Mobile No.";
+            this.clmmobile.Name = "clmmobile";
+            this.clmmobile.ReadOnly = true;
+            // 
+            // clmdob
+            // 
+            this.clmdob.HeaderText = "Date Of Birth";
+            this.clmdob.Name = "clmdob";
+            this.clmdob.ReadOnly = true;
+            // 
+            // clmblood
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmblood.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmblood.HeaderText = "Blood Group";
+            this.clmblood.Name = "clmblood";
+            this.clmblood.ReadOnly = true;
+            // 
+            // clmdesignation
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmdesignation.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmdesignation.HeaderText = "Designation";
+            this.clmdesignation.Name = "clmdesignation";
+            this.clmdesignation.ReadOnly = true;
+            this.clmdesignation.Width = 200;
+            // 
+            // clmrfid
+            // 
+            this.clmrfid.HeaderText = "RF ID Card No.";
+            this.clmrfid.Name = "clmrfid";
+            this.clmrfid.ReadOnly = true;
+            this.clmrfid.Width = 150;
+            // 
+            // clmaddress
+            // 
+            this.clmaddress.HeaderText = "Address - 1";
+            this.clmaddress.Name = "clmaddress";
+            this.clmaddress.ReadOnly = true;
+            this.clmaddress.Width = 150;
+            // 
+            // clmaddress2
+            // 
+            this.clmaddress2.HeaderText = "Address - 2";
+            this.clmaddress2.Name = "clmaddress2";
+            this.clmaddress2.ReadOnly = true;
+            // 
+            // clmaddress3
+            // 
+            this.clmaddress3.HeaderText = "Address - 3";
+            this.clmaddress3.Name = "clmaddress3";
+            this.clmaddress3.ReadOnly = true;
+            // 
+            // clmcity
+            // 
+            this.clmcity.HeaderText = "City";
+            this.clmcity.Name = "clmcity";
+            this.clmcity.ReadOnly = true;
+            // 
+            // clmpincode
+            // 
+            this.clmpincode.HeaderText = "Pincode";
+            this.clmpincode.Name = "clmpincode";
+            this.clmpincode.ReadOnly = true;
+            // 
+            // clmstatus
+            // 
+            this.clmstatus.HeaderText = "Status";
+            this.clmstatus.Name = "clmstatus";
+            this.clmstatus.ReadOnly = true;
+            this.clmstatus.Width = 70;
             // 
             // btnDownloadTemplate
             // 
@@ -340,99 +433,6 @@
             this.picLoader.TabIndex = 958787;
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle8;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 65;
-            // 
-            // clmstaffname
-            // 
-            this.clmstaffname.HeaderText = "Staff Name";
-            this.clmstaffname.Name = "clmstaffname";
-            this.clmstaffname.ReadOnly = true;
-            this.clmstaffname.Width = 180;
-            // 
-            // clmmobile
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmmobile.DefaultCellStyle = dataGridViewCellStyle9;
-            this.clmmobile.HeaderText = "Mobile No.";
-            this.clmmobile.Name = "clmmobile";
-            this.clmmobile.ReadOnly = true;
-            // 
-            // clmdob
-            // 
-            this.clmdob.HeaderText = "Date Of Birth";
-            this.clmdob.Name = "clmdob";
-            this.clmdob.ReadOnly = true;
-            // 
-            // clmblood
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmblood.DefaultCellStyle = dataGridViewCellStyle10;
-            this.clmblood.HeaderText = "Blood Group";
-            this.clmblood.Name = "clmblood";
-            this.clmblood.ReadOnly = true;
-            // 
-            // clmdesignation
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmdesignation.DefaultCellStyle = dataGridViewCellStyle11;
-            this.clmdesignation.HeaderText = "Designation";
-            this.clmdesignation.Name = "clmdesignation";
-            this.clmdesignation.ReadOnly = true;
-            this.clmdesignation.Width = 200;
-            // 
-            // clmrfid
-            // 
-            this.clmrfid.HeaderText = "RF ID Card No.";
-            this.clmrfid.Name = "clmrfid";
-            this.clmrfid.ReadOnly = true;
-            this.clmrfid.Width = 150;
-            // 
-            // clmaddress
-            // 
-            this.clmaddress.HeaderText = "Address - 1";
-            this.clmaddress.Name = "clmaddress";
-            this.clmaddress.ReadOnly = true;
-            this.clmaddress.Width = 150;
-            // 
-            // clmaddress2
-            // 
-            this.clmaddress2.HeaderText = "Address - 2";
-            this.clmaddress2.Name = "clmaddress2";
-            this.clmaddress2.ReadOnly = true;
-            // 
-            // clmaddress3
-            // 
-            this.clmaddress3.HeaderText = "Address - 3";
-            this.clmaddress3.Name = "clmaddress3";
-            this.clmaddress3.ReadOnly = true;
-            // 
-            // clmcity
-            // 
-            this.clmcity.HeaderText = "City";
-            this.clmcity.Name = "clmcity";
-            this.clmcity.ReadOnly = true;
-            // 
-            // clmpincode
-            // 
-            this.clmpincode.HeaderText = "Pincode";
-            this.clmpincode.Name = "clmpincode";
-            this.clmpincode.ReadOnly = true;
-            // 
-            // clmstatus
-            // 
-            this.clmstatus.HeaderText = "Status";
-            this.clmstatus.Name = "clmstatus";
-            this.clmstatus.ReadOnly = true;
-            this.clmstatus.Width = 70;
             // 
             // MR_StaffImport
             // 

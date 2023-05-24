@@ -29,10 +29,12 @@ namespace SMSApplication
         {
             try
             {
+                DateTime currentDate = DateTime.Now; 
+                lblDate.Text = currentDate.ToString("dd/MM/yyyy");
                 udfnList();
              //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
-                grdSchemeList.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
+                grdsmsstudent.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
             }
             catch (Exception ex)
             {
@@ -49,7 +51,7 @@ namespace SMSApplication
                 picLoader.Visible = true;
                 Application.DoEvents();
                 //****** To display a data in a grid  ******************
-                grdSchemeList.Rows.Clear();
+                grdsmsstudent.Rows.Clear();
                 SPDataService objDserv = new SPDataService();
                 DataSet objDs;
                 //*********** To call the function from SP ***********
@@ -64,7 +66,7 @@ namespace SMSApplication
             }
             finally
             {
-                grdSchemeList.ClearSelection();
+                grdsmsstudent.ClearSelection();
                 picLoader.Visible = false;
             }
         }
@@ -133,25 +135,8 @@ namespace SMSApplication
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        public void udfnClose()
-        {
-            try
-            {
-                DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (objDialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            catch(Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
+        } 
+       
         //Author : Lavanya
         //created Date :11/04/2019
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
@@ -177,7 +162,7 @@ namespace SMSApplication
            try
             {
                 //************ On Double Click Event ********
-                DataGridView.HitTestInfo hit = grdSchemeList.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                DataGridView.HitTestInfo hit = grdsmsstudent.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
                 if (hit.RowIndex != -1)
                 {
                   //  udfnedit();
@@ -190,18 +175,100 @@ namespace SMSApplication
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+         
+
+        private void btn_VIEW_Click(object sender, EventArgs e)
         {
             try
-            { 
-                MainForm.objMR_StudentImport = new MR_StudentImport();
-                MainForm.objMR_StudentImport.MdiParent = this.ParentForm;
-                MainForm.objMR_StudentImport.Show();
+            {
+                DataSet objDs;
+                //**** To call the function from SP ***************
+                SPDataService objdserv = new SPDataService();
+                string[] item = new string[30];
+                ListViewItem listitem = new ListViewItem();
+                grdsmsstudent.Rows.Clear();
+                objDs = objdserv.udfnsmsstudentmasterlist("list", "", MainForm.pbUserID, msktxtto.Text,msktxtfrom.Text);
+                objdserv.CloseConnection();
+                if (objDs != null)
+                {
+                    grdsmsstudent.Rows.Clear();
+                    if (objDs.Tables.Count != 0)
+                    {
+                        grdsmsstudent.Rows.Clear();
+                        if (objDs.Tables[0].Rows.Count != 0)
+                        {
+                            grdsmsstudent.DataSource = null;
+                            lblDNoRecordFound.Visible = false;
+                            lblDNoRecordFound.SendToBack();
+                            for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                            {
+                                item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString();
+                                item[1] = objDs.Tables[0].Rows[i]["ADMISSION"].ToString();
+                                item[2] = objDs.Tables[0].Rows[i]["NAME"].ToString(); 
+                                item[3] = objDs.Tables[0].Rows[i]["CLASS"].ToString(); 
+                                item[4] = objDs.Tables[0].Rows[i]["mobile"].ToString(); 
+                                item[5] = objDs.Tables[0].Rows[i]["ID"].ToString();
+                                listitem = new ListViewItem(item);
+                                grdsmsstudent.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5]);
+                            }
+                            lblpresent.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
+                            lblAbsent.Text = objDs.Tables[1].Rows[0]["absent"].ToString();
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblDNoRecordFound.BringToFront();
+                        lblDNoRecordFound.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblDNoRecordFound.BringToFront();
+                    lblDNoRecordFound.Visible = true;
+                }
             }
             catch (Exception ex)
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+            }
+            finally
+            {
+                grdsmsstudent.ClearSelection();
+            }
+        }
+
+        private void msktxtfrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                msktxtto.Focus();
+            }
+        }
+
+        private void msktxtto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_VIEW.Focus();
+            }
+        }
+
+        private void grdsmsstudent_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                // Convert the cell value to uppercase
+                string cellValue = e.Value.ToString().ToUpper();
+
+                // Update the formatted value
+                e.Value = cellValue;
+                e.FormattingApplied = true;
             }
         }
     }

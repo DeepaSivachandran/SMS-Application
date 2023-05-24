@@ -474,7 +474,7 @@ namespace SMSApplication
             {
                 udfnclear();
                 grdStaffImport.Rows.Clear();
-            }
+            } 
             catch(Exception ex)
             {
                 objError = new DataError();
@@ -514,8 +514,7 @@ namespace SMSApplication
                         objDt.Columns.Add("STM_Designation", typeof(string));
                         objDt.Columns.Add("STM_CardNo", typeof(string)); 
                         objDt.Columns.Add("STM_STSID", typeof(string));
-                        objDt.Columns.Add("STM_Source", typeof(int)); 
-
+                        objDt.Columns.Add("STM_Source", typeof(int));   
 
                         for (int i = 0; i < grdStaffImport.Rows.Count; i++)
                         {
@@ -572,7 +571,7 @@ namespace SMSApplication
                             {
                                 MessageBox.Show("Staffs Imported Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 udfnclear(); 
-                            MainForm.objMR_StudentsList.udfnList();
+                            MainForm.objMR_StaffList.udfnList();
                         }
                             else
                             {
@@ -666,6 +665,17 @@ namespace SMSApplication
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+            }
+        }
+
+        private void grdStaffImport_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value != null && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            { 
+                string cellValue = e.Value.ToString().ToUpper();
+                 
+                e.Value = cellValue;
+                e.FormattingApplied = true;
             }
         }
     }

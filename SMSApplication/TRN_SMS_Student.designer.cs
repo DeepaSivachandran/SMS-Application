@@ -33,19 +33,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TRN_SMS_Student));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.grdSchemeList = new System.Windows.Forms.DataGridView();
+            this.grdsmsstudent = new System.Windows.Forms.DataGridView();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_VIEW = new System.Windows.Forms.Button();
             this.lblAbsent = new System.Windows.Forms.Label();
             this.lblpresent = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.msktxtfrom = new System.Windows.Forms.MaskedTextBox();
+            this.msktxtto = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,20 +62,21 @@
             this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).BeginInit();
+            this.clmid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grdsmsstudent)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             this.SuspendLayout();
             // 
-            // grdSchemeList
+            // grdsmsstudent
             // 
-            this.grdSchemeList.AllowUserToAddRows = false;
-            this.grdSchemeList.AllowUserToDeleteRows = false;
-            this.grdSchemeList.AllowUserToResizeRows = false;
-            this.grdSchemeList.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.grdSchemeList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            this.grdsmsstudent.AllowUserToAddRows = false;
+            this.grdsmsstudent.AllowUserToDeleteRows = false;
+            this.grdsmsstudent.AllowUserToResizeRows = false;
+            this.grdsmsstudent.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.grdsmsstudent.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,15 +84,16 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdSchemeList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdSchemeList.ColumnHeadersHeight = 30;
-            this.grdSchemeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.grdSchemeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.grdsmsstudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdsmsstudent.ColumnHeadersHeight = 30;
+            this.grdsmsstudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.grdsmsstudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmsno,
             this.Column1,
             this.clmSchemeName,
             this.Column2,
-            this.C});
+            this.C,
+            this.clmid});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,18 +101,19 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdSchemeList.DefaultCellStyle = dataGridViewCellStyle4;
-            this.grdSchemeList.EnableHeadersVisualStyles = false;
-            this.grdSchemeList.GridColor = System.Drawing.Color.White;
-            this.grdSchemeList.Location = new System.Drawing.Point(17, 102);
-            this.grdSchemeList.Name = "grdSchemeList";
-            this.grdSchemeList.ReadOnly = true;
-            this.grdSchemeList.RowHeadersVisible = false;
-            this.grdSchemeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdSchemeList.Size = new System.Drawing.Size(1325, 485);
-            this.grdSchemeList.TabIndex = 18;
-            this.grdSchemeList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
-            this.grdSchemeList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
+            this.grdsmsstudent.DefaultCellStyle = dataGridViewCellStyle4;
+            this.grdsmsstudent.EnableHeadersVisualStyles = false;
+            this.grdsmsstudent.GridColor = System.Drawing.Color.White;
+            this.grdsmsstudent.Location = new System.Drawing.Point(17, 102);
+            this.grdsmsstudent.Name = "grdsmsstudent";
+            this.grdsmsstudent.ReadOnly = true;
+            this.grdsmsstudent.RowHeadersVisible = false;
+            this.grdsmsstudent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdsmsstudent.Size = new System.Drawing.Size(1325, 485);
+            this.grdsmsstudent.TabIndex = 18;
+            this.grdsmsstudent.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdsmsstudent_CellFormatting);
+            this.grdsmsstudent.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
+            this.grdsmsstudent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
             // lblDNoRecordFound
             // 
@@ -155,22 +159,36 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_VIEW);
             this.groupBox1.Controls.Add(this.lblAbsent);
             this.groupBox1.Controls.Add(this.lblpresent);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.lblDate);
-            this.groupBox1.Controls.Add(this.maskedTextBox2);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
+            this.groupBox1.Controls.Add(this.msktxtfrom);
+            this.groupBox1.Controls.Add(this.msktxtto);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(31, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(709, 58);
+            this.groupBox1.Size = new System.Drawing.Size(791, 58);
             this.groupBox1.TabIndex = 958788;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by";
+            // 
+            // btn_VIEW
+            // 
+            this.btn_VIEW.Image = global::SMSApplication.Properties.Resources.view1;
+            this.btn_VIEW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_VIEW.Location = new System.Drawing.Point(709, 18);
+            this.btn_VIEW.Name = "btn_VIEW";
+            this.btn_VIEW.Size = new System.Drawing.Size(75, 30);
+            this.btn_VIEW.TabIndex = 3;
+            this.btn_VIEW.Text = "View";
+            this.btn_VIEW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_VIEW.UseVisualStyleBackColor = true;
+            this.btn_VIEW.Click += new System.EventHandler(this.btn_VIEW_Click);
             // 
             // lblAbsent
             // 
@@ -180,9 +198,9 @@
             this.lblAbsent.ForeColor = System.Drawing.Color.White;
             this.lblAbsent.Location = new System.Drawing.Point(647, 25);
             this.lblAbsent.Name = "lblAbsent";
-            this.lblAbsent.Size = new System.Drawing.Size(27, 17);
+            this.lblAbsent.Size = new System.Drawing.Size(15, 17);
             this.lblAbsent.TabIndex = 958800;
-            this.lblAbsent.Text = "100";
+            this.lblAbsent.Text = "0";
             // 
             // lblpresent
             // 
@@ -192,9 +210,9 @@
             this.lblpresent.ForeColor = System.Drawing.SystemColors.Control;
             this.lblpresent.Location = new System.Drawing.Point(483, 25);
             this.lblpresent.Name = "lblpresent";
-            this.lblpresent.Size = new System.Drawing.Size(34, 17);
+            this.lblpresent.Size = new System.Drawing.Size(15, 17);
             this.lblpresent.TabIndex = 958799;
-            this.lblpresent.Text = "1400";
+            this.lblpresent.Text = "0";
             // 
             // label9
             // 
@@ -223,23 +241,25 @@
             this.lblDate.TabIndex = 958797;
             this.lblDate.Text = "15/05/2023";
             // 
-            // maskedTextBox2
+            // msktxtfrom
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(223, 21);
-            this.maskedTextBox2.Mask = "00:00";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(32, 25);
-            this.maskedTextBox2.TabIndex = 958796;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
+            this.msktxtfrom.Location = new System.Drawing.Point(223, 21);
+            this.msktxtfrom.Mask = "00:00";
+            this.msktxtfrom.Name = "msktxtfrom";
+            this.msktxtfrom.Size = new System.Drawing.Size(32, 25);
+            this.msktxtfrom.TabIndex = 1;
+            this.msktxtfrom.ValidatingType = typeof(System.DateTime);
+            this.msktxtfrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtfrom_KeyDown);
             // 
-            // maskedTextBox1
+            // msktxtto
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(332, 21);
-            this.maskedTextBox1.Mask = "00:00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(32, 25);
-            this.maskedTextBox1.TabIndex = 958795;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.msktxtto.Location = new System.Drawing.Point(332, 21);
+            this.msktxtto.Mask = "00:00";
+            this.msktxtto.Name = "msktxtto";
+            this.msktxtto.Size = new System.Drawing.Size(32, 25);
+            this.msktxtto.TabIndex = 2;
+            this.msktxtto.ValidatingType = typeof(System.DateTime);
+            this.msktxtto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtto_KeyDown);
             // 
             // label2
             // 
@@ -271,7 +291,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(843, 63);
+            this.label3.Location = new System.Drawing.Point(934, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 17);
             this.label3.TabIndex = 958789;
@@ -281,7 +301,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(951, 59);
+            this.comboBox3.Location = new System.Drawing.Point(1042, 59);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(93, 25);
             this.comboBox3.TabIndex = 958790;
@@ -333,7 +353,7 @@
             // 
             this.button1.Image = global::SMSApplication.Properties.Resources.send_message__1_;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(746, 56);
+            this.button1.Location = new System.Drawing.Point(837, 56);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 30);
             this.button1.TabIndex = 958793;
@@ -382,6 +402,13 @@
             this.C.ReadOnly = true;
             this.C.Width = 200;
             // 
+            // clmid
+            // 
+            this.clmid.HeaderText = "Id";
+            this.clmid.Name = "clmid";
+            this.clmid.ReadOnly = true;
+            this.clmid.Visible = false;
+            // 
             // TRN_SMS_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -396,7 +423,7 @@
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
             this.Controls.Add(this.lblDNoRecordFound);
-            this.Controls.Add(this.grdSchemeList);
+            this.Controls.Add(this.grdsmsstudent);
             this.Controls.Add(this.picLoader);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -406,7 +433,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "CP_SchemeList";
             this.Load += new System.EventHandler(this.TRN_SMS_Student_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.grdSchemeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdsmsstudent)).EndInit();
             this.tspMenu.ResumeLayout(false);
             this.tspMenu.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -421,7 +448,7 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView grdSchemeList;
+        public System.Windows.Forms.DataGridView grdsmsstudent;
         private System.Windows.Forms.Label lblDNoRecordFound;
         private System.Windows.Forms.ToolStrip tspMenu;
         private System.Windows.Forms.ToolStripLabel tspFormHeader;
@@ -436,18 +463,20 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox msktxtfrom;
+        private System.Windows.Forms.MaskedTextBox msktxtto;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblpresent;
         private System.Windows.Forms.Label lblAbsent;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_VIEW;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmsno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmSchemeName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn C;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmid;
     }
 }
