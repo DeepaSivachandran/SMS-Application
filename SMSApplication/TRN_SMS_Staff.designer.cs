@@ -289,7 +289,7 @@
             this.msktxtfrom.Location = new System.Drawing.Point(223, 21);
             this.msktxtfrom.Mask = "00:00";
             this.msktxtfrom.Name = "msktxtfrom";
-            this.msktxtfrom.Size = new System.Drawing.Size(32, 25);
+            this.msktxtfrom.Size = new System.Drawing.Size(38, 25);
             this.msktxtfrom.TabIndex = 958796;
             this.msktxtfrom.ValidatingType = typeof(System.DateTime);
             this.msktxtfrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtfrom_KeyDown);
@@ -299,7 +299,7 @@
             this.msktxtto.Location = new System.Drawing.Point(332, 21);
             this.msktxtto.Mask = "00:00";
             this.msktxtto.Name = "msktxtto";
-            this.msktxtto.Size = new System.Drawing.Size(32, 25);
+            this.msktxtto.Size = new System.Drawing.Size(38, 25);
             this.msktxtto.TabIndex = 958795;
             this.msktxtto.ValidatingType = typeof(System.DateTime);
             this.msktxtto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.msktxtto_KeyDown);

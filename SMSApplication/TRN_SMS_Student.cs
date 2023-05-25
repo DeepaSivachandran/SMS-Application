@@ -18,6 +18,7 @@ namespace SMSApplication
         DataValidation objValidation = new DataValidation();
         DataError objError = new DataError();
 
+        private ToolTip tpConfirmPwd = new ToolTip();
         //*************** Declare the variable *******************
         public string pbflag = "0";
         public TRN_SMS_Student()
@@ -270,6 +271,56 @@ namespace SMSApplication
                 e.Value = cellValue;
                 e.FormattingApplied = true;
             }
+        }
+
+        private void btnsmssend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnsave();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+        public void udfnsave()
+        {      
+            if (msktxtfrom.Text!="" && msktxtto.Text!="" )
+            {
+                SPDataService objspdservice = new SPDataService(); 
+                string result = "", status = "0", source = "1"; 
+                result = objspdservice.udfnsendsms("Create",lblDate.Text,msktxtfrom.Text,lblAbsent.Text,msktxtto.Text, lblpresent.Text, MainForm.pbUserID,"Send SMS"); 
+                if (result.Contains("SMS Send Successfully.") )
+                {
+                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // udfnclear();
+                   // MainForm.objMR_StudentsList.udfnList();
+                }
+                else
+                {
+                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                if (msktxtfrom.Text == "")
+                {
+                    epMR_SMSStudent.SetError(msktxtfrom, "Please enter from time.");
+                    msktxtfrom.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpConfirmPwd.ShowAlways = true;
+                    tpConfirmPwd.Show("Please enter from time.", msktxtfrom, 5000);
+                }
+                if ( msktxtto.Text == "")
+                {
+                    epMR_SMSStudent.SetError(msktxtto, "Please enter to time.");
+                    msktxtto.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpConfirmPwd.ShowAlways = true;
+                    tpConfirmPwd.Show("Please enter to time.", msktxtto, 5000);
+                }
+            }
+
         }
     }
 }

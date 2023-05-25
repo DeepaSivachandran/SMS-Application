@@ -354,8 +354,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
                 varSqlCommand.Parameters.AddWithValue("@ParastudentId", paraStudentid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
-                varSqlCommand.Parameters.AddWithValue("@paraclassid", paraclassid);
-                
+                varSqlCommand.Parameters.AddWithValue("@paraclassid", paraclassid); 
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
                 sa.Fill(ds);
@@ -644,7 +643,7 @@ namespace SMSApplication.ServiceClass
             try
             {
                 tmpspcall = new SPCall();
-                SqlCommand varSqlCommand = new SqlCommand("[PROC_GenralSetting]", tmpspcall.objConn);
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_SENDSMS]", tmpspcall.objConn);
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
                 varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
