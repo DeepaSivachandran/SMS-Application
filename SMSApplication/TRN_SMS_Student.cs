@@ -12,7 +12,7 @@ namespace SMSApplication
 {
     public partial class TRN_SMS_Student : Form
     {
-        // Author : Lavanya
+        // Author : Deepa
         // Created Date: 2019-04-11
         // ********** Object for Service Classed Initialisation **********
         DataValidation objValidation = new DataValidation();
@@ -20,7 +20,7 @@ namespace SMSApplication
 
         private ToolTip tpConfirmPwd = new ToolTip();
         //*************** Declare the variable *******************
-        public string pbflag = "0";
+        public string pbflag = "0",PRESENTVAL="0", ABSENTVAL = "0", OUTVAL = "0";
         public TRN_SMS_Student()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Lavanya
+        //Author : Deepa
         //created Date :11/04/2019
         public void udfnList()
         {
@@ -57,8 +57,7 @@ namespace SMSApplication
                 DataSet objDs;
                 //*********** To call the function from SP ***********
              //   objDs = objDserv.udfn_TRN_SMS_Student(MainForm.pbUserID,MainForm.pbIpAddress);
-                objDserv.CloseConnection();
-                             
+                objDserv.CloseConnection();               
             }
             catch (Exception ex)
             {
@@ -71,74 +70,8 @@ namespace SMSApplication
                 picLoader.Visible = false;
             }
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MainForm.objMR_Student = new MR_Student();
-                MainForm.objMR_Student.MdiParent = this.ParentForm;
-                MainForm.objMR_Student.Show();
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               // udfndelete();
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void TRN_SMS_Student_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                //************* short cut keys to open another form ***********
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.N))
-                {
-                    tsbNew_Click(sender, e);
-                }
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.E))
-                {
-                    tsbEdit_Click(sender, e);
-                }               
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        } 
        
-        //Author : Lavanya
+        //Author : Deepa
         //created Date :11/04/2019
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
         {
@@ -156,7 +89,7 @@ namespace SMSApplication
             }
         }
     
-        //Author : Lavanya
+        //Author : Deepa
         //Created Date : 17/04/2019
         private void grdSchemeList_DoubleClick(object sender, EventArgs e)
         {
@@ -174,9 +107,7 @@ namespace SMSApplication
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
-        }
-
-         
+        } 
 
         private void btn_VIEW_Click(object sender, EventArgs e)
         {
@@ -188,7 +119,17 @@ namespace SMSApplication
                 string[] item = new string[30];
                 ListViewItem listitem = new ListViewItem();
                 grdsmsstudent.Rows.Clear();
-                objDs = objdserv.udfnsmsstudentmasterlist("list", "", MainForm.pbUserID, msktxtto.Text,msktxtfrom.Text);
+                string studentleft = "0";
+                btnsmssend.Enabled = true;
+                if (chkouttime.Checked == true)
+                {
+                    studentleft = "1";
+                }
+                else
+                {
+                    studentleft = "0";
+                }
+                objDs = objdserv.udfnsmsstudentmasterlist("list", "", MainForm.pbUserID, msktxtto.Text,msktxtfrom.Text,studentleft);
                 objdserv.CloseConnection();
                 if (objDs != null)
                 {
@@ -212,8 +153,10 @@ namespace SMSApplication
                                 listitem = new ListViewItem(item);
                                 grdsmsstudent.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5]);
                             }
-                            lblpresent.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
+                            lblpresent.Text = objDs.Tables[1].Rows[0]["Present"].ToString(); 
+                            lblouttime.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
                             lblAbsent.Text = objDs.Tables[1].Rows[0]["absent"].ToString();
+                             
                         }
                         else
                         {
@@ -287,20 +230,58 @@ namespace SMSApplication
         }
         public void udfnsave()
         {      
-            if (msktxtfrom.Text!="" && msktxtto.Text!="" )
+            if (msktxtfrom.Text!="" && msktxtto.Text!="" && grdsmsstudent.RowCount > 0)
             {
+
+                DataService objdservice = new DataService();
                 SPDataService objspdservice = new SPDataService(); 
-                string result = "", status = "0", source = "1"; 
-                result = objspdservice.udfnsendsms("Create",lblDate.Text,msktxtfrom.Text,lblAbsent.Text,msktxtto.Text, lblpresent.Text, MainForm.pbUserID,"Send SMS"); 
-                if (result.Contains("SMS Send Successfully.") )
+                string result = "", studentleft = "0", smscount = "0";
+                PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=1 ");
+                ABSENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=3 ");
+                OUTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=2 ");
+                objdservice.CloseConnection();
+                if (chkouttime.Checked == true)
                 {
-                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    // udfnclear();
-                   // MainForm.objMR_StudentsList.udfnList();
+                    studentleft = "1";
                 }
                 else
                 {
-                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    studentleft = "0";
+                }
+                if (chkouttime.Checked == true)
+                {
+                    smscount = lblouttime.Text;
+                    if (OUTVAL != "0" )
+                    { 
+                        btnsmssend.Enabled = false;
+                    }
+
+                 }
+                else {
+
+                    smscount = lblpresent.Text;
+                    if ((PRESENTVAL != "0" && ABSENTVAL != "0"))
+                    {
+                        btnsmssend.Enabled = false;
+                    }
+                }
+
+                if (btnsmssend.Enabled == true)
+                {
+                    result = objspdservice.udfnsendsms("Create", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, smscount, MainForm.pbUserID, "Send SMS", studentleft);
+                    if (result.Contains("SMS Send Successfully."))
+                    {
+                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // udfnclear();
+                        // MainForm.objMR_StudentsList.udfnList();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else {
+                    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
@@ -319,8 +300,34 @@ namespace SMSApplication
                     tpConfirmPwd.ShowAlways = true;
                     tpConfirmPwd.Show("Please enter to time.", msktxtto, 5000);
                 }
+                if (grdsmsstudent.RowCount <= 0)
+                {
+                    MessageBox.Show("No Records Found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
+        }
+
+        private void chkouttime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkouttime.Checked == true)
+            {
+                lblAbsent.Visible = false;
+                lbldabsent.Visible = false;
+                lblpresent.Visible = false;
+                lbldpresent.Visible = false;
+                lblouttime.Visible = true;
+                lbldouttime.Visible = true;
+            }
+            else
+            { 
+                lblAbsent.Visible = true;
+                lbldabsent.Visible = true;
+                lblpresent.Visible = true;
+                lbldpresent.Visible = true;
+                lblouttime.Visible = false;
+                lbldouttime.Visible = false;
+            }
         }
     }
 }

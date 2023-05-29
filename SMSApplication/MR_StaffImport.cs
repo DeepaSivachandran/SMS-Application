@@ -120,10 +120,10 @@ namespace SMSApplication
                                varExcelcon = string.Format(System.Configuration.ConfigurationManager.AppSettings["Excel2007"], varFilename);
                                 oledbcon = new OleDbConnection(varExcelcon);
                                 break;
-                        }
-                        //  
-                        oledbcon.Open();
+                        }  
                         //************ Read excel sheet name ***************
+                        //*************** Datatable value bond to gridview *******************
+                        oledbcon.Open();
                         DataTable dtExcelSchema;
                         dtExcelSchema = oledbcon.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
                         string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
@@ -138,7 +138,6 @@ namespace SMSApplication
                         string[] item = new string[30];
                         ListViewItem listitem = new ListViewItem();
                         DataService dserv = new DataService();
-                        //*************** Datatable value bond to gridview *******************
                         if (objDs != null)
                         {
                             if (objDs.Tables[0].Rows.Count > 0)
@@ -433,8 +432,7 @@ namespace SMSApplication
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
-        }
-         
+        } 
         private void btnDownloadTemplate_Click(object sender, EventArgs e)
         {
             try

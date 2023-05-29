@@ -14,7 +14,7 @@ namespace SMSApplication
 {
     public partial class TRN_SMS_Staff : Form
     {
-        // Author : Lavanya
+        // Author : Deepa
         // Created Date: 2019-04-11
         // ********** Object for Service Classed Initialisation **********
         DataValidation objValidation = new DataValidation();
@@ -56,7 +56,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        //Author : Lavanya
+        //Author : Deepa
         //created Date :11/04/2019
         public void udfnList()
         {
@@ -66,9 +66,11 @@ namespace SMSApplication
                 //**** To call the function from SP ***************
                 SPDataService objdserv = new SPDataService();
                 string[] item = new string[30];
+                string studentleft = "0";
+               
                 ListViewItem listitem = new ListViewItem();
                 grdstaffsms.Rows.Clear();
-                objDs = objdserv.udfnsmsstaffmasterlist("list", "", MainForm.pbUserID, msktxtto.Text, msktxtfrom.Text);
+                objDs = objdserv.udfnsmsstaffmasterlist("list", "", MainForm.pbUserID, msktxtto.Text, msktxtfrom.Text, studentleft);
                 objdserv.CloseConnection();
                 if (objDs != null)
                 {
@@ -119,38 +121,8 @@ namespace SMSApplication
                 grdstaffsms.ClearSelection();
             }
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MainForm.objMR_Student = new MR_Student();
-                MainForm.objMR_Student.MdiParent = this.ParentForm;
-                MainForm.objMR_Student.Show();
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
         
-       
-        //Author : Lavanya
+        //Author : Deepa
         //created Date :11/04/2019
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
         {
@@ -168,7 +140,7 @@ namespace SMSApplication
             }
         }
     
-        //Author : Lavanya
+        //Author : Deepa
         //Created Date : 17/04/2019
         private void grdSchemeList_DoubleClick(object sender, EventArgs e)
         {
@@ -226,39 +198,39 @@ namespace SMSApplication
         public void udfnsave()
         { 
             string input = txtsenderno.Text.Trim();
-
+            string PRESENTVAL = "0";
             // Define the regular expression pattern
             string pattern = @"^\d{10}(,\d{10})*$";
             string pattern1 = @"^\d{10},$";
             // Check if the input matches the pattern
             bool inputvalue = Regex.IsMatch(input, pattern);
             bool inputvalue1 = Regex.IsMatch(input, pattern1); 
+            DataService objdservice = new DataService();
+            PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=4 ");
+
+
             if (inputvalue || inputvalue1 || input.Length == 10)
             {
-                SPDataService objspdservice = new SPDataService();
-
-                string result = "", status = "0", source = "1";
-                 
-                if (btnsendsms.Text == "Save")
+                if (PRESENTVAL == "0")
                 {
-                  //result = objspdservice.udfnsendsms("Create",lblDate.Text,msktxtfrom.Text,txt,msktxtto.Text, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "Student Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
-                }
-
-                else
-                {
-                //result = objspdservice.udfnStudentMaster("edit", VARstudentcode, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
-                }
-
-                if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
-                {
-                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   // udfnclear();
-                    MainForm.objMR_StudentsList.udfnList();
+                    SPDataService objspdservice = new SPDataService(); 
+                    string result = "", status = "0", source = "1"; 
+                    result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, txtsenderno.Text, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
+                    if (result.Contains("SMS Send Successfully."))
+                    {
+                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // udfnclear();
+                        // MainForm.objMR_StudentsList.udfnList();
+                    }
+                    else
+                    {
+                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                } 
             }
             else
             {

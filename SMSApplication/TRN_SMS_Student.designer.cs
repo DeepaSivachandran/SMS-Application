@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TRN_SMS_Student));
             this.grdsmsstudent = new System.Windows.Forms.DataGridView();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +49,8 @@
             this.btn_VIEW = new System.Windows.Forms.Button();
             this.lblAbsent = new System.Windows.Forms.Label();
             this.lblpresent = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbldabsent = new System.Windows.Forms.Label();
+            this.lbldpresent = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.msktxtfrom = new System.Windows.Forms.MaskedTextBox();
             this.msktxtto = new System.Windows.Forms.MaskedTextBox();
@@ -65,6 +65,10 @@
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.btnsmssend = new System.Windows.Forms.Button();
             this.epMR_SMSStudent = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.chkouttime = new System.Windows.Forms.CheckBox();
+            this.lblouttime = new System.Windows.Forms.Label();
+            this.lbldouttime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdsmsstudent)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,14 +84,14 @@
             this.grdsmsstudent.AllowUserToResizeRows = false;
             this.grdsmsstudent.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdsmsstudent.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdsmsstudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdsmsstudent.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.grdsmsstudent.ColumnHeadersHeight = 30;
             this.grdsmsstudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdsmsstudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -97,14 +101,14 @@
             this.Column2,
             this.C,
             this.clmid});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdsmsstudent.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdsmsstudent.DefaultCellStyle = dataGridViewCellStyle16;
             this.grdsmsstudent.EnableHeadersVisualStyles = false;
             this.grdsmsstudent.GridColor = System.Drawing.Color.White;
             this.grdsmsstudent.Location = new System.Drawing.Point(17, 102);
@@ -120,8 +124,8 @@
             // 
             // clmsno
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle14;
             this.clmsno.HeaderText = "S.No.";
             this.clmsno.Name = "clmsno";
             this.clmsno.ReadOnly = true;
@@ -137,8 +141,8 @@
             // 
             // clmSchemeName
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle15;
             this.clmSchemeName.HeaderText = "Student Name";
             this.clmSchemeName.Name = "clmSchemeName";
             this.clmSchemeName.ReadOnly = true;
@@ -210,11 +214,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblouttime);
+            this.groupBox1.Controls.Add(this.chkouttime);
+            this.groupBox1.Controls.Add(this.lbldouttime);
             this.groupBox1.Controls.Add(this.btn_VIEW);
             this.groupBox1.Controls.Add(this.lblAbsent);
             this.groupBox1.Controls.Add(this.lblpresent);
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.lbldabsent);
+            this.groupBox1.Controls.Add(this.lbldpresent);
             this.groupBox1.Controls.Add(this.lblDate);
             this.groupBox1.Controls.Add(this.msktxtfrom);
             this.groupBox1.Controls.Add(this.msktxtto);
@@ -223,7 +230,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(31, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(791, 58);
+            this.groupBox1.Size = new System.Drawing.Size(852, 58);
             this.groupBox1.TabIndex = 958788;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter by";
@@ -232,7 +239,7 @@
             // 
             this.btn_VIEW.Image = global::SMSApplication.Properties.Resources.view1;
             this.btn_VIEW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_VIEW.Location = new System.Drawing.Point(709, 18);
+            this.btn_VIEW.Location = new System.Drawing.Point(773, 18);
             this.btn_VIEW.Name = "btn_VIEW";
             this.btn_VIEW.Size = new System.Drawing.Size(75, 30);
             this.btn_VIEW.TabIndex = 3;
@@ -247,7 +254,7 @@
             this.lblAbsent.BackColor = System.Drawing.Color.Red;
             this.lblAbsent.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAbsent.ForeColor = System.Drawing.Color.White;
-            this.lblAbsent.Location = new System.Drawing.Point(647, 25);
+            this.lblAbsent.Location = new System.Drawing.Point(723, 25);
             this.lblAbsent.Name = "lblAbsent";
             this.lblAbsent.Size = new System.Drawing.Size(15, 17);
             this.lblAbsent.TabIndex = 958800;
@@ -259,29 +266,29 @@
             this.lblpresent.BackColor = System.Drawing.Color.LimeGreen;
             this.lblpresent.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblpresent.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblpresent.Location = new System.Drawing.Point(483, 25);
+            this.lblpresent.Location = new System.Drawing.Point(579, 25);
             this.lblpresent.Name = "lblpresent";
             this.lblpresent.Size = new System.Drawing.Size(15, 17);
             this.lblpresent.TabIndex = 958799;
             this.lblpresent.Text = "0";
             // 
-            // label9
+            // lbldabsent
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(551, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 17);
-            this.label9.TabIndex = 958793;
-            this.label9.Text = "Absent Count :";
+            this.lbldabsent.AutoSize = true;
+            this.lbldabsent.Location = new System.Drawing.Point(619, 25);
+            this.lbldabsent.Name = "lbldabsent";
+            this.lbldabsent.Size = new System.Drawing.Size(93, 17);
+            this.lbldabsent.TabIndex = 958793;
+            this.lbldabsent.Text = "Absent Count :";
             // 
-            // label8
+            // lbldpresent
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(387, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(96, 17);
-            this.label8.TabIndex = 958798;
-            this.label8.Text = "Present Count :";
+            this.lbldpresent.AutoSize = true;
+            this.lbldpresent.Location = new System.Drawing.Point(472, 25);
+            this.lbldpresent.Name = "lbldpresent";
+            this.lbldpresent.Size = new System.Drawing.Size(96, 17);
+            this.lbldpresent.TabIndex = 958798;
+            this.lbldpresent.Text = "Present Count :";
             // 
             // lblDate
             // 
@@ -294,7 +301,7 @@
             // 
             // msktxtfrom
             // 
-            this.msktxtfrom.Location = new System.Drawing.Point(223, 21);
+            this.msktxtfrom.Location = new System.Drawing.Point(302, 21);
             this.msktxtfrom.Mask = "00:00";
             this.msktxtfrom.Name = "msktxtfrom";
             this.msktxtfrom.Size = new System.Drawing.Size(36, 25);
@@ -304,7 +311,7 @@
             // 
             // msktxtto
             // 
-            this.msktxtto.Location = new System.Drawing.Point(332, 21);
+            this.msktxtto.Location = new System.Drawing.Point(411, 21);
             this.msktxtto.Mask = "00:00";
             this.msktxtto.Name = "msktxtto";
             this.msktxtto.Size = new System.Drawing.Size(36, 25);
@@ -315,7 +322,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(263, 25);
+            this.label2.Location = new System.Drawing.Point(344, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 958794;
@@ -324,7 +331,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 25);
+            this.label1.Location = new System.Drawing.Point(219, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 17);
             this.label1.TabIndex = 2;
@@ -360,18 +367,19 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(1051, 38);
+            this.groupBox2.Location = new System.Drawing.Point(1093, 38);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(286, 58);
+            this.groupBox2.Size = new System.Drawing.Size(244, 58);
             this.groupBox2.TabIndex = 958792;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(189, 25);
+            this.label4.Location = new System.Drawing.Point(6, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 17);
             this.label4.TabIndex = 1;
@@ -380,11 +388,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 25);
+            this.label5.Location = new System.Drawing.Point(1019, 38);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Sender ID:";
+            this.label5.Visible = false;
             // 
             // picLoader
             // 
@@ -404,7 +413,7 @@
             // 
             this.btnsmssend.Image = global::SMSApplication.Properties.Resources.send_message__1_;
             this.btnsmssend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsmssend.Location = new System.Drawing.Point(837, 56);
+            this.btnsmssend.Location = new System.Drawing.Point(889, 56);
             this.btnsmssend.Name = "btnsmssend";
             this.btnsmssend.Size = new System.Drawing.Size(97, 30);
             this.btnsmssend.TabIndex = 958793;
@@ -417,6 +426,53 @@
             // 
             this.epMR_SMSStudent.ContainerControl = this;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.RoyalBlue;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.epMR_SMSStudent.SetIconAlignment(this.label7, System.Windows.Forms.ErrorIconAlignment.MiddleLeft);
+            this.label7.Location = new System.Drawing.Point(84, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(15, 17);
+            this.label7.TabIndex = 958801;
+            this.label7.Text = "0";
+            // 
+            // chkouttime
+            // 
+            this.chkouttime.AutoSize = true;
+            this.chkouttime.Location = new System.Drawing.Point(137, 25);
+            this.chkouttime.Name = "chkouttime";
+            this.chkouttime.Size = new System.Drawing.Size(73, 21);
+            this.chkouttime.TabIndex = 958801;
+            this.chkouttime.Text = "Outtime";
+            this.chkouttime.UseVisualStyleBackColor = true;
+            this.chkouttime.CheckedChanged += new System.EventHandler(this.chkouttime_CheckedChanged);
+            // 
+            // lblouttime
+            // 
+            this.lblouttime.AutoSize = true;
+            this.lblouttime.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblouttime.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblouttime.ForeColor = System.Drawing.Color.White;
+            this.lblouttime.Location = new System.Drawing.Point(600, 25);
+            this.lblouttime.Name = "lblouttime";
+            this.lblouttime.Size = new System.Drawing.Size(15, 17);
+            this.lblouttime.TabIndex = 958802;
+            this.lblouttime.Text = "0";
+            this.lblouttime.Visible = false;
+            // 
+            // lbldouttime
+            // 
+            this.lbldouttime.AutoSize = true;
+            this.lbldouttime.Location = new System.Drawing.Point(472, 25);
+            this.lbldouttime.Name = "lbldouttime";
+            this.lbldouttime.Size = new System.Drawing.Size(122, 17);
+            this.lbldouttime.TabIndex = 958801;
+            this.lbldouttime.Text = "Out Student Count :";
+            this.lbldouttime.Visible = false;
+            // 
             // TRN_SMS_Student
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -424,6 +480,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1360, 607);
             this.Controls.Add(this.btnsmssend);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label3);
@@ -475,8 +532,8 @@
         private System.Windows.Forms.MaskedTextBox msktxtfrom;
         private System.Windows.Forms.MaskedTextBox msktxtto;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbldpresent;
+        private System.Windows.Forms.Label lbldabsent;
         private System.Windows.Forms.Label lblpresent;
         private System.Windows.Forms.Label lblAbsent;
         private System.Windows.Forms.Button btnsmssend;
@@ -488,5 +545,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmid;
         private System.Windows.Forms.ErrorProvider epMR_SMSStudent;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkouttime;
+        private System.Windows.Forms.Label lblouttime;
+        private System.Windows.Forms.Label lbldouttime;
     }
 }
