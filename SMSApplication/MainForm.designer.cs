@@ -57,8 +57,22 @@ namespace SMSApplication
             this.tssTotalCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslable = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbltotalsms = new System.Windows.Forms.Label();
+            this.lbldouttime = new System.Windows.Forms.Label();
+            this.lblsentsms = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.lblneton = new System.Windows.Forms.Label();
+            this.lblnetoff = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblbucketlist = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblsmscompare = new System.Windows.Forms.Label();
             this.ms.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -157,8 +171,8 @@ namespace SMSApplication
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
             this.toolStripMenuItem1.ShowShortcutKeys = false;
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(92, 53);
-            this.toolStripMenuItem1.Text = "&Admin Panel";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 53);
+            this.toolStripMenuItem1.Text = "&Control Panel";
             this.toolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -243,7 +257,7 @@ namespace SMSApplication
             // 
             this.tsmSMSStaff.Name = "tsmSMSStaff";
             this.tsmSMSStaff.Size = new System.Drawing.Size(204, 22);
-            this.tsmSMSStaff.Text = "Attendance - Staff";
+            this.tsmSMSStaff.Text = "Attendance - Staffs";
             this.tsmSMSStaff.Click += new System.EventHandler(this.TsmSMSStaff_Click);
             // 
             // tsmSMSGeneral
@@ -304,12 +318,152 @@ namespace SMSApplication
             this.statusStrip1.TabIndex = 958784;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // lbltotalsms
+            // 
+            this.lbltotalsms.AutoSize = true;
+            this.lbltotalsms.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lbltotalsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalsms.ForeColor = System.Drawing.Color.White;
+            this.lbltotalsms.Location = new System.Drawing.Point(386, 21);
+            this.lbltotalsms.Name = "lbltotalsms";
+            this.lbltotalsms.Size = new System.Drawing.Size(15, 17);
+            this.lbltotalsms.TabIndex = 958804;
+            this.lbltotalsms.Text = "0";
+            // 
+            // lbldouttime
+            // 
+            this.lbldouttime.AutoSize = true;
+            this.lbldouttime.Location = new System.Drawing.Point(317, 21);
+            this.lbldouttime.Name = "lbldouttime";
+            this.lbldouttime.Size = new System.Drawing.Size(112, 17);
+            this.lbldouttime.TabIndex = 958803;
+            this.lbldouttime.Text = "SMS In-Progress: ";
+            // 
+            // lblsentsms
+            // 
+            this.lblsentsms.AutoSize = true;
+            this.lblsentsms.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblsentsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsentsms.ForeColor = System.Drawing.Color.White;
+            this.lblsentsms.Location = new System.Drawing.Point(243, 21);
+            this.lblsentsms.Name = "lblsentsms";
+            this.lblsentsms.Size = new System.Drawing.Size(15, 17);
+            this.lblsentsms.TabIndex = 958806;
+            this.lblsentsms.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(172, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 17);
+            this.label2.TabIndex = 958805;
+            this.label2.Text = "Sent SMS : ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(962, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.TabIndex = 958809;
+            this.label1.Text = "Internet Connection  ";
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 30000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // lblneton
+            // 
+            this.lblneton.AutoSize = true;
+            this.lblneton.BackColor = System.Drawing.Color.Green;
+            this.lblneton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblneton.ForeColor = System.Drawing.Color.White;
+            this.lblneton.Location = new System.Drawing.Point(1089, 23);
+            this.lblneton.Name = "lblneton";
+            this.lblneton.Size = new System.Drawing.Size(16, 17);
+            this.lblneton.TabIndex = 958810;
+            this.lblneton.Text = "  ";
+            this.lblneton.Visible = false;
+            // 
+            // lblnetoff
+            // 
+            this.lblnetoff.AutoSize = true;
+            this.lblnetoff.BackColor = System.Drawing.Color.Red;
+            this.lblnetoff.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblnetoff.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnetoff.ForeColor = System.Drawing.Color.White;
+            this.lblnetoff.Location = new System.Drawing.Point(1089, 23);
+            this.lblnetoff.Name = "lblnetoff";
+            this.lblnetoff.Size = new System.Drawing.Size(16, 17);
+            this.lblnetoff.TabIndex = 958811;
+            this.lblnetoff.Text = "  ";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblsentsms);
+            this.groupBox1.Controls.Add(this.lblsmscompare);
+            this.groupBox1.Controls.Add(this.lblbucketlist);
+            this.groupBox1.Controls.Add(this.lbldouttime);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lbltotalsms);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(419, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(537, 50);
+            this.groupBox1.TabIndex = 958812;
+            this.groupBox1.TabStop = false;
+            // 
+            // lblbucketlist
+            // 
+            this.lblbucketlist.AutoSize = true;
+            this.lblbucketlist.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblbucketlist.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblbucketlist.ForeColor = System.Drawing.Color.White;
+            this.lblbucketlist.Location = new System.Drawing.Point(116, 21);
+            this.lblbucketlist.Name = "lblbucketlist";
+            this.lblbucketlist.Size = new System.Drawing.Size(15, 17);
+            this.lblbucketlist.TabIndex = 958815;
+            this.lblbucketlist.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(5, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 17);
+            this.label4.TabIndex = 958814;
+            this.label4.Text = "Available Credits : ";
+            // 
+            // lblsmscompare
+            // 
+            this.lblsmscompare.AutoSize = true;
+            this.lblsmscompare.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblsmscompare.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsmscompare.ForeColor = System.Drawing.Color.White;
+            this.lblsmscompare.Location = new System.Drawing.Point(426, 21);
+            this.lblsmscompare.Name = "lblsmscompare";
+            this.lblsmscompare.Size = new System.Drawing.Size(15, 17);
+            this.lblsmscompare.TabIndex = 958816;
+            this.lblsmscompare.Text = "0";
+            this.lblsmscompare.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1275, 559);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.lblnetoff);
+            this.Controls.Add(this.lblneton);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.ms);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -320,7 +474,7 @@ namespace SMSApplication
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Exam Cell Management";
+            this.Text = "SMS Application";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -329,6 +483,8 @@ namespace SMSApplication
             this.ms.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,5 +516,18 @@ namespace SMSApplication
         private System.Windows.Forms.ToolStripMenuItem tsmSMSStudents;
         private System.Windows.Forms.ToolStripMenuItem tsmSMSStaff;
         private System.Windows.Forms.ToolStripMenuItem tsmSMSGeneral;
+        private System.Windows.Forms.Label lbldouttime;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        internal System.Windows.Forms.Timer timer2;
+        internal System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label lblneton;
+        private System.Windows.Forms.Label lblnetoff;
+        private System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label lbltotalsms;
+        public System.Windows.Forms.Label lblsentsms;
+        public System.Windows.Forms.Label lblbucketlist;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label lblsmscompare;
     }
 }

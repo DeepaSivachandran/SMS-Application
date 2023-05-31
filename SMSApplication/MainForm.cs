@@ -19,6 +19,10 @@ namespace SMSApplication
         public DataError objError = new DataError();
 
         //------- Variable Declaration
+
+        public static string totalsms="0";
+        public static string sentsms="0";
+        public static string pendingsms = "0"; 
         public static int varCloseFlag = 0;
         public static string pbVersion;
         public static string pbUserID;
@@ -69,6 +73,9 @@ namespace SMSApplication
                 InitializeComponent();
                 objValidation.setFontAndFontSize(this);
                 timer1.Start();
+
+                timer3.Start();
+                timer2.Start();
             }
             catch (Exception ex)
             {
@@ -111,6 +118,8 @@ namespace SMSApplication
                 this.Text = "SMS Application" + " - " + pbVersion;
                 //lblAcademicYear.Text =  pbAcademicMonth + " - " + pbCurrentYear;
                 timer1_Tick(sender, e);
+                timer2_Tick(sender, e);
+                timer3_Tick(sender, e);
                 udfnCloseChildForms();
                 objStart = new Start();
                 objStart.MdiParent = this;
@@ -161,6 +170,8 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -436,6 +447,57 @@ namespace SMSApplication
                 MainForm.objTRN_SMS_General = new TRN_SMS_General();
                 MainForm.objTRN_SMS_General.MdiParent = this;
                 MainForm.objTRN_SMS_General.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+      
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                DataService objDservice = new DataService();
+                // lblTime.Text = lblAcademicYear.Text + "\r\n" + "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
+                lblbucketlist.Text = objDservice.displaydata("select ST_smsbucket from MR_Settings");
+                 
+                totalsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,2,5) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103)");
+                sentsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS NOT NULL");
+                pendingsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS   NULL");
+                objDservice.CloseConnection();  
+                lbltotalsms.Text =totalsms;
+                lblsentsms.Text = sentsms;
+                if (pendingsms != "0")
+                {
+                    lblsmscompare.Text = pendingsms + " / " + totalsms;
+                }
+                else {
+                    lblsmscompare.Text = " - ";
+                }
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                DataService objDservice = new DataService();
+                if (objValidation.internetconnection() == true)
+                {
+                    lblneton.Visible = true; 
+                    lblnetoff.Visible = false;
+                }
+                else {
+                    lblnetoff.Visible = true;
+                    lblneton.Visible = false;
+                }
             }
             catch (Exception ex)
             {

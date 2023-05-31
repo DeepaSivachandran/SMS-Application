@@ -18,8 +18,12 @@ namespace SMSApplication
         DataValidation objValidation = new DataValidation();
         DataError objError = new DataError();
 
+        private ToolTip tpConfirmPwd = new ToolTip();
         //*************** Declare the variable *******************
-        public string pbflag = "0";
+
+        public string pbflag = "0", PRESENTVAL = "0", ABSENTVAL = "0", OUTVAL = "0";
+        public string varstudentcode = "0", varstaffcode = "0";
+
         public TRN_SMS_General()
         {
             InitializeComponent();
@@ -29,10 +33,16 @@ namespace SMSApplication
         {
             try
             {
+
+                DataBind objDataBind = new DataBind();
+                objDataBind.BindComboBoxListSelected("view_SL_Member", " SD_ID not in (0) Order by SD_ID", "SM_NAME,SD_ID", cmbmember, "", "SM_NAME", "SD_ID");
+                objDataBind.BindComboBoxListSelected("View_template", " TMP_Id  not in (0) Order by TMP_Id", "tmp_name,TMP_Id", cmbtemplate, "", "tmp_name", "TMP_Id");
+                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_Id", "CS_ClassSection,CS_Id", cmbclass, "", "CS_ClassSection", "CS_Id");
+                objDataBind = null;
                 udfnList();
-             //   ((MainForm)ParentForm).statusStrip1.Visible = true;
+                //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
-                grdSchemeList.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
+                grdstudentsms.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
             }
             catch (Exception ex)
             {
@@ -44,18 +54,18 @@ namespace SMSApplication
         //created Date :11/04/2019
         public void udfnList()
         {
-           try
+            try
             {
                 picLoader.Visible = true;
                 Application.DoEvents();
                 //****** To display a data in a grid  ******************
-                grdSchemeList.Rows.Clear();
+                grdstudentsms.Rows.Clear();
                 SPDataService objDserv = new SPDataService();
                 DataSet objDs;
                 //*********** To call the function from SP ***********
-             //   objDs = objDserv.udfn_TRN_SMS_General(MainForm.pbUserID,MainForm.pbIpAddress);
+                //   objDs = objDserv.udfn_TRN_SMS_General(MainForm.pbUserID,MainForm.pbIpAddress);
                 objDserv.CloseConnection();
-                             
+
             }
             catch (Exception ex)
             {
@@ -64,94 +74,13 @@ namespace SMSApplication
             }
             finally
             {
-                grdSchemeList.ClearSelection();
+                grdstudentsms.ClearSelection();
                 picLoader.Visible = false;
             }
         }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbNew_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                MainForm.objMR_Student = new MR_Student();
-                MainForm.objMR_Student.MdiParent = this.ParentForm;
-                MainForm.objMR_Student.Show();
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void tsbDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-               // udfndelete();
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
 
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        private void TRN_SMS_General_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                //************* short cut keys to open another form ***********
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.N))
-                {
-                    tsbNew_Click(sender, e);
-                }
-                if (((Control.ModifierKeys & Keys.Control) == Keys.Control) && (e.KeyCode == Keys.E))
-                {
-                    tsbEdit_Click(sender, e);
-                }               
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-        //Author : Lavanya
-        //created Date :11/04/2019
-        public void udfnClose()
-        {
-            try
-            {
-                DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (objDialogResult == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            catch(Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
+
+
         //Author : Lavanya
         //created Date :11/04/2019
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
@@ -160,27 +89,7 @@ namespace SMSApplication
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                   // udfnedit();
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
-        }
-    
-        //Author : Lavanya
-        //Created Date : 17/04/2019
-        private void grdSchemeList_DoubleClick(object sender, EventArgs e)
-        {
-           try
-            {
-                //************ On Double Click Event ********
-                DataGridView.HitTestInfo hit = grdSchemeList.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
-                if (hit.RowIndex != -1)
-                {
-                  //  udfnedit();
+                    // udfnedit();
                 }
             }
             catch (Exception ex)
@@ -190,13 +99,18 @@ namespace SMSApplication
             }
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        //Author : Lavanya
+        //Created Date : 17/04/2019
+        private void grdSchemeList_DoubleClick(object sender, EventArgs e)
         {
             try
-            { 
-                MainForm.objMR_StudentImport = new MR_StudentImport();
-                MainForm.objMR_StudentImport.MdiParent = this.ParentForm;
-                MainForm.objMR_StudentImport.Show();
+            {
+                //************ On Double Click Event ********
+                DataGridView.HitTestInfo hit = grdstudentsms.HitTest(((MouseEventArgs)e).X, ((MouseEventArgs)e).Y);
+                if (hit.RowIndex != -1)
+                {
+                    //  udfnedit();
+                }
             }
             catch (Exception ex)
             {
@@ -204,5 +118,510 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+
+
+
+        private void cmbmember_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToString(cmbmember.SelectedValue) == "2")
+            {
+                grdstaffsms.Visible = true;
+                chkSelectStaff.Visible = true;
+                chkSelectstudent.Visible = false;
+                cmbclass.Enabled = false;
+            }
+            else {
+
+                grdstaffsms.Visible = false;
+                cmbclass.Enabled = true;
+                chkSelectStaff.Visible = false;
+                chkSelectstudent.Visible = true;
+            }
+        }
+
+        private void btnclassview_Click(object sender, EventArgs e)
+        {
+
+            try {
+                DataSet objDs;
+                //**** To call the function from SP ***************
+                SPDataService objdserv = new SPDataService();  
+                string[] item = new string[30]; 
+                ListViewItem listitem = new ListViewItem();
+                if (Convert.ToString(cmbmember.SelectedValue) != "-1" && Convert.ToString(cmbsender.SelectedValue) != "-1" && Convert.ToString(cmbtemplate.SelectedValue) != "-1")
+                {
+                    grdstaffsms.Rows.Clear();
+                    objDs = objdserv.udfncompsesms(Convert.ToString(cmbmember.SelectedValue), MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue), Convert.ToString(cmbclass.SelectedValue));
+                    epMR_SMSStudent.Clear();
+                    lblsenderid.Text = Convert.ToString(cmbsender.SelectedValue);
+                    txtsmscontent.Text = objDs.Tables[0].Rows[0]["content"].ToString();
+                    if (Convert.ToString(cmbmember.SelectedValue) == "1")
+                    {
+                        if (objDs != null)
+                        {
+                             grdstudentsms.Rows.Clear();
+                            if (objDs.Tables.Count != 0)
+                            {
+                                   grdstudentsms.Rows.Clear();
+                                if (objDs.Tables[1].Rows.Count != 0)
+                                {
+                                    grdstudentsms.DataSource = null;
+                                    lblDNoRecordFound.Visible = false;
+                                    lblDNoRecordFound.SendToBack();
+                                    lblsmscount.Text = "0";
+                                    for (int i = 0; i < objDs.Tables[1].Rows.Count; i++)
+                                    {
+                                         
+                                        //  grdstudentsms.DataSource = objDs.Tables[1];  
+                                        item[1] = objDs.Tables[1].Rows[i]["SINO"].ToString();
+                                        item[2] = objDs.Tables[1].Rows[i]["ADMISSION"].ToString();
+                                        item[3] = objDs.Tables[1].Rows[i]["NAME"].ToString();
+                                        item[4] = objDs.Tables[1].Rows[i]["CLASS"].ToString();
+                                        item[5] = objDs.Tables[1].Rows[i]["mobile"].ToString();
+                                        item[6] = objDs.Tables[1].Rows[i]["STATUS"].ToString();
+                                        item[7] = objDs.Tables[1].Rows[i]["id"].ToString(); 
+                                        listitem = new ListViewItem(item);
+                                        grdstudentsms.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7]);
+                                    }
+                                }
+                                else
+                                {
+                                    lblDNoRecordFound.BringToFront();
+                                    lblDNoRecordFound.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                lblDNoRecordFound.BringToFront();
+                                lblDNoRecordFound.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+                    else {
+                        if (objDs != null)
+                        {
+                            grdstaffsms.Rows.Clear();
+                            if (objDs.Tables.Count != 0)
+                            {
+                                grdstaffsms.Rows.Clear();
+                                if (objDs.Tables[1].Rows.Count != 0)
+                                {
+                                    grdstaffsms.DataSource = null;
+                                    lblDNoRecordFound.Visible = false;
+                                    lblDNoRecordFound.SendToBack();
+                                    lblsmscount.Text = "0";
+                                    for (int i = 0; i < objDs.Tables[1].Rows.Count; i++)
+                                    {
+                                        item[1] = objDs.Tables[1].Rows[i]["SINO"].ToString();
+                                        item[2] = objDs.Tables[1].Rows[i]["NAME"].ToString();
+                                        item[3] = objDs.Tables[1].Rows[i]["mobile"].ToString();
+                                        item[4] = objDs.Tables[1].Rows[i]["STATUS"].ToString(); 
+                                        item[5] = objDs.Tables[1].Rows[i]["id"].ToString();
+
+                                        listitem = new ListViewItem(item);
+                                        grdstaffsms.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5]);
+                                    } 
+                                }
+                                else
+                                {
+                                    lblDNoRecordFound.BringToFront();
+                                    lblDNoRecordFound.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                lblDNoRecordFound.BringToFront();
+                                lblDNoRecordFound.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (Convert.ToString(cmbmember.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbmember, "Please select the member.");
+                        cmbmember.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the member.", cmbmember, 5000);
+                    }
+                    if (Convert.ToString(cmbsender.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
+                        cmbsender.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the sender.", cmbsender, 5000);
+                    }
+                    if (Convert.ToString(cmbtemplate.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbtemplate, "Please select the senderthe template.");
+                        cmbtemplate.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the template.", cmbtemplate, 5000);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+
+
+
+        }
+
+        private void chkSelectstudent_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int count = 0;
+                for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                { 
+                    grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value = chkSelectstudent.Checked;  
+
+                    Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
+
+                    if (varbooleanvalue == true)
+                    {
+                        count = count + 1;
+                    }
+                }
+
+                lblsmscount.Text = Convert.ToString(count);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void grdstaffsms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                object value1 = grdstaffsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (value1 == null)
+                {
+                    grdstaffsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                }
+                else if ((bool)value1 == true)
+                {
+                    grdstaffsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
+                }
+                else
+                {
+                    grdstaffsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                }
+                int count = 0;
+                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                {
+                    Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
+
+                    if (varbooleanvalue == true)
+                    {
+                        count = count + 1;
+                    }
+                }
+
+                lblsmscount.Text = Convert.ToString(count);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbsender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void cmbtemplate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToString(cmbtemplate.SelectedValue) != "-1")
+                {
+                    string varsenderid = "0";
+                    DataService objdservice = new DataService();
+                    varsenderid = objdservice.displaydata("select TMP_SDID from MR_Template where TMP_Id='" + cmbtemplate.SelectedValue + "'");
+                  
+                    cmbsender.Enabled = true; 
+                    DataBind objDataBind = new DataBind();
+
+                    objDataBind.BindComboBoxListSelected("View_senderid", " sd_id in (-1," + varsenderid + ") Order by sd_id", "sd_name,sd_id", cmbsender, "", "sd_name", "sd_id");
+                    
+                    objDataBind = null;
+                }
+                else {
+
+                    cmbsender.Enabled = false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void chkSelectStaff_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                int count = 0;
+                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                {
+                    grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value = chkSelectStaff.Checked;
+ 
+                    Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
+
+                    if (varbooleanvalue == true)
+                    {
+                        count = count + 1;
+                    }
+                }
+
+                lblsmscount.Text = Convert.ToString(count);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void grdstudentsms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                object value1 = grdstudentsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (value1 == null)
+                {
+                    grdstudentsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                }
+                else if ((bool)value1 == true)
+                {
+                    grdstudentsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = false;
+                }
+                else
+                {
+                    grdstudentsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
+                }
+                int count = 0;
+                for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                {
+                    Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
+
+                    if (varbooleanvalue == true)
+                    {
+                        count = count + 1;
+                    }
+                }
+
+                lblsmscount.Text = Convert.ToString(count);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void btnsmssend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                udfnsave();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        public void udfnsave()
+        {
+            if (objValidation.internetconnection() == true)
+            {
+                if (Convert.ToString(cmbmember.SelectedValue) != "-1" && Convert.ToString(cmbsender.SelectedValue) != "-1")
+                {
+
+                    DataService objdservice = new DataService();
+                    SPDataService objspdservice = new SPDataService();
+                    string result = "", studentleft = "0", smscount = "0";
+                    PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
+                    objdservice.CloseConnection();
+                    int varflag = 0;
+                    varstudentcode = "0";
+                    varstaffcode = "0";
+                    //if (PRESENTVAL == "0")
+                    //{
+                    if (Convert.ToString(cmbmember.SelectedValue) == "1")
+                    {
+
+                        for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                        {
+                            if (Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value) == true)
+                            {
+                                if (varstudentcode == "0")
+                                {
+                                    varstudentcode = Convert.ToString(grdstudentsms.Rows[i].Cells["admission"].Value);
+                                }
+                                else
+                                {
+                                    varstudentcode = varstudentcode + ',' + Convert.ToString(grdstudentsms.Rows[i].Cells["admission"].Value);
+                                }
+                            }
+
+                        }
+
+                        for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                        {
+                            Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
+                            if (varbooleanvalue == true)
+                            {
+                                varflag++;
+                            }
+
+                        }
+                        if (varflag == 0)
+                        {
+                            MessageBox.Show("Please Select Atleast One student.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                        else
+                        {
+                            if (btnsmssend.Enabled == true)
+                            {
+                                result = objspdservice.udfnsendsmscompose("compose", varstudentcode, MainForm.pbUserID, "General SMS for student", lblsmscount.Text, "1", Convert.ToString(cmbtemplate.SelectedValue));
+                                if (result.Contains("SMS Send Successfully."))
+                                {
+                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // udfnclear();
+                                    // MainForm.objMR_StudentsList.udfnList();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                        {
+                            if (Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value) == true)
+                            {
+                                if (varstaffcode == "")
+                                {
+                                    varstaffcode = Convert.ToString(grdstaffsms.Rows[i].Cells["clmstaffid"].Value);
+                                }
+                                else
+                                {
+                                    varstaffcode = varstaffcode + ',' + Convert.ToString(grdstaffsms.Rows[i].Cells["clmstaffid"].Value);
+                                }
+                            }
+                        }
+                        for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                        {
+                            Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
+                            if (varbooleanvalue == true)
+                            {
+                                varflag++;
+                            }
+
+                        }
+                        if (varflag == 0)
+                        {
+                            MessageBox.Show("Please Select Atleast One staff.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                        else
+                        {
+                            if (btnsmssend.Enabled == true)
+                            {
+                                result = objspdservice.udfnsendsmscompose("compose", varstaffcode, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "2", Convert.ToString(cmbtemplate.SelectedValue));
+                                if (result.Contains("SMS Send Successfully."))
+                                {
+                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // udfnclear();
+                                    // MainForm.objMR_StudentsList.udfnList();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    //}
+                    //else
+                    //{
+
+                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+                }
+
+                else
+                {
+                    if (Convert.ToString(cmbmember.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbmember, "Please select the member.");
+                        cmbmember.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the member.", cmbmember, 5000);
+                    }
+                    if (Convert.ToString(cmbsender.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
+                        cmbsender.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the sender.", cmbsender, 5000);
+                    }
+
+                }
+            }
+            else {
+                MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+    
     }
 }

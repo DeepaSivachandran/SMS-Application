@@ -929,6 +929,11 @@ namespace SMSApplication
             txtpincode.BackColor = Color.White;
         }
 
+        private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void txtAlternativeMobileNo_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

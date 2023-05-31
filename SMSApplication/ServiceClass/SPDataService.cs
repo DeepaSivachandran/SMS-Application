@@ -671,7 +671,7 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-
+        //-- sms for staff
 
         public string udfnsendsmsSTAFF(string paraProcess, string paradate, string paraintime, string parasendernumber,string paraouttime, string parasmscount, string paraUserID, string paraOriginator )
         {
@@ -704,5 +704,68 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
+        //--compose sms
+        public DataSet udfncompsesms(  string parasmemberid, string paraUserID,string parasenderrid,string paratemplateid,string paraclass)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_COMPOSE_SMSLIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@parasmemberid", parasmemberid); 
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@parasenderrid", parasenderrid);
+                varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
+                varSqlCommand.Parameters.AddWithValue("@paraclass", paraclass); 
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
+
+        public string udfnsendsmscompose(string paraProcess, string paraid, string paraUserID, string paraOriginator,string parasmscount,string parasendervalue,string paratemplateid)
+        {
+            string result = "";
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_SENDSMS_GENERAL]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess); 
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
+                varSqlCommand.Parameters.AddWithValue("@paraid", paraid);
+                varSqlCommand.Parameters.AddWithValue("@parasmscount", parasmscount);
+                varSqlCommand.Parameters.AddWithValue("@parasendervalue", parasendervalue);
+                varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
+                
+
+
+                varSqlCommand.CommandTimeout = 0;
+                result = varSqlCommand.ExecuteScalar().ToString();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return result;
+        }
+
     }
 }

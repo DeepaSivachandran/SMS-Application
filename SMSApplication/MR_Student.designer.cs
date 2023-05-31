@@ -368,6 +368,7 @@
             this.cmbClass.Name = "cmbClass";
             this.cmbClass.Size = new System.Drawing.Size(187, 25);
             this.cmbClass.TabIndex = 3;
+            this.cmbClass.SelectedIndexChanged += new System.EventHandler(this.cmbClass_SelectedIndexChanged);
             this.cmbClass.Enter += new System.EventHandler(this.cmbClass_Enter);
             this.cmbClass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbClass_KeyDown);
             this.cmbClass.Leave += new System.EventHandler(this.cmbClass_Leave);

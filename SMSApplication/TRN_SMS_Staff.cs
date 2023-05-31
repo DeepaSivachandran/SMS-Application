@@ -91,7 +91,8 @@ namespace SMSApplication
                                 item[3] = objDs.Tables[0].Rows[i]["ID"].ToString();
                                 listitem = new ListViewItem(item);
                                 grdstaffsms.Rows.Add(item[0], item[1], item[2], item[3] );
-                            } 
+                            }
+                           txtcontantbox.Text= objDs.Tables[1].Rows[0]["content"].ToString();
                         }
                         else
                         {
@@ -196,48 +197,55 @@ namespace SMSApplication
         }
 
         public void udfnsave()
-        { 
-            string input = txtsenderno.Text.Trim();
-            string PRESENTVAL = "0";
-            // Define the regular expression pattern
-            string pattern = @"^\d{10}(,\d{10})*$";
-            string pattern1 = @"^\d{10},$";
-            // Check if the input matches the pattern
-            bool inputvalue = Regex.IsMatch(input, pattern);
-            bool inputvalue1 = Regex.IsMatch(input, pattern1); 
-            DataService objdservice = new DataService();
-            PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=4 ");
-
-
-            if (inputvalue || inputvalue1 || input.Length == 10)
+        {
+            if (objValidation.internetconnection() == true)
             {
-                if (PRESENTVAL == "0")
+                string input = txtsenderno.Text.Trim();
+                string PRESENTVAL = "0";
+                // Define the regular expression pattern
+                string pattern = @"^\d{10}(,\d{10})*$";
+                string pattern1 = @"^\d{10},$";
+                // Check if the input matches the pattern
+                bool inputvalue = Regex.IsMatch(input, pattern);
+                bool inputvalue1 = Regex.IsMatch(input, pattern1);
+                DataService objdservice = new DataService();
+                PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=4 ");
+
+
+                if (inputvalue || inputvalue1 || input.Length == 10)
                 {
-                    SPDataService objspdservice = new SPDataService(); 
-                    string result = "", status = "0", source = "1"; 
-                    result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, txtsenderno.Text, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
-                    if (result.Contains("SMS Send Successfully."))
+                    if (PRESENTVAL == "0")
                     {
-                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        // udfnclear();
-                        // MainForm.objMR_StudentsList.udfnList();
+                        SPDataService objspdservice = new SPDataService();
+                        string result = "", status = "0", source = "1";
+                        result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, txtsenderno.Text, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
+                        if (result.Contains("SMS Send Successfully."))
+                        {
+                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // udfnclear();
+                            // MainForm.objMR_StudentsList.udfnList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } 
+                    epMR_SMSStaff.SetError(txtsenderno, "Please enter the Valid staff number.");
+                    txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpConfirmPwd.ShowAlways = true;
+                    tpConfirmPwd.Show("Please enter the valid staff number.", txtsenderno, 5000);
+                }
             }
             else
             {
-                epMR_SMSStaff.SetError(txtsenderno, "Please enter the Valid staff number.");
-                txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                tpConfirmPwd.ShowAlways = true;
-                tpConfirmPwd.Show("Please enter the valid staff number.", txtsenderno, 5000);
+                MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
