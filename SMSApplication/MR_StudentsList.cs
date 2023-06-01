@@ -370,6 +370,8 @@ namespace SMSApplication
                                 cIndex += 1;
                                 ExcelSheet.Cells[3, cIndex] = col.HeaderText;
                                 ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;
+                                Excel.Range cell = ExcelSheet.Cells[3, cIndex]; 
+                                cell.Font.Color = Excel.XlRgbColor.rgbWhite;  
 
                                 if (col.Name == "clmdob")
                                 {

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbScheme = new System.Windows.Forms.GroupBox();
+            this.lblsenderid = new System.Windows.Forms.Label();
             this.lblSchemeCode = new System.Windows.Forms.Label();
             this.lblDStatus = new System.Windows.Forms.Label();
             this.gbStatus = new System.Windows.Forms.GroupBox();
@@ -40,7 +41,6 @@
             this.txtsendername = new System.Windows.Forms.TextBox();
             this.lblobjDschemeName = new System.Windows.Forms.Label();
             this.epMR_SenderID = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblsenderid = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.gbStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_SenderID)).BeginInit();
@@ -65,6 +65,16 @@
             this.gbScheme.TabIndex = 0;
             this.gbScheme.TabStop = false;
             // 
+            // lblsenderid
+            // 
+            this.lblsenderid.AutoSize = true;
+            this.lblsenderid.Location = new System.Drawing.Point(13, 111);
+            this.lblsenderid.Name = "lblsenderid";
+            this.lblsenderid.Size = new System.Drawing.Size(15, 17);
+            this.lblsenderid.TabIndex = 8;
+            this.lblsenderid.Text = "0";
+            this.lblsenderid.Visible = false;
+            // 
             // lblSchemeCode
             // 
             this.lblSchemeCode.AutoSize = true;
@@ -83,6 +93,7 @@
             this.lblDStatus.Size = new System.Drawing.Size(43, 17);
             this.lblDStatus.TabIndex = 3;
             this.lblDStatus.Text = "Status";
+            this.lblDStatus.Visible = false;
             // 
             // gbStatus
             // 
@@ -93,6 +104,7 @@
             this.gbStatus.Size = new System.Drawing.Size(187, 42);
             this.gbStatus.TabIndex = 5;
             this.gbStatus.TabStop = false;
+            this.gbStatus.Visible = false;
             // 
             // rbInActive
             // 
@@ -179,16 +191,6 @@
             // epMR_SenderID
             // 
             this.epMR_SenderID.ContainerControl = this;
-            // 
-            // lblsenderid
-            // 
-            this.lblsenderid.AutoSize = true;
-            this.lblsenderid.Location = new System.Drawing.Point(13, 111);
-            this.lblsenderid.Name = "lblsenderid";
-            this.lblsenderid.Size = new System.Drawing.Size(15, 17);
-            this.lblsenderid.TabIndex = 8;
-            this.lblsenderid.Text = "0";
-            this.lblsenderid.Visible = false;
             // 
             // MR_SenderID
             // 

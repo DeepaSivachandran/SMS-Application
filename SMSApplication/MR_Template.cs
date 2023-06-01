@@ -32,6 +32,9 @@ namespace SMSApplication
         {
             try
             {
+
+                lblDStatus.Visible = false;
+                gbStatus.Visible = false;
                 DataBind objDataBind = new DataBind();
                 objDataBind.BindComboBoxListSelected("view_senderid", " SD_Id Not in (0) and SD_STSID in (3,1) Order by SD_Id", "SD_Name,SD_Id", cmbsender, "", "SD_Name", "SD_Id"); 
                 objDataBind = null;
@@ -61,6 +64,8 @@ namespace SMSApplication
             {
                 if (vartemplateid != "")
                 {
+                    lblDStatus.Visible = true;
+                    gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
                     DataSet objDS;
                     objDS = objspservice.udfnTemplatemasterlist("Editload", vartemplateid, MainForm.pbUserID);

@@ -505,5 +505,15 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+
+        private void ms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void lbltotalsms_Click(object sender, EventArgs e)
+        {
+
+        }
     } 
 }

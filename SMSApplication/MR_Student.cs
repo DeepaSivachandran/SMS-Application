@@ -32,6 +32,9 @@ namespace SMSApplication
         {
             try
             {
+
+                lblDStatus.Visible = false;
+                gbStatus.Visible = false;
                 DataBind objDataBind = new DataBind();
                 objDataBind.BindComboBoxListSelected("MR_BloodGroup", " Bg_Code Not in (0) Order by Bg_Code", "BG_Name,Bg_Code", cmbBloodGroup, "", "BG_Name", "Bg_Code");
                 objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (0) Order by CS_Id", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
@@ -375,6 +378,8 @@ namespace SMSApplication
             {
                 if (VARstudentcode != "")
                 {
+                    lblDStatus.Visible = true;
+                    gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
                     DataSet objDS;
                     objDS = objspservice.udfnStudentMasterlist("Editload", VARstudentcode, MainForm.pbUserID,"");

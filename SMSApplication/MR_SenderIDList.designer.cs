@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_SenderIDList));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdsenderlist = new System.Windows.Forms.DataGridView();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
@@ -75,14 +76,14 @@
             this.clmSchemeName,
             this.clmShortName,
             this.clmid});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdsenderlist.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdsenderlist.DefaultCellStyle = dataGridViewCellStyle5;
             this.grdsenderlist.EnableHeadersVisualStyles = false;
             this.grdsenderlist.GridColor = System.Drawing.Color.White;
             this.grdsenderlist.Location = new System.Drawing.Point(17, 28);
@@ -119,7 +120,7 @@
             this.tsbNew});
             this.tspMenu.Location = new System.Drawing.Point(0, 0);
             this.tspMenu.Name = "tspMenu";
-            this.tspMenu.Size = new System.Drawing.Size(1360, 31);
+            this.tspMenu.Size = new System.Drawing.Size(1360, 25);
             this.tspMenu.TabIndex = 958722;
             this.tspMenu.Text = "toolStrip1";
             // 
@@ -129,7 +130,7 @@
             this.tspFormHeader.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspFormHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspFormHeader.Name = "tspFormHeader";
-            this.tspFormHeader.Size = new System.Drawing.Size(65, 28);
+            this.tspFormHeader.Size = new System.Drawing.Size(65, 22);
             this.tspFormHeader.Text = "Sender ID";
             // 
             // tsbDelete
@@ -141,7 +142,7 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
             this.tsbDelete.Name = "tsbDelete";
-            this.tsbDelete.Size = new System.Drawing.Size(65, 28);
+            this.tsbDelete.Size = new System.Drawing.Size(65, 22);
             this.tsbDelete.Text = "Delete";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
@@ -150,7 +151,7 @@
             this.toolStripSeparator1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator1.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbEdit
             // 
@@ -161,7 +162,7 @@
             this.tsbEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEdit.Margin = new System.Windows.Forms.Padding(0, 1, 15, 2);
             this.tsbEdit.Name = "tsbEdit";
-            this.tsbEdit.Size = new System.Drawing.Size(50, 28);
+            this.tsbEdit.Size = new System.Drawing.Size(50, 22);
             this.tsbEdit.Text = "Edit";
             this.tsbEdit.Click += new System.EventHandler(this.tsbEdit_Click);
             // 
@@ -170,18 +171,18 @@
             this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbNew
             // 
             this.tsbNew.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbNew.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbNew.Image = global::SMSApplication.Properties.Resources.New;
+            this.tsbNew.Image = global::SMSApplication.Properties.Resources.New1;
             this.tsbNew.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
             this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(62, 28);
+            this.tsbNew.Size = new System.Drawing.Size(54, 22);
             this.tsbNew.Text = "New";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
@@ -231,6 +232,8 @@
             // 
             // clmShortName
             // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmShortName.DefaultCellStyle = dataGridViewCellStyle4;
             this.clmShortName.HeaderText = "Status";
             this.clmShortName.Name = "clmShortName";
             this.clmShortName.ReadOnly = true;

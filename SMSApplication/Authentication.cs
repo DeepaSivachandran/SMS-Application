@@ -368,7 +368,7 @@ namespace SMSApplication
                     //        }
                     //        else { this.Close(); Application.Run(new Activation()); }
 
-                    lbl:  lblDVersion.Text = "v1.8.27";
+                    lbl:  lblDVersion.Text = "v1.0";
                     lblDVersion.BringToFront();
                     Authentication objAuthetication = new Authentication();
                     objAuthetication.Name = "Exam Cell - "+lblDVersion.Text;

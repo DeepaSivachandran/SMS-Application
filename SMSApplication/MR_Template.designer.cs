@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gbScheme = new System.Windows.Forms.GroupBox();
+            this.txttempid = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txttempcontant = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -48,8 +50,6 @@
             this.txtTempname = new System.Windows.Forms.TextBox();
             this.lblobjDschemeName = new System.Windows.Forms.Label();
             this.epMR_Template = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txttempid = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.gbScheme.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbStatus.SuspendLayout();
@@ -82,9 +82,31 @@
             this.gbScheme.TabIndex = 0;
             this.gbScheme.TabStop = false;
             // 
+            // txttempid
+            // 
+            this.txttempid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttempid.Location = new System.Drawing.Point(123, 66);
+            this.txttempid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txttempid.MaxLength = 100;
+            this.txttempid.Name = "txttempid";
+            this.txttempid.Size = new System.Drawing.Size(187, 25);
+            this.txttempid.TabIndex = 1;
+            this.txttempid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttempid_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(13, 70);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 17);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Template ID";
+            // 
             // txttempcontant
             // 
             this.txttempcontant.Location = new System.Drawing.Point(123, 102);
+            this.txttempcontant.MaxLength = 500;
             this.txttempcontant.Multiline = true;
             this.txttempcontant.Name = "txttempcontant";
             this.txttempcontant.Size = new System.Drawing.Size(498, 106);
@@ -185,6 +207,7 @@
             this.lblDStatus.Size = new System.Drawing.Size(43, 17);
             this.lblDStatus.TabIndex = 3;
             this.lblDStatus.Text = "Status";
+            this.lblDStatus.Visible = false;
             // 
             // gbStatus
             // 
@@ -195,6 +218,7 @@
             this.gbStatus.Size = new System.Drawing.Size(187, 42);
             this.gbStatus.TabIndex = 5;
             this.gbStatus.TabStop = false;
+            this.gbStatus.Visible = false;
             // 
             // rbInActive
             // 
@@ -280,27 +304,6 @@
             // epMR_Template
             // 
             this.epMR_Template.ContainerControl = this;
-            // 
-            // txttempid
-            // 
-            this.txttempid.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttempid.Location = new System.Drawing.Point(123, 66);
-            this.txttempid.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txttempid.MaxLength = 100;
-            this.txttempid.Name = "txttempid";
-            this.txttempid.Size = new System.Drawing.Size(187, 25);
-            this.txttempid.TabIndex = 1;
-            this.txttempid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttempid_KeyDown);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Template Id";
             // 
             // MR_Template
             // 

@@ -302,6 +302,8 @@
     <Content Include="Resources\import.jpg" />
     <Content Include="Resources\import.png" />
     <Content Include="Resources\include.jpg" />
+    <None Include="Resources\internet-off.png" />
+    <None Include="Resources\internet-on.png" />
     <Content Include="Resources\ledger.png" />
     <Content Include="Resources\Login %282%29.jpg" />
     <Content Include="Resources\Login %284%29.jpg" />
@@ -315,6 +317,7 @@
     <Content Include="Resources\male__2_.jpg" />
     <Content Include="Resources\marks.png" />
     <Content Include="Resources\New.png" />
+    <None Include="Resources\New1.png" />
     <Content Include="Resources\new_print.jpg" />
     <Content Include="Resources\new_print1.jpg" />
     <Content Include="Resources\new_remove.jpg" />

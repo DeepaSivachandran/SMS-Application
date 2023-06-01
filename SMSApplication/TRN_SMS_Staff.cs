@@ -45,8 +45,9 @@ namespace SMSApplication
                 DateTime currentDate = DateTime.Now;
                 lblDate.Text = currentDate.ToString("dd/MM/yyyy");
                 udfnList();
+                udfnListabsent();
 
-             //   ((MainForm)ParentForm).statusStrip1.Visible = true;
+                //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
                 grdstaffsms.Columns.Cast<DataGridViewColumn>().ToList().ForEach(f => f.SortMode = DataGridViewColumnSortMode.NotSortable);
             }
@@ -87,10 +88,11 @@ namespace SMSApplication
                             {
                                 item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString(); 
                                 item[1] = objDs.Tables[0].Rows[i]["NAME"].ToString();
-                                item[2] = objDs.Tables[0].Rows[i]["status"].ToString();
-                                item[3] = objDs.Tables[0].Rows[i]["ID"].ToString();
+                                item[2] = objDs.Tables[0].Rows[i]["ID"].ToString();
+                                item[3] = objDs.Tables[0].Rows[i]["Designation"].ToString();
+                                item[4] = objDs.Tables[0].Rows[i]["Designation"].ToString();
                                 listitem = new ListViewItem(item);
-                                grdstaffsms.Rows.Add(item[0], item[1], item[2], item[3] );
+                                grdstaffsms.Rows.Add(item[0], item[1], item[2], item[3], item[4]);
                             }
                            txtcontantbox.Text= objDs.Tables[1].Rows[0]["content"].ToString();
                         }
@@ -122,7 +124,76 @@ namespace SMSApplication
                 grdstaffsms.ClearSelection();
             }
         }
-        
+
+        public void udfnListabsent()
+        {
+            try
+            {
+                DataSet objDs;
+                //**** To call the function from SP ***************
+                SPDataService objdserv = new SPDataService();
+                string[] item = new string[30];
+                string studentleft = "0";
+
+                ListViewItem listitem = new ListViewItem();
+                grdstaffabsent.Rows.Clear();
+                objDs = objdserv.udfnsmsstaffmasterlist("list", "", MainForm.pbUserID, msktxtto.Text, msktxtfrom.Text, studentleft);
+                objdserv.CloseConnection();
+                if (objDs != null)
+                {
+                    grdstaffabsent.Rows.Clear();
+                    if (objDs.Tables.Count != 0)
+                    {
+                        grdstaffabsent.Rows.Clear();
+                        if (objDs.Tables[2].Rows.Count != 0)
+                        {
+                            grdstaffabsent.DataSource = null;
+                            lblDNoRecordFound.Visible = false;
+                            lblDNoRecordFound.SendToBack();
+                            for (int i = 0; i < objDs.Tables[2].Rows.Count; i++)
+                            {
+                                item[0] = objDs.Tables[2].Rows[i]["SINO"].ToString();
+                                item[1] = objDs.Tables[2].Rows[i]["NAME"].ToString();
+                                item[2] = objDs.Tables[2].Rows[i]["ID"].ToString();
+                                item[3] = objDs.Tables[2].Rows[i]["Designation"].ToString();
+                                item[4] = objDs.Tables[2].Rows[i]["Designation"].ToString();
+                                listitem = new ListViewItem(item);
+                                grdstaffabsent.Rows.Add(item[0], item[1], item[2], item[3], item[4]);
+                            }
+                            txtcontantbox.Text = objDs.Tables[1].Rows[0]["content"].ToString();
+                        }
+                        else
+                        {
+                            lblDNoRecordFound.BringToFront();
+                            lblDNoRecordFound.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        lblDNoRecordFound.BringToFront();
+                        lblDNoRecordFound.Visible = true;
+                    }
+                }
+                else
+                {
+                    lblDNoRecordFound.BringToFront();
+                    lblDNoRecordFound.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                grdstaffabsent.ClearSelection();
+            }
+        }
+
+
+                
+
         //Author : Deepa
         //created Date :11/04/2019
         private void grdSchemeList_KeyDown(object sender, KeyEventArgs e)
@@ -165,6 +236,14 @@ namespace SMSApplication
         private void btn_VIEW_Click(object sender, EventArgs e)
         {
             udfnList();
+            udfnListabsent();
+            lblpresent.Text = Convert.ToString(grdstaffsms.RowCount); 
+            lblouttime.Text = Convert.ToString(grdstaffabsent.RowCount);
+            int present = int.Parse(lblpresent.Text);
+            int outTime = int.Parse(lblouttime.Text);
+            int total = present + outTime;
+            lbltotstudent.Text = total.ToString();
+
         }
 
         private void msktxtfrom_KeyDown(object sender, KeyEventArgs e)
@@ -261,6 +340,52 @@ namespace SMSApplication
                 // Update the formatted value
                 e.Value = cellValue;
                 e.FormattingApplied = true;
+            }
+        }
+
+        private void btntestsms_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (objValidation.internetconnection() == true)
+                {
+                    string PRESENTVAL = "0", mobile = "";
+                    DataService objdservice = new DataService();
+                    // PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=4 ");
+                    mobile = objdservice.displaydata("select ST_ToContactNo from MR_Settings");
+
+
+                    if (PRESENTVAL == "0")
+                    {
+                        SPDataService objspdservice = new SPDataService();
+                        string result = "", status = "0", source = "1";
+                        result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, mobile, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
+                        if (result.Contains("SMS Send Successfully."))
+                        {
+                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // udfnclear();
+                            // MainForm.objMR_StudentsList.udfnList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
             }
         }
     }

@@ -639,7 +639,7 @@ namespace SMSApplication.ServiceClass
 
         //-- SNED SMS--FOR STUDENT //
 
-        public string udfnsendsms(string paraProcess, string paradate, string paraintime, string paraabsent, string paraouttime, string parasmscount, string paraUserID, string paraOriginator,string parastudentleft)
+        public string udfnsendsms(string paraProcess, string paradate, string paraintime, string paraabsent, string paraouttime, string parasmscount, string paraUserID, string paraOriginator,string parastudentleft,string paramobileno)
         {
             string result = "";
             try
@@ -656,6 +656,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
                 varSqlCommand.Parameters.AddWithValue("@parastudentleft", parastudentleft);
+                varSqlCommand.Parameters.AddWithValue("@paramobileno", paramobileno); 
 
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -705,7 +706,7 @@ namespace SMSApplication.ServiceClass
             return result;
         }
         //--compose sms
-        public DataSet udfncompsesms(  string parasmemberid, string paraUserID,string parasenderrid,string paratemplateid,string paraclass)
+        public DataSet udfncompsesms(  string parasmemberid, string paraUserID,string parasenderrid,string paratemplateid,string paragroupid)
         {
             DataSet ds = new DataSet();
             try
@@ -717,7 +718,8 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@parasenderrid", parasenderrid);
                 varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
-                varSqlCommand.Parameters.AddWithValue("@paraclass", paraclass); 
+                varSqlCommand.Parameters.AddWithValue("@paragroupid", paragroupid);
+                
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
                 sa.Fill(ds);

@@ -351,6 +351,7 @@
             this.lblDStatus.Size = new System.Drawing.Size(43, 17);
             this.lblDStatus.TabIndex = 3;
             this.lblDStatus.Text = "Status";
+            this.lblDStatus.Visible = false;
             // 
             // gbStatus
             // 
@@ -361,6 +362,7 @@
             this.gbStatus.Size = new System.Drawing.Size(187, 42);
             this.gbStatus.TabIndex = 9;
             this.gbStatus.TabStop = false;
+            this.gbStatus.Visible = false;
             // 
             // rbInActive
             // 

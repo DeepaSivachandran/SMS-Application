@@ -32,6 +32,8 @@ namespace SMSApplication
         {
             try
             {
+                lblDStatus.Visible = false;
+                gbStatus.Visible = false;
                 DataBind objDataBind = new DataBind();
                 objDataBind.BindComboBoxListSelected("MR_BloodGroup", " Bg_Code Not in (0) Order by Bg_Code", "BG_Name,Bg_Code", cmbBloodGroup, "", "BG_Name", "Bg_Code");
                 objDataBind.BindComboBoxListSelected("MR_Designation", " dn_Code Not in (0) Order by dn_Code", "DN_Name,DN_Code", cmbdesignation, "", "DN_Name", "DN_Code");
@@ -60,6 +62,8 @@ namespace SMSApplication
             {
                 if (VARSTAFFCODE != "")
                 {
+                    lblDStatus.Visible = true;
+                    gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
                     DataSet objDS;
                     objDS = objspservice.udfnStaffMasterLIST("Editload", VARSTAFFCODE, MainForm.pbUserID);

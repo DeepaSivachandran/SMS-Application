@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
+using System.Text.RegularExpressions;
+
 namespace SMSApplication
 {
     public partial class TRN_SMS_Student : Form
@@ -219,14 +221,116 @@ namespace SMSApplication
             }
         }
 
-        private void grdsmsstudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void btnsendsms_Click_1(object sender, EventArgs e)
+        {
+            try
+            { 
+            DataService objDservice = new DataService();
+                if (objValidation.internetconnection() == true)
+                {
+                    string input = txtsenderno.Text.Trim();
+                    string PRESENTVAL = "0";
+                    // Define the regular expression pattern
+                    string pattern = @"^\d{10}(,\d{10})*$";
+                    string pattern1 = @"^\d{10},$";
+                    // Check if the input matches the pattern
+                    bool inputvalue = Regex.IsMatch(input, pattern);
+                    bool inputvalue1 = Regex.IsMatch(input, pattern1);
+                    if (inputvalue || inputvalue1 || input.Length == 10)
+                    {
+                        if (msktxtfrom.Text != "" && msktxtto.Text != "" && grdsmsstudent.RowCount > 0)
+                        {
+
+                            SPDataService objspdservice = new SPDataService();
+                            string result = "", studentleft = "0", smscount = "0";
+                            if (rbout.Checked == true)
+                            {
+                                studentleft = "1";
+                            }
+                            else
+                            {
+                                studentleft = "0";
+                            }
+                            if (rbout.Checked == true)
+                            {
+                                smscount = lblouttime.Text;
+                                if (OUTVAL != "0")
+                                {
+                                    btnsmssend.Enabled = false;
+                                }
+
+                            }
+                            else
+                            {
+
+                                smscount = lblpresent.Text;
+                                if ((PRESENTVAL != "0" && ABSENTVAL != "0"))
+                                {
+                                    btnsmssend.Enabled = false;
+                                }
+                            }
+
+                            if (btnsmssend.Enabled == true)
+                            {
+                                result = objspdservice.udfnsendsms("test", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, "1", MainForm.pbUserID, "Send SMS", studentleft, txtsenderno.Text);
+                                if (result.Contains("SMS Send Successfully."))
+                                {
+                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // udfnclear();
+                                    // MainForm.objMR_StudentsList.udfnList();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            if (msktxtfrom.Text == "")
+                            {
+                                epMR_SMSStudent.SetError(msktxtfrom, "Please enter from time.");
+                                msktxtfrom.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                                tpConfirmPwd.ShowAlways = true;
+                                tpConfirmPwd.Show("Please enter from time.", msktxtfrom, 5000);
+                            }
+                            if (msktxtto.Text == "")
+                            {
+                                epMR_SMSStudent.SetError(msktxtto, "Please enter to time.");
+                                msktxtto.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                                tpConfirmPwd.ShowAlways = true;
+                                tpConfirmPwd.Show("Please enter to time.", msktxtto, 5000);
+                            }
+                            if (grdsmsstudent.RowCount <= 0)
+                            {
+                                MessageBox.Show("No Records Found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        epMR_SMSStudent.SetError(txtsenderno, "Please enter the Valid number.");
+                        txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please enter the valid number.", txtsenderno, 5000);
+                    }
+                } 
+                else
+                {
+                    MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
         }
+            catch (Exception ex)
+            {
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            objError = new DataError();
+            objError.WriteFile(ex);
+            }
         }
 
         private void rbin_CheckedChanged(object sender, EventArgs e)
@@ -340,7 +444,7 @@ namespace SMSApplication
 
                     if (btnsmssend.Enabled == true)
                     {
-                        result = objspdservice.udfnsendsms("Create", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, smscount, MainForm.pbUserID, "Send SMS", studentleft);
+                        result = objspdservice.udfnsendsms("Create", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, smscount, MainForm.pbUserID, "Send SMS", studentleft,"");
                         if (result.Contains("SMS Send Successfully."))
                         {
                             MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -394,8 +498,8 @@ namespace SMSApplication
                 lbldpresent.Visible = true;
                 lblouttime.Visible = true;
                 lbldouttime.Visible = true;
-                lbltotstudent.Visible = false;
-                lbldstudent.Visible = false;
+                lbltotstudent.Visible = true;
+                lbldstudent.Visible = true;
             }
             else
             { 

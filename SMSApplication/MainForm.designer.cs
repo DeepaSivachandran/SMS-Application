@@ -57,19 +57,18 @@ namespace SMSApplication
             this.tssTotalCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslable = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lbltotalsms = new System.Windows.Forms.Label();
-            this.lbldouttime = new System.Windows.Forms.Label();
             this.lblsentsms = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.lblneton = new System.Windows.Forms.Label();
-            this.lblnetoff = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblbucketlist = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblnetoff = new System.Windows.Forms.Label();
+            this.lblneton = new System.Windows.Forms.Label();
             this.lblsmscompare = new System.Windows.Forms.Label();
+            this.lbltotalsms = new System.Windows.Forms.Label();
             this.ms.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -128,6 +127,7 @@ namespace SMSApplication
             this.ms.Size = new System.Drawing.Size(1275, 57);
             this.ms.TabIndex = 112;
             this.ms.Text = "ms";
+            this.ms.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ms_ItemClicked);
             // 
             // tsbLogo
             // 
@@ -249,22 +249,22 @@ namespace SMSApplication
             // tsmSMSStudents
             // 
             this.tsmSMSStudents.Name = "tsmSMSStudents";
-            this.tsmSMSStudents.Size = new System.Drawing.Size(204, 22);
-            this.tsmSMSStudents.Text = "Attendance - Students";
+            this.tsmSMSStudents.Size = new System.Drawing.Size(261, 22);
+            this.tsmSMSStudents.Text = "Student Attendance - Parents";
             this.tsmSMSStudents.Click += new System.EventHandler(this.TsmSMSStudents_Click);
             // 
             // tsmSMSStaff
             // 
             this.tsmSMSStaff.Name = "tsmSMSStaff";
-            this.tsmSMSStaff.Size = new System.Drawing.Size(204, 22);
-            this.tsmSMSStaff.Text = "Attendance - Staffs";
+            this.tsmSMSStaff.Size = new System.Drawing.Size(261, 22);
+            this.tsmSMSStaff.Text = "Staff Attendance - Management";
             this.tsmSMSStaff.Click += new System.EventHandler(this.TsmSMSStaff_Click);
             // 
             // tsmSMSGeneral
             // 
             this.tsmSMSGeneral.Name = "tsmSMSGeneral";
-            this.tsmSMSGeneral.Size = new System.Drawing.Size(204, 22);
-            this.tsmSMSGeneral.Text = "General";
+            this.tsmSMSGeneral.Size = new System.Drawing.Size(261, 22);
+            this.tsmSMSGeneral.Text = "Compose ";
             this.tsmSMSGeneral.Click += new System.EventHandler(this.TsmSMSGeneral_Click);
             // 
             // reportsToolStripMenuItem1
@@ -318,34 +318,13 @@ namespace SMSApplication
             this.statusStrip1.TabIndex = 958784;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // lbltotalsms
-            // 
-            this.lbltotalsms.AutoSize = true;
-            this.lbltotalsms.BackColor = System.Drawing.Color.RoyalBlue;
-            this.lbltotalsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalsms.ForeColor = System.Drawing.Color.White;
-            this.lbltotalsms.Location = new System.Drawing.Point(386, 21);
-            this.lbltotalsms.Name = "lbltotalsms";
-            this.lbltotalsms.Size = new System.Drawing.Size(15, 17);
-            this.lbltotalsms.TabIndex = 958804;
-            this.lbltotalsms.Text = "0";
-            // 
-            // lbldouttime
-            // 
-            this.lbldouttime.AutoSize = true;
-            this.lbldouttime.Location = new System.Drawing.Point(317, 21);
-            this.lbldouttime.Name = "lbldouttime";
-            this.lbldouttime.Size = new System.Drawing.Size(112, 17);
-            this.lbldouttime.TabIndex = 958803;
-            this.lbldouttime.Text = "SMS In-Progress: ";
-            // 
             // lblsentsms
             // 
             this.lblsentsms.AutoSize = true;
-            this.lblsentsms.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblsentsms.BackColor = System.Drawing.SystemColors.Menu;
             this.lblsentsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsentsms.ForeColor = System.Drawing.Color.White;
-            this.lblsentsms.Location = new System.Drawing.Point(243, 21);
+            this.lblsentsms.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblsentsms.Location = new System.Drawing.Point(256, 21);
             this.lblsentsms.Name = "lblsentsms";
             this.lblsentsms.Size = new System.Drawing.Size(15, 17);
             this.lblsentsms.TabIndex = 958806;
@@ -354,7 +333,7 @@ namespace SMSApplication
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(172, 21);
+            this.label2.Location = new System.Drawing.Point(185, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 958805;
@@ -365,9 +344,9 @@ namespace SMSApplication
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(962, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 958809;
-            this.label1.Text = "Internet Connection  ";
+            this.label1.Text = "Internet Status";
             // 
             // timer2
             // 
@@ -379,53 +358,24 @@ namespace SMSApplication
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
-            // lblneton
-            // 
-            this.lblneton.AutoSize = true;
-            this.lblneton.BackColor = System.Drawing.Color.Green;
-            this.lblneton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblneton.ForeColor = System.Drawing.Color.White;
-            this.lblneton.Location = new System.Drawing.Point(1089, 23);
-            this.lblneton.Name = "lblneton";
-            this.lblneton.Size = new System.Drawing.Size(16, 17);
-            this.lblneton.TabIndex = 958810;
-            this.lblneton.Text = "  ";
-            this.lblneton.Visible = false;
-            // 
-            // lblnetoff
-            // 
-            this.lblnetoff.AutoSize = true;
-            this.lblnetoff.BackColor = System.Drawing.Color.Red;
-            this.lblnetoff.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblnetoff.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnetoff.ForeColor = System.Drawing.Color.White;
-            this.lblnetoff.Location = new System.Drawing.Point(1089, 23);
-            this.lblnetoff.Name = "lblnetoff";
-            this.lblnetoff.Size = new System.Drawing.Size(16, 17);
-            this.lblnetoff.TabIndex = 958811;
-            this.lblnetoff.Text = "  ";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblsentsms);
-            this.groupBox1.Controls.Add(this.lblsmscompare);
             this.groupBox1.Controls.Add(this.lblbucketlist);
-            this.groupBox1.Controls.Add(this.lbldouttime);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.lbltotalsms);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(419, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(537, 50);
+            this.groupBox1.Size = new System.Drawing.Size(376, 50);
             this.groupBox1.TabIndex = 958812;
             this.groupBox1.TabStop = false;
             // 
             // lblbucketlist
             // 
             this.lblbucketlist.AutoSize = true;
-            this.lblbucketlist.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblbucketlist.BackColor = System.Drawing.SystemColors.Menu;
             this.lblbucketlist.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblbucketlist.ForeColor = System.Drawing.Color.White;
+            this.lblbucketlist.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblbucketlist.Location = new System.Drawing.Point(116, 21);
             this.lblbucketlist.Name = "lblbucketlist";
             this.lblbucketlist.Size = new System.Drawing.Size(15, 17);
@@ -441,18 +391,61 @@ namespace SMSApplication
             this.label4.TabIndex = 958814;
             this.label4.Text = "Available Credits : ";
             // 
+            // lblnetoff
+            // 
+            this.lblnetoff.AutoSize = true;
+            this.lblnetoff.BackColor = System.Drawing.Color.PowderBlue;
+            this.lblnetoff.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblnetoff.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblnetoff.ForeColor = System.Drawing.Color.White;
+            this.lblnetoff.Image = global::SMSApplication.Properties.Resources.internet_off;
+            this.lblnetoff.Location = new System.Drawing.Point(1055, 23);
+            this.lblnetoff.Name = "lblnetoff";
+            this.lblnetoff.Size = new System.Drawing.Size(16, 17);
+            this.lblnetoff.TabIndex = 958811;
+            this.lblnetoff.Text = "  ";
+            // 
+            // lblneton
+            // 
+            this.lblneton.AutoSize = true;
+            this.lblneton.BackColor = System.Drawing.Color.Green;
+            this.lblneton.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblneton.ForeColor = System.Drawing.Color.White;
+            this.lblneton.Image = global::SMSApplication.Properties.Resources.internet_on;
+            this.lblneton.Location = new System.Drawing.Point(1055, 23);
+            this.lblneton.Name = "lblneton";
+            this.lblneton.Size = new System.Drawing.Size(16, 17);
+            this.lblneton.TabIndex = 958810;
+            this.lblneton.Text = "  ";
+            this.lblneton.Visible = false;
+            // 
             // lblsmscompare
             // 
             this.lblsmscompare.AutoSize = true;
-            this.lblsmscompare.BackColor = System.Drawing.Color.RoyalBlue;
+            this.lblsmscompare.BackColor = System.Drawing.SystemColors.Menu;
             this.lblsmscompare.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsmscompare.ForeColor = System.Drawing.Color.White;
-            this.lblsmscompare.Location = new System.Drawing.Point(426, 21);
+            this.lblsmscompare.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblsmscompare.Location = new System.Drawing.Point(909, 23);
             this.lblsmscompare.Name = "lblsmscompare";
             this.lblsmscompare.Size = new System.Drawing.Size(15, 17);
-            this.lblsmscompare.TabIndex = 958816;
+            this.lblsmscompare.TabIndex = 958819;
             this.lblsmscompare.Text = "0";
             this.lblsmscompare.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbltotalsms
+            // 
+            this.lbltotalsms.AutoSize = true;
+            this.lbltotalsms.BackColor = System.Drawing.SystemColors.Menu;
+            this.lbltotalsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalsms.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbltotalsms.Location = new System.Drawing.Point(850, 23);
+            this.lbltotalsms.Name = "lbltotalsms";
+            this.lbltotalsms.Size = new System.Drawing.Size(15, 17);
+            this.lbltotalsms.TabIndex = 958821;
+            this.lbltotalsms.Text = "0";
+            this.lbltotalsms.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbltotalsms.Visible = false;
+            this.lbltotalsms.Click += new System.EventHandler(this.lbltotalsms_Click);
             // 
             // MainForm
             // 
@@ -460,6 +453,8 @@ namespace SMSApplication
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(1275, 559);
+            this.Controls.Add(this.lbltotalsms);
+            this.Controls.Add(this.lblsmscompare);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblnetoff);
             this.Controls.Add(this.lblneton);
@@ -516,7 +511,6 @@ namespace SMSApplication
         private System.Windows.Forms.ToolStripMenuItem tsmSMSStudents;
         private System.Windows.Forms.ToolStripMenuItem tsmSMSStaff;
         private System.Windows.Forms.ToolStripMenuItem tsmSMSGeneral;
-        private System.Windows.Forms.Label lbldouttime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Timer timer2;
@@ -524,10 +518,10 @@ namespace SMSApplication
         private System.Windows.Forms.Label lblneton;
         private System.Windows.Forms.Label lblnetoff;
         private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.Label lbltotalsms;
         public System.Windows.Forms.Label lblsentsms;
         public System.Windows.Forms.Label lblbucketlist;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.Label lblsmscompare;
+        public System.Windows.Forms.Label lbltotalsms;
     }
 }

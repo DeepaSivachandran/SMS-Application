@@ -51,14 +51,14 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::SMSApplication.Properties.Resources.select;
+            this.btnSave.Image = global::SMSApplication.Properties.Resources.include;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(107, 42);
+            this.btnSave.Location = new System.Drawing.Point(101, 42);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 29);
+            this.btnSave.Size = new System.Drawing.Size(69, 29);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "Ok";
+            this.btnSave.Text = "Submit";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click_1);
@@ -79,7 +79,7 @@
             this.MinimizeBox = false;
             this.Name = "MR_StudentWipout";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Enter Admin Password";
+            this.Text = "Confirm Admin Password";
             this.Load += new System.EventHandler(this.CP_ChangePassword_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CP_ChangePassword_KeyDown);
             this.Leave += new System.EventHandler(this.CP_ChangePassword_Leave);

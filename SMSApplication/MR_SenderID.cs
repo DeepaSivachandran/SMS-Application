@@ -32,6 +32,9 @@ namespace SMSApplication
         {
             try
             {
+
+                lblDStatus.Visible = false;
+                gbStatus.Visible = false;
                 udfnEdit();
                 if (btnSave.Text == "Update")
                 {
@@ -281,6 +284,8 @@ namespace SMSApplication
             {
                 if (senderid != "")
                 {
+                    lblDStatus.Visible = true;
+                    gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
                     DataSet objDS;
                     objDS = objspservice.udfnsenderidmasterlist("Editload", senderid, MainForm.pbUserID);
