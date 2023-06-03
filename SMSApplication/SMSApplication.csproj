@@ -35,7 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
@@ -46,6 +49,8 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,6 +67,12 @@
     </Compile>
     <Compile Include="Authentication.designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT_Absent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT_Absent.Designer.cs">
+      <DependentUpon>RPT_Absent.cs</DependentUpon>
     </Compile>
     <Compile Include="MR_StudentWipout.cs">
       <SubType>Form</SubType>
@@ -194,27 +205,36 @@
     </Compile>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT_Absent.resx">
+      <DependentUpon>RPT_Absent.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_StudentWipout.resx">
       <DependentUpon>MR_StudentWipout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_StaffImport.resx">
       <DependentUpon>MR_StaffImport.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_StudentImport.resx">
       <DependentUpon>MR_StudentImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_GeneralSettings.resx">
       <DependentUpon>MR_GeneralSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_ChangePwd.resx">
       <DependentUpon>MR_ChangePwd.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_Student.resx">
       <DependentUpon>MR_Student.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_Staff.resx">
       <DependentUpon>MR_Staff.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TRN_SMS_Staff.resx">
       <DependentUpon>TRN_SMS_Staff.cs</DependentUpon>
@@ -236,15 +256,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MR_SenderID.resx">
       <DependentUpon>MR_SenderID.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_TemplateList.resx">
       <DependentUpon>MR_TemplateList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MR_SenderIDList.resx">
       <DependentUpon>MR_SenderIDList.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -304,6 +327,8 @@
     <Content Include="Resources\include.jpg" />
     <None Include="Resources\internet-off.png" />
     <None Include="Resources\internet-on.png" />
+    <None Include="Resources\internet-off %282%29.png" />
+    <None Include="Resources\internet-on %282%29.png" />
     <Content Include="Resources\ledger.png" />
     <Content Include="Resources\Login %282%29.jpg" />
     <Content Include="Resources\Login %284%29.jpg" />
@@ -334,6 +359,7 @@
     <None Include="Resources\send-message.png" />
     <None Include="Resources\send-message %281%29.png" />
     <None Include="Resources\select.png" />
+    <None Include="Resources\send-sms.png" />
     <Content Include="Resources\signin.png" />
     <Content Include="Resources\skip.png" />
     <Content Include="Resources\sss_logo %282%29.png" />

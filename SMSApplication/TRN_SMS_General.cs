@@ -22,7 +22,7 @@ namespace SMSApplication
         //*************** Declare the variable *******************
 
         public string pbflag = "0", PRESENTVAL = "0", ABSENTVAL = "0", OUTVAL = "0";
-        public string varstudentcode = "0", varstaffcode = "0";
+        public string varstudentcode = "0", varstaffcode = "0", varid = "0";
 
         public TRN_SMS_General()
         {
@@ -38,7 +38,7 @@ namespace SMSApplication
                 objDataBind.BindComboBoxListSelected("View_senderid ", " sd_id not in ('0') Order by sd_id", "sd_name,sd_id", cmbsender, "", "sd_name", "sd_id");
 
 
-               objDataBind = null;
+                objDataBind = null;
                 udfnList();
                 //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
@@ -120,7 +120,7 @@ namespace SMSApplication
         }
 
 
- 
+
 
         private void btnclassview_Click(object sender, EventArgs e)
         {
@@ -129,14 +129,14 @@ namespace SMSApplication
             {
                 DataSet objDs;
                 //****To call the function from SP***************
-               SPDataService objdserv = new SPDataService();
+                SPDataService objdserv = new SPDataService();
                 string[] item = new string[30];
                 ListViewItem listitem = new ListViewItem();
                 string member = "1";
                 if (Convert.ToString(cmbtemplate.SelectedValue) != "-1")
                 {
                     grdstaffsms.Rows.Clear();
-                    objDs = objdserv.udfncompsesms(member, MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue),"0");
+                    objDs = objdserv.udfncompsesms(member, MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue), "0");
                     objdserv.CloseConnection();
                     epMR_SMSStudent.Clear();
                     lblsenderid.Text = Convert.ToString(cmbsender.SelectedValue);
@@ -158,9 +158,9 @@ namespace SMSApplication
                                     for (int i = 0; i < objDs.Tables[1].Rows.Count; i++)
                                     {
 
-                                       // grdstudentsms.DataSource = objDs.Tables[1];
+                                        // grdstudentsms.DataSource = objDs.Tables[1];
                                         item[1] = objDs.Tables[1].Rows[i]["SINO"].ToString();
-                                        item[2] = objDs.Tables[1].Rows[i]["NAME"].ToString(); 
+                                        item[2] = objDs.Tables[1].Rows[i]["NAME"].ToString();
                                         item[3] = objDs.Tables[1].Rows[i]["id"].ToString();
                                         listitem = new ListViewItem(item);
                                         grdstudentsms.Rows.Add(item[0], item[1], item[2], item[3]);
@@ -232,7 +232,7 @@ namespace SMSApplication
                 }
                 else
                 {
-                    
+
                     if (Convert.ToString(cmbsender.SelectedValue) == "-1")
                     {
                         epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
@@ -267,8 +267,8 @@ namespace SMSApplication
                 int count = 0;
                 varstudentcode = "0";
                 for (int i = 0; i < grdstudentsms.Rows.Count; i++)
-                { 
-                    grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value = chkSelectstudent.Checked;  
+                {
+                    grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value = chkSelectstudent.Checked;
 
                     Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
 
@@ -289,8 +289,20 @@ namespace SMSApplication
 
                 SPDataService objdserv = new SPDataService();
                 DataSet objDs = new DataSet();
+                varid = "0";
                 objDs = objdserv.udfncompsesms("0", MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue), varstudentcode);
                 objdserv.CloseConnection();
+                for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                {
+                    if (varid == "0")
+                    {
+                        varid = Convert.ToString(objDs.Tables[0].Rows[i]["id"].ToString());
+                    }
+                    else
+                    {
+                        varid = varid + ',' + Convert.ToString(objDs.Tables[0].Rows[i]["id"].ToString());
+                    }
+                }
 
                 lblsmscount.Text = Convert.ToString(count);
             }
@@ -320,13 +332,42 @@ namespace SMSApplication
                     grdstaffsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
                 }
                 int count = 0;
-                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                varstudentcode = "0";
+                for (int i = 0; i < grdstudentsms.Rows.Count; i++)
                 {
-                    Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
+                    grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value = chkSelectstudent.Checked;
+
+                    Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
 
                     if (varbooleanvalue == true)
                     {
                         count = count + 1;
+                    }
+
+                    if (varstudentcode == "0")
+                    {
+                        varstudentcode = Convert.ToString(grdstudentsms.Rows[i].Cells["id"].Value);
+                    }
+                    else
+                    {
+                        varstudentcode = varstudentcode + ',' + Convert.ToString(grdstudentsms.Rows[i].Cells["id"].Value);
+                    }
+                }
+
+                SPDataService objdserv = new SPDataService();
+                DataSet objDs = new DataSet();
+                varid = "0";
+                objDs = objdserv.udfncompsesms("0", MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue), varstudentcode);
+                objdserv.CloseConnection();
+                for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                {
+                    if (varid == "0")
+                    {
+                        varid = Convert.ToString(objDs.Tables[0].Rows[i]["id"].ToString());
+                    }
+                    else
+                    {
+                        varid = varid + ',' + Convert.ToString(objDs.Tables[0].Rows[i]["id"].ToString());
                     }
                 }
 
@@ -351,7 +392,7 @@ namespace SMSApplication
                 if (Convert.ToString(cmbtemplate.SelectedValue) != "0")
                 {
                     string varsenderid = "0";
-                    DataSet objdservice = new DataSet(); 
+                    DataSet objdservice = new DataSet();
                     cmbtemplate.Enabled = true;
                     DataBind objDataBind = new DataBind();
                     objDataBind.BindComboBoxListSelected("View_template", " TMP_Id  not in (0) and TMP_SDId in ('" + cmbsender.SelectedValue + "') Order by TMP_Id", "tmp_name,TMP_Id", cmbtemplate, "", "tmp_name", "TMP_Id");
@@ -368,29 +409,90 @@ namespace SMSApplication
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
-            
+
         }
 
-        private void cmbtemplate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void chkSelectStaff_CheckedChanged(object sender, EventArgs e)
+        private void btnsendsms_Click(object sender, EventArgs e)
         {
             try
             {
-                int count = 0;
-                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
+                if (objValidation.internetconnection() == true)
                 {
-                    grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value = chkSelectStaff.Checked;
- 
-                    Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
-
-                    if (varbooleanvalue == true)
+                    if (Convert.ToString(cmbsender.SelectedValue) != "-1")
                     {
-                        count = count + 1;
+
+                        DataService objdservice = new DataService();
+                        SPDataService objspdservice = new SPDataService();
+                        string result = "", studentleft = "0", smscount = "0";
+                        //   PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
+                        // objdservice.CloseConnection();
+                        int varflag = 0;
+                        varstudentcode = "0";
+                        varstaffcode = "0";
+                        //if (PRESENTVAL == "0")
+                        //{
+                        varstaffcode = lblid.Text;
+                        for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                        {
+                            Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
+                            if (varbooleanvalue == true)
+                            {
+                                varflag++;
+                            }
+
+                        }
+                        if (varflag == 0)
+                        {
+                            MessageBox.Show("Please Select Atleast group.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+                        else
+                        {
+                            if (btnsmssend.Enabled == true)
+                            {
+                                result = objspdservice.udfnsendsmscompose("compose", varstaffcode, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "2", Convert.ToString(cmbtemplate.SelectedValue), txtsenderno.Text);
+                                if (result.Contains("SMS Send Successfully."))
+                                {
+                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    // udfnclear();
+                                    // MainForm.objMR_StudentsList.udfnList();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+
+                        //}
+                        //else
+                        //{
+
+                        //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //}
                     }
+
+                    else
+                    {
+
+                        if (Convert.ToString(cmbsender.SelectedValue) == "-1")
+                        {
+                            epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
+                            cmbsender.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                            tpConfirmPwd.ShowAlways = true;
+                            tpConfirmPwd.Show("Please select the sender.", cmbsender, 5000);
+                        }
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -398,6 +500,15 @@ namespace SMSApplication
                 objError = new DataError();
                 objError.WriteFile(ex);
             }
+        }
+
+        private void cmbtemplate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkSelectStaff_CheckedChanged(object sender, EventArgs e)
+        {
         }
 
         private void grdstudentsms_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -419,18 +530,46 @@ namespace SMSApplication
                     grdstudentsms.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = true;
                 }
                 int count = 0;
+                varstudentcode = "0";
+                varid = "0";
                 for (int i = 0; i < grdstudentsms.Rows.Count; i++)
                 {
                     Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
 
                     if (varbooleanvalue == true)
                     {
-                        count = count + 1;
+                        if (varstudentcode == "0")
+                        {
+                            varstudentcode = Convert.ToString(grdstudentsms.Rows[i].Cells["clmsmid"].Value);
+                        }
+                        else
+                        {
+                            varstudentcode = varstudentcode + ',' + Convert.ToString(grdstudentsms.Rows[i].Cells["clmsmid"].Value);
+                        }
+                        DataSet objDs = new DataSet();
+                        SPDataService objdserv = new SPDataService();
+                        objDs = objdserv.udfncompsesms("0", MainForm.pbUserID, Convert.ToString(cmbsender.SelectedValue), Convert.ToString(cmbtemplate.SelectedValue), varstudentcode);
+                        objdserv.CloseConnection();
+
+                        for (int j = 0; j < objDs.Tables[1].Rows.Count; j++)
+                        {
+                            count = count + 1;
+                            if (varid == "0")
+                            {
+                                varid = Convert.ToString(objDs.Tables[1].Rows[j]["id"].ToString());
+                            }
+                            else
+                            {
+                                varid = varid + ',' + Convert.ToString(objDs.Tables[1].Rows[j]["id"].ToString());
+                            }
+
+                        }
                     }
                 }
-
+                lblid.Text = varid;
                 lblsmscount.Text = Convert.ToString(count);
             }
+
             catch (Exception ex)
             {
                 objError = new DataError();
@@ -453,162 +592,86 @@ namespace SMSApplication
 
         public void udfnsave()
         {
-        //    if (objValidation.internetconnection() == true)
-        //    {
-        //        if (Convert.ToString(cmbmember.SelectedValue) != "-1" && Convert.ToString(cmbsender.SelectedValue) != "-1")
-        //        {
+            if (objValidation.internetconnection() == true)
+            {
+                if (Convert.ToString(cmbsender.SelectedValue) != "-1")
+                {
 
-        //            DataService objdservice = new DataService();
-        //            SPDataService objspdservice = new SPDataService();
-        //            string result = "", studentleft = "0", smscount = "0";
-        //            PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
-        //            objdservice.CloseConnection();
-        //            int varflag = 0;
-        //            varstudentcode = "0";
-        //            varstaffcode = "0";
-        //            //if (PRESENTVAL == "0")
-        //            //{
-        //            if (Convert.ToString(cmbmember.SelectedValue) == "1")
-        //            {
+                    DataService objdservice = new DataService();
+                    SPDataService objspdservice = new SPDataService();
+                    string result = "", studentleft = "0", smscount = "0";
+                    //   PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
+                    // objdservice.CloseConnection();
+                    int varflag = 0;
+                    varstudentcode = "0";
+                    varstaffcode = "0";
+                    //if (PRESENTVAL == "0")
+                    //{
+                    varstaffcode = lblid.Text;
+                    for (int i = 0; i < grdstudentsms.Rows.Count; i++)
+                    {
+                        Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
+                        if (varbooleanvalue == true)
+                        {
+                            varflag++;
+                        }
 
-        //                for (int i = 0; i < grdstudentsms.Rows.Count; i++)
-        //                {
-        //                    if (Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value) == true)
-        //                    {
-        //                        if (varstudentcode == "0")
-        //                        {
-        //                            varstudentcode = Convert.ToString(grdstudentsms.Rows[i].Cells["admission"].Value);
-        //                        }
-        //                        else
-        //                        {
-        //                            varstudentcode = varstudentcode + ',' + Convert.ToString(grdstudentsms.Rows[i].Cells["admission"].Value);
-        //                        }
-        //                    }
+                    }
+                    if (varflag == 0)
+                    {
+                        MessageBox.Show("Please Select Atleast group.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-        //                }
+                        return;
+                    }
+                    else
+                    {
+                        if (btnsmssend.Enabled == true)
+                        {
+                            result = objspdservice.udfnsendsmscompose("compose", varid, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "1", Convert.ToString(cmbtemplate.SelectedValue), "");
+                            if (result.Contains("SMS Send Successfully."))
+                            {
+                                MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // udfnclear();
+                                // MainForm.objMR_StudentsList.udfnList();
+                            }
+                            else
+                            {
+                                MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
 
-        //                for (int i = 0; i < grdstudentsms.Rows.Count; i++)
-        //                {
-        //                    Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
-        //                    if (varbooleanvalue == true)
-        //                    {
-        //                        varflag++;
-        //                    }
+                    //}
+                    //else
+                    //{
 
-        //                }
-        //                if (varflag == 0)
-        //                {
-        //                    MessageBox.Show("Please Select Atleast One student.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+                }
 
-        //                    return;
-        //                }
-        //                else
-        //                {
-        //                    if (btnsmssend.Enabled == true)
-        //                    {
-        //                        result = objspdservice.udfnsendsmscompose("compose", varstudentcode, MainForm.pbUserID, "General SMS for student", lblsmscount.Text, "1", Convert.ToString(cmbtemplate.SelectedValue));
-        //                        if (result.Contains("SMS Send Successfully."))
-        //                        {
-        //                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                            // udfnclear();
-        //                            // MainForm.objMR_StudentsList.udfnList();
-        //                        }
-        //                        else
-        //                        {
-        //                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
-        //                {
-        //                    if (Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value) == true)
-        //                    {
-        //                        if (varstaffcode == "")
-        //                        {
-        //                            varstaffcode = Convert.ToString(grdstaffsms.Rows[i].Cells["clmstaffid"].Value);
-        //                        }
-        //                        else
-        //                        {
-        //                            varstaffcode = varstaffcode + ',' + Convert.ToString(grdstaffsms.Rows[i].Cells["clmstaffid"].Value);
-        //                        }
-        //                    }
-        //                }
-        //                for (int i = 0; i < grdstaffsms.Rows.Count; i++)
-        //                {
-        //                    Boolean varbooleanvalue = Convert.ToBoolean(grdstaffsms.Rows[i].Cells["clmstaffcheck"].Value);
-        //                    if (varbooleanvalue == true)
-        //                    {
-        //                        varflag++;
-        //                    }
+                else
+                {
 
-        //                }
-        //                if (varflag == 0)
-        //                {
-        //                    MessageBox.Show("Please Select Atleast One staff.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Convert.ToString(cmbsender.SelectedValue) == "-1")
+                    {
+                        epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
+                        cmbsender.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("Please select the sender.", cmbsender, 5000);
+                    }
 
-        //                    return;
-        //                }
-        //                else
-        //                {
-        //                    if (btnsmssend.Enabled == true)
-        //                    {
-        //                        result = objspdservice.udfnsendsmscompose("compose", varstaffcode, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "2", Convert.ToString(cmbtemplate.SelectedValue));
-        //                        if (result.Contains("SMS Send Successfully."))
-        //                        {
-        //                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                            // udfnclear();
-        //                            // MainForm.objMR_StudentsList.udfnList();
-        //                        }
-        //                        else
-        //                        {
-        //                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                        }
-        //                    }
-        //                    else
-        //                    {
-        //                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //                    }
-        //                }
-        //            }
-        //            //}
-        //            //else
-        //            //{
-
-        //            //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            //}
-        //        }
-
-        //        else
-        //        {
-        //            if (Convert.ToString(cmbmember.SelectedValue) == "-1")
-        //            {
-        //                epMR_SMSStudent.SetError(cmbmember, "Please select the member.");
-        //                cmbmember.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-        //                tpConfirmPwd.ShowAlways = true;
-        //                tpConfirmPwd.Show("Please select the member.", cmbmember, 5000);
-        //            }
-        //            if (Convert.ToString(cmbsender.SelectedValue) == "-1")
-        //            {
-        //                epMR_SMSStudent.SetError(cmbsender, "Please select the sender.");
-        //                cmbsender.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-        //                tpConfirmPwd.ShowAlways = true;
-        //                tpConfirmPwd.Show("Please select the sender.", cmbsender, 5000);
-        //            }
-
-        //        }
-        //    }
-        //    else {
-        //        MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Check Your Internet connection !!!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-    
+
     }
 }

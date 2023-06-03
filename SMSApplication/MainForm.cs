@@ -63,8 +63,8 @@ namespace SMSApplication
         public static TRN_SMS_Student objTRN_SMS_Student;
         public static TRN_SMS_Staff objTRN_SMS_Staff;
         public static TRN_SMS_General objTRN_SMS_General;
-        public static MR_StudentWipout objMR_StudentWipout;
-        
+        public static MR_StudentWipout objMR_StudentWipout; 
+        public static RPT_Absent objReportRPT_Absent;
 
         public MainForm()
         {
@@ -121,9 +121,9 @@ namespace SMSApplication
                 timer2_Tick(sender, e);
                 timer3_Tick(sender, e);
                 udfnCloseChildForms();
-                objStart = new Start();
-                objStart.MdiParent = this;
-                objStart.Show();
+                objTRN_SMS_Student = new TRN_SMS_Student();
+                objTRN_SMS_Student.MdiParent = this;
+                objTRN_SMS_Student.Show();
             }
             catch (Exception ex)
             { objError = new DataError();objError.WriteFile(ex); }
@@ -283,9 +283,9 @@ namespace SMSApplication
             try
             {
                 udfnCloseChildForms();
-                MainForm.objStart = new Start();
-                MainForm.objStart.MdiParent = this;
-                MainForm.objStart.Show();
+                objTRN_SMS_Student = new TRN_SMS_Student();
+                objTRN_SMS_Student.MdiParent = this;
+                objTRN_SMS_Student.Show();
             }
             catch (Exception ex)
             {
@@ -459,23 +459,32 @@ namespace SMSApplication
         {
             try
             {
+                DataSet objds = new DataSet();  
                 DataService objDservice = new DataService();
+                 objds= objDservice.GetDataset("select top(1) RIGHT(jl_startdate,7) startvalue, RIGHT(jl_enddate,7)endvalue,jl_smscount as smscount,case when jl_enddate is null then 0 else 1 end as smswaiting from TRN_SMSJobLog where jl_smscount <>0 and CONVERT(NVARCHAR, CONVERT(DATE,jl_enddate,101),103)=CONVERT(NVARCHAR,GETDATE(),103)order by jl_id desc");
                 // lblTime.Text = lblAcademicYear.Text + "\r\n" + "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
-                lblbucketlist.Text = objDservice.displaydata("select ST_smsbucket from MR_Settings");
-                 
-                totalsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,2,5) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103)");
-                sentsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS NOT NULL");
-                pendingsms = objDservice.displaydata("SELECT COUNT(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS   NULL");
+                lblbucketlist.Text = objDservice.displaydata("select ST_smsbucket from MR_Settings"); 
+                totalsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,2,5) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103)");
+                sentsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS NOT NULL");
+                pendingsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS   NULL");
                 objDservice.CloseConnection();  
                 lbltotalsms.Text =totalsms;
                 lblsentsms.Text = sentsms;
-                if (pendingsms != "0")
+                if (objds.Tables[0].Rows.Count >0)
                 {
-                    lblsmscompare.Text = pendingsms + " / " + totalsms;
+                    if (objds.Tables[0].Rows[0]["smswaiting"].ToString() != "0")
+                    {
+                        lblouttimesms.Visible = true;
+                        lblsmscompare.Text ="Last SMS Batch Time "+ objds.Tables[0].Rows[0]["startvalue"].ToString() + " - " +  objds.Tables[0].Rows[0]["endvalue"].ToString() ;
+                        lblouttimesms.Text = "SMS Count is " + objds.Tables[0].Rows[0]["smscount"].ToString();
+                    }
+                    else
+                    {
+                        lblsmscompare.Text = "Still prograss"+" SMS Count is " + sentsms+ " / " + objds.Tables[0].Rows[0]["smscount"].ToString() ;
+                        lblouttimesms.Visible = false;
+                    }
                 }
-                else {
-                    lblsmscompare.Text = " - ";
-                }
+                    
             }
             catch (Exception ex)
             {
@@ -505,15 +514,22 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+        
 
-        private void ms_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void tsmpresentreport_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void lbltotalsms_Click(object sender, EventArgs e)
-        {
-
+            try
+            {
+                udfnCloseChildForms(); 
+                MainForm.objReportRPT_Absent = new RPT_Absent();
+                MainForm.objReportRPT_Absent.MdiParent = this;
+                MainForm.objReportRPT_Absent.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
         }
     } 
 }

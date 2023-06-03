@@ -60,7 +60,7 @@ namespace SMSApplication.ServiceClass
             if (objConn.State == ConnectionState.Open)
                 objConn.Close();
 
-        }     
+        }
         public int udfnExecuteQuery(string paraConnectedQuery)
         {
             int udfn = 0;
@@ -134,7 +134,7 @@ namespace SMSApplication.ServiceClass
                 tmpspcall.CloseConnection();
             }
             return udfn;
-        }       
+        }
         public DataSet udfnsubmenu(string process)
         {
             DataSet ds = new DataSet();
@@ -190,7 +190,7 @@ namespace SMSApplication.ServiceClass
 
 
         //--  change password ---
-      
+
 
         public string udfnchangepassword(string paraUserID, string paraOldPassword, string paranewpassword, string paraoriginator)
         {
@@ -202,7 +202,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
                 varSqlCommand.Parameters.AddWithValue("@paranewpassword", paranewpassword);
                 varSqlCommand.Parameters.AddWithValue("@paraOldPassword", paraOldPassword);
-                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID); 
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraoriginator", paraoriginator);
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -221,8 +221,8 @@ namespace SMSApplication.ServiceClass
 
 
         //--  staff master ---
-        public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID, 
-                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity,string parapincode,string paraRfCardno,string parasource)
+        public string udfnStaffMaster(string paraprocess, string parastaffid, string parastaffname, string paramobile, string paraDOB, string paraBloodGroup, string paraDesignation, string paraUserID,
+                 string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity, string parapincode, string paraRfCardno, string parasource)
         {
             string result = "";
             try
@@ -247,7 +247,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode);
                 varSqlCommand.Parameters.AddWithValue("@paraRfCardno", paraRfCardno);
                 varSqlCommand.Parameters.AddWithValue("@parasource", parasource);
-                
+
 
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -263,7 +263,7 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-        
+
 
         public DataSet udfnStaffMasterLIST(string paraprocess, string parastaffid, string paraUserID)
         {
@@ -295,9 +295,9 @@ namespace SMSApplication.ServiceClass
 
         //--  student master ---
 
-        public string udfnStudentMaster(string paraprocess, string paraStudentId, string paraStudentname,string paraAdmissinno, string paramobile,string paraalternativemobile, string paraDOB,
+        public string udfnStudentMaster(string paraprocess, string paraStudentId, string paraStudentname, string paraAdmissinno, string paramobile, string paraalternativemobile, string paraDOB,
             string paraBloodGroup, string paraclassSection, string paraUserID,
-            string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity, string parapincode,string paraparentname,string pararfidno,string parasource)
+            string paraStatus, string paraOriginator, string paraaddress1, string paraaddress2, string paraaddress3, string paracity, string parapincode, string paraparentname, string pararfidno, string parasource)
         {
             string result = "";
             try
@@ -309,10 +309,10 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraStudentId", paraStudentId);
                 varSqlCommand.Parameters.AddWithValue("@paraStudentname", paraStudentname);
                 varSqlCommand.Parameters.AddWithValue("@paraAdmissinno", paraAdmissinno);
-                varSqlCommand.Parameters.AddWithValue("@paraDOB", paraDOB); 
-                varSqlCommand.Parameters.AddWithValue("@paraBloodGroup", paraBloodGroup); 
-                varSqlCommand.Parameters.AddWithValue("@paramobile", paramobile); 
-                varSqlCommand.Parameters.AddWithValue("@paraalternativemobile", paraalternativemobile); 
+                varSqlCommand.Parameters.AddWithValue("@paraDOB", paraDOB);
+                varSqlCommand.Parameters.AddWithValue("@paraBloodGroup", paraBloodGroup);
+                varSqlCommand.Parameters.AddWithValue("@paramobile", paramobile);
+                varSqlCommand.Parameters.AddWithValue("@paraalternativemobile", paraalternativemobile);
                 varSqlCommand.Parameters.AddWithValue("@paraclassSection", paraclassSection);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraStatus", paraStatus);
@@ -322,7 +322,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraaddress3", paraaddress3);
                 varSqlCommand.Parameters.AddWithValue("@paracity", paracity);
                 varSqlCommand.Parameters.AddWithValue("@parapincode", parapincode);
-                varSqlCommand.Parameters.AddWithValue("@paraparentname", paraparentname); 
+                varSqlCommand.Parameters.AddWithValue("@paraparentname", paraparentname);
                 varSqlCommand.Parameters.AddWithValue("@pararfidno", pararfidno);
                 varSqlCommand.Parameters.AddWithValue("@parasource", parasource);
 
@@ -343,7 +343,7 @@ namespace SMSApplication.ServiceClass
 
 
 
-        public DataSet udfnStudentMasterlist(string paraprocess, string paraStudentid, string paraUserID,string paraclassid)
+        public DataSet udfnStudentMasterlist(string paraprocess, string paraStudentid, string paraUserID, string paraclassid)
         {
             DataSet ds = new DataSet();
             try
@@ -354,7 +354,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
                 varSqlCommand.Parameters.AddWithValue("@ParastudentId", paraStudentid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
-                varSqlCommand.Parameters.AddWithValue("@paraclassid", paraclassid); 
+                varSqlCommand.Parameters.AddWithValue("@paraclassid", paraclassid);
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
                 sa.Fill(ds);
@@ -371,7 +371,7 @@ namespace SMSApplication.ServiceClass
             return ds;
         }
 
-        public string udfnstudentmasterimport(string paraProcess,  DataTable paramr_Student, string paraUserID,string paraOriginator)
+        public string udfnstudentmasterimport(string paraProcess, DataTable paramr_Student, string paraUserID, string paraOriginator)
         {
             string result = "";
             try
@@ -425,8 +425,8 @@ namespace SMSApplication.ServiceClass
             return result;
         }
         //--SENDER MASTER --
-        public string udfnsenderidmaster(string paraprocess,string parasenderid, string parasendername, string parastatus,string paraUserID,string paraOriginator)
-        {   
+        public string udfnsenderidmaster(string paraprocess, string parasenderid, string parasendername, string parastatus, string paraUserID, string paraOriginator)
+        {
             string result = "";
             try
             {
@@ -435,9 +435,9 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
                 varSqlCommand.Parameters.AddWithValue("@parasendername", parasendername);
-                varSqlCommand.Parameters.AddWithValue("@parasenderid", parasenderid);  
+                varSqlCommand.Parameters.AddWithValue("@parasenderid", parasenderid);
                 varSqlCommand.Parameters.AddWithValue("@parastatus", parastatus);
-                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID); 
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
 
                 varSqlCommand.CommandTimeout = 0;
@@ -454,8 +454,8 @@ namespace SMSApplication.ServiceClass
             }
             return result;
         }
-         
-             public DataSet udfnsenderidmasterlist(string paraprocess, string parasenderid, string paraUserID)
+
+        public DataSet udfnsenderidmasterlist(string paraprocess, string parasenderid, string paraUserID)
         {
             DataSet ds = new DataSet();
             try
@@ -463,9 +463,9 @@ namespace SMSApplication.ServiceClass
                 tmpspcall = new SPCall();
                 SqlCommand varSqlCommand = new SqlCommand("[PROC_SENDER_list]", tmpspcall.objConn);
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
-                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess); 
-                varSqlCommand.Parameters.AddWithValue("@parasenderid", parasenderid);  
-                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID); 
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@parasenderid", parasenderid);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
 
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
@@ -483,7 +483,7 @@ namespace SMSApplication.ServiceClass
             return ds;
         }
         //--TEMPLATE MASTER
-        public string udfntemplatemaster(string paraprocess, string paratemplateid, string paratempname,string paratemplatevalue, string paraconenttype, string parasender, string paratempconent, string parastatus, string paraUserID, string paraOriginator)
+        public string udfntemplatemaster(string paraprocess, string paratemplateid, string paratempname, string paratemplatevalue, string paraconenttype, string parasender, string paratempconent, string parastatus, string paraUserID, string paraOriginator)
         {
             string result = "";
             try
@@ -495,10 +495,10 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paratempname", paratempname);
                 varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
                 varSqlCommand.Parameters.AddWithValue("@paratemplatevalue", paratemplatevalue);
-                varSqlCommand.Parameters.AddWithValue("@paraconenttype", paraconenttype); 
+                varSqlCommand.Parameters.AddWithValue("@paraconenttype", paraconenttype);
                 varSqlCommand.Parameters.AddWithValue("@parasender", parasender);
                 varSqlCommand.Parameters.AddWithValue("@paratempconent", paratempconent);
-                varSqlCommand.Parameters.AddWithValue("@parastatus", parastatus); 
+                varSqlCommand.Parameters.AddWithValue("@parastatus", parastatus);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
 
@@ -548,15 +548,15 @@ namespace SMSApplication.ServiceClass
         //--Genreal settings--
         public string udfngenralsettings(string paraprocess, string parasettingid, string paranumbers, string paraUserID, string paraOriginator)
         {
-            string result = ""; 
+            string result = "";
             try
             {
                 tmpspcall = new SPCall();
                 SqlCommand varSqlCommand = new SqlCommand("[PROC_GenralSetting]", tmpspcall.objConn);
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
-                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess); 
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
                 varSqlCommand.Parameters.AddWithValue("@paranumbers", paranumbers);
-                varSqlCommand.Parameters.AddWithValue("@parasettingid", parasettingid); 
+                varSqlCommand.Parameters.AddWithValue("@parasettingid", parasettingid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
 
@@ -575,7 +575,7 @@ namespace SMSApplication.ServiceClass
             return result;
         }
         //--SMS MASTER LIST
-        public DataSet udfnsmsstudentmasterlist(string paraprocess, string paratudentid, string paraUserID,string paratotime,string parafromtime,string parastudentleft)
+        public DataSet udfnsmsstudentmasterlist(string paraprocess, string paratudentid, string paraUserID, string paratotime, string parafromtime, string parastudentleft)
         {
             DataSet ds = new DataSet();
             try
@@ -587,7 +587,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paratudentid", paratudentid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@parafromtime", parafromtime);
-                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime); 
+                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime);
                 varSqlCommand.Parameters.AddWithValue("@parastudentleft", parastudentleft);
 
                 varSqlCommand.CommandTimeout = 0;
@@ -606,7 +606,7 @@ namespace SMSApplication.ServiceClass
             return ds;
         }
 
-        public DataSet udfnsmsstaffmasterlist(string paraprocess, string parastaffid, string paraUserID, string paratotime, string parafromtime,string parastudentleft)
+        public DataSet udfnsmsstaffmasterlist(string paraprocess, string parastaffid, string paraUserID, string paratotime, string parafromtime, string parastudentleft)
         {
             DataSet ds = new DataSet();
             try
@@ -618,7 +618,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@parastaffid", parastaffid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@parafromtime", parafromtime);
-                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime); 
+                varSqlCommand.Parameters.AddWithValue("@paratotime", paratotime);
                 varSqlCommand.Parameters.AddWithValue("@parastudentleft", parastudentleft);
 
                 varSqlCommand.CommandTimeout = 0;
@@ -639,7 +639,7 @@ namespace SMSApplication.ServiceClass
 
         //-- SNED SMS--FOR STUDENT //
 
-        public string udfnsendsms(string paraProcess, string paradate, string paraintime, string paraabsent, string paraouttime, string parasmscount, string paraUserID, string paraOriginator,string parastudentleft,string paramobileno)
+        public string udfnsendsms(string paraProcess, string paradate, string paraintime, string paraabsent, string paraouttime, string parasmscount, string paraUserID, string paraOriginator, string parastudentleft, string paramobileno)
         {
             string result = "";
             try
@@ -656,7 +656,7 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
                 varSqlCommand.Parameters.AddWithValue("@parastudentleft", parastudentleft);
-                varSqlCommand.Parameters.AddWithValue("@paramobileno", paramobileno); 
+                varSqlCommand.Parameters.AddWithValue("@paramobileno", paramobileno);
 
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -674,7 +674,7 @@ namespace SMSApplication.ServiceClass
         }
         //-- sms for staff
 
-        public string udfnsendsmsSTAFF(string paraProcess, string paradate, string paraintime, string parasendernumber,string paraouttime, string parasmscount, string paraUserID, string paraOriginator )
+        public string udfnsendsmsSTAFF(string paraProcess, string paradate, string paraintime, string parasendernumber, string paraouttime, string parasmscount, string paraUserID, string paraOriginator)
         {
             string result = "";
             try
@@ -684,12 +684,12 @@ namespace SMSApplication.ServiceClass
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
                 varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
                 varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
-                varSqlCommand.Parameters.AddWithValue("@paraintime", paraintime); 
+                varSqlCommand.Parameters.AddWithValue("@paraintime", paraintime);
                 varSqlCommand.Parameters.AddWithValue("@parasendernumber", parasendernumber);
-                varSqlCommand.Parameters.AddWithValue("@paraouttime", paraouttime); 
+                varSqlCommand.Parameters.AddWithValue("@paraouttime", paraouttime);
                 varSqlCommand.Parameters.AddWithValue("@parasmscount", parasmscount);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
-                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator); 
+                varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
 
                 varSqlCommand.CommandTimeout = 0;
                 result = varSqlCommand.ExecuteScalar().ToString();
@@ -706,7 +706,7 @@ namespace SMSApplication.ServiceClass
             return result;
         }
         //--compose sms
-        public DataSet udfncompsesms(  string parasmemberid, string paraUserID,string parasenderrid,string paratemplateid,string paragroupid)
+        public DataSet udfncompsesms(string parasmemberid, string paraUserID, string parasenderrid, string paratemplateid, string paragroupid)
         {
             DataSet ds = new DataSet();
             try
@@ -714,12 +714,12 @@ namespace SMSApplication.ServiceClass
                 tmpspcall = new SPCall();
                 SqlCommand varSqlCommand = new SqlCommand("[PROC_COMPOSE_SMSLIST]", tmpspcall.objConn);
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
-                varSqlCommand.Parameters.AddWithValue("@parasmemberid", parasmemberid); 
+                varSqlCommand.Parameters.AddWithValue("@parasmemberid", parasmemberid);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@parasenderrid", parasenderrid);
                 varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
                 varSqlCommand.Parameters.AddWithValue("@paragroupid", paragroupid);
-                
+
                 varSqlCommand.CommandTimeout = 0;
                 SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
                 sa.Fill(ds);
@@ -736,7 +736,7 @@ namespace SMSApplication.ServiceClass
             return ds;
         }
 
-        public string udfnsendsmscompose(string paraProcess, string paraid, string paraUserID, string paraOriginator,string parasmscount,string parasendervalue,string paratemplateid)
+        public string udfnsendsmscompose(string paraProcess, string paraid, string paraUserID, string paraOriginator, string parasmscount, string parasendervalue, string paratemplateid, string paramobileno)
         {
             string result = "";
             try
@@ -744,14 +744,14 @@ namespace SMSApplication.ServiceClass
                 tmpspcall = new SPCall();
                 SqlCommand varSqlCommand = new SqlCommand("[PROC_SENDSMS_GENERAL]", tmpspcall.objConn);
                 varSqlCommand.CommandType = CommandType.StoredProcedure;
-                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess); 
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraProcess);
                 varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
                 varSqlCommand.Parameters.AddWithValue("@paraOriginator", paraOriginator);
                 varSqlCommand.Parameters.AddWithValue("@paraid", paraid);
                 varSqlCommand.Parameters.AddWithValue("@parasmscount", parasmscount);
                 varSqlCommand.Parameters.AddWithValue("@parasendervalue", parasendervalue);
                 varSqlCommand.Parameters.AddWithValue("@paratemplateid", paratemplateid);
-                
+                varSqlCommand.Parameters.AddWithValue("@paramobileno", paramobileno);
 
 
                 varSqlCommand.CommandTimeout = 0;

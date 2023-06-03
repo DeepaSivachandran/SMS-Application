@@ -37,6 +37,7 @@
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNewPwd = new System.Windows.Forms.TextBox();
             this.lblDNewPassword = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.lblProfilePhotoPath = new System.Windows.Forms.Label();
             this.lblProfilePhotoFileName = new System.Windows.Forms.Label();
             this.lblCollegeLogoPath = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.epMR_GeneralSettings = new System.Windows.Forms.ErrorProvider(this.components);
             this.tsCollegeProfile = new System.Windows.Forms.ToolStrip();
             this.tspHeader = new System.Windows.Forms.ToolStripLabel();
@@ -136,6 +136,21 @@
             this.label2.Text = "Single SMS Length for Unicode";
             this.label2.Visible = false;
             // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(344, 111);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(79, 29);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Update";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -214,21 +229,6 @@
             this.lblCollegeLogoPath.Size = new System.Drawing.Size(0, 17);
             this.lblCollegeLogoPath.TabIndex = 249;
             this.lblCollegeLogoPath.Visible = false;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Image = global::SMSApplication.Properties.Resources.save1;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(344, 111);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(79, 29);
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Update";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // epMR_GeneralSettings
             // 

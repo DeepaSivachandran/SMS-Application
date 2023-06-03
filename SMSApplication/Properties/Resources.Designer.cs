@@ -213,9 +213,29 @@ namespace SMSApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap internet_off__2_ {
+            get {
+                object obj = ResourceManager.GetObject("internet-off (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap internet_on {
             get {
                 object obj = ResourceManager.GetObject("internet-on", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap internet_on__2_ {
+            get {
+                object obj = ResourceManager.GetObject("internet-on (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,6 +316,16 @@ namespace SMSApplication.Properties {
         internal static System.Drawing.Bitmap send_message__1_ {
             get {
                 object obj = ResourceManager.GetObject("send-message (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap send_sms {
+            get {
+                object obj = ResourceManager.GetObject("send-sms", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
