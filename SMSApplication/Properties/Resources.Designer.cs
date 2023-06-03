@@ -253,6 +253,16 @@ namespace SMSApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo {
+            get {
+                object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New {
             get {
                 object obj = ResourceManager.GetObject("New", resourceCulture);
@@ -336,6 +346,16 @@ namespace SMSApplication.Properties {
         internal static System.Drawing.Bitmap signin {
             get {
                 object obj = ResourceManager.GetObject("signin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trio_s_logo {
+            get {
+                object obj = ResourceManager.GetObject("trio-s_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

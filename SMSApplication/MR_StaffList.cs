@@ -384,7 +384,23 @@ namespace SMSApplication
 
         private void tsbexport_Click_1(object sender, EventArgs e)
         {
-            udfnexcel();
+            try
+            {
+                lblDNoRecordFound.Visible = false;
+                picLoader.Visible = true;
+                Application.DoEvents();
+                udfnexcel();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
+            }
         }
 
         private void tspimport_Click(object sender, EventArgs e)

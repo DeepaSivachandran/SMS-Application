@@ -11,6 +11,8 @@ using SMSApplication.ServiceClass;
 using System.IO;
 using System.Text.RegularExpressions;
 
+using Excel = Microsoft.Office.Interop.Excel;
+
 namespace SMSApplication
 {
     public partial class RPT_Absent : Form
@@ -47,8 +49,7 @@ namespace SMSApplication
             try
             {
                 //***************Load password settings details******************
-
-                udfnlist();
+                 
                 DataSet objDs = new DataSet();
                 DataService objDser = new DataService();
                 objDs = objDser.GetDataset("SELECT TOP 1 [No.of.Chars], PasswordType FROM DEF_PasswordSettings WHERE StatusCode = 1 ORDER BY Autonum DESC");
@@ -68,76 +69,204 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-        public void udfnlist()
+        public void udfnstpresentlist()
         {
-        //    DataSet objds;
-        //    SPDataService objspdservice = new SPDataService();
-        //    if (rbStudent.Checked == true)
-        //    {
-        //        objds = objspdservice.udfnStockRawMaterialshoratgestock(Convert.ToInt32(cmbCompany.SelectedValue), Convert.ToInt32(lblGroupCode.Text), Convert.ToInt32(LblRawMaterialCode.Text), locationcode, MainForm.pbUserID, MainForm.pbIpAddress, varInstock, varzerostock, varNegativeStock, varall, varWIPStk, "0", mainlocation);
 
-        //    }
-        //    else
-        //    {
-        //        objds = objspdservice.udfnStockRawMaterialshoratgestock(Convert.ToInt32(cmbCompany.SelectedValue), Convert.ToInt32(lblGroupCode.Text), Convert.ToInt32(LblRawMaterialCode.Text), locationcode, MainForm.pbUserID, MainForm.pbIpAddress, varInstock, varzerostock, varNegativeStock, varall, varWIPStk, "0", mainlocation);
-        //    }
+            try
+            {
+                DataSet ds = new DataSet();
+                string data = "";
+                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                ExcelObj.Visible = true;
+                ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                ExcelSheet = ExcelBook.ActiveSheet;
+                ExcelSheet.Name = "present List";
+                int count = 0; 
+                SPDataService spservice = new SPDataService();
 
-        //    //objspdservice.CloseConnection();
-        //    if (objds != null)
-        //    {
-        //        if (objds.Tables.Count > 0)
-        //        {
-        //            if (objds.Tables[0].Rows.Count > 0)
-        //            {
-        //                if (rbStudent.Checked == true)
-        //                {
-        //                    lblNorecordFound.Visible = false;
-        //                    rptviewer.Visible = true;
-        //                    rptviewer.ReuseParameterValuesOnRefresh = true;
-        //                    rptviewer.RefreshReport();
+                ds = spservice.udfnpresent("student", dpstudentfrom.Text, MainForm.pbUserID, dpstudenttodate.Text);
+                 
+                count = ds.Tables[0].Columns.Count;
 
-        //                    objBillreport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-        //                    objBillreport.Load(Application.StartupPath + "\\Reports\\.rpt");
-        //                    //objBillreport.SetParameterValue("", );
-        //                    //objBillreport.SetParameterValue("paraNegativeStk", varNegativeStock); 
-        //                    objValidation.CrySqlConnection(objBillreport);
-        //                    rptviewer.ReportSource = objBillreport;
-        //                    rptviewer.Refresh();
-        //                }
-        //                else
-        //                {
-        //                    lblNorecordFound.Visible = false;
-        //                    rptviewer.Visible = true;
-        //                    rptviewer.ReuseParameterValuesOnRefresh = true;
-        //                    rptviewer.RefreshReport();
+                string VarReportHead = "";
+                VarReportHead = "STUDENT PRESENT REPORT";
+                ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
 
-        //                    objBillreport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-        //                    objBillreport.Load(Application.StartupPath + "\\Reports\\.rpt");
-        //                    //objBillreport.SetParameterValue("", );
-        //                    //objBillreport.SetParameterValue("paraNegativeStk", varNegativeStock); 
-        //                    objValidation.CrySqlConnection(objBillreport);
-        //                    rptviewer.ReportSource = objBillreport;
-        //                    rptviewer.Refresh();
-        //                }
-        //            }
-        //            else
-        //            {
-        //                lblNorecordFound.Visible = true;
-        //                rptviewer.Visible = false;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            lblNorecordFound.Visible = true;
-        //            rptviewer.Visible = false;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        lblNorecordFound.Visible = true;
-        //        rptviewer.Visible = false;
-        //    }
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                int k = 0;
+                foreach (DataColumn column in ds.Tables[0].Columns)
+                {
+                    if (k < ds.Tables[0].Columns.Count)
+                    {
+                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                    }
+                    k++;
+                }
+                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                    {
+                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                        ExcelSheet.Cells[i + 4, j + 1] = data;
+                    }
+                }
+                spservice.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
         }
+        public void udfnstabsentlist()
+        {
+
+            try
+            {
+                DataSet ds = new DataSet();
+                string data = "";
+                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                ExcelObj.Visible = true;
+                ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                ExcelSheet = ExcelBook.ActiveSheet;
+                ExcelSheet.Name = "Absent List";
+                int count = 0;  
+
+                SPDataService spservice = new SPDataService();
+               
+                ds = spservice.udfnabsent("student",dpabsentstudent.Text,MainForm.pbUserID);
+
+              
+                count = ds.Tables[0].Columns.Count;
+
+                string VarReportHead = "";
+                VarReportHead = "STUDENT ABSENT REPORT";
+                ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                int k = 0;
+                foreach (DataColumn column in ds.Tables[0].Columns)
+                {
+                    if (k < ds.Tables[0].Columns.Count)
+                    {
+                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                    }
+                    k++;
+                }
+                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                    {
+                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                        ExcelSheet.Cells[i + 4, j + 1] = data;
+                    }
+                }
+                spservice.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+        public void udfnstaffpresentlist()
+        {
+
+        }
+        public void udfnstaffabsentlist()
+        {
+
+            try
+            {
+                DataSet ds = new DataSet();
+                string data = "";
+                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                ExcelObj.Visible = true;
+                ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                ExcelSheet = ExcelBook.ActiveSheet;
+                ExcelSheet.Name = "Absent List";
+                int count = 0;
+
+                SPDataService spservice = new SPDataService();
+
+                ds = spservice.udfnabsent("staff", dpstaffabsent.Text, MainForm.pbUserID);
+
+
+                count = ds.Tables[0].Columns.Count;
+
+                string VarReportHead = "";
+                VarReportHead = "STAFF ABSENT REPORT"; 
+                ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                int k = 0;
+                foreach (DataColumn column in ds.Tables[0].Columns)
+                {
+                    if (k < ds.Tables[0].Columns.Count)
+                    {
+                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                    }
+                    k++;
+                }
+                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                    {
+                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                        ExcelSheet.Cells[i + 4, j + 1] = data;
+                    }
+                }
+                spservice.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+         
 
         private void MR_GeneralSettings_KeyDown(object sender, KeyEventArgs e)
         {
@@ -185,19 +314,87 @@ namespace SMSApplication
 
         private void btnclassview_Click(object sender, EventArgs e)
         {
-            udfnlist();
+            
+            try
+            { 
+                picLoader.Visible = true;
+                Application.DoEvents();
+                udfnstpresentlist();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
+            }
         }
 
         private void RPT_Persent_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.rptviewer != null)
+            
+        }
+
+        private void btnstaffpresent_Click(object sender, EventArgs e)
+        {
+            try
             {
-                rptviewer.ReportSource = null;
-                this.rptviewer.Dispose();
-                objBillreport.Close();
-                objBillreport.Dispose();
-                objBillreport = null;
-                GC.Collect();
+                picLoader.Visible = true;
+                Application.DoEvents();
+                udfnstaffpresentlist();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
+            }
+        }
+
+        private void btnstudentabsent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                picLoader.Visible = true;
+                Application.DoEvents();
+                udfnstabsentlist();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
+            }
+        }
+
+        private void btnstaffabsent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                picLoader.Visible = true;
+                Application.DoEvents();
+                udfnstaffabsentlist();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
             }
         }
     }

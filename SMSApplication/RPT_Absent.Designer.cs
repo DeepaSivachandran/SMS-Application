@@ -31,8 +31,28 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPT_Absent));
             this.gbCollegeProfile = new System.Windows.Forms.GroupBox();
-            this.lblNorecordFound = new System.Windows.Forms.Label();
-            this.rptviewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnstaffabsent = new System.Windows.Forms.Button();
+            this.dpstafftodate = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dpstafffromdate = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dpstaffabsent = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnstaffpresent = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnstudentabsent = new System.Windows.Forms.Button();
+            this.dpstudenttodate = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dpstudentfrom = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dpabsentstudent = new System.Windows.Forms.DateTimePicker();
+            this.DpDate = new System.Windows.Forms.Label();
+            this.btnstudentpresent = new System.Windows.Forms.Button();
             this.lblProfilePhotoPath = new System.Windows.Forms.Label();
             this.picLoader = new System.Windows.Forms.PictureBox();
             this.lblProfilePhotoFileName = new System.Windows.Forms.Label();
@@ -40,54 +60,269 @@
             this.epMR_GeneralSettings = new System.Windows.Forms.ErrorProvider(this.components);
             this.tsCollegeProfile = new System.Windows.Forms.ToolStrip();
             this.tspHeader = new System.Windows.Forms.ToolStripLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbStaff = new System.Windows.Forms.RadioButton();
-            this.rbStudent = new System.Windows.Forms.RadioButton();
-            this.dpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.DpDate = new System.Windows.Forms.Label();
-            this.btnclassview = new System.Windows.Forms.Button();
             this.gbCollegeProfile.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_GeneralSettings)).BeginInit();
             this.tsCollegeProfile.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCollegeProfile
             // 
-            this.gbCollegeProfile.Controls.Add(this.lblNorecordFound);
-            this.gbCollegeProfile.Controls.Add(this.rptviewer);
+            this.gbCollegeProfile.Controls.Add(this.groupBox2);
+            this.gbCollegeProfile.Controls.Add(this.groupBox1);
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoPath);
             this.gbCollegeProfile.Controls.Add(this.picLoader);
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoFileName);
             this.gbCollegeProfile.Controls.Add(this.lblCollegeLogoPath);
-            this.gbCollegeProfile.Location = new System.Drawing.Point(12, 74);
+            this.gbCollegeProfile.Location = new System.Drawing.Point(12, 28);
             this.gbCollegeProfile.Name = "gbCollegeProfile";
-            this.gbCollegeProfile.Size = new System.Drawing.Size(1321, 488);
+            this.gbCollegeProfile.Size = new System.Drawing.Size(1321, 521);
             this.gbCollegeProfile.TabIndex = 0;
             this.gbCollegeProfile.TabStop = false;
             // 
-            // lblNorecordFound
+            // groupBox2
             // 
-            this.lblNorecordFound.AutoSize = true;
-            this.lblNorecordFound.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.lblNorecordFound.Location = new System.Drawing.Point(607, 234);
-            this.lblNorecordFound.Name = "lblNorecordFound";
-            this.lblNorecordFound.Size = new System.Drawing.Size(138, 20);
-            this.lblNorecordFound.TabIndex = 1111167;
-            this.lblNorecordFound.Text = "No Records Found";
+            this.groupBox2.Controls.Add(this.btnstaffabsent);
+            this.groupBox2.Controls.Add(this.dpstafftodate);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.dpstafffromdate);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.dpstaffabsent);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.btnstaffpresent);
+            this.groupBox2.Location = new System.Drawing.Point(640, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(570, 188);
+            this.groupBox2.TabIndex = 958790;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Staff";
             // 
-            // rptviewer
+            // btnstaffabsent
             // 
-            this.rptviewer.ActiveViewIndex = -1;
-            this.rptviewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.rptviewer.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rptviewer.Location = new System.Drawing.Point(4, 12);
-            this.rptviewer.Name = "rptviewer";
-            this.rptviewer.Size = new System.Drawing.Size(1316, 465);
-            this.rptviewer.TabIndex = 252;
-            this.rptviewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            this.rptviewer.Visible = false;
+            this.btnstaffabsent.Image = global::SMSApplication.Properties.Resources.download;
+            this.btnstaffabsent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnstaffabsent.Location = new System.Drawing.Point(435, 129);
+            this.btnstaffabsent.Name = "btnstaffabsent";
+            this.btnstaffabsent.Size = new System.Drawing.Size(98, 30);
+            this.btnstaffabsent.TabIndex = 5;
+            this.btnstaffabsent.Text = "Download";
+            this.btnstaffabsent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnstaffabsent.UseVisualStyleBackColor = true;
+            this.btnstaffabsent.Click += new System.EventHandler(this.btnstaffabsent_Click);
+            // 
+            // dpstafftodate
+            // 
+            this.dpstafftodate.CustomFormat = "dd/MM/yyyy";
+            this.dpstafftodate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpstafftodate.Location = new System.Drawing.Point(300, 60);
+            this.dpstafftodate.Name = "dpstafftodate";
+            this.dpstafftodate.Size = new System.Drawing.Size(113, 25);
+            this.dpstafftodate.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(241, 64);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 958813;
+            this.label5.Text = "To Date";
+            // 
+            // dpstafffromdate
+            // 
+            this.dpstafffromdate.CustomFormat = "dd/MM/yyyy";
+            this.dpstafffromdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpstafffromdate.Location = new System.Drawing.Point(113, 60);
+            this.dpstafffromdate.Name = "dpstafffromdate";
+            this.dpstafffromdate.Size = new System.Drawing.Size(113, 25);
+            this.dpstafffromdate.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Red;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(6, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 17);
+            this.label6.TabIndex = 958811;
+            this.label6.Text = "Absent";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Green;
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(6, 28);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 17);
+            this.label7.TabIndex = 958810;
+            this.label7.Text = "Present";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(104, 17);
+            this.label8.TabIndex = 958809;
+            this.label8.Text = "Attendance Date";
+            // 
+            // dpstaffabsent
+            // 
+            this.dpstaffabsent.CustomFormat = "dd/MM/yyyy";
+            this.dpstaffabsent.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpstaffabsent.Location = new System.Drawing.Point(113, 132);
+            this.dpstaffabsent.Name = "dpstaffabsent";
+            this.dpstaffabsent.Size = new System.Drawing.Size(113, 25);
+            this.dpstaffabsent.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 17);
+            this.label9.TabIndex = 958802;
+            this.label9.Text = "From Date";
+            // 
+            // btnstaffpresent
+            // 
+            this.btnstaffpresent.Image = global::SMSApplication.Properties.Resources.download;
+            this.btnstaffpresent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnstaffpresent.Location = new System.Drawing.Point(435, 57);
+            this.btnstaffpresent.Name = "btnstaffpresent";
+            this.btnstaffpresent.Size = new System.Drawing.Size(98, 30);
+            this.btnstaffpresent.TabIndex = 3;
+            this.btnstaffpresent.Text = "Download";
+            this.btnstaffpresent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnstaffpresent.UseVisualStyleBackColor = true;
+            this.btnstaffpresent.Click += new System.EventHandler(this.btnstaffpresent_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnstudentabsent);
+            this.groupBox1.Controls.Add(this.dpstudenttodate);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dpstudentfrom);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.dpabsentstudent);
+            this.groupBox1.Controls.Add(this.DpDate);
+            this.groupBox1.Controls.Add(this.btnstudentpresent);
+            this.groupBox1.Location = new System.Drawing.Point(30, 48);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(570, 188);
+            this.groupBox1.TabIndex = 958789;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Student";
+            // 
+            // btnstudentabsent
+            // 
+            this.btnstudentabsent.Image = global::SMSApplication.Properties.Resources.download;
+            this.btnstudentabsent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnstudentabsent.Location = new System.Drawing.Point(435, 129);
+            this.btnstudentabsent.Name = "btnstudentabsent";
+            this.btnstudentabsent.Size = new System.Drawing.Size(98, 30);
+            this.btnstudentabsent.TabIndex = 5;
+            this.btnstudentabsent.Text = "Download";
+            this.btnstudentabsent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnstudentabsent.UseVisualStyleBackColor = true;
+            this.btnstudentabsent.Click += new System.EventHandler(this.btnstudentabsent_Click);
+            // 
+            // dpstudenttodate
+            // 
+            this.dpstudenttodate.CustomFormat = "dd/MM/yyyy";
+            this.dpstudenttodate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpstudenttodate.Location = new System.Drawing.Point(300, 60);
+            this.dpstudenttodate.Name = "dpstudenttodate";
+            this.dpstudenttodate.Size = new System.Drawing.Size(113, 25);
+            this.dpstudenttodate.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(241, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(53, 17);
+            this.label4.TabIndex = 958813;
+            this.label4.Text = "To Date";
+            // 
+            // dpstudentfrom
+            // 
+            this.dpstudentfrom.CustomFormat = "dd/MM/yyyy";
+            this.dpstudentfrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpstudentfrom.Location = new System.Drawing.Point(113, 60);
+            this.dpstudentfrom.Name = "dpstudentfrom";
+            this.dpstudentfrom.Size = new System.Drawing.Size(113, 25);
+            this.dpstudentfrom.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Red;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(6, 100);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 17);
+            this.label3.TabIndex = 958811;
+            this.label3.Text = "Absent";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Green;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(6, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 17);
+            this.label2.TabIndex = 958810;
+            this.label2.Text = "Present";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 17);
+            this.label1.TabIndex = 958809;
+            this.label1.Text = "Attendance Date";
+            // 
+            // dpabsentstudent
+            // 
+            this.dpabsentstudent.CustomFormat = "dd/MM/yyyy";
+            this.dpabsentstudent.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dpabsentstudent.Location = new System.Drawing.Point(113, 132);
+            this.dpabsentstudent.Name = "dpabsentstudent";
+            this.dpabsentstudent.Size = new System.Drawing.Size(113, 25);
+            this.dpabsentstudent.TabIndex = 4;
+            // 
+            // DpDate
+            // 
+            this.DpDate.AutoSize = true;
+            this.DpDate.Location = new System.Drawing.Point(6, 64);
+            this.DpDate.Name = "DpDate";
+            this.DpDate.Size = new System.Drawing.Size(69, 17);
+            this.DpDate.TabIndex = 958802;
+            this.DpDate.Text = "From Date";
+            // 
+            // btnstudentpresent
+            // 
+            this.btnstudentpresent.Image = global::SMSApplication.Properties.Resources.download;
+            this.btnstudentpresent.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnstudentpresent.Location = new System.Drawing.Point(435, 57);
+            this.btnstudentpresent.Name = "btnstudentpresent";
+            this.btnstudentpresent.Size = new System.Drawing.Size(98, 30);
+            this.btnstudentpresent.TabIndex = 3;
+            this.btnstudentpresent.Text = "Download";
+            this.btnstudentpresent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnstudentpresent.UseVisualStyleBackColor = true;
+            this.btnstudentpresent.Click += new System.EventHandler(this.btnclassview_Click);
             // 
             // lblProfilePhotoPath
             // 
@@ -104,9 +339,9 @@
             this.picLoader.ErrorImage = null;
             this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
             this.picLoader.InitialImage = null;
-            this.picLoader.Location = new System.Drawing.Point(5, 12);
+            this.picLoader.Location = new System.Drawing.Point(5, -27);
             this.picLoader.Name = "picLoader";
-            this.picLoader.Size = new System.Drawing.Size(1323, 470);
+            this.picLoader.Size = new System.Drawing.Size(1323, 581);
             this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picLoader.TabIndex = 958788;
             this.picLoader.TabStop = false;
@@ -153,85 +388,15 @@
             this.tspHeader.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspHeader.Name = "tspHeader";
-            this.tspHeader.Size = new System.Drawing.Size(117, 22);
-            this.tspHeader.Text = "Report - Absent";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rbStaff);
-            this.groupBox1.Controls.Add(this.rbStudent);
-            this.groupBox1.Controls.Add(this.dpFromDate);
-            this.groupBox1.Controls.Add(this.DpDate);
-            this.groupBox1.Controls.Add(this.btnclassview);
-            this.groupBox1.Location = new System.Drawing.Point(12, 26);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(515, 51);
-            this.groupBox1.TabIndex = 958789;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter by";
-            // 
-            // rbStaff
-            // 
-            this.rbStaff.AutoSize = true;
-            this.rbStaff.Location = new System.Drawing.Point(283, 20);
-            this.rbStaff.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbStaff.Name = "rbStaff";
-            this.rbStaff.Size = new System.Drawing.Size(52, 21);
-            this.rbStaff.TabIndex = 958810;
-            this.rbStaff.Text = "Staff";
-            this.rbStaff.UseVisualStyleBackColor = true;
-            // 
-            // rbStudent
-            // 
-            this.rbStudent.AutoSize = true;
-            this.rbStudent.Checked = true;
-            this.rbStudent.Location = new System.Drawing.Point(197, 20);
-            this.rbStudent.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.rbStudent.Name = "rbStudent";
-            this.rbStudent.Size = new System.Drawing.Size(70, 21);
-            this.rbStudent.TabIndex = 958809;
-            this.rbStudent.TabStop = true;
-            this.rbStudent.Text = "Student";
-            this.rbStudent.UseVisualStyleBackColor = true;
-            // 
-            // dpFromDate
-            // 
-            this.dpFromDate.CustomFormat = "dd/MM/yyyy";
-            this.dpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dpFromDate.Location = new System.Drawing.Point(50, 18);
-            this.dpFromDate.Name = "dpFromDate";
-            this.dpFromDate.Size = new System.Drawing.Size(113, 25);
-            this.dpFromDate.TabIndex = 958808;
-            // 
-            // DpDate
-            // 
-            this.DpDate.AutoSize = true;
-            this.DpDate.Location = new System.Drawing.Point(8, 22);
-            this.DpDate.Name = "DpDate";
-            this.DpDate.Size = new System.Drawing.Size(35, 17);
-            this.DpDate.TabIndex = 958802;
-            this.DpDate.Text = "Date";
-            // 
-            // btnclassview
-            // 
-            this.btnclassview.Image = global::SMSApplication.Properties.Resources.view2;
-            this.btnclassview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnclassview.Location = new System.Drawing.Point(428, 15);
-            this.btnclassview.Name = "btnclassview";
-            this.btnclassview.Size = new System.Drawing.Size(75, 30);
-            this.btnclassview.TabIndex = 4;
-            this.btnclassview.Text = "View";
-            this.btnclassview.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnclassview.UseVisualStyleBackColor = true;
-            this.btnclassview.Click += new System.EventHandler(this.btnclassview_Click);
+            this.tspHeader.Size = new System.Drawing.Size(133, 22);
+            this.tspHeader.Text = "Report Attendance";
             // 
             // RPT_Absent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1360, 575);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(1360, 607);
             this.Controls.Add(this.tsCollegeProfile);
             this.Controls.Add(this.gbCollegeProfile);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,12 +413,14 @@
             this.Leave += new System.EventHandler(this.MR_GeneralSettings_Leave);
             this.gbCollegeProfile.ResumeLayout(false);
             this.gbCollegeProfile.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_GeneralSettings)).EndInit();
             this.tsCollegeProfile.ResumeLayout(false);
             this.tsCollegeProfile.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -267,14 +434,28 @@
         public System.Windows.Forms.Label lblProfilePhotoPath;
         private System.Windows.Forms.ToolStrip tsCollegeProfile;
         private System.Windows.Forms.ToolStripLabel tspHeader;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer rptviewer;
         private System.Windows.Forms.PictureBox picLoader;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label DpDate;
-        private System.Windows.Forms.Button btnclassview;
-        private System.Windows.Forms.DateTimePicker dpFromDate;
-        public System.Windows.Forms.RadioButton rbStaff;
-        public System.Windows.Forms.RadioButton rbStudent;
-        private System.Windows.Forms.Label lblNorecordFound;
+        private System.Windows.Forms.Button btnstudentpresent;
+        private System.Windows.Forms.DateTimePicker dpabsentstudent;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dpstudenttodate;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dpstudentfrom;
+        private System.Windows.Forms.Button btnstudentabsent;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnstaffabsent;
+        private System.Windows.Forms.DateTimePicker dpstafftodate;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dpstafffromdate;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DateTimePicker dpstaffabsent;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnstaffpresent;
     }
 }

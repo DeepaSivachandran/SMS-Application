@@ -769,5 +769,89 @@ namespace SMSApplication.ServiceClass
             return result;
         }
 
+        public DataSet udfnsmstransaction(string paraprocess, string paradate, string paraUserID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_REPORT_SMS_TRANSACTIONS]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID); 
+
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
+        //Absent report
+        public DataSet udfnabsent(string paraprocess, string paradate, string paraUserID)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_REPORT_ABSENT_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
+        //present report
+        public DataSet udfnpresent(string paraprocess, string paradate, string paraUserID,string PARATODATE)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                tmpspcall = new SPCall();
+                SqlCommand varSqlCommand = new SqlCommand("[PROC_REPORT_PRESENT_LIST]", tmpspcall.objConn);
+                varSqlCommand.CommandType = CommandType.StoredProcedure;
+                varSqlCommand.Parameters.AddWithValue("@paraProcess", paraprocess);
+                varSqlCommand.Parameters.AddWithValue("@paradate", paradate);
+                varSqlCommand.Parameters.AddWithValue("@PARATODATE", PARATODATE); 
+                varSqlCommand.Parameters.AddWithValue("@paraUserID", paraUserID);
+
+                varSqlCommand.CommandTimeout = 0;
+                SqlDataAdapter sa = new SqlDataAdapter(varSqlCommand);
+                sa.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                tmpspcall.CloseConnection();
+            }
+            return ds;
+        }
     }
 }

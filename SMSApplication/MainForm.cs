@@ -65,7 +65,8 @@ namespace SMSApplication
         public static TRN_SMS_General objTRN_SMS_General;
         public static MR_StudentWipout objMR_StudentWipout; 
         public static RPT_Absent objReportRPT_Absent;
-
+        public static RPT_SMSTRANSACTION objRPT_SMSTRANSACTION;
+        
         public MainForm()
         {
             try
@@ -524,6 +525,23 @@ namespace SMSApplication
                 MainForm.objReportRPT_Absent = new RPT_Absent();
                 MainForm.objReportRPT_Absent.MdiParent = this;
                 MainForm.objReportRPT_Absent.Show();
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+        }
+
+        private void smsTransactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+             
+                try
+            {
+                udfnCloseChildForms();
+                MainForm.objRPT_SMSTRANSACTION = new RPT_SMSTRANSACTION();
+                MainForm.objRPT_SMSTRANSACTION.MdiParent = this;
+                MainForm.objRPT_SMSTRANSACTION.Show();
             }
             catch (Exception ex)
             {

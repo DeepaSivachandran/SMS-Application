@@ -321,7 +321,23 @@ namespace SMSApplication
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            excel();
+            try
+            {
+                lblDNoRecordFound.Visible = false;
+                picLoader.Visible = true;
+                Application.DoEvents();
+                excel();
+
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
+            finally
+            {
+                picLoader.Visible = false;
+            }
         }
 
         public void excel() {
@@ -345,23 +361,7 @@ namespace SMSApplication
                         ExcelSheet.Name = "Purchase";
                         int cIndex = 0;
                         int count = 0;
-
-                        //ExcelSheet.Cells[1, 1].Value = "Purchase ";
-                        //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
-                        //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Excel.Constants.xlCenter;
-                        //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Color.LightGray;
-                        //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Size = 12;
-
-                        //ExcelSheet.Cells[2, 1].Value = "From : "  ;
-                        //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
-                        //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Excel.Constants.xlCenter;
-                        //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Interior.Color = Color.LightGray;
-                        //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.Size = 12;
-
-
-                        //ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.Bold = true;
-                        //ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
-                        //ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Color.LightSlateGray;
+                         
 
                         foreach (DataGridViewColumn col in grdStudentList.Columns)
                         {

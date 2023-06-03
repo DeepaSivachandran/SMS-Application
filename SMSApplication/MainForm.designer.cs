@@ -68,9 +68,10 @@ namespace SMSApplication
             this.lblbucketlist = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblsmscompare = new System.Windows.Forms.Label();
+            this.lblouttimesms = new System.Windows.Forms.Label();
             this.lblnetoff = new System.Windows.Forms.Label();
             this.lblneton = new System.Windows.Forms.Label();
-            this.lblouttimesms = new System.Windows.Forms.Label();
+            this.smsTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ms.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -98,7 +99,7 @@ namespace SMSApplication
             this.lblTime.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblTime.Margin = new System.Windows.Forms.Padding(50, 21, 0, 0);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(27, 32);
+            this.lblTime.Size = new System.Drawing.Size(27, 33);
             this.lblTime.Text = "a";
             // 
             // tsbChangePassword
@@ -126,7 +127,7 @@ namespace SMSApplication
             this.ms.Location = new System.Drawing.Point(0, 0);
             this.ms.Name = "ms";
             this.ms.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.ms.Size = new System.Drawing.Size(1275, 57);
+            this.ms.Size = new System.Drawing.Size(1275, 58);
             this.ms.TabIndex = 112;
             this.ms.Text = "ms";
             // 
@@ -135,9 +136,10 @@ namespace SMSApplication
             this.tsbLogo.BackColor = System.Drawing.Color.Transparent;
             this.tsbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tsbLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLogo.Image = global::SMSApplication.Properties.Resources.trio_s_logo;
             this.tsbLogo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbLogo.Name = "tsbLogo";
-            this.tsbLogo.Size = new System.Drawing.Size(12, 53);
+            this.tsbLogo.Size = new System.Drawing.Size(137, 54);
             this.tsbLogo.Text = "Logo";
             this.tsbLogo.Click += new System.EventHandler(this.tsbLogo_Click);
             // 
@@ -145,7 +147,7 @@ namespace SMSApplication
             // 
             this.tssNew.Margin = new System.Windows.Forms.Padding(0, 0, 15, 0);
             this.tssNew.Name = "tssNew";
-            this.tssNew.Size = new System.Drawing.Size(6, 53);
+            this.tssNew.Size = new System.Drawing.Size(6, 54);
             // 
             // tsbHome
             // 
@@ -154,7 +156,7 @@ namespace SMSApplication
             this.tsbHome.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbHome.Name = "tsbHome";
             this.tsbHome.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
-            this.tsbHome.Size = new System.Drawing.Size(55, 53);
+            this.tsbHome.Size = new System.Drawing.Size(55, 54);
             this.tsbHome.Text = "&Home";
             this.tsbHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -173,7 +175,7 @@ namespace SMSApplication
             this.tsbControlPanel.Name = "tsbControlPanel";
             this.tsbControlPanel.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
             this.tsbControlPanel.ShowShortcutKeys = false;
-            this.tsbControlPanel.Size = new System.Drawing.Size(79, 53);
+            this.tsbControlPanel.Size = new System.Drawing.Size(79, 54);
             this.tsbControlPanel.Text = "&Send SMS";
             this.tsbControlPanel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbControlPanel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -202,13 +204,14 @@ namespace SMSApplication
             // reportsToolStripMenuItem1
             // 
             this.reportsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmpresentreport});
+            this.tsmpresentreport,
+            this.smsTransactionsToolStripMenuItem});
             this.reportsToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem1.Image = global::SMSApplication.Properties.Resources.reports1;
             this.reportsToolStripMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.reportsToolStripMenuItem1.Name = "reportsToolStripMenuItem1";
             this.reportsToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(66, 53);
+            this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(66, 54);
             this.reportsToolStripMenuItem1.Text = "&Reports";
             this.reportsToolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.reportsToolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -216,8 +219,8 @@ namespace SMSApplication
             // tsmpresentreport
             // 
             this.tsmpresentreport.Name = "tsmpresentreport";
-            this.tsmpresentreport.Size = new System.Drawing.Size(163, 22);
-            this.tsmpresentreport.Text = "Present Report";
+            this.tsmpresentreport.Size = new System.Drawing.Size(176, 22);
+            this.tsmpresentreport.Text = "Absent Report";
             this.tsmpresentreport.Click += new System.EventHandler(this.tsmpresentreport_Click);
             // 
             // toolStripMenuItem1
@@ -232,7 +235,7 @@ namespace SMSApplication
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
             this.toolStripMenuItem1.ShowShortcutKeys = false;
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 53);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(98, 54);
             this.toolStripMenuItem1.Text = "&Control Panel";
             this.toolStripMenuItem1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -298,7 +301,7 @@ namespace SMSApplication
             this.tsbLogout.Name = "tsbLogout";
             this.tsbLogout.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.L)));
             this.tsbLogout.ShowShortcutKeys = false;
-            this.tsbLogout.Size = new System.Drawing.Size(61, 53);
+            this.tsbLogout.Size = new System.Drawing.Size(61, 54);
             this.tsbLogout.Text = "&Logout";
             this.tsbLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbLogout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -376,7 +379,7 @@ namespace SMSApplication
             this.groupBox1.Controls.Add(this.lblbucketlist);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(372, 2);
+            this.groupBox1.Location = new System.Drawing.Point(493, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(376, 50);
             this.groupBox1.TabIndex = 958812;
@@ -388,7 +391,7 @@ namespace SMSApplication
             this.lbltotalsms.BackColor = System.Drawing.SystemColors.Menu;
             this.lbltotalsms.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalsms.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbltotalsms.Location = new System.Drawing.Point(330, 0);
+            this.lbltotalsms.Location = new System.Drawing.Point(334, 12);
             this.lbltotalsms.Name = "lbltotalsms";
             this.lbltotalsms.Size = new System.Drawing.Size(15, 17);
             this.lbltotalsms.TabIndex = 958821;
@@ -429,6 +432,21 @@ namespace SMSApplication
             this.lblsmscompare.TabIndex = 958819;
             this.lblsmscompare.Text = "Last SMS Batch Time 4;00pm - 8:00am";
             this.lblsmscompare.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblsmscompare.Visible = false;
+            // 
+            // lblouttimesms
+            // 
+            this.lblouttimesms.AutoSize = true;
+            this.lblouttimesms.BackColor = System.Drawing.SystemColors.Menu;
+            this.lblouttimesms.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblouttimesms.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblouttimesms.Location = new System.Drawing.Point(760, 33);
+            this.lblouttimesms.Name = "lblouttimesms";
+            this.lblouttimesms.Size = new System.Drawing.Size(51, 19);
+            this.lblouttimesms.TabIndex = 958823;
+            this.lblouttimesms.Text = "sms va";
+            this.lblouttimesms.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblouttimesms.Visible = false;
             // 
             // lblnetoff
             // 
@@ -458,19 +476,12 @@ namespace SMSApplication
             this.lblneton.Text = "  ";
             this.lblneton.Visible = false;
             // 
-            // lblouttimesms
+            // smsTransactionsToolStripMenuItem
             // 
-            this.lblouttimesms.AutoSize = true;
-            this.lblouttimesms.BackColor = System.Drawing.SystemColors.Menu;
-            this.lblouttimesms.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblouttimesms.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblouttimesms.Location = new System.Drawing.Point(760, 33);
-            this.lblouttimesms.Name = "lblouttimesms";
-            this.lblouttimesms.Size = new System.Drawing.Size(51, 19);
-            this.lblouttimesms.TabIndex = 958823;
-            this.lblouttimesms.Text = "sms va";
-            this.lblouttimesms.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblouttimesms.Visible = false;
+            this.smsTransactionsToolStripMenuItem.Name = "smsTransactionsToolStripMenuItem";
+            this.smsTransactionsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.smsTransactionsToolStripMenuItem.Text = "SMS Transactions";
+            this.smsTransactionsToolStripMenuItem.Click += new System.EventHandler(this.smsTransactionsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -550,5 +561,6 @@ namespace SMSApplication
         private System.Windows.Forms.ToolStripMenuItem tsbHome;
         public System.Windows.Forms.Label lblouttimesms;
         private System.Windows.Forms.ToolStripMenuItem tsmpresentreport;
+        private System.Windows.Forms.ToolStripMenuItem smsTransactionsToolStripMenuItem;
     }
 }

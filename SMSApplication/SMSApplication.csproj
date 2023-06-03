@@ -68,6 +68,12 @@
     <Compile Include="Authentication.designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="RPT_SMSTRANSACTION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT_SMSTRANSACTION.Designer.cs">
+      <DependentUpon>RPT_SMSTRANSACTION.cs</DependentUpon>
+    </Compile>
     <Compile Include="RPT_Absent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,10 @@
       <DependentUpon>Authentication.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RPT_SMSTRANSACTION.resx">
+      <DependentUpon>RPT_SMSTRANSACTION.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="RPT_Absent.resx">
       <DependentUpon>RPT_Absent.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -339,6 +349,7 @@
     <Content Include="Resources\Login.jpg" />
     <Content Include="Resources\Login1.jpg" />
     <Content Include="Resources\logo-cell.png" />
+    <None Include="Resources\logo.png" />
     <Content Include="Resources\male__2_.jpg" />
     <Content Include="Resources\marks.png" />
     <Content Include="Resources\New.png" />
@@ -367,6 +378,7 @@
     <Content Include="Resources\subjects.png" />
     <Content Include="Resources\title-icon %282%29.png" />
     <Content Include="Resources\title-icon.png" />
+    <None Include="Resources\trio-s_logo.png" />
     <Content Include="Resources\view.jpg" />
     <Content Include="Resources\view.png" />
     <Content Include="Resources\view1.jpg" />

@@ -159,3 +159,4 @@ F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.Report
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\FlashControlV71.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\ShockwaveFlashObjects.dll
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.RPT_SMSTRANSACTION.resources
