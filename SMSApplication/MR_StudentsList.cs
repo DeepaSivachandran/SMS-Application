@@ -31,7 +31,7 @@ namespace SMSApplication
             try
             {
                 DataBind objDataBind = new DataBind(); 
-                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_Id", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
+                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_classsection", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
                 objDataBind = null;
                 udfnList();
              //   ((MainForm)ParentForm).statusStrip1.Visible = true;
@@ -56,6 +56,7 @@ namespace SMSApplication
                 string[] item = new string[30];
                 ListViewItem listitem = new ListViewItem();
                 grdStudentList.Rows.Clear();
+                cmbClass.SelectedValue = "0";
                 objDs = objdserv.udfnStudentMasterlist("List", "", MainForm.pbUserID,"");
                 objdserv.CloseConnection();
                 if (objDs != null)
@@ -325,6 +326,7 @@ namespace SMSApplication
             {
                 lblDNoRecordFound.Visible = false;
                 picLoader.Visible = true;
+                picLoader.BringToFront();
                 Application.DoEvents();
                 excel();
 
@@ -336,6 +338,7 @@ namespace SMSApplication
             }
             finally
             {
+                picLoader.SendToBack();
                 picLoader.Visible = false;
             }
         }

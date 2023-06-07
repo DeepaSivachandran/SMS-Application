@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace SMSApplication
 {
@@ -23,11 +24,13 @@ namespace SMSApplication
         private ToolTip tpConfirmPwd = new ToolTip();
         //*************** Declare the variable *******************
         public string pbflag = "0",PRESENTVAL="0", ABSENTVAL = "0", OUTVAL = "0", totalsms="0",sentsms="0";
+        private MainForm mainfominstance;
         public TRN_SMS_Student()
         {
             InitializeComponent();
             objValidation.resolutionsettingsForm(this);
         }
+        
         private void TRN_SMS_Student_Load(object sender, EventArgs e)
         {
             try
@@ -115,53 +118,73 @@ namespace SMSApplication
         {
             try
             {
-                DataSet objDs;
-                //**** To call the function from SP ***************
-                SPDataService objdserv = new SPDataService();
-                string[] item = new string[30];
-                ListViewItem listitem = new ListViewItem();
-                grdsmsstudent.Rows.Clear();
-                string studentleft = "0";
-                btnsmssend.Enabled = true;
-                if (rbout.Checked == true)
-                {
-                    studentleft = "1";
-                }
-                else
-                {
-                    studentleft = "0";
-                }
-                objDs = objdserv.udfnsmsstudentmasterlist("list", "", MainForm.pbUserID, msktxtto.Text,msktxtfrom.Text,studentleft);
-                objdserv.CloseConnection();
-                if (objDs != null)
-                {
-                    grdsmsstudent.Rows.Clear();
-                    if (objDs.Tables.Count != 0)
+                DateTime value1, value2;
+                if (DateTime.TryParseExact(msktxtfrom.Text, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out value1) &&
+        DateTime.TryParseExact(msktxtto.Text, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out value2))
+                { 
+                    if (value1 < value2)
                     {
+                        epMR_SMSStudent.Clear();
+                        msktxtfrom.BackColor = Color.White;
+                        DataSet objDs;
+                        //**** To call the function from SP ***************
+                        SPDataService objdserv = new SPDataService();
+                        string[] item = new string[30];
+                        ListViewItem listitem = new ListViewItem();
                         grdsmsstudent.Rows.Clear();
-                        if (objDs.Tables[0].Rows.Count != 0)
+                        string studentleft = "0";
+                        btnsmssend.Enabled = true;
+                        if (rbout.Checked == true)
                         {
-                            grdsmsstudent.DataSource = null;
-                            lblDNoRecordFound.Visible = false;
-                            lblDNoRecordFound.SendToBack();
-                            for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                            studentleft = "1";
+                        }
+                        else
+                        {
+                            studentleft = "0";
+                        }
+                        objDs = objdserv.udfnsmsstudentmasterlist("list", "", MainForm.pbUserID, msktxtto.Text, msktxtfrom.Text, studentleft);
+                        objdserv.CloseConnection();
+                        if (objDs != null)
+                        {
+                            grdsmsstudent.Rows.Clear();
+                            if (objDs.Tables.Count != 0)
                             {
-                                item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString();
-                                item[1] = objDs.Tables[0].Rows[i]["ADMISSION"].ToString();
-                                item[2] = objDs.Tables[0].Rows[i]["NAME"].ToString(); 
-                                item[3] = objDs.Tables[0].Rows[i]["CLASS"].ToString(); 
-                                item[4] = objDs.Tables[0].Rows[i]["mobile"].ToString(); 
-                                item[5] = objDs.Tables[0].Rows[i]["ID"].ToString(); 
-                                item[6] = objDs.Tables[0].Rows[i]["time"].ToString();
-                                
-                                listitem = new ListViewItem(item);
-                                grdsmsstudent.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5],item[6]);
-                            }
-                            lblpresent.Text = objDs.Tables[1].Rows[0]["Present"].ToString(); 
-                            lblouttime.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
-                            lblAbsent.Text = objDs.Tables[1].Rows[0]["absent"].ToString();
-                            lbltotstudent.Text = objDs.Tables[1].Rows[0]["Totalstudent"].ToString();
+                                grdsmsstudent.Rows.Clear();
+                                if (objDs.Tables[0].Rows.Count != 0)
+                                {
+                                    grdsmsstudent.DataSource = null;
+                                    lblDNoRecordFound.Visible = false;
+                                    lblDNoRecordFound.SendToBack();
+                                    for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
+                                    {
+                                        item[0] = objDs.Tables[0].Rows[i]["SINO"].ToString();
+                                        item[1] = objDs.Tables[0].Rows[i]["ADMISSION"].ToString();
+                                        item[2] = objDs.Tables[0].Rows[i]["NAME"].ToString();
+                                        item[3] = objDs.Tables[0].Rows[i]["CLASS"].ToString();
+                                        item[4] = objDs.Tables[0].Rows[i]["mobile"].ToString();
+                                        item[5] = objDs.Tables[0].Rows[i]["ID"].ToString();
+                                        item[6] = objDs.Tables[0].Rows[i]["time"].ToString();
 
+                                        listitem = new ListViewItem(item);
+                                        grdsmsstudent.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6]);
+                                    }
+                                    lblpresent.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
+                                    lblouttime.Text = objDs.Tables[1].Rows[0]["Present"].ToString();
+                                    lblAbsent.Text = objDs.Tables[1].Rows[0]["absent"].ToString();
+                                    lbltotstudent.Text = objDs.Tables[1].Rows[0]["Totalstudent"].ToString();
+
+                                }
+                                else
+                                {
+                                    lblDNoRecordFound.BringToFront();
+                                    lblDNoRecordFound.Visible = true;
+                                }
+                            }
+                            else
+                            {
+                                lblDNoRecordFound.BringToFront();
+                                lblDNoRecordFound.Visible = true;
+                            }
                         }
                         else
                         {
@@ -171,14 +194,12 @@ namespace SMSApplication
                     }
                     else
                     {
-                        lblDNoRecordFound.BringToFront();
-                        lblDNoRecordFound.Visible = true;
+
+                        epMR_SMSStudent.SetError(msktxtfrom, "From time greater then to time.");
+                        msktxtfrom.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpConfirmPwd.ShowAlways = true;
+                        tpConfirmPwd.Show("From time greater then to time.", msktxtfrom, 5000);
                     }
-                }
-                else
-                {
-                    lblDNoRecordFound.BringToFront();
-                    lblDNoRecordFound.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -220,7 +241,10 @@ namespace SMSApplication
                 e.FormattingApplied = true;
             }
         }
-
+        public void SetmainformInstance(MainForm instance)
+        {
+            mainfominstance = instance;
+        }
 
         private void btnsendsms_Click_1(object sender, EventArgs e)
         {
@@ -229,6 +253,12 @@ namespace SMSApplication
             DataService objDservice = new DataService();
                 if (objValidation.internetconnection() == true)
                 {
+                    if (mainfominstance != null && mainfominstance.timer2 != null)
+                    {
+                        mainfominstance.timer2.Start();
+                    }
+                    txtsenderno.BackColor = Color.LemonChiffon;
+                    epMR_SMSStudent.Clear();
                     string input = txtsenderno.Text.Trim();
                     string PRESENTVAL = "0";
                     // Define the regular expression pattern
@@ -241,53 +271,59 @@ namespace SMSApplication
                     {
                         if (msktxtfrom.Text != "" && msktxtto.Text != "" && grdsmsstudent.RowCount > 0)
                         {
+                            txtsenderno.BackColor = Color.LemonChiffon;
+                            epMR_SMSStudent.Clear();
+                            if (grdsmsstudent.RowCount > 0)
+                            {
+                                txtsenderno.BackColor = Color.LemonChiffon;
+                                epMR_SMSStudent.Clear();
+                                SPDataService objspdservice = new SPDataService();
+                                string result = "", studentleft = "0", smscount = "0";
+                                //if (rbout.Checked == true)
+                                //{
+                                //    studentleft = "1";
+                                //}
+                                //else
+                                //{
+                                //    studentleft = "0";
+                                //}
+                                //if (rbout.Checked == true)
+                                //{
+                                //    smscount = lblouttime.Text;
+                                //    if (OUTVAL != "0")
+                                //    {
+                                //        btnsmssend.Enabled = false;
+                                //    }
 
-                            SPDataService objspdservice = new SPDataService();
-                            string result = "", studentleft = "0", smscount = "0";
-                            if (rbout.Checked == true)
-                            {
-                                studentleft = "1";
-                            }
-                            else
-                            {
-                                studentleft = "0";
-                            }
-                            if (rbout.Checked == true)
-                            {
-                                smscount = lblouttime.Text;
-                                if (OUTVAL != "0")
-                                {
-                                    btnsmssend.Enabled = false;
-                                }
+                                //}
+                                //else
+                                //{
 
-                            }
-                            else
-                            {
+                                //    smscount = lblpresent.Text;
+                                //    if ((PRESENTVAL != "0" && ABSENTVAL != "0"))
+                                //    {
+                                //        btnsmssend.Enabled = false;
+                                //    }
+                                //}
 
-                                smscount = lblpresent.Text;
-                                if ((PRESENTVAL != "0" && ABSENTVAL != "0"))
+                                if (btnsmssend.Enabled == true)
                                 {
-                                    btnsmssend.Enabled = false;
+                                    result = objspdservice.udfnsendsms("test", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, "1", MainForm.pbUserID, "Send SMS", studentleft, txtsenderno.Text);
+                                    if (result.Contains("SMS Send Successfully."))
+                                    {
+                                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        // udfnclear();
+                                        // MainForm.objMR_StudentsList.udfnList();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
-                            }
-
-                            if (btnsmssend.Enabled == true)
-                            {
-                                result = objspdservice.udfnsendsms("test", lblDate.Text, msktxtfrom.Text, lblAbsent.Text, msktxtto.Text, "1", MainForm.pbUserID, "Send SMS", studentleft, txtsenderno.Text);
-                                if (result.Contains("SMS Send Successfully."))
-                                {
-                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    // udfnclear();
-                                    // MainForm.objMR_StudentsList.udfnList();
-                                }
-                                else
-                                {
-                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                //else
+                                //{
+                                //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                //}
                             }
                         }
                         else
@@ -314,10 +350,10 @@ namespace SMSApplication
                     }
                     else
                     {
-                        epMR_SMSStudent.SetError(txtsenderno, "Please enter the Valid number.");
+                        epMR_SMSStudent.SetError(txtsenderno, "Please enter Valid number.");
                         txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                         tpConfirmPwd.ShowAlways = true;
-                        tpConfirmPwd.Show("Please enter the valid number.", txtsenderno, 5000);
+                        tpConfirmPwd.Show("Please enter valid number.", txtsenderno, 5000);
                     }
                 } 
                 else
@@ -330,6 +366,19 @@ namespace SMSApplication
 
             objError = new DataError();
             objError.WriteFile(ex);
+            }
+        }
+
+        private void txtsenderno_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtsenderno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnsendsms.Focus();
             }
         }
 

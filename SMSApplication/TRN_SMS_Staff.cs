@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace SMSApplication
 {
@@ -235,14 +236,32 @@ namespace SMSApplication
 
         private void btn_VIEW_Click(object sender, EventArgs e)
         {
-            udfnList();
-            udfnListabsent();
-            lblpresent.Text = Convert.ToString(grdstaffsms.RowCount); 
-            lblouttime.Text = Convert.ToString(grdstaffabsent.RowCount);
-            int present = int.Parse(lblpresent.Text);
-            int outTime = int.Parse(lblouttime.Text);
-            int total = present + outTime;
-            lbltotstudent.Text = total.ToString();
+            DateTime value1, value2;
+            if (DateTime.TryParseExact(msktxtfrom.Text, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out value1) &&
+    DateTime.TryParseExact(msktxtto.Text, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out value2))
+            {
+                if (value1 < value2)
+                {
+                    epMR_SMSStaff.Clear();
+                    udfnList();
+                    msktxtfrom.BackColor = Color.White;
+                    udfnListabsent();
+                    lblpresent.Text = Convert.ToString(grdstaffsms.RowCount);
+                    lblouttime.Text = Convert.ToString(grdstaffabsent.RowCount);
+                    int present = int.Parse(lblpresent.Text);
+                    int outTime = int.Parse(lblouttime.Text);
+                    int total = present + outTime;
+                    lbltotstudent.Text = total.ToString();
+                }
+                else
+                {
+                    epMR_SMSStaff.SetError(msktxtfrom, "From time greater then to time.");
+                    msktxtfrom.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpConfirmPwd.ShowAlways = true;
+                    tpConfirmPwd.Show("From time greater then to time.", msktxtfrom, 5000);
+                }
+            }
+            
 
         }
 
@@ -293,8 +312,7 @@ namespace SMSApplication
 
                 if (inputvalue || inputvalue1 || input.Length == 10)
                 {
-                    if (PRESENTVAL == "0")
-                    {
+                    
                         SPDataService objspdservice = new SPDataService();
                         string result = "", status = "0", source = "1";
                         result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, txtsenderno.Text, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
@@ -308,18 +326,18 @@ namespace SMSApplication
                         {
                             MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    
+                    //else
+                    //{
+                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
                 }
                 else
                 {
-                    epMR_SMSStaff.SetError(txtsenderno, "Please enter the Valid staff number.");
+                    epMR_SMSStaff.SetError(txtsenderno, "Please enter Valid number.");
                     txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                     tpConfirmPwd.ShowAlways = true;
-                    tpConfirmPwd.Show("Please enter the valid staff number.", txtsenderno, 5000);
+                    tpConfirmPwd.Show("Please enter valid number.", txtsenderno, 5000);
                 }
             }
             else
@@ -355,8 +373,7 @@ namespace SMSApplication
                     mobile = objdservice.displaydata("select ST_ToContactNo from MR_Settings");
 
 
-                    if (PRESENTVAL == "0")
-                    {
+                   
                         SPDataService objspdservice = new SPDataService();
                         string result = "", status = "0", source = "1";
                         result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, mobile, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
@@ -370,11 +387,11 @@ namespace SMSApplication
                         {
                             MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
 
                 }
                 else
@@ -386,6 +403,14 @@ namespace SMSApplication
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+            }
+        }
+
+        private void btnsendsms_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnsendsms.Focus();
             }
         }
     }

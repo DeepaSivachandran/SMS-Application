@@ -96,7 +96,7 @@ namespace SMSApplication
             {
                 try
                 {
-                    int vardublicate = 0,varMismatch=0, varenable=0,varflag=0;
+                    int vardublicate = 0,varMismatch=0, varenable=0,varflag=0, flag1 = 0, flag2 = 0;
                     if (!string.IsNullOrEmpty(txtFileName.Text))
                     {
                         string varExtension = Path.GetExtension(txtFileName.Text);
@@ -146,19 +146,10 @@ namespace SMSApplication
                                 lblNoRecordsFound.SendToBack();
                                 btnImport.Enabled = true;
                                 varenable = 0;
-                                int varcolumnflag = 0;
-                                if(objDs.Tables[0].Columns[0].ColumnName== "S#No#")
-                                {             
-                                    
-                                                        
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
+                                int varcolumnflag = 0; 
                                 
 
-                                if (objDs.Tables[0].Columns[1].ColumnName == "Staff Name")
+                                if (objDs.Tables[0].Columns[0].ColumnName == "Staff Name")
                                 {
                                      
                                 }
@@ -166,7 +157,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[2].ColumnName == "Mobile No#")
+                                if (objDs.Tables[0].Columns[1].ColumnName == "Mobile No#")
                                 {
 
                                 }
@@ -175,14 +166,14 @@ namespace SMSApplication
                                     varcolumnflag = 1;
                                 }
 
-                                if (objDs.Tables[0].Columns[3].ColumnName == "Date Of Birth")
+                                if (objDs.Tables[0].Columns[2].ColumnName == "Date Of Birth")
                                 {
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[4].ColumnName == "Blood Group")
+                                if (objDs.Tables[0].Columns[3].ColumnName == "Blood Group")
                                 {                                   
                                 }
                                 else
@@ -190,21 +181,21 @@ namespace SMSApplication
                                     varcolumnflag = 1;
                                 }
                                
-                                if (objDs.Tables[0].Columns[5].ColumnName == "Designation")
+                                if (objDs.Tables[0].Columns[4].ColumnName == "Designation")
                                 {
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[6].ColumnName == "RF ID Card No#")
+                                if (objDs.Tables[0].Columns[5].ColumnName == "RF ID Card No#")
                                 {
                                 }
                                 else
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[7].ColumnName == "Address Line - 1")
+                                if (objDs.Tables[0].Columns[6].ColumnName == "Address Line - 1")
                                 {
 
                                 }
@@ -212,7 +203,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[8].ColumnName == "Address Line - 2")
+                                if (objDs.Tables[0].Columns[7].ColumnName == "Address Line - 2")
                                 {
 
                                 }
@@ -220,7 +211,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[9].ColumnName == "Address Line - 3")
+                                if (objDs.Tables[0].Columns[8].ColumnName == "Address Line - 3")
                                 {
 
                                 }
@@ -228,7 +219,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[10].ColumnName == "City")
+                                if (objDs.Tables[0].Columns[9].ColumnName == "City")
                                 {
 
                                 }
@@ -236,7 +227,7 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[11].ColumnName == "Pincode")
+                                if (objDs.Tables[0].Columns[10].ColumnName == "Pincode")
                                 {
 
                                 }
@@ -244,19 +235,12 @@ namespace SMSApplication
                                 {
                                     varcolumnflag = 1;
                                 }
-                                if (objDs.Tables[0].Columns[12].ColumnName == "Status")
-                                {
-
-                                }
-                                else
-                                {
-                                    varcolumnflag = 1;
-                                }
+                               
                                 if (varcolumnflag == 0)
                                 {
                                     for (int i = 0; i < objDs.Tables[0].Rows.Count; i++)
                                     {
-                                        item[0] = objDs.Tables[0].Rows[i]["S#No#"].ToString(); 
+                                        item[0] = Convert.ToString(i + 1);
                                         item[1] = objDs.Tables[0].Rows[i]["Staff Name"].ToString();
                                         item[2] = objDs.Tables[0].Rows[i]["Mobile No#"].ToString();
                                         item[3] = objDs.Tables[0].Rows[i]["Date Of Birth"].ToString(); 
@@ -267,11 +251,10 @@ namespace SMSApplication
                                         item[8] = objDs.Tables[0].Rows[i]["Address line - 2"].ToString();
                                         item[9] = objDs.Tables[0].Rows[i]["Address line - 3"].ToString();
                                         item[10] = objDs.Tables[0].Rows[i]["City"].ToString();
-                                        item[11] = objDs.Tables[0].Rows[i]["pincode"].ToString();
-                                        item[12] = objDs.Tables[0].Rows[i]["Status"].ToString();
+                                        item[11] = objDs.Tables[0].Rows[i]["pincode"].ToString(); 
 
                                         listitem = new ListViewItem(item);
-                                        grdStaffImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11], item[12]);
+                                        grdStaffImport.Rows.Add(item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7], item[8], item[9], item[10], item[11]);
                                     }
                                 }
                                 else
@@ -313,9 +296,10 @@ namespace SMSApplication
                                 grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
                                  || grdStaffImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
                                 || grdStaffImport.Rows[i].Cells["clmblood"].Value.ToString() == "" || grdStaffImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
-                                || grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" || grdStaffImport.Rows[i].Cells["clmstatus"].Value.ToString() == "")
+                                || grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" )
                             {
                                 varMismatch++;
+                                flag1++;
                             }
                             DataTable dataTable = objDs.Tables[0];
                             int rowIndex = -1;
@@ -324,14 +308,13 @@ namespace SMSApplication
                             var duplicates = dataTable.AsEnumerable()
                       .GroupBy(row => row.Field<string>("RF ID Card No#"))
                       .Where(g => g.Key.Equals(Convert.ToString(grdStaffImport.Rows[i].Cells["clmrfid"].Value)))
-                      .SelectMany(g => g);
-
-                             
+                      .SelectMany(g => g); 
                             if (duplicates.Count() > 1)
                             {
                                 vardublicate++;
 
                                 varflag++;
+                                flag2++;
                                 grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
 
                             }
@@ -343,13 +326,26 @@ namespace SMSApplication
                             if (varMismatch != 0)
                             {
                                 grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
-                            }
-
+                            } 
                         } 
                         oledbcon.Close();
-                        lblDublicate.Text =Convert.ToString(varflag);
-                        lblTotal.Text =Convert.ToString(grdStaffImport.Rows.Count);
-                        lblMismatch.Text = Convert.ToString(varMismatch);
+                        if (varflag != 0 && vardublicate == 0)
+                        {
+                            lblDublicate.Text = Convert.ToString(varflag);
+                        }
+                        else
+                        {
+                            lblDublicate.Text = Convert.ToString(varflag);
+                        }
+                        lblTotal.Text = Convert.ToString(grdStaffImport.Rows.Count);
+                        if (flag1 != 0 && varMismatch == 0)
+                        {
+                            lblMismatch.Text = Convert.ToString(flag1);
+                        }
+                        else
+                        {
+                            lblMismatch.Text = Convert.ToString(flag1);
+                        }
                         if (varMismatch != 0 || varflag != 0)
                         {
                             btnImport.Enabled = false;
@@ -527,7 +523,7 @@ namespace SMSApplication
                                var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Staff WHERE STM_CardNo='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
                                 if (varRegCount == "0")
                                 {
-                                    objDt.Rows.Add( grdStaffImport.Rows[i].Cells["clmstaffname"].Value,grdStaffImport.Rows[i].Cells["clmdob"].Value, grdStaffImport.Rows[i].Cells["clmblood"].Value, grdStaffImport.Rows[i].Cells["clmAddress"].Value, grdStaffImport.Rows[i].Cells["clmAddress2"].Value, grdStaffImport.Rows[i].Cells["clmAddress3"].Value, grdStaffImport.Rows[i].Cells["clmCity"].Value,  grdStaffImport.Rows[i].Cells["clmpincode"].Value, grdStaffImport.Rows[i].Cells["clmmobile"].Value, grdStaffImport.Rows[i].Cells["clmdesignation"].Value, grdStaffImport.Rows[i].Cells["clmrfid"].Value, grdStaffImport.Rows[i].Cells["clmstatus"].Value,2);
+                                    objDt.Rows.Add( grdStaffImport.Rows[i].Cells["clmstaffname"].Value,grdStaffImport.Rows[i].Cells["clmdob"].Value, grdStaffImport.Rows[i].Cells["clmblood"].Value, grdStaffImport.Rows[i].Cells["clmAddress"].Value, grdStaffImport.Rows[i].Cells["clmAddress2"].Value, grdStaffImport.Rows[i].Cells["clmAddress3"].Value, grdStaffImport.Rows[i].Cells["clmCity"].Value,  grdStaffImport.Rows[i].Cells["clmpincode"].Value, grdStaffImport.Rows[i].Cells["clmmobile"].Value, grdStaffImport.Rows[i].Cells["clmdesignation"].Value, grdStaffImport.Rows[i].Cells["clmrfid"].Value, 1,2);
                                 }
                                     
                                 }

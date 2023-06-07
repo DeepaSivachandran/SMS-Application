@@ -123,23 +123,26 @@ namespace SMSApplication.ServiceClass
         }
         public bool internetconnection()
         {
-            Ping myPing = new Ping();
-            String host = "4.2.2.2";
-            byte[] buffer = new byte[32];
-            int timeout = 1000;
-            PingOptions pingOptions = new PingOptions();
-            PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
-            PingReply reply1 = myPing.Send("8.8.8.8", timeout, buffer, pingOptions);
-            if (reply.Status == IPStatus.Success || reply1.Status == IPStatus.Success)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+             
+                Ping myPing = new Ping();
+                bool isConnected;
+                String host = "4.2.2.2";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+                PingReply reply1 = myPing.Send("8.8.8.8", timeout, buffer, pingOptions);
+                if (reply.Status == IPStatus.Success || reply1.Status == IPStatus.Success)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+             
         }
+        
         public void fullresolutionsettingsForm(Form SSSExamCell)
         {
             try

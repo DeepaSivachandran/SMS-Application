@@ -23,8 +23,7 @@ namespace SMSApplication
         //********* Object for Service Classed Initialisation ***********
         DataValidation objValidation = new DataValidation();
         DataError objError;
-
-        public CrystalDecisions.CrystalReports.Engine.ReportDocument objBillreport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+         
         //**************Tooltips Initialization ***************
         private ToolTip tpOldPwd = new ToolTip();
         private ToolTip tpNewPwd = new ToolTip();
@@ -76,55 +75,72 @@ namespace SMSApplication
             {
                 DataSet ds = new DataSet();
                 string data = "";
-                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
-                ExcelObj.Visible = true;
-                ExcelSheet = ExcelBook.Sheets["Sheet1"];
-                ExcelSheet = ExcelBook.ActiveSheet;
-                ExcelSheet.Name = "present List";
-                int count = 0; 
+                int count = 0;
                 SPDataService spservice = new SPDataService();
 
                 ds = spservice.udfnpresent("student", dpstudentfrom.Text, MainForm.pbUserID, dpstudenttodate.Text);
-                 
+
                 count = ds.Tables[0].Columns.Count;
-
-                string VarReportHead = "";
-                VarReportHead = "STUDENT PRESENT REPORT";
-                ExcelSheet.Cells[2, 1].Value = VarReportHead;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
-
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
-
-                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
-                int k = 0;
-                foreach (DataColumn column in ds.Tables[0].Columns)
+                if (count != 0)
                 {
-                    if (k < ds.Tables[0].Columns.Count)
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
-                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                        string VarReportHead = "";
+
+                        Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                        Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                        Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                        ExcelObj.Visible = true;
+                        ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                        ExcelSheet = ExcelBook.ActiveSheet;
+                        ExcelSheet.Name = "present List";
+
+                        VarReportHead = "Attendance Date " + dpstudentfrom.Text + " - " + dpstudenttodate.Text;
+                    ExcelSheet.Cells[1, 1].Value = "STUDENT PRESENT REPORT";
+                    ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                    ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                    ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                    ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                    ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                    ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+
+                    ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                    ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                    ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                    ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                    ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                    string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                    int k = 0;
+                    foreach (DataColumn column in ds.Tables[0].Columns)
+                    {
+                        if (k < ds.Tables[0].Columns.Count)
+                        {
+                            ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                            ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                        }
+                        k++;
                     }
-                    k++;
+                    for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                    {
+                        for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                        {
+                            data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                            ExcelSheet.Cells[i + 4, j + 1] = data;
+                        }
+                    }
+                    spservice.CloseConnection();
+                    MessageBox.Show("Download Successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                    else
+                    {
+                        MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
                 {
-                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
-                    {
-                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
-                        ExcelSheet.Cells[i + 4, j + 1] = data;
-                    }
+                    MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                spservice.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -134,18 +150,11 @@ namespace SMSApplication
         }
         public void udfnstabsentlist()
         {
-
             try
             {
                 DataSet ds = new DataSet();
                 string data = "";
-                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
-                ExcelObj.Visible = true;
-                ExcelSheet = ExcelBook.Sheets["Sheet1"];
-                ExcelSheet = ExcelBook.ActiveSheet;
-                ExcelSheet.Name = "Absent List";
+               
                 int count = 0;  
 
                 SPDataService spservice = new SPDataService();
@@ -155,41 +164,64 @@ namespace SMSApplication
               
                 count = ds.Tables[0].Columns.Count;
 
-                string VarReportHead = "";
-                VarReportHead = "STUDENT ABSENT REPORT";
-                ExcelSheet.Cells[2, 1].Value = VarReportHead;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+                if (count != 0) {
 
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                        Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                        Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                        ExcelObj.Visible = true;
+                        ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                        ExcelSheet = ExcelBook.ActiveSheet;
+                        ExcelSheet.Name = "Absent List";
+                        string VarReportHead = "";
+                        VarReportHead = "Absent Date " + dpabsentstudent.Text;
+                        ExcelSheet.Cells[1, 1].Value = "STUDENT ABSENT REPORT";
+                        ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
 
-                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
-                int k = 0;
-                foreach (DataColumn column in ds.Tables[0].Columns)
-                {
-                    if (k < ds.Tables[0].Columns.Count)
-                    {
-                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
-                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                        string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                        int k = 0;
+                        foreach (DataColumn column in ds.Tables[0].Columns)
+                        {
+                            if (k < ds.Tables[0].Columns.Count)
+                            {
+                                ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                                ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                            }
+                            k++;
+                        }
+                        for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                        {
+                            for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                            {
+                                data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                                ExcelSheet.Cells[i + 4, j + 1] = data;
+                            }
+                        }
+                        spservice.CloseConnection();
+                        MessageBox.Show("Download Successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    k++;
-                }
-                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                    else
                     {
-                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
-                        ExcelSheet.Cells[i + 4, j + 1] = data;
+                        MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                spservice.CloseConnection();
+                else
+                {
+                    MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -199,7 +231,81 @@ namespace SMSApplication
         }
         public void udfnstaffpresentlist()
         {
+            try
+            {
+                DataSet ds = new DataSet();
+                string data = "";
+               
+                int count = 0;
+                SPDataService spservice = new SPDataService();
 
+                ds = spservice.udfnpresent("staff", dpstafffromdate.Text, MainForm.pbUserID, dpstafftodate.Text);
+
+                count = ds.Tables[0].Columns.Count;
+
+                if (count != 0) {
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                        Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                        Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                        ExcelObj.Visible = true;
+                        ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                        ExcelSheet = ExcelBook.ActiveSheet;
+                        ExcelSheet.Name = "present List";
+                        string VarReportHead = "";
+                        VarReportHead = "Attendance Date " + dpstafffromdate.Text + " - " + dpstafftodate.Text;
+                        ExcelSheet.Cells[1, 1].Value = "STAFF PRESENT REPORT";
+                        ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                        string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                        int k = 0;
+                        foreach (DataColumn column in ds.Tables[0].Columns)
+                        {
+                            if (k < ds.Tables[0].Columns.Count)
+                            {
+                                ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                                ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                            }
+                            k++;
+                        }
+                        for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                        {
+                            for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                            {
+                                data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                                ExcelSheet.Cells[i + 4, j + 1] = data;
+                            }
+                        }
+                        spservice.CloseConnection();
+                        MessageBox.Show("Download Successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                objError = new DataError();
+                objError.WriteFile(ex);
+            }
         }
         public void udfnstaffabsentlist()
         {
@@ -208,13 +314,7 @@ namespace SMSApplication
             {
                 DataSet ds = new DataSet();
                 string data = "";
-                Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
-                ExcelObj.Visible = true;
-                ExcelSheet = ExcelBook.Sheets["Sheet1"];
-                ExcelSheet = ExcelBook.ActiveSheet;
-                ExcelSheet.Name = "Absent List";
+               
                 int count = 0;
 
                 SPDataService spservice = new SPDataService();
@@ -223,42 +323,63 @@ namespace SMSApplication
 
 
                 count = ds.Tables[0].Columns.Count;
-
-                string VarReportHead = "";
-                VarReportHead = "STAFF ABSENT REPORT"; 
-                ExcelSheet.Cells[2, 1].Value = VarReportHead;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
-                ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
-
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
-                ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
-                ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
-
-                string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
-                int k = 0;
-                foreach (DataColumn column in ds.Tables[0].Columns)
-                {
-                    if (k < ds.Tables[0].Columns.Count)
+                if (count != 0) {
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        ExcelSheet.Cells[3, k + 1] = column.ColumnName;
-                        ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                        Microsoft.Office.Interop.Excel._Application ExcelObj = new Microsoft.Office.Interop.Excel.Application();
+                        Microsoft.Office.Interop.Excel._Workbook ExcelBook = ExcelObj.Workbooks.Add(Type.Missing);
+                        Microsoft.Office.Interop.Excel._Worksheet ExcelSheet = null;
+                        ExcelObj.Visible = true;
+                        ExcelSheet = ExcelBook.Sheets["Sheet1"];
+                        ExcelSheet = ExcelBook.ActiveSheet;
+                        ExcelSheet.Name = "Absent List";
+                        string VarReportHead = "";
+                        VarReportHead = "Absent Date " + dpstaffabsent.Text;
+                        ExcelSheet.Cells[1, 1].Value = "STAFF ABSENT REPORT";
+                        ExcelSheet.Cells[2, 1].Value = VarReportHead;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Excel.XlRgbColor.rgbGray;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Bold = true;
+                        ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.color = Color.White;
+
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Microsoft.Office.Interop.Excel.Constants.xlCenter;
+                        ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Font.color = Color.Black;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Font.color = Color.White;
+                        ExcelSheet.Range[ExcelSheet.Cells[3, 1], ExcelSheet.Cells[3, count]].Interior.Color = Excel.XlRgbColor.rgbSlateGray;
+
+                        string[] varcolumnname = new string[ds.Tables[0].Columns.Count];
+                        int k = 0;
+                        foreach (DataColumn column in ds.Tables[0].Columns)
+                        {
+                            if (k < ds.Tables[0].Columns.Count)
+                            {
+                                ExcelSheet.Cells[3, k + 1] = column.ColumnName;
+                                ExcelSheet.Cells[3, k + 1].font.Bold = true;
+                            }
+                            k++;
+                        }
+                        for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
+                        {
+                            for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                            {
+                                data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
+                                ExcelSheet.Cells[i + 4, j + 1] = data;
+                            }
+                        }
+                        spservice.CloseConnection();
+                        MessageBox.Show("Download Successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    k++;
-                }
-                for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j <= ds.Tables[0].Columns.Count - 1; j++)
+                    else
                     {
-                        data = ds.Tables[0].Rows[i].ItemArray[j].ToString();
-                        ExcelSheet.Cells[i + 4, j + 1] = data;
+                        MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                spservice.CloseConnection();
+                else
+                {
+                    MessageBox.Show("No Record Found!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -316,10 +437,13 @@ namespace SMSApplication
         {
             
             try
-            { 
+            {
+                picLoader.BringToFront();
                 picLoader.Visible = true;
                 Application.DoEvents();
                 udfnstpresentlist();
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
 
             }
             catch (Exception ex)
@@ -330,6 +454,10 @@ namespace SMSApplication
             finally
             {
                 picLoader.Visible = false;
+                picLoader.SendToBack();
+
+                grpstaff.BringToFront();
+                grpstudent.BringToFront();
             }
         }
 
@@ -346,6 +474,10 @@ namespace SMSApplication
                 Application.DoEvents();
                 udfnstaffpresentlist();
 
+                picLoader.BringToFront();
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
+
             }
             catch (Exception ex)
             {
@@ -354,7 +486,10 @@ namespace SMSApplication
             }
             finally
             {
-                picLoader.Visible = false;
+                picLoader.Visible = false; 
+                picLoader.SendToBack();
+                grpstaff.BringToFront();
+                grpstudent.BringToFront();
             }
         }
 
@@ -366,15 +501,21 @@ namespace SMSApplication
                 Application.DoEvents();
                 udfnstabsentlist();
 
+                picLoader.BringToFront();
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
             }
             catch (Exception ex)
             {
                 objError = new DataError();
                 objError.WriteFile(ex);
+                grpstaff.BringToFront();
+                grpstudent.BringToFront();
             }
             finally
             {
-                picLoader.Visible = false;
+                picLoader.Visible = false; 
+                picLoader.SendToBack();
             }
         }
 
@@ -384,7 +525,10 @@ namespace SMSApplication
             {
                 picLoader.Visible = true;
                 Application.DoEvents();
-                udfnstaffabsentlist();
+                udfnstaffabsentlist(); 
+                picLoader.BringToFront();
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
 
             }
             catch (Exception ex)
@@ -394,7 +538,10 @@ namespace SMSApplication
             }
             finally
             {
-                picLoader.Visible = false;
+                picLoader.Visible = false; 
+                picLoader.SendToBack();
+                grpstaff.BringToFront();
+                grpstudent.BringToFront();
             }
         }
     }

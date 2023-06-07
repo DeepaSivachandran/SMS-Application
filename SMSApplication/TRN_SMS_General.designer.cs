@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TRN_SMS_General));
             this.grdstudentsms = new System.Windows.Forms.DataGridView();
             this.clmstudentcheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -55,11 +55,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbsender = new System.Windows.Forms.ComboBox();
+            this.btnclassview = new System.Windows.Forms.Button();
             this.lblsenderid = new System.Windows.Forms.Label();
             this.lblsmscount = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtsmscontent = new System.Windows.Forms.TextBox();
             this.grdstaffsms = new System.Windows.Forms.DataGridView();
             this.clmstaffcheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -73,12 +73,12 @@
             this.epMR_SMSStudent = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnsendsms = new System.Windows.Forms.Button();
             this.txtsenderno = new System.Windows.Forms.TextBox();
             this.lblid = new System.Windows.Forms.Label();
             this.btnsmssend = new System.Windows.Forms.Button();
-            this.btnsendsms = new System.Windows.Forms.Button();
-            this.btnclassview = new System.Windows.Forms.Button();
             this.picLoader = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdstudentsms)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.epMR_SMSStudent)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // grdstudentsms
@@ -95,14 +96,14 @@
             this.grdstudentsms.AllowUserToResizeRows = false;
             this.grdstudentsms.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdstudentsms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdstudentsms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdstudentsms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle36;
             this.grdstudentsms.ColumnHeadersHeight = 30;
             this.grdstudentsms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdstudentsms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -114,14 +115,14 @@
             this.clmSchemeName,
             this.Column2,
             this.C});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdstudentsms.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdstudentsms.DefaultCellStyle = dataGridViewCellStyle39;
             this.grdstudentsms.EnableHeadersVisualStyles = false;
             this.grdstudentsms.GridColor = System.Drawing.Color.White;
             this.grdstudentsms.Location = new System.Drawing.Point(17, 121);
@@ -129,7 +130,7 @@
             this.grdstudentsms.ReadOnly = true;
             this.grdstudentsms.RowHeadersVisible = false;
             this.grdstudentsms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdstudentsms.Size = new System.Drawing.Size(1325, 475);
+            this.grdstudentsms.Size = new System.Drawing.Size(889, 475);
             this.grdstudentsms.TabIndex = 18;
             this.grdstudentsms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdstudentsms_CellContentClick);
             this.grdstudentsms.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
@@ -144,8 +145,8 @@
             // 
             // clmsno
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle37;
             this.clmsno.HeaderText = "S.No.";
             this.clmsno.Name = "clmsno";
             this.clmsno.ReadOnly = true;
@@ -176,8 +177,8 @@
             // 
             // clmSchemeName
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle38;
             this.clmSchemeName.HeaderText = "Student Name";
             this.clmSchemeName.Name = "clmSchemeName";
             this.clmSchemeName.ReadOnly = true;
@@ -205,7 +206,7 @@
             // 
             this.lblDNoRecordFound.AutoSize = true;
             this.lblDNoRecordFound.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDNoRecordFound.Location = new System.Drawing.Point(619, 299);
+            this.lblDNoRecordFound.Location = new System.Drawing.Point(359, 350);
             this.lblDNoRecordFound.Name = "lblDNoRecordFound";
             this.lblDNoRecordFound.Size = new System.Drawing.Size(121, 17);
             this.lblDNoRecordFound.TabIndex = 958721;
@@ -230,8 +231,8 @@
             this.tspFormHeader.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspFormHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspFormHeader.Name = "tspFormHeader";
-            this.tspFormHeader.Size = new System.Drawing.Size(125, 22);
-            this.tspFormHeader.Text = "Send SMS - General";
+            this.tspFormHeader.Size = new System.Drawing.Size(136, 22);
+            this.tspFormHeader.Text = "Send SMS - Compose";
             // 
             // lblDcolumnIndex
             // 
@@ -296,6 +297,19 @@
             this.cmbsender.TabIndex = 3;
             this.cmbsender.SelectedIndexChanged += new System.EventHandler(this.cmbsender_SelectedIndexChanged);
             // 
+            // btnclassview
+            // 
+            this.btnclassview.Image = global::SMSApplication.Properties.Resources.view2;
+            this.btnclassview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnclassview.Location = new System.Drawing.Point(462, 15);
+            this.btnclassview.Name = "btnclassview";
+            this.btnclassview.Size = new System.Drawing.Size(75, 30);
+            this.btnclassview.TabIndex = 4;
+            this.btnclassview.Text = "View";
+            this.btnclassview.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnclassview.UseVisualStyleBackColor = true;
+            this.btnclassview.Click += new System.EventHandler(this.btnclassview_Click);
+            // 
             // lblsenderid
             // 
             this.lblsenderid.AutoSize = true;
@@ -337,23 +351,14 @@
             this.label5.Text = "Sender ID:";
             this.label5.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(913, 65);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 17);
-            this.label6.TabIndex = 958793;
-            this.label6.Text = "SMS Content";
-            // 
             // txtsmscontent
             // 
-            this.txtsmscontent.Location = new System.Drawing.Point(996, 31);
+            this.txtsmscontent.Location = new System.Drawing.Point(3, 24);
             this.txtsmscontent.Multiline = true;
             this.txtsmscontent.Name = "txtsmscontent";
             this.txtsmscontent.ReadOnly = true;
             this.txtsmscontent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtsmscontent.Size = new System.Drawing.Size(241, 84);
+            this.txtsmscontent.Size = new System.Drawing.Size(321, 152);
             this.txtsmscontent.TabIndex = 958794;
             // 
             // grdstaffsms
@@ -363,14 +368,14 @@
             this.grdstaffsms.AllowUserToResizeRows = false;
             this.grdstaffsms.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grdstaffsms.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SlateGray;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdstaffsms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.SlateGray;
+            dataGridViewCellStyle40.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle40.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdstaffsms.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle40;
             this.grdstaffsms.ColumnHeadersHeight = 30;
             this.grdstaffsms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdstaffsms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -380,14 +385,14 @@
             this.clmstatus,
             this.clmid,
             this.clmstaffid});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdstaffsms.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdstaffsms.DefaultCellStyle = dataGridViewCellStyle42;
             this.grdstaffsms.EnableHeadersVisualStyles = false;
             this.grdstaffsms.GridColor = System.Drawing.Color.White;
             this.grdstaffsms.Location = new System.Drawing.Point(17, 121);
@@ -395,7 +400,7 @@
             this.grdstaffsms.ReadOnly = true;
             this.grdstaffsms.RowHeadersVisible = false;
             this.grdstaffsms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdstaffsms.Size = new System.Drawing.Size(1325, 474);
+            this.grdstaffsms.Size = new System.Drawing.Size(805, 474);
             this.grdstaffsms.TabIndex = 958796;
             this.grdstaffsms.Visible = false;
             this.grdstaffsms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdstaffsms_CellContentClick);
@@ -409,8 +414,8 @@
             // 
             // clmstaffno
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmstaffno.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmstaffno.DefaultCellStyle = dataGridViewCellStyle41;
             this.clmstaffno.HeaderText = "S.No.";
             this.clmstaffno.Name = "clmstaffno";
             this.clmstaffno.ReadOnly = true;
@@ -490,6 +495,19 @@
             this.label8.TabIndex = 958794;
             this.label8.Text = "Send To :";
             // 
+            // btnsendsms
+            // 
+            this.btnsendsms.Image = global::SMSApplication.Properties.Resources.send_message__1_;
+            this.btnsendsms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnsendsms.Location = new System.Drawing.Point(229, 16);
+            this.btnsendsms.Name = "btnsendsms";
+            this.btnsendsms.Size = new System.Drawing.Size(87, 30);
+            this.btnsendsms.TabIndex = 958791;
+            this.btnsendsms.Text = "Test SMS";
+            this.btnsendsms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnsendsms.UseVisualStyleBackColor = true;
+            this.btnsendsms.Click += new System.EventHandler(this.btnsendsms_Click);
+            // 
             // txtsenderno
             // 
             this.txtsenderno.Location = new System.Drawing.Point(67, 19);
@@ -498,6 +516,8 @@
             this.txtsenderno.Name = "txtsenderno";
             this.txtsenderno.Size = new System.Drawing.Size(159, 25);
             this.txtsenderno.TabIndex = 958795;
+            this.txtsenderno.TextChanged += new System.EventHandler(this.txtsenderno_TextChanged);
+            this.txtsenderno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtsenderno_KeyDown);
             // 
             // lblid
             // 
@@ -522,32 +542,6 @@
             this.btnsmssend.UseVisualStyleBackColor = true;
             this.btnsmssend.Click += new System.EventHandler(this.btnsmssend_Click);
             // 
-            // btnsendsms
-            // 
-            this.btnsendsms.Image = global::SMSApplication.Properties.Resources.send_message__1_;
-            this.btnsendsms.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnsendsms.Location = new System.Drawing.Point(229, 16);
-            this.btnsendsms.Name = "btnsendsms";
-            this.btnsendsms.Size = new System.Drawing.Size(87, 30);
-            this.btnsendsms.TabIndex = 958791;
-            this.btnsendsms.Text = "Test SMS";
-            this.btnsendsms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnsendsms.UseVisualStyleBackColor = true;
-            this.btnsendsms.Click += new System.EventHandler(this.btnsendsms_Click);
-            // 
-            // btnclassview
-            // 
-            this.btnclassview.Image = global::SMSApplication.Properties.Resources.view2;
-            this.btnclassview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnclassview.Location = new System.Drawing.Point(462, 15);
-            this.btnclassview.Name = "btnclassview";
-            this.btnclassview.Size = new System.Drawing.Size(75, 30);
-            this.btnclassview.TabIndex = 4;
-            this.btnclassview.Text = "View";
-            this.btnclassview.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnclassview.UseVisualStyleBackColor = true;
-            this.btnclassview.Click += new System.EventHandler(this.btnclassview_Click);
-            // 
             // picLoader
             // 
             this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -562,12 +556,23 @@
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtsmscontent);
+            this.groupBox2.Location = new System.Drawing.Point(912, 43);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(327, 182);
+            this.groupBox2.TabIndex = 958815;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "SMS Content";
+            // 
             // TRN_SMS_General
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1360, 607);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.lblid);
             this.Controls.Add(this.btnsmssend);
             this.Controls.Add(this.groupBox4);
@@ -575,9 +580,7 @@
             this.Controls.Add(this.lblsmscount);
             this.Controls.Add(this.lblsenderid);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtsmscontent);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblDcolumnIndex);
             this.Controls.Add(this.tspMenu);
@@ -604,6 +607,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -618,7 +623,6 @@
         private System.Windows.Forms.Label lblDcolumnIndex;
         private System.Windows.Forms.PictureBox picLoader;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtsmscontent;
         private System.Windows.Forms.Button btnclassview;
         private System.Windows.Forms.Button btnsmssend;
@@ -653,5 +657,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn C;
         private System.Windows.Forms.Label lblid;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

@@ -30,11 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StaffImport));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_StaffImport));
             this.gbStudentImport = new System.Windows.Forms.GroupBox();
             this.lblDublicate = new System.Windows.Forms.Label();
             this.lblMismatch = new System.Windows.Forms.Label();
@@ -46,6 +46,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.grdStaffImport = new System.Windows.Forms.DataGridView();
+            this.btnDownloadTemplate = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.lblDFileName = new System.Windows.Forms.Label();
+            this.txtFileName = new System.Windows.Forms.TextBox();
+            this.lblNoRecordsFound = new System.Windows.Forms.Label();
+            this.picLoader = new System.Windows.Forms.PictureBox();
             this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmstaffname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmmobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,13 +66,6 @@
             this.clmcity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmpincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmstatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDownloadTemplate = new System.Windows.Forms.Button();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.lblDFileName = new System.Windows.Forms.Label();
-            this.txtFileName = new System.Windows.Forms.TextBox();
-            this.lblNoRecordsFound = new System.Windows.Forms.Label();
-            this.picLoader = new System.Windows.Forms.PictureBox();
             this.gbStudentImport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdStaffImport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -250,6 +250,97 @@
             this.grdStaffImport.TabIndex = 37;
             this.grdStaffImport.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdStaffImport_CellFormatting);
             // 
+            // btnDownloadTemplate
+            // 
+            this.btnDownloadTemplate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDownloadTemplate.Image = global::SMSApplication.Properties.Resources.download;
+            this.btnDownloadTemplate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDownloadTemplate.Location = new System.Drawing.Point(819, 21);
+            this.btnDownloadTemplate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDownloadTemplate.Name = "btnDownloadTemplate";
+            this.btnDownloadTemplate.Size = new System.Drawing.Size(160, 29);
+            this.btnDownloadTemplate.TabIndex = 21;
+            this.btnDownloadTemplate.Text = "Download Template";
+            this.btnDownloadTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDownloadTemplate.UseVisualStyleBackColor = true;
+            this.btnDownloadTemplate.Click += new System.EventHandler(this.btnDownloadTemplate_Click);
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Image = global::SMSApplication.Properties.Resources.view1;
+            this.btnPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPreview.Location = new System.Drawing.Point(712, 21);
+            this.btnPreview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(94, 29);
+            this.btnPreview.TabIndex = 20;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.Image = global::SMSApplication.Properties.Resources.browse;
+            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBrowse.Location = new System.Drawing.Point(607, 21);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(94, 29);
+            this.btnBrowse.TabIndex = 19;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // lblDFileName
+            // 
+            this.lblDFileName.AutoSize = true;
+            this.lblDFileName.Location = new System.Drawing.Point(12, 27);
+            this.lblDFileName.Name = "lblDFileName";
+            this.lblDFileName.Size = new System.Drawing.Size(66, 17);
+            this.lblDFileName.TabIndex = 16;
+            this.lblDFileName.Text = "File Name";
+            // 
+            // txtFileName
+            // 
+            this.txtFileName.BackColor = System.Drawing.Color.White;
+            this.txtFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFileName.Enabled = false;
+            this.txtFileName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFileName.Location = new System.Drawing.Point(80, 24);
+            this.txtFileName.Name = "txtFileName";
+            this.txtFileName.Size = new System.Drawing.Size(506, 23);
+            this.txtFileName.TabIndex = 14;
+            // 
+            // lblNoRecordsFound
+            // 
+            this.lblNoRecordsFound.AutoSize = true;
+            this.lblNoRecordsFound.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoRecordsFound.Location = new System.Drawing.Point(604, 274);
+            this.lblNoRecordsFound.Name = "lblNoRecordsFound";
+            this.lblNoRecordsFound.Size = new System.Drawing.Size(121, 17);
+            this.lblNoRecordsFound.TabIndex = 958763;
+            this.lblNoRecordsFound.Text = "No Records Found";
+            this.lblNoRecordsFound.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblNoRecordsFound.Visible = false;
+            // 
+            // picLoader
+            // 
+            this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picLoader.ErrorImage = null;
+            this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
+            this.picLoader.InitialImage = null;
+            this.picLoader.Location = new System.Drawing.Point(9, 58);
+            this.picLoader.Name = "picLoader";
+            this.picLoader.Size = new System.Drawing.Size(1310, 448);
+            this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLoader.TabIndex = 958787;
+            this.picLoader.TabStop = false;
+            this.picLoader.Visible = false;
+            // 
             // clmsno
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
@@ -341,98 +432,8 @@
             this.clmstatus.HeaderText = "Status";
             this.clmstatus.Name = "clmstatus";
             this.clmstatus.ReadOnly = true;
+            this.clmstatus.Visible = false;
             this.clmstatus.Width = 70;
-            // 
-            // btnDownloadTemplate
-            // 
-            this.btnDownloadTemplate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDownloadTemplate.Image = global::SMSApplication.Properties.Resources.download;
-            this.btnDownloadTemplate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDownloadTemplate.Location = new System.Drawing.Point(819, 21);
-            this.btnDownloadTemplate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDownloadTemplate.Name = "btnDownloadTemplate";
-            this.btnDownloadTemplate.Size = new System.Drawing.Size(160, 29);
-            this.btnDownloadTemplate.TabIndex = 21;
-            this.btnDownloadTemplate.Text = "Download Template";
-            this.btnDownloadTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDownloadTemplate.UseVisualStyleBackColor = true;
-            this.btnDownloadTemplate.Click += new System.EventHandler(this.btnDownloadTemplate_Click);
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.Image = global::SMSApplication.Properties.Resources.view1;
-            this.btnPreview.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPreview.Location = new System.Drawing.Point(712, 21);
-            this.btnPreview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(94, 29);
-            this.btnPreview.TabIndex = 20;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // btnBrowse
-            // 
-            this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowse.Image = global::SMSApplication.Properties.Resources.browse;
-            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrowse.Location = new System.Drawing.Point(607, 21);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(94, 29);
-            this.btnBrowse.TabIndex = 19;
-            this.btnBrowse.Text = "Browse";
-            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
-            // 
-            // lblDFileName
-            // 
-            this.lblDFileName.AutoSize = true;
-            this.lblDFileName.Location = new System.Drawing.Point(12, 27);
-            this.lblDFileName.Name = "lblDFileName";
-            this.lblDFileName.Size = new System.Drawing.Size(66, 17);
-            this.lblDFileName.TabIndex = 16;
-            this.lblDFileName.Text = "File Name";
-            // 
-            // txtFileName
-            // 
-            this.txtFileName.BackColor = System.Drawing.Color.White;
-            this.txtFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFileName.Enabled = false;
-            this.txtFileName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFileName.Location = new System.Drawing.Point(80, 24);
-            this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(506, 23);
-            this.txtFileName.TabIndex = 14;
-            // 
-            // lblNoRecordsFound
-            // 
-            this.lblNoRecordsFound.AutoSize = true;
-            this.lblNoRecordsFound.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNoRecordsFound.Location = new System.Drawing.Point(604, 274);
-            this.lblNoRecordsFound.Name = "lblNoRecordsFound";
-            this.lblNoRecordsFound.Size = new System.Drawing.Size(121, 17);
-            this.lblNoRecordsFound.TabIndex = 958763;
-            this.lblNoRecordsFound.Text = "No Records Found";
-            this.lblNoRecordsFound.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblNoRecordsFound.Visible = false;
-            // 
-            // picLoader
-            // 
-            this.picLoader.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.picLoader.ErrorImage = null;
-            this.picLoader.Image = ((System.Drawing.Image)(resources.GetObject("picLoader.Image")));
-            this.picLoader.InitialImage = null;
-            this.picLoader.Location = new System.Drawing.Point(9, 58);
-            this.picLoader.Name = "picLoader";
-            this.picLoader.Size = new System.Drawing.Size(1310, 448);
-            this.picLoader.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLoader.TabIndex = 958787;
-            this.picLoader.TabStop = false;
-            this.picLoader.Visible = false;
             // 
             // MR_StaffImport
             // 

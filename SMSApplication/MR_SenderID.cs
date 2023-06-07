@@ -257,6 +257,10 @@ namespace SMSApplication
                     MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     udfnclear();
                     MainForm.objMR_SenerIDList.udfnList();
+                    if (result.Contains("Updated Successfully."))
+                    {
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -396,15 +400,18 @@ namespace SMSApplication
             {
                 if (pbflag == "0")
                 {
-                    DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (objDialogResult == DialogResult.Yes)
+                    if (btnSave.Text != "Update")
                     {
-                      //  MainForm.objMR_SenderID.Hide();
-                        e.Cancel = false;
-                    }
-                    else
-                    {
-                        e.Cancel = true;
+                        DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (objDialogResult == DialogResult.Yes)
+                        {
+                            //  MainForm.objMR_SenderID.Hide();
+                            e.Cancel = false;
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                 }
             }

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPT_Absent));
             this.gbCollegeProfile = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grpstaff = new System.Windows.Forms.GroupBox();
             this.btnstaffabsent = new System.Windows.Forms.Button();
             this.dpstafftodate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.dpstaffabsent = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.btnstaffpresent = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpstudent = new System.Windows.Forms.GroupBox();
             this.btnstudentabsent = new System.Windows.Forms.Button();
             this.dpstudenttodate = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,8 +61,8 @@
             this.tsCollegeProfile = new System.Windows.Forms.ToolStrip();
             this.tspHeader = new System.Windows.Forms.ToolStripLabel();
             this.gbCollegeProfile.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpstaff.SuspendLayout();
+            this.grpstudent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_GeneralSettings)).BeginInit();
             this.tsCollegeProfile.SuspendLayout();
@@ -70,8 +70,8 @@
             // 
             // gbCollegeProfile
             // 
-            this.gbCollegeProfile.Controls.Add(this.groupBox2);
-            this.gbCollegeProfile.Controls.Add(this.groupBox1);
+            this.gbCollegeProfile.Controls.Add(this.grpstaff);
+            this.gbCollegeProfile.Controls.Add(this.grpstudent);
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoPath);
             this.gbCollegeProfile.Controls.Add(this.picLoader);
             this.gbCollegeProfile.Controls.Add(this.lblProfilePhotoFileName);
@@ -82,24 +82,24 @@
             this.gbCollegeProfile.TabIndex = 0;
             this.gbCollegeProfile.TabStop = false;
             // 
-            // groupBox2
+            // grpstaff
             // 
-            this.groupBox2.Controls.Add(this.btnstaffabsent);
-            this.groupBox2.Controls.Add(this.dpstafftodate);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.dpstafffromdate);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dpstaffabsent);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.btnstaffpresent);
-            this.groupBox2.Location = new System.Drawing.Point(640, 48);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(570, 188);
-            this.groupBox2.TabIndex = 958790;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Staff";
+            this.grpstaff.Controls.Add(this.btnstaffabsent);
+            this.grpstaff.Controls.Add(this.dpstafftodate);
+            this.grpstaff.Controls.Add(this.label5);
+            this.grpstaff.Controls.Add(this.dpstafffromdate);
+            this.grpstaff.Controls.Add(this.label6);
+            this.grpstaff.Controls.Add(this.label7);
+            this.grpstaff.Controls.Add(this.label8);
+            this.grpstaff.Controls.Add(this.dpstaffabsent);
+            this.grpstaff.Controls.Add(this.label9);
+            this.grpstaff.Controls.Add(this.btnstaffpresent);
+            this.grpstaff.Location = new System.Drawing.Point(640, 48);
+            this.grpstaff.Name = "grpstaff";
+            this.grpstaff.Size = new System.Drawing.Size(570, 188);
+            this.grpstaff.TabIndex = 958790;
+            this.grpstaff.TabStop = false;
+            this.grpstaff.Text = "Staff";
             // 
             // btnstaffabsent
             // 
@@ -203,24 +203,24 @@
             this.btnstaffpresent.UseVisualStyleBackColor = true;
             this.btnstaffpresent.Click += new System.EventHandler(this.btnstaffpresent_Click);
             // 
-            // groupBox1
+            // grpstudent
             // 
-            this.groupBox1.Controls.Add(this.btnstudentabsent);
-            this.groupBox1.Controls.Add(this.dpstudenttodate);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.dpstudentfrom);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.dpabsentstudent);
-            this.groupBox1.Controls.Add(this.DpDate);
-            this.groupBox1.Controls.Add(this.btnstudentpresent);
-            this.groupBox1.Location = new System.Drawing.Point(30, 48);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(570, 188);
-            this.groupBox1.TabIndex = 958789;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Student";
+            this.grpstudent.Controls.Add(this.btnstudentabsent);
+            this.grpstudent.Controls.Add(this.dpstudenttodate);
+            this.grpstudent.Controls.Add(this.label4);
+            this.grpstudent.Controls.Add(this.dpstudentfrom);
+            this.grpstudent.Controls.Add(this.label3);
+            this.grpstudent.Controls.Add(this.label2);
+            this.grpstudent.Controls.Add(this.label1);
+            this.grpstudent.Controls.Add(this.dpabsentstudent);
+            this.grpstudent.Controls.Add(this.DpDate);
+            this.grpstudent.Controls.Add(this.btnstudentpresent);
+            this.grpstudent.Location = new System.Drawing.Point(30, 48);
+            this.grpstudent.Name = "grpstudent";
+            this.grpstudent.Size = new System.Drawing.Size(570, 188);
+            this.grpstudent.TabIndex = 958789;
+            this.grpstudent.TabStop = false;
+            this.grpstudent.Text = "Student";
             // 
             // btnstudentabsent
             // 
@@ -389,7 +389,7 @@
             this.tspHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspHeader.Name = "tspHeader";
             this.tspHeader.Size = new System.Drawing.Size(133, 22);
-            this.tspHeader.Text = "Report Attendance";
+            this.tspHeader.Text = "Attendance Report";
             // 
             // RPT_Absent
             // 
@@ -413,10 +413,10 @@
             this.Leave += new System.EventHandler(this.MR_GeneralSettings_Leave);
             this.gbCollegeProfile.ResumeLayout(false);
             this.gbCollegeProfile.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpstaff.ResumeLayout(false);
+            this.grpstaff.PerformLayout();
+            this.grpstudent.ResumeLayout(false);
+            this.grpstudent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epMR_GeneralSettings)).EndInit();
             this.tsCollegeProfile.ResumeLayout(false);
@@ -435,7 +435,7 @@
         private System.Windows.Forms.ToolStrip tsCollegeProfile;
         private System.Windows.Forms.ToolStripLabel tspHeader;
         private System.Windows.Forms.PictureBox picLoader;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpstudent;
         private System.Windows.Forms.Label DpDate;
         private System.Windows.Forms.Button btnstudentpresent;
         private System.Windows.Forms.DateTimePicker dpabsentstudent;
@@ -446,7 +446,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dpstudentfrom;
         private System.Windows.Forms.Button btnstudentabsent;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grpstaff;
         private System.Windows.Forms.Button btnstaffabsent;
         private System.Windows.Forms.DateTimePicker dpstafftodate;
         private System.Windows.Forms.Label label5;

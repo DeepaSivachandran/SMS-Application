@@ -32,12 +32,12 @@ namespace SMSApplication
         {
             try
             {
-
+                dpFromDate.MaxDate = DateTime.Today;
                 lblDStatus.Visible = false;
                 gbStatus.Visible = false;
                 DataBind objDataBind = new DataBind();
                 objDataBind.BindComboBoxListSelected("MR_BloodGroup", " Bg_Code Not in (0) Order by Bg_Code", "BG_Name,Bg_Code", cmbBloodGroup, "", "BG_Name", "Bg_Code");
-                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (0) Order by CS_Id", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
+                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (0) Order by CS_classsection", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
                 objDataBind = null;
                 udfnEdit();
                 if (btnSave.Text == "Update")
@@ -273,14 +273,18 @@ namespace SMSApplication
                 else
                 {
                     //
-                    result = objspdservice.udfnStudentMaster("edit", VARstudentcode, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
+                    result = objspdservice.udfnStudentMaster("edit", VARstudentcode, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "student Edit", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
                 }
 
                 if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
                 {
                     MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     udfnclear();
-                    MainForm.objMR_StudentsList.udfnList();
+                    MainForm.objMR_StudentsList.udfnList(); 
+                    if (result.Contains("Updated Successfully."))
+                    {
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -378,6 +382,8 @@ namespace SMSApplication
             {
                 if (VARstudentcode != "")
                 {
+
+                    dpFromDate.MaxDate = DateTime.Today;
                     lblDStatus.Visible = true;
                     gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
@@ -522,15 +528,18 @@ namespace SMSApplication
             {
                 if (pbflag == "0")
                 {
-                    DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (objDialogResult == DialogResult.Yes)
+                    if (btnSave.Text != "Update")
                     {
-                      //  MainForm.objMR_Student.Hide();
-                        e.Cancel = false;
-                    }
-                    else
-                    {
-                        e.Cancel = true;
+                        DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (objDialogResult == DialogResult.Yes)
+                        {
+                            //  MainForm.objMR_Student.Hide();
+                            e.Cancel = false;
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                 }
             }

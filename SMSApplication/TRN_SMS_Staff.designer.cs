@@ -31,12 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TRN_SMS_Staff));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdstaffsms = new System.Windows.Forms.DataGridView();
+            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpunch = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
@@ -60,6 +64,10 @@
             this.txtcontantbox = new System.Windows.Forms.TextBox();
             this.btntestsms = new System.Windows.Forms.Button();
             this.grdstaffabsent = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmpunchabsent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -71,14 +79,6 @@
             this.lbldpresent = new System.Windows.Forms.Label();
             this.lbldabsent = new System.Windows.Forms.Label();
             this.lblouttime = new System.Windows.Forms.Label();
-            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpunch = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmpunchabsent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdstaffsms)).BeginInit();
             this.tspMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -132,6 +132,37 @@
             this.grdstaffsms.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdstaffsms_CellFormatting);
             this.grdstaffsms.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
             this.grdstaffsms.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
+            // 
+            // clmsno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 60;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Staff Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 200;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Status";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            // 
+            // clmpunch
+            // 
+            this.clmpunch.HeaderText = "Designation";
+            this.clmpunch.Name = "clmpunch";
+            this.clmpunch.ReadOnly = true;
+            this.clmpunch.Width = 150;
             // 
             // lblDNoRecordFound
             // 
@@ -338,6 +369,7 @@
             this.btnsendsms.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnsendsms.UseVisualStyleBackColor = true;
             this.btnsendsms.Click += new System.EventHandler(this.btnsendsms_Click);
+            this.btnsendsms.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnsendsms_KeyDown);
             // 
             // txtcontantbox
             // 
@@ -400,6 +432,37 @@
             this.grdstaffabsent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdstaffabsent.Size = new System.Drawing.Size(660, 486);
             this.grdstaffabsent.TabIndex = 958798;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn1.HeaderText = "S.No.";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Staff Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Status";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            // 
+            // clmpunchabsent
+            // 
+            this.clmpunchabsent.HeaderText = "Designation";
+            this.clmpunchabsent.Name = "clmpunchabsent";
+            this.clmpunchabsent.ReadOnly = true;
+            this.clmpunchabsent.Width = 150;
             // 
             // groupBox3
             // 
@@ -527,68 +590,6 @@
             this.lblouttime.Size = new System.Drawing.Size(15, 17);
             this.lblouttime.TabIndex = 958808;
             this.lblouttime.Text = "0";
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 60;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Staff Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 200;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Status";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Visible = false;
-            // 
-            // clmpunch
-            // 
-            this.clmpunch.HeaderText = "Designation";
-            this.clmpunch.Name = "clmpunch";
-            this.clmpunch.ReadOnly = true;
-            this.clmpunch.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn1.HeaderText = "S.No.";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Staff Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            // 
-            // clmpunchabsent
-            // 
-            this.clmpunchabsent.HeaderText = "Designation";
-            this.clmpunchabsent.Name = "clmpunchabsent";
-            this.clmpunchabsent.ReadOnly = true;
-            this.clmpunchabsent.Width = 150;
             // 
             // TRN_SMS_Staff
             // 

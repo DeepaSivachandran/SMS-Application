@@ -21,8 +21,7 @@ namespace SMSApplication
         //********* Object for Service Classed Initialisation ***********
         DataValidation objValidation = new DataValidation();
         DataError objError;
-
-        public CrystalDecisions.CrystalReports.Engine.ReportDocument objBillreport = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+        
         //**************Tooltips Initialization ***************
         private ToolTip tpOldPwd = new ToolTip();
         private ToolTip tpNewPwd = new ToolTip();

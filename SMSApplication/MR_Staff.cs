@@ -32,6 +32,7 @@ namespace SMSApplication
         {
             try
             {
+                dpFromDate.MaxDate = DateTime.Today;
                 lblDStatus.Visible = false;
                 gbStatus.Visible = false;
                 DataBind objDataBind = new DataBind();
@@ -62,6 +63,7 @@ namespace SMSApplication
             {
                 if (VARSTAFFCODE != "")
                 {
+                    dpFromDate.MaxDate = DateTime.Today;
                     lblDStatus.Visible = true;
                     gbStatus.Visible = true;
                     SPDataService objspservice = new SPDataService();
@@ -314,6 +316,10 @@ namespace SMSApplication
                     MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     udfnclear();
                     MainForm.objMR_StaffList.udfnList();
+                    if (result.Contains("Updated Successfully."))
+                    {
+                        this.Close();
+                    }
                 }
                 else  
                 {
@@ -472,15 +478,18 @@ namespace SMSApplication
             {
                 if (pbflag == "0")
                 {
-                    DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (objDialogResult == DialogResult.Yes)
+                    if (btnSave.Text != "Update")
                     {
-                      //  MainForm.objMR_Staff.Hide();
-                        e.Cancel = false;
-                    }
-                    else
-                    {
-                        e.Cancel = true;
+                        DialogResult objDialogResult = MessageBox.Show("Do you want to exit ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (objDialogResult == DialogResult.Yes)
+                        {
+                            //  MainForm.objMR_Staff.Hide();
+                            e.Cancel = false;
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                 }
             }

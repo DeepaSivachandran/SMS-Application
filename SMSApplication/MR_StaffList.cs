@@ -327,7 +327,7 @@ namespace SMSApplication
                         //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].HorizontalAlignment = Excel.Constants.xlCenter;
                         //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Interior.Color = Color.LightGray;
                         //ExcelSheet.Range[ExcelSheet.Cells[1, 1], ExcelSheet.Cells[1, count]].Font.Size = 12;
-
+                        
                         //ExcelSheet.Cells[2, 1].Value = "From : "  ;
                         //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].Merge();
                         //ExcelSheet.Range[ExcelSheet.Cells[2, 1], ExcelSheet.Cells[2, count]].HorizontalAlignment = Excel.Constants.xlCenter;
@@ -345,7 +345,9 @@ namespace SMSApplication
                             {
                                 cIndex += 1;
                                 ExcelSheet.Cells[3, cIndex] = col.HeaderText;
-                                ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray;
+                                ExcelSheet.Cells[3, cIndex].Interior.Color = Color.LightSlateGray; 
+                                Excel.Range cell = ExcelSheet.Cells[3, cIndex];
+                                cell.Font.Color = Excel.XlRgbColor.rgbWhite;
 
                                 if (col.Name == "clmdob")
                                 {
@@ -388,6 +390,7 @@ namespace SMSApplication
             {
                 lblDNoRecordFound.Visible = false;
                 picLoader.Visible = true;
+                picLoader.BringToFront();
                 Application.DoEvents();
                 udfnexcel();
 
@@ -400,6 +403,7 @@ namespace SMSApplication
             finally
             {
                 picLoader.Visible = false;
+                picLoader.SendToBack();
             }
         }
 

@@ -17,11 +17,13 @@ namespace SMSApplication
         //------- Servic Class object declaration
         DataValidation objValidation = new DataValidation();
         public DataError objError = new DataError();
-
+        private TRN_SMS_Student studentsms;
+        private TRN_SMS_General generalsms;
         //------- Variable Declaration
 
         public static string totalsms="0";
         public static string sentsms="0";
+        public static string sentloadingcount = "0";
         public static string pendingsms = "0"; 
         public static int varCloseFlag = 0;
         public static string pbVersion;
@@ -66,14 +68,26 @@ namespace SMSApplication
         public static MR_StudentWipout objMR_StudentWipout; 
         public static RPT_Absent objReportRPT_Absent;
         public static RPT_SMSTRANSACTION objRPT_SMSTRANSACTION;
-        
+      
+
+          
         public MainForm()
         {
             try
             {
                 InitializeComponent();
                 objValidation.setFontAndFontSize(this);
+                studentsms = new TRN_SMS_Student();
+                studentsms.SetmainformInstance(this); // Pass the instance of Form1 to Form2 
+
+                generalsms = new TRN_SMS_General();
+                generalsms.SetmainformInstance(this);
                 timer1.Start();
+                lblbucketlist.Font = new Font("Segoe UI", 14, FontStyle.Bold); // Replace label1 with the actual name of your label
+                lblsentsms.Font = new Font("Segoe UI", 14, FontStyle.Bold); // Replace label1 with the actual name of your label
+
+                lblsmscompare.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Replace label1 with the actual name of your label
+                lblsmscounting.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Replace label1 with the actual name of your label
 
                 timer3.Start();
                 timer2.Start();
@@ -124,10 +138,12 @@ namespace SMSApplication
                 udfnCloseChildForms();
                 objTRN_SMS_Student = new TRN_SMS_Student();
                 objTRN_SMS_Student.MdiParent = this;
-                objTRN_SMS_Student.Show();
+                objTRN_SMS_Student.Show(); 
             }
             catch (Exception ex)
-            { objError = new DataError();objError.WriteFile(ex); }
+            {
+                objError = new DataError();
+                objError.WriteFile(ex); }
         }
         
         private void tsbLogout_Click(object sender, EventArgs e)
@@ -135,19 +151,29 @@ namespace SMSApplication
             try
             {
                 DialogResult objResponse = MessageBox.Show("Are you sure want to Logout?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                DataService objDservice = new DataService();
+                pendingsms = objDservice.displaydata("select top(1) case when jl_enddate is null then 0 else 1 end as smswaiting from TRN_SMSJobLog where jl_smscount <>0 and CONVERT(NVARCHAR, CONVERT(DATE,jl_enddate,101),103)=CONVERT(NVARCHAR,GETDATE(),103)order by jl_id desc");
+
                 if ((objResponse == DialogResult.Yes))
                 {
-                    if ((System.Windows.Forms.Application.MessageLoop))
+                    if (pendingsms == "1" || pendingsms == "")
                     {
-                        varCloseFlag = 1;
-                        System.Windows.Forms.Application.Exit();
+                        if ((System.Windows.Forms.Application.MessageLoop))
+                        {
+                            varCloseFlag = 1;
+                            System.Windows.Forms.Application.Exit();
+                        }
+                        else
+                        {
+                            System.Environment.Exit(1);
+                        }
+                        Close();
                     }
-                    else
-                    {
-                        System.Environment.Exit(1);
+                    else { 
+                        MessageBox.Show("Please Wait Message was Sending", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    Close();
                 }
+                objDservice.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -162,7 +188,7 @@ namespace SMSApplication
             {
                 DataService objDservice = new DataService();
                 // lblTime.Text = lblAcademicYear.Text + "\r\n" + "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
-                lblTime.Text = "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
+                lblTime.Text = "Welcome " + MainForm.pbUserName + "  " + objDservice.displaydata("select (CONVERT(nvarchar, GETDATE(), 106))  + ' ' +  RIGHT(GETDATE(),7)  AS CurrentDate");
                 objDservice.CloseConnection();
             }
             catch (Exception ex)
@@ -180,16 +206,26 @@ namespace SMSApplication
                 if (varCloseFlag == 0)
                 {
                     DialogResult objResponse = MessageBox.Show("Are you sure want to Logout?", "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if ((objResponse == DialogResult.Yes))
+                    DataService objDservice = new DataService();
+                    pendingsms = objDservice.displaydata("select top(1) case when jl_enddate is null then 0 else 1 end as smswaiting from TRN_SMSJobLog where jl_smscount <>0 and CONVERT(NVARCHAR, CONVERT(DATE,jl_enddate,101),103)=CONVERT(NVARCHAR,GETDATE(),103)order by jl_id desc");
+                    if (pendingsms == "1" || pendingsms == "")
                     {
-                        e.Cancel = false;
-                        varCloseFlag = 1;
-                        System.Windows.Forms.Application.Exit();
+                        if ((objResponse == DialogResult.Yes))
+                        {
+                            e.Cancel = false;
+                            varCloseFlag = 1;
+                            System.Windows.Forms.Application.Exit();
+                        }
+                        else
+                        {
+                            e.Cancel = true;
+                        }
                     }
                     else
                     {
-                        e.Cancel = true;
+                        MessageBox.Show("Please Wait Message was Sending!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
+                    objDservice.CloseConnection();
                 }
             }
             catch (Exception ex)
@@ -455,37 +491,65 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
-      
-        private void timer2_Tick(object sender, EventArgs e)
+        public event EventHandler TimerElapsed;
+
+        protected virtual void OnTimerElapsed()
+        {
+            TimerElapsed?.Invoke(this, EventArgs.Empty);
+        }
+        public void timer2_Tick(object sender, EventArgs e)
         {
             try
             {
                 DataSet objds = new DataSet();  
                 DataService objDservice = new DataService();
-                 objds= objDservice.GetDataset("select top(1) RIGHT(jl_startdate,7) startvalue, RIGHT(jl_enddate,7)endvalue,jl_smscount as smscount,case when jl_enddate is null then 0 else 1 end as smswaiting from TRN_SMSJobLog where jl_smscount <>0 and CONVERT(NVARCHAR, CONVERT(DATE,jl_enddate,101),103)=CONVERT(NVARCHAR,GETDATE(),103)order by jl_id desc");
-                // lblTime.Text = lblAcademicYear.Text + "\r\n" + "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
+                 objds= objDservice.GetDataset("select top(1) CONVERT(NVARCHAR, CONVERT(DATE,jl_startdate,101),103)+' '+ left(CONVERT(NVARCHAR, jl_startdate, 108),5) as startvalue, RIGHT(jl_enddate,7)endvalue,jl_smscount as smscount,case when jl_enddate is null then 0 else 1 end as smswaiting from TRN_SMSJobLog where jl_smscount <>0 and CONVERT(NVARCHAR, CONVERT(DATE,jl_enddate,101),103)=CONVERT(NVARCHAR,GETDATE(),103)order by jl_id desc");
+                //lblTime.Text = lblAcademicYear.Text + "\r\n" + "Welcome " + MainForm.pbUserName + "\r\n" + objDservice.displaydata("SELECT CONVERT(nvarchar, GETDATE(), 106) + ' ' + SUBSTRING(CONVERT(nvarchar, GETDATE(), 100), 13, 7) AS CurrentDate");
                 lblbucketlist.Text = objDservice.displaydata("select ST_smsbucket from MR_Settings"); 
-                totalsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,2,5) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103)");
-                sentsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS NOT NULL");
-                pendingsms = objDservice.displaydata("SELECT COUNT(SMS_Id) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMSD_Status IS   NULL");
+                totalsms = objDservice.displaydata("select top(1) SMS_TotalSms from TRN_SMS order by SMS_Id desc");
+                sentsms = objDservice.displaydata("SELECT isnull(sum(SMSD_Count),0) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) ");
+              //sentloadingcount =  objDservice.displaydata("SELECT sum(SMSD_Count) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2)AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) and SMSD_SMSId=(select max(SMS_Id) from TRN_SMS)");
+                pendingsms = objDservice.displaydata("SELECT isnull(sum(SMSD_Count),0) AS TOTALSMS FROM TRN_SMSDetails AS A INNER JOIN TRN_SMS AS B ON A.SMSD_SMSId=B.SMS_Id WHERE SMS_SMSType IN (1,3,4,5,2) AND CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) and SMSD_SMSId=(select max(SMS_Id) from TRN_SMS)  and SMSD_Count is not null");
+
                 objDservice.CloseConnection();  
                 lbltotalsms.Text =totalsms;
                 lblsentsms.Text = sentsms;
-                if (objds.Tables[0].Rows.Count >0)
+                if (objds.Tables[0].Rows.Count > 0)
                 {
-                    if (objds.Tables[0].Rows[0]["smswaiting"].ToString() != "0")
+                    lblsmscounting.Visible = true;
+                    lblsmscompare.Visible = true;
+                    lblsmscompare.Text = objds.Tables[0].Rows[0]["startvalue"].ToString();
+                    if (sentsms != "0")
                     {
-                        lblouttimesms.Visible = true;
-                        lblsmscompare.Text ="Last SMS Batch Time "+ objds.Tables[0].Rows[0]["startvalue"].ToString() + " - " +  objds.Tables[0].Rows[0]["endvalue"].ToString() ;
-                        lblouttimesms.Text = "SMS Count is " + objds.Tables[0].Rows[0]["smscount"].ToString();
+                        if ( objds.Tables[0].Rows[0]["smswaiting"].ToString() == "1")
+                        {
+                            lblsmscounting.Text = totalsms + " / " +totalsms; 
+                            lblsmscompleted.Text = "Completed";
+                        }
+                        else
+                        {
+                            lblsmscounting.Text = pendingsms + " / " + totalsms; 
+                            lblsmscompleted.Text = "Sending";
+                        }
                     }
                     else
                     {
-                        lblsmscompare.Text = "Still prograss"+" SMS Count is " + sentsms+ " / " + objds.Tables[0].Rows[0]["smscount"].ToString() ;
-                        lblouttimesms.Visible = false;
+
+                        lblsmscounting.Text = " - ";
                     }
+
                 }
+                else
+                {
+                    lblsmscounting.Visible = true;
+                    lblsmscompare.Visible = true;
+
+                    lblsmscounting.Text =  " - ";
+                    lblsmscompare.Text = " - ";
                     
+                   }
+                objDservice.CloseConnection();
+                OnTimerElapsed();
             }
             catch (Exception ex)
             {
@@ -498,16 +562,18 @@ namespace SMSApplication
         {
             try
             {
-                DataService objDservice = new DataService();
-                if (objValidation.internetconnection() == true)
-                {
-                    lblneton.Visible = true; 
-                    lblnetoff.Visible = false;
-                }
-                else {
-                    lblnetoff.Visible = true;
-                    lblneton.Visible = false;
-                }
+                 
+                //if (objValidation.internetconnection()==true)
+                //{
+
+                //    lblneton.Visible = true; 
+                //    lblnetoff.Visible = false;
+                //}
+                //else
+                //{
+                //    lblnetoff.Visible = true;
+                //    lblneton.Visible = false;
+                //}
             }
             catch (Exception ex)
             {
@@ -549,5 +615,7 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+         
+         
     } 
 }

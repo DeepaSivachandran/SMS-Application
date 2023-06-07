@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sms.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
@@ -315,6 +318,7 @@
     <Content Include="Resources\browse.jpg" />
     <Content Include="Resources\browse1.jpg" />
     <Content Include="Resources\cancel.png" />
+    <Content Include="sms.ico" />
     <None Include="Resources\clear.png" />
     <Content Include="Resources\continue.png" />
     <Content Include="Resources\control_panel.png" />
@@ -348,6 +352,7 @@
     <Content Include="Resources\login-new.jpg" />
     <Content Include="Resources\Login.jpg" />
     <Content Include="Resources\Login1.jpg" />
+    <None Include="Resources\login2.jpg" />
     <Content Include="Resources\logo-cell.png" />
     <None Include="Resources\logo.png" />
     <Content Include="Resources\male__2_.jpg" />

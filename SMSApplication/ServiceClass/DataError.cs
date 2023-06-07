@@ -39,9 +39,9 @@ namespace SMSApplication.ServiceClass
             }
             else
             {
-                if (File.Exists(Application.StartupPath + "\\Errors\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html"))
+                if (File.Exists(Application.StartupPath + "\\Logs\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html"))
                 {
-                    using (fs = new FileStream(Application.StartupPath + "\\Errors\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html", FileMode.Append, FileAccess.Write))
+                    using (fs = new FileStream(Application.StartupPath + "\\Logs\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html", FileMode.Append, FileAccess.Write))
                     {
                         using (objStream = new StreamWriter(fs, Encoding.UTF8))
                         {
@@ -51,7 +51,7 @@ namespace SMSApplication.ServiceClass
                 }
                 else
                 {
-                    using (fs = new FileStream(Application.StartupPath + "\\Errors\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html", FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    using (fs = new FileStream(Application.StartupPath + "\\Logs\\LogFiles\\" + DateTime.Today.ToString("MM-dd-yy") + ".html", FileMode.OpenOrCreate, FileAccess.ReadWrite))
                     {
                         using (objStream = new StreamWriter(fs, Encoding.UTF8))
                         {
