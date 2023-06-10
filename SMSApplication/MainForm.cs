@@ -89,7 +89,7 @@ namespace SMSApplication
                 lblsmscompare.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Replace label1 with the actual name of your label
                 lblsmscounting.Font = new Font("Segoe UI", 10, FontStyle.Regular); // Replace label1 with the actual name of your label
 
-                timer3.Start();
+               // timer3.Start();
                 timer2.Start();
             }
             catch (Exception ex)
@@ -134,7 +134,7 @@ namespace SMSApplication
                 //lblAcademicYear.Text =  pbAcademicMonth + " - " + pbCurrentYear;
                 timer1_Tick(sender, e);
                 timer2_Tick(sender, e);
-                timer3_Tick(sender, e);
+                //timer3_Tick(sender, e);
                 udfnCloseChildForms();
                 objTRN_SMS_Student = new TRN_SMS_Student();
                 objTRN_SMS_Student.MdiParent = this;

@@ -112,16 +112,15 @@ F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplica
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffImport.resources
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentWipout.resources
-F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.pdb
+F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportSource.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\FlashControlV71.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\ShockwaveFlashObjects.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\stdole.dll
-F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojResolveAssemblyReference.cache
-F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.SMSApplication.exe.config
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe.config
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Authentication.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.RPT_SMSTRANSACTION.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.RPT_Absent.resources
@@ -132,6 +131,7 @@ F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Gener
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_ChangePwd.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Student.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Staff.resources
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Activation.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Staff.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_General.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Student.resources
@@ -145,6 +145,8 @@ F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MainForm
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Properties.Resources.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.ServerSettings.resources
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Start.resources
-F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.cache
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.CoreCompileInputs.cache
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.CopyComplete
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb

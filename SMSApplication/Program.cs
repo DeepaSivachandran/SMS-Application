@@ -1,9 +1,12 @@
-﻿using SMSApplication.ServiceClass;
+﻿using SMSApplication.com.shivasoftwares.cloud;
+using SMSApplication.ServiceClass;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,15 +22,97 @@ namespace SMSApplication
         {
             try
             {
+                SecurityController _security = new SecurityController();
                 string varVersion = "v1.0.0";
                 string varPath = Application.StartupPath + "\\Server Settings\\serversettings.txt";
                 if (File.Exists(varPath))
                 {
-                    udfnInsertVersion(varVersion);
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new Authentication());
-                }
+                    udfnInsertVersion(varVersion); string varSerialNumber = "";
+                    DataValidation obj = new DataValidation();
+                    varSerialNumber = obj.baseId();
+                    string regkey = string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2"))); //GenerateMD5(processid + uniqueid);
+                    string foldername = obj.Encrypt("Activation");
+                    string path2 = Application.StartupPath + "\\" + foldername;
+                    if (Directory.Exists(path2))
+                    {
+                        string encriptedtext = _security.Encrypt("Activation", regkey.ToUpper());
+                        string[] files = Directory.GetFiles(path2);
+                        string filename = "";
+                        foreach (string file in files)
+                            filename = (Path.GetFileName(file));
+                        string decryptedfile = obj.Decrypt(filename.Replace(".sss", ""));
+                        if (decryptedfile == "Activation")
+                        {
+                            path2 = path2 + "\\" + filename;
+                            FileInfo info = new FileInfo(path2);
+                            if (info.Exists)
+                            {
+                                var fileContents = System.IO.File.ReadAllText(path2);
+                                string[] values = fileContents.Replace("\r", "").Split('\n');
+                                if (values.Length > 1)
+                                {
+                                    ActivationService objActivationService = new ActivationService();
+                                    string rs = ""; string st = "";
+                                    if (encriptedtext == values[0])
+                                    {
+                                        rs = "Success";
+                                    }
+                                    if (rs == "Success" || rs == "Activated")
+                                    {
+                                        st = "success";
+                                    }
+                                    else if (rs == "Blocked")
+                                    {
+                                        st = "error";
+                                    }
+                                    else { st = ""; rs = ""; }
+                                    if (st == "error" || st == "")
+                                    {
+                                        Application.EnableVisualStyles();
+                                        Application.SetCompatibleTextRenderingDefault(false);
+                                         Application.Run(new Activation());
+                                    }
+                                    else
+                                    {
+                                        Application.EnableVisualStyles();
+                                        Application.SetCompatibleTextRenderingDefault(false);
+                                        //Application.Run(new Expandablegrd());
+
+
+                                        Application.Run(new Authentication());
+                                    }
+                                }
+                                else
+                                {
+                                    Application.EnableVisualStyles();
+                                    Application.SetCompatibleTextRenderingDefault(false);
+                                     Application.Run(new Activation());
+                                }
+                            }
+                            else
+                            {
+                                Application.EnableVisualStyles();
+                                Application.SetCompatibleTextRenderingDefault(false);
+                                 Application.Run(new Activation());
+                            }
+                        }
+                        else
+                        {
+                            Application.EnableVisualStyles();
+                            Application.SetCompatibleTextRenderingDefault(false);
+                             Application.Run(new Activation());
+                        }
+                    }
+                    else
+                    {
+                        Application.EnableVisualStyles();
+                        Application.SetCompatibleTextRenderingDefault(false);
+                         Application.Run(new Activation());
+                    }
+
+                 
+
+            }
                 else { Application.Run(new ServerSettings()); }
             }
             catch (Exception ex)
@@ -45,11 +130,11 @@ namespace SMSApplication
                 // Insert version details to release table
                 SPDataService objDserv = new SPDataService();
                 DataService objDser = new DataService();
-                DataSet objGetRelease = objDser.GetDataset("select * from TRANS_Release where VersionNumber='" + varVersion + "'");
+                DataSet objGetRelease = objDser.GetDataset("select * from MR_Version where VS_VersionNumber='" + varVersion + "'");
                 if (objGetRelease.Tables[0].Rows.Count == 0)
                 {
-                    string varReleaseNo = objDser.displaydata("select isnull(max(ReleaseNumber),1)+1 from TRANS_Release");
-                    objDserv.udfnExecuteQuery("Insert into TRANS_Release(ReleaseDate,ReleaseNumber,VersionNumber) values (GETDATE(),'" + varReleaseNo + "','" + varVersion + "') ");
+                    string varReleaseNo = objDser.displaydata("select isnull(max(VS_Id),0)+1 from MR_Version");
+                    objDserv.udfnExecuteQuery("Insert into MR_Version(VS_ReleaseDate,VS_Id,VS_VersionNumber) values (GETDATE(),'" + varReleaseNo + "','" + varVersion + "') ");
                 }
                 objDserv.CloseConnection();
             }

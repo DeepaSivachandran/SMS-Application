@@ -12,6 +12,7 @@ using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Diagnostics;
 using SMSApplication.ServiceClass;
+using SMSApplication.com.shivasoftwares.cloud;
 
 //[assembly: XmlConfigurator(Watch = true)]
 //[assembly: Repository()]
@@ -295,83 +296,85 @@ namespace SMSApplication
             string paths = Application.StartupPath + "\\Server Settings\\serversettings.txt";
             if (File.Exists(paths))
             {
-                //string regkey = "";
-                //string varSerialNumber = "";
-                //DataValidation obj = new DataValidation();
-                //varSerialNumber = obj.baseId();
-                //regkey = string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2")));
+                string regkey = "";
+                string varSerialNumber = "";
+                DataValidation obj = new DataValidation();
+                varSerialNumber = obj.baseId();
+                regkey = string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2")));
                 try
                 {
-                    //        string foldername = obj.Encrypt("Activation");
-                    //        string path = Application.StartupPath + "\\"+ foldername;
-                    //        // Check activation folder exists or not
-                    //        if (Directory.Exists(path))
-                    //        {
-                    //            string encriptedtext = obj.Encrypt(string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2"))));
-                    //            string[] files = Directory.GetFiles(path);
-                    //            string filename = "";
-                    //            foreach (string file in files)
-                    //                filename = (Path.GetFileName(file));
-                    //            string decryptedfile = obj.Decrypt(filename.Replace(".sss", ""));
-                    //            // Check activation file exists or not
-                    //            if (decryptedfile == "Activation")
-                    //            {
-                    //                path = path + "\\" + filename;
-                    //                FileInfo info = new FileInfo(path);
-                    //                if (info.Exists)
-                    //                {
-                    //                    var fileContents = System.IO.File.ReadAllText(path);
-                    //                    string[] values = fileContents.Replace("\r", "").Split('\n');
-                    //                    // Check internet connection
-                    //                    if (obj.internetconnection() == true)
-                    //                    {
-                    //                        if (values.Length > 0)
-                    //                        {
-                    //                            ActivationService.ActivationService activser = new ActivationService.ActivationService();
-                    //                            string rs = ""; string st = "";
-                    //                            string key = obj.Decrypt(values[0]);
-                    //                            string otp = obj.Decrypt(values[1]);
-                    //                            string customername = obj.Decrypt(values[2]);
-                    //                            string mobileno = obj.Decrypt(values[3]);
-                    //                            string emailid = obj.Decrypt(values[4]);
-                    //                            string address = obj.Decrypt(values[5]);
-                    //                            rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "15");
-                    //                            if (rs == "Success" || rs == "Activated")
-                    //                            {
-                    //                                st = "success";
-                    //                            }
-                    //                            else if (rs == "Blocked")
-                    //                            {
-                    //                                st = "error";
-                    //                            }
-                    //                            else { st = ""; rs = ""; }
-                    //                            if (st == "error" || st == "")
-                    //                            {
-                    //                                this.Close(); Application.Run(new Activation());
-                    //                            }
-                    //                            else { goto lbl; }
-                    //                        }
-                    //                        else { goto lbl; }
-                    //                    }
-                    //                    else
-                    //                    {
-                    //                        if (encriptedtext == (values[0]))
-                    //                        {
-                    //                            goto lbl;
-                    //                        }
-                    //                        else { this.Close(); Application.Run(new Activation()); }
-                    //                    }
-                    //                }
-                    //                else { this.Close(); Application.Run(new Activation()); }
-                    //            }
-                    //            else { this.Close(); Application.Run(new Activation()); }
-                    //        }
-                    //        else { this.Close(); Application.Run(new Activation()); }
+                    string foldername = obj.Encrypt("Activation");
+                    string path = Application.StartupPath + "\\" + foldername;
+                    // Check activation folder exists or not
+                    if (Directory.Exists(path))
+                    {
+                        string encriptedtext = obj.Encrypt(string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2"))));
+                        string[] files = Directory.GetFiles(path);
+                        string filename = "";
+                        foreach (string file in files)
+                            filename = (Path.GetFileName(file));
+                        string decryptedfile = obj.Decrypt(filename.Replace(".sss", ""));
+                        // Check activation file exists or not
+                        if (decryptedfile == "Activation")
+                        {
+                            path = path + "\\" + filename;
+                            FileInfo info = new FileInfo(path);
+                            if (info.Exists)
+                            {
+                                var fileContents = System.IO.File.ReadAllText(path);
+                                string[] values = fileContents.Replace("\r", "").Split('\n');
+                                // Check internet connection
+                                if (obj.internetconnection() == true)
+                                {
+                                    if (values.Length > 0)
+                                    {
+                                         
 
-                    lbl:  lblDVersion.Text = "v1.0";
+                                        ActivationService activser = new ActivationService();
+                                        string rs = ""; string st = "";
+                                        string key = obj.Decrypt(values[0]);
+                                        string otp = obj.Decrypt(values[1]);
+                                        string customername = obj.Decrypt(values[2]);
+                                        string mobileno = obj.Decrypt(values[3]);
+                                        string emailid = obj.Decrypt(values[4]);
+                                        string address = obj.Decrypt(values[5]);
+                                        rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "15");
+                                        if (rs == "Success" || rs == "Activated")
+                                        {
+                                            st = "success";
+                                        }
+                                        else if (rs == "Blocked")
+                                        {
+                                            st = "error";
+                                        }
+                                        else { st = ""; rs = ""; }
+                                        if (st == "error" || st == "")
+                                        {
+                                            this.Close(); Application.Run(new Activation());
+                                        }
+                                        else { goto lbl; }
+                                    }
+                                    else { goto lbl; }
+                                }
+                                else
+                                {
+                                    if (encriptedtext == (values[0]))
+                                    {
+                                        goto lbl;
+                                    }
+                                    else { this.Close(); Application.Run(new Activation()); }
+                                }
+                            }
+                            else { this.Close(); Application.Run(new Activation()); }
+                        }
+                        else { this.Close(); Application.Run(new Activation()); }
+                    }
+                    else { this.Close(); Application.Run(new Activation()); }
+
+                lbl:  lblDVersion.Text = "v1.0";
                     lblDVersion.BringToFront();
                     Authentication objAuthetication = new Authentication();
-                    objAuthetication.Name = "Exam Cell - "+lblDVersion.Text;
+                    objAuthetication.Name = "SMS Application - "+lblDVersion.Text;
                     //checknewversion();
                     //txtUserName.AutoSize = false;
                     //txtUserName.Size = new System.Drawing.Size(256, 32);
@@ -380,7 +383,8 @@ namespace SMSApplication
                 }
                 catch (Exception ex)
                 {
-                  //  checknewversion();
+                    checknewversion();
+                    this.Close();
                 }
             }
             else { Application.Run(new ServerSettings()); }

@@ -1,4 +1,5 @@
 ﻿
+using SMSApplication.com.shivasoftwares.cloud;
 using SMSApplication.ServiceClass;
 using System;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace SMSApplication
                             {
                                 if (varValues.Length > 1)
                                 {
-                                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                                    ActivationService objActivationService = new ActivationService();
                                     string varResult = ""; string varStatus = "";
                                     string varKey = objValidation.Decrypt(varValues[0]);
                                     string varOTP = objValidation.Decrypt(varValues[1]);
@@ -150,9 +151,9 @@ namespace SMSApplication
                     else
                     {
                         // Get OTP from cloud server
-                        //ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
-                        //objActivationService.udfngetOTPForProduct(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "v1.0.0","15");
-                        //MessageBox.Show("OTP sent successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);                       
+                        ActivationService objActivationService = new ActivationService();
+                        objActivationService.udfngetOTPForProduct(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "v1.0.0", "15");
+                        MessageBox.Show("OTP sent successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -258,7 +259,7 @@ namespace SMSApplication
                 else
                 {
                     // Check OTP with cloud server
-                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                    ActivationService objActivationService = new ActivationService();
                     varResult = objActivationService.udfnAuthenticate(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "1.0.0", txtOTP.Text,"15");                   
                     if (varResult == "Success")
                     {

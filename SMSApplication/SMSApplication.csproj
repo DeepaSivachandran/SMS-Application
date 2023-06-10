@@ -51,6 +51,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -124,6 +125,12 @@
     </Compile>
     <Compile Include="MR_Staff.designer.cs">
       <DependentUpon>MR_Staff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SSS Activation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SSS Activation.designer.cs">
+      <DependentUpon>SSS Activation.cs</DependentUpon>
     </Compile>
     <Compile Include="TRN_SMS_Staff.cs">
       <SubType>Form</SubType>
@@ -212,6 +219,11 @@
     <Compile Include="Start.designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web References\com.shivasoftwares.cloud\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -248,6 +260,9 @@
     <EmbeddedResource Include="MR_Staff.resx">
       <DependentUpon>MR_Staff.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SSS Activation.resx">
+      <DependentUpon>SSS Activation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TRN_SMS_Staff.resx">
       <DependentUpon>TRN_SMS_Staff.cs</DependentUpon>
@@ -309,6 +324,26 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\Thumbs.db" />
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService.wsdl" />
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\com.shivasoftwares.cloud\Customerrecords.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\com.shivasoftwares.cloud\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -319,6 +354,7 @@
     <Content Include="Resources\browse1.jpg" />
     <Content Include="Resources\cancel.png" />
     <Content Include="sms.ico" />
+    <None Include="Web References\com.shivasoftwares.cloud\ActivationService.disco" />
     <None Include="Resources\clear.png" />
     <Content Include="Resources\continue.png" />
     <Content Include="Resources\control_panel.png" />
@@ -390,6 +426,25 @@
     <Content Include="Resources\view2.jpg" />
     <Content Include="Resources\vsvnpc-logo.png" />
     <Content Include="Resources\welcome.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://cloud.shivasoftwares.com/activation/ActivationService.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\com.shivasoftwares.cloud\</RelPath>
+      <UpdateFromURL>http://cloud.shivasoftwares.com/activation/ActivationService.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SMSApplication_com_shivasoftwares_cloud_ActivationService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

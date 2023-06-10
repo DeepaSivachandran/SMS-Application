@@ -109,18 +109,7 @@ namespace SMSApplication.ServiceClass
                 objError.WriteFile(ex);
             }
         }
-        public void screensettingspanel(Panel SSSExamCell)
-        {
-            int i = Screen.FromControl(SSSExamCell).Bounds.Width;
-            int j = Screen.FromControl(SSSExamCell).Bounds.Height;
-            int m = j / 2;
-            int k = i / 2;
-            int fw = SSSExamCell.Width;
-            int fh = SSSExamCell.Height;
-            int s = fw / 4;
-            int n = fh / 4;
-            SSSExamCell.Location = new System.Drawing.Point((k - s) - 180, (m - n) + 25);
-        }
+        
         public bool internetconnection()
         {
              
