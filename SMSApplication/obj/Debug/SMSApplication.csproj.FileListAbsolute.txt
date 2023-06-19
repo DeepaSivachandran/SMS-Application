@@ -150,3 +150,4 @@ F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.C
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.CopyComplete
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
+F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojAssemblyReference.cache

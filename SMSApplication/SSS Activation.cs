@@ -1,5 +1,5 @@
 ﻿
-using SMSApplication.com.shivasoftwares.cloud;
+ 
 using SMSApplication.ServiceClass;
 using System;
 using System.Collections.Generic;
@@ -65,12 +65,13 @@ namespace SMSApplication
                         if (varInfo.Exists)
                         {
                             var varFileContents = System.IO.File.ReadAllText(varPath);
-                            string[] varValues = varFileName.Replace("\r", "").Split('\n');
+                            string[] varValues = varFileContents.Replace("\r", "").Split('\n');
                             if (objValidation.internetconnection() == true)
                             {
                                 if (varValues.Length > 1)
                                 {
-                                    ActivationService objActivationService = new ActivationService();
+                                 
+                                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
                                     string varResult = ""; string varStatus = "";
                                     string varKey = objValidation.Decrypt(varValues[0]);
                                     string varOTP = objValidation.Decrypt(varValues[1]);
@@ -79,7 +80,7 @@ namespace SMSApplication
                                     string varEmailId = objValidation.Decrypt(varValues[4]);
                                     string varAddress = objValidation.Decrypt(varValues[5]);
                                     // Check registration key with cloud database
-                                    varResult = objActivationService.udfnAuthenticate(varCustomerName, varMobileNo, varEmailId, varAddress, varKey, "", varOTP, "15");
+                                    varResult = objActivationService.udfnAuthenticate(varCustomerName, varMobileNo, varEmailId, varAddress, varKey, "", varOTP, "29");
                                     if (varResult == "Success" || varResult == "Activated")
                                     {
                                         varStatus = "success";
@@ -99,39 +100,43 @@ namespace SMSApplication
                                         Application.EnableVisualStyles();
                                         Application.SetCompatibleTextRenderingDefault(false);
                                         Application.Run(new Authentication());
+                                        //this.Hide();
+                                        //objAuth.Show();
                                     }
                                 }
                             }
-                            else
-                            {
-                                if (varEncryptedText == (varValues[0]))
-                                {
-                                    Application.EnableVisualStyles();
-                                    Application.SetCompatibleTextRenderingDefault(false);
-                                    //Application.Run(new Expandablegrd());
-                                    Application.Run(new Authentication());
-                                }
-                            }
+                            //else
+                            //{
+                            //    if (varEncryptedText == (varValues[0]))
+                            //    {
+                            //        //Application.EnableVisualStyles();
+                            //        //Application.SetCompatibleTextRenderingDefault(false);
+                            //        ////Application.Run(new Expandablegrd());
+                            //        //Application.Run(new Authentication());
+                            //        this.Close(); Application.Run(new Authentication());
+                            //    }
+                            //}
                         }
                     }
                 }
-                if (objValidation.internetconnection() == false)
-                {
-                    lblNetwork.Text = "Off";
-                    btnGetOtp.Enabled = false;
-                }
-                else
-                {
-                    lblNetwork.Text = "On";
-                    btnGetOtp.Enabled = true;
-                }
+                //if (objValidation.internetconnection() == false)
+                //{
+                //    lblNetwork.Text = "Off";
+                //    btnGetOtp.Enabled = false;
+                //}
+                //else
+                //{
+                //    lblNetwork.Text = "On";
+                //    btnGetOtp.Enabled = true;
+                //}
             }
             catch(Exception ex)
             {
-                objError = new DataError();
-                objError.WriteFile(ex);
-                lblNetwork.Text = "Off";
-                btnGetOtp.Enabled = false;
+                //objError = new DataError();
+                //objError.WriteFile(ex);
+                //lblNetwork.Text = "Off";
+                //btnGetOtp.Enabled = false;
+                ////MessageBox.Show(ex.ToString(), "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
         }
         // Author : Deepa
@@ -151,8 +156,9 @@ namespace SMSApplication
                     else
                     {
                         // Get OTP from cloud server
-                        ActivationService objActivationService = new ActivationService();
-                        objActivationService.udfngetOTPForProduct(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "v1.0.0", "15");
+                   
+                        ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                        objActivationService.udfngetOTPForProduct(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "v1.0.0", "29");
                         MessageBox.Show("OTP sent successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -259,16 +265,15 @@ namespace SMSApplication
                 else
                 {
                     // Check OTP with cloud server
-                    ActivationService objActivationService = new ActivationService();
-                    varResult = objActivationService.udfnAuthenticate(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "1.0.0", txtOTP.Text,"15");                   
+                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                    varResult = objActivationService.udfnAuthenticate(txtCustomerName.Text, txtMobileNo.Text, txtEmailId.Text, txtAddress.Text, txtRegistrationKey.Text, "1.0.0", txtOTP.Text,"29");                   
                     if (varResult == "Success")
                     {
-                        string varFolderName = objValidation.Encrypt("Activation");
-                        string varPath = Application.StartupPath + "\\"+ varFolderName;
-                        if (!Directory.Exists(varPath))
-                        { Directory.CreateDirectory(varPath); }
+                        string path = Application.StartupPath + "\\"+ objValidation.Encrypt("Activation");
+                        if (!Directory.Exists(path))
+                        { Directory.CreateDirectory(path); }
                         string filename = objValidation.Encrypt("Activation");
-                        string filepath = objValidation + "\\" + filename + ".sss";
+                        string filepath = path + "\\" + filename + ".sss";
                         string encriptedtext = objValidation.Encrypt(string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2"))));
                         CreateFile(filepath, txtCustomerName.Text, txtMobileNo.Text,txtEmailId.Text, txtAddress.Text, txtOTP.Text, encriptedtext);
                         this.Hide();

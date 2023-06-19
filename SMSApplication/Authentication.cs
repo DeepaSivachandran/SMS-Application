@@ -11,8 +11,7 @@ using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Diagnostics;
-using SMSApplication.ServiceClass;
-using SMSApplication.com.shivasoftwares.cloud;
+using SMSApplication.ServiceClass; 
 
 //[assembly: XmlConfigurator(Watch = true)]
 //[assembly: Repository()]
@@ -328,9 +327,7 @@ namespace SMSApplication
                                 {
                                     if (values.Length > 0)
                                     {
-                                         
-
-                                        ActivationService activser = new ActivationService();
+                                        ActivationService.ActivationService activser = new ActivationService.ActivationService();
                                         string rs = ""; string st = "";
                                         string key = obj.Decrypt(values[0]);
                                         string otp = obj.Decrypt(values[1]);
@@ -338,7 +335,7 @@ namespace SMSApplication
                                         string mobileno = obj.Decrypt(values[3]);
                                         string emailid = obj.Decrypt(values[4]);
                                         string address = obj.Decrypt(values[5]);
-                                        rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "15");
+                                        rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");
                                         if (rs == "Success" || rs == "Activated")
                                         {
                                             st = "success";
@@ -350,9 +347,10 @@ namespace SMSApplication
                                         else { st = ""; rs = ""; }
                                         if (st == "error" || st == "")
                                         {
-                                            this.Close(); Application.Run(new Activation());
+                                           // this.Close(); Application.Run(new Activation());
                                         }
-                                        else { goto lbl; }
+                                        else {
+                                            goto lbl; }
                                     }
                                     else { goto lbl; }
                                 }
@@ -362,24 +360,36 @@ namespace SMSApplication
                                     {
                                         goto lbl;
                                     }
-                                    else { this.Close(); Application.Run(new Activation()); }
+                                    else {
+                                        this.Close();
+                                       Application.Run(new Activation());
+                                    }
                                 }
                             }
-                            else { this.Close(); Application.Run(new Activation()); }
+                            else {
+                                this.Close();
+                                Application.Run(new Activation());
+                            }
                         }
-                        else { this.Close(); Application.Run(new Activation()); }
+                        else {
+                            this.Close();
+                            Application.Run(new Activation());
+                        }
                     }
-                    else { this.Close(); Application.Run(new Activation()); }
+                    else {
+                        this.Close();
+                        Application.Run(new Activation());
+                    }
 
-                lbl:  lblDVersion.Text = "v1.0";
+                lbl:  lblDVersion.Text = "v1.0.0";
                     lblDVersion.BringToFront();
                     Authentication objAuthetication = new Authentication();
-                    objAuthetication.Name = "SMS Application - "+lblDVersion.Text;
-                    //checknewversion();
-                    //txtUserName.AutoSize = false;
-                    //txtUserName.Size = new System.Drawing.Size(256, 32);
-                    //txtPassword.AutoSize = false;
-                    //txtPassword.Size = new System.Drawing.Size(256, 32);
+                    objAuthetication.Name = "SMS Application - " + lblDVersion.Text;
+                    checknewversion();
+                    txtUserName.AutoSize = false;
+                    txtUserName.Size = new System.Drawing.Size(256, 32);
+                    txtPassword.AutoSize = false;
+                    txtPassword.Size = new System.Drawing.Size(256, 32);
                 }
                 catch (Exception ex)
                 {

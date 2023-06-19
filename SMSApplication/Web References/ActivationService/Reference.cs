@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace SMSApplication.com.shivasoftwares.cloud {
+namespace SMSApplication.ActivationService {
     using System;
     using System.Web.Services;
     using System.Diagnostics;
@@ -44,7 +44,7 @@ namespace SMSApplication.com.shivasoftwares.cloud {
         
         /// <remarks/>
         public ActivationService() {
-            this.Url = global::SMSApplication.Properties.Settings.Default.SMSApplication_com_shivasoftwares_cloud_ActivationService;
+            this.Url = global::SMSApplication.Properties.Settings.Default.SMSApplication_ActivationService_ActivationService;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;

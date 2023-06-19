@@ -27,9 +27,9 @@ namespace SMSApplication.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://cloud.shivasoftwares.com/activation/ActivationService.svc")]
-        public string SMSApplication_com_shivasoftwares_cloud_ActivationService {
+        public string SMSApplication_ActivationService_ActivationService {
             get {
-                return ((string)(this["SMSApplication_com_shivasoftwares_cloud_ActivationService"]));
+                return ((string)(this["SMSApplication_ActivationService_ActivationService"]));
             }
         }
     }

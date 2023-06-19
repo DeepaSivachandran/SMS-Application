@@ -1,4 +1,4 @@
-﻿using SMSApplication.com.shivasoftwares.cloud;
+﻿ 
 using SMSApplication.ServiceClass;
 using System;
 using System.Collections.Generic;
@@ -51,12 +51,16 @@ namespace SMSApplication
                                 string[] values = fileContents.Replace("\r", "").Split('\n');
                                 if (values.Length > 1)
                                 {
-                                    ActivationService objActivationService = new ActivationService();
+                                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                                    ActivationService.ActivationService activser = new ActivationService.ActivationService();
                                     string rs = ""; string st = "";
-                                    if (encriptedtext == values[0])
-                                    {
-                                        rs = "Success";
-                                    }
+                                    string key = obj.Decrypt(values[0]);
+                                    string otp = obj.Decrypt(values[1]);
+                                    string customername = obj.Decrypt(values[2]);
+                                    string mobileno = obj.Decrypt(values[3]);
+                                    string emailid = obj.Decrypt(values[4]);
+                                    string address = obj.Decrypt(values[5]);
+                                    rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");                                  
                                     if (rs == "Success" || rs == "Activated")
                                     {
                                         st = "success";

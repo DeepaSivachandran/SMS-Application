@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SMSApplication.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SMSApplication_com_shivasoftwares_cloud_ActivationService" Type="(Web Service URL)" Scope="Application">
+    <Setting Name="SMSApplication_ActivationService_ActivationService" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://cloud.shivasoftwares.com/activation/ActivationService.svc</Value>
     </Setting>
   </Settings>
