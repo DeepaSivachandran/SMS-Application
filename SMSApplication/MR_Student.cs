@@ -245,50 +245,72 @@ namespace SMSApplication
             cmbClass.BackColor = Color.White;
             txtpincode.BackColor = Color.White;
             txtcity.BackColor = Color.White;
-            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != -1 && Convert.ToString(cmbClass.SelectedValue) != "-1" && txtAdmisssionno.Text != "" && txtstudentname.Text!="" &&
-                txtRfCardno.Text!="" && txtMobileno.Text != "" && txtAddress.Text != "" && txtpincode.Text != "" && txtcity.Text != "" && txtAlternativeMobileNo.Text != "" && 
-                txtParentname.Text != "")
+            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != -1 && Convert.ToString(cmbClass.SelectedValue) != "-1" && txtAdmisssionno.Text != "" && txtstudentname.Text != "" &&
+                txtRfCardno.Text != "" && txtMobileno.Text != "" && txtAddress.Text != "" && txtpincode.Text != "" && txtcity.Text != ""  && txtParentname.Text != "")
             {
-
-
-                SPDataService objspdservice = new SPDataService();
-
-                string result = "", status = "0",source="1";
-
-                if (rbActive.Checked == true)
+                if (txtMobileno.Text.Length == 10 && txtAlternativeMobileNo.Text.Length == 10  && txtpincode.Text.Length == 6 )
                 {
-                    status = "1";
-                }
-                else
-                {
+                    SPDataService objspdservice = new SPDataService();
 
-                    status = "0";
-                }
-                if (btnSave.Text == "Save")
-                {
-                    result = objspdservice.udfnStudentMaster("Create", "0", txtstudentname.Text,txtAdmisssionno.Text, txtMobileno.Text,txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "Student Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text,txtParentname.Text,txtRfCardno.Text, source);
+                    string result = "", status = "0", source = "1";
 
-                }
-
-                else
-                {
-                    //
-                    result = objspdservice.udfnStudentMaster("edit", VARstudentcode, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "student Edit", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
-                }
-
-                if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
-                {
-                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    udfnclear();
-                    MainForm.objMR_StudentsList.udfnList(); 
-                    if (result.Contains("Updated Successfully."))
+                    if (rbActive.Checked == true)
                     {
-                        this.Close();
+                        status = "1";
+                    }
+                    else
+                    {
+
+                        status = "0";
+                    }
+                    if (btnSave.Text == "Save")
+                    {
+                        result = objspdservice.udfnStudentMaster("Create", "0", txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "Student Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
+
+                    }
+
+                    else
+                    {
+                        //
+                        result = objspdservice.udfnStudentMaster("edit", VARstudentcode, txtstudentname.Text, txtAdmisssionno.Text, txtMobileno.Text, txtAlternativeMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbClass.SelectedValue.ToString(), MainForm.pbUserID, status, "student Edit", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtParentname.Text, txtRfCardno.Text, source);
+                    }
+
+                    if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
+                    {
+                        MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        udfnclear();
+                        MainForm.objMR_StudentsList.udfnList();
+                        if (result.Contains("Updated Successfully."))
+                        {
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
+                if (txtMobileno.Text.Length < 10)
                 {
-                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    epMR_Student.SetError(txtMobileno, "Please enter valid mobile number");
+                    txtMobileno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter valid mobile number", txtMobileno, 5000);
+
+                }
+                if (txtAlternativeMobileNo.Text.Length < 10)
+                {
+                    epMR_Student.SetError(txtAlternativeMobileNo, "Please enter the valid alternative mobile number");
+                    txtAlternativeMobileNo.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter the valid alternative mobile number", txtAlternativeMobileNo, 5000);
+                }
+                if (txtpincode.Text.Length < 6)
+                {
+                    epMR_Student.SetError(txtpincode, "Please enter valid pincode");
+                    txtpincode.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                    tpSchemeName.ShowAlways = true;
+                    tpSchemeName.Show("Please enter valid pincode", txtpincode, 5000);
                 }
             }
             
@@ -323,14 +345,7 @@ namespace SMSApplication
                     txtMobileno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
                     tpSchemeName.ShowAlways = true;
                     tpSchemeName.Show("Please enter the mobile number", txtMobileno, 5000);
-                }
-                if (txtAlternativeMobileNo.Text == "")
-                {
-                    epMR_Student.SetError(txtAlternativeMobileNo, "Please enter the alternative mobile number");
-                    txtAlternativeMobileNo.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
-                    tpSchemeName.ShowAlways = true;
-                    tpSchemeName.Show("Please enter the alternative mobile number", txtAlternativeMobileNo, 5000);
-                }
+                } 
                 if (txtAddress.Text == "")
                 {
                     epMR_Student.SetError(txtAddress, "Please enter the RF Cardnumber");

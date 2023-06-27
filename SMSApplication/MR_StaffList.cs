@@ -144,9 +144,8 @@ namespace SMSApplication
         {
             try
             {
-                MainForm.objMR_Staff = new MR_Staff();
-                MainForm.objMR_Staff.MdiParent = this.ParentForm;
-                MainForm.objMR_Staff.Show();
+                MainForm.objMR_Staff = new MR_Staff(); 
+                MainForm.objMR_Staff.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -355,7 +354,9 @@ namespace SMSApplication
                                 }
                                 foreach (DataGridViewRow rowa in grdStaffList.Rows)
                                 {
-                                    ExcelSheet.Cells[rowa.Index + 4, cIndex] = rowa.Cells[col.Index].Value;
+
+                                    string cellValue = rowa.Cells[col.Index].Value?.ToString().ToUpper();
+                                    ExcelSheet.Cells[rowa.Index + 4, cIndex] = cellValue;
                                 }
 
                             }

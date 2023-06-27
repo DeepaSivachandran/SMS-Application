@@ -112,9 +112,12 @@ F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplica
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffImport.resources
 F:\venky\SMS\SMS Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentWipout.resources
+Z:\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
+Z:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
+Z:\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
+F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.pdb
-F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportSource.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
 F:\venky\smsgit\SMS-Application\SMSApplication\bin\Debug\FlashControlV71.dll
@@ -151,3 +154,40 @@ F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.C
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
 F:\venky\smsgit\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojAssemblyReference.cache
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe.config
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.exe
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.pdb
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.exe
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\SMSApplication.pdb
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.ReportSource.dll
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\CrystalDecisions.Windows.Forms.dll
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\FlashControlV71.dll
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\ShockwaveFlashObjects.dll
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\bin\Debug\stdole.dll
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csprojResolveAssemblyReference.cache
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.SMSApplication.exe.config
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Authentication.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.RPT_SMSTRANSACTION.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.RPT_Absent.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentWipout.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffImport.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentImport.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_GeneralSettings.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_ChangePwd.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Student.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Staff.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Activation.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Staff.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_General.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.TRN_SMS_Student.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StudentsList.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_StaffList.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_Template.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderID.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_TemplateList.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MR_SenderIDList.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.MainForm.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Properties.Resources.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.ServerSettings.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.Start.resources
+D:\Venky\SMS-Application\SMS-Application\SMSApplication\obj\Debug\SMSApplication.csproj.GenerateResource.Cache

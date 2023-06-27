@@ -116,7 +116,7 @@ namespace SMSApplication
             this.tsbLogo.BackColor = System.Drawing.Color.Transparent;
             this.tsbLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tsbLogo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbLogo.Image = global::SMSApplication.Properties.Resources.trio_s_logo;
+            this.tsbLogo.Image = global::SMSApplication.Properties.Resources.trio_s_logo1;
             this.tsbLogo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbLogo.Name = "tsbLogo";
             this.tsbLogo.Size = new System.Drawing.Size(137, 54);
@@ -241,28 +241,28 @@ namespace SMSApplication
             // tsmStudent
             // 
             this.tsmStudent.Name = "tsmStudent";
-            this.tsmStudent.Size = new System.Drawing.Size(133, 22);
+            this.tsmStudent.Size = new System.Drawing.Size(180, 22);
             this.tsmStudent.Text = "Student";
             this.tsmStudent.Click += new System.EventHandler(this.TsmStudent_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(133, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "Staff";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
             // tsmSenderID
             // 
             this.tsmSenderID.Name = "tsmSenderID";
-            this.tsmSenderID.Size = new System.Drawing.Size(133, 22);
+            this.tsmSenderID.Size = new System.Drawing.Size(180, 22);
             this.tsmSenderID.Text = "Sender ID";
             this.tsmSenderID.Click += new System.EventHandler(this.TsmSenderID_Click);
             // 
             // tsmTemplate
             // 
             this.tsmTemplate.Name = "tsmTemplate";
-            this.tsmTemplate.Size = new System.Drawing.Size(133, 22);
+            this.tsmTemplate.Size = new System.Drawing.Size(180, 22);
             this.tsmTemplate.Text = "Template";
             this.tsmTemplate.Click += new System.EventHandler(this.TsmTemplate_Click);
             // 

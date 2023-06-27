@@ -91,38 +91,48 @@ namespace SMSApplication
                             {
                                 if (values.Length > 1)
                                 {
-                                    ActivationService.ActivationService activser = new ActivationService.ActivationService();
-                                    string rs = ""; string st = "";
-                                    string key = obj.Decrypt(values[0]);
-                                    string otp = obj.Decrypt(values[1]);
-                                    string customername = obj.Decrypt(values[2]);
-                                    string mobileno = obj.Decrypt(values[3]);
-                                    string emailid = obj.Decrypt(values[4]);
-                                    string address = obj.Decrypt(values[5]);
-                                    rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");
-                                    if (rs == "Success" || rs == "Activated")
+                                    if (encriptedtext == (values[0]))
                                     {
-                                        st = "success";
-                                    }
-                                    else if (rs == "Blocked")
-                                    {
-                                        st = "error";
-                                    }
-                                    else { st = ""; rs = ""; }
-                                    if (st == "error" || st == "")
-                                    {
-                                        dser.CloseConnection();
-                                        if (rs == "Blocked") { MessageBox.Show("You are a blocked User, cant able to use this product", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1); }
-                                        this.Close();
+                                        ActivationService.ActivationService activser = new ActivationService.ActivationService();
+                                        string rs = ""; string st = "";
+                                        string key = obj.Decrypt(values[0]);
+                                        string otp = obj.Decrypt(values[1]);
+                                        string customername = obj.Decrypt(values[2]);
+                                        string mobileno = obj.Decrypt(values[3]);
+                                        string emailid = obj.Decrypt(values[4]);
+                                        string address = obj.Decrypt(values[5]);
+                                        rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");
+                                        if (rs == "Success" || rs == "Activated")
+                                        {
+                                            st = "success";
+                                        }
+                                        else if (rs == "Blocked")
+                                        {
+                                            st = "error";
+                                        }
+                                        else { st = ""; rs = ""; }
+                                        if (st == "error" || st == "")
+                                        {
+                                            dser.CloseConnection();
+                                            if (rs == "Blocked") { MessageBox.Show("You are a blocked User, cant able to use this product", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1); }
+                                            this.Close();
+                                        }
+                                        else
+                                        {
+                                            dser.CloseConnection();
+                                            Application.EnableVisualStyles();
+                                            Application.SetCompatibleTextRenderingDefault(false);
+                                            //Application.Run(new Expandablegrd());
+                                            Application.Run(new Authentication());
+                                        }
                                     }
                                     else
                                     {
-                                        dser.CloseConnection();
                                         Application.EnableVisualStyles();
                                         Application.SetCompatibleTextRenderingDefault(false);
-                                        //Application.Run(new Expandablegrd());
-                                        Application.Run(new Authentication());
+                                        Application.Run(new Activation());
                                     }
+
                                 }
                                 else
                                 {

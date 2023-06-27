@@ -122,13 +122,14 @@
             this.dpstafftodate.Name = "dpstafftodate";
             this.dpstafftodate.Size = new System.Drawing.Size(113, 25);
             this.dpstafftodate.TabIndex = 2;
+            this.dpstafftodate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpstafftodate_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(241, 64);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.Size = new System.Drawing.Size(54, 17);
             this.label5.TabIndex = 958813;
             this.label5.Text = "To Date";
             // 
@@ -140,6 +141,7 @@
             this.dpstafffromdate.Name = "dpstafffromdate";
             this.dpstafffromdate.Size = new System.Drawing.Size(113, 25);
             this.dpstafffromdate.TabIndex = 1;
+            this.dpstafffromdate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpstafffromdate_KeyDown);
             // 
             // label6
             // 
@@ -180,6 +182,7 @@
             this.dpstaffabsent.Name = "dpstaffabsent";
             this.dpstaffabsent.Size = new System.Drawing.Size(113, 25);
             this.dpstaffabsent.TabIndex = 4;
+            this.dpstaffabsent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpstaffabsent_KeyDown);
             // 
             // label9
             // 
@@ -243,13 +246,14 @@
             this.dpstudenttodate.Name = "dpstudenttodate";
             this.dpstudenttodate.Size = new System.Drawing.Size(113, 25);
             this.dpstudenttodate.TabIndex = 2;
+            this.dpstudenttodate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpstudenttodate_KeyDown);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(241, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 17);
+            this.label4.Size = new System.Drawing.Size(54, 17);
             this.label4.TabIndex = 958813;
             this.label4.Text = "To Date";
             // 
@@ -261,6 +265,7 @@
             this.dpstudentfrom.Name = "dpstudentfrom";
             this.dpstudentfrom.Size = new System.Drawing.Size(113, 25);
             this.dpstudentfrom.TabIndex = 1;
+            this.dpstudentfrom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpstudentfrom_KeyDown);
             // 
             // label3
             // 
@@ -301,6 +306,7 @@
             this.dpabsentstudent.Name = "dpabsentstudent";
             this.dpabsentstudent.Size = new System.Drawing.Size(113, 25);
             this.dpabsentstudent.TabIndex = 4;
+            this.dpabsentstudent.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpabsentstudent_KeyDown);
             // 
             // DpDate
             // 

@@ -318,7 +318,7 @@ namespace SMSApplication
                         result = objspdservice.udfnStudentMaster("Wipeout", "", "", "", "", "", "", "", "", MainForm.pbUserID, "", "Wipout student", "", "", "", "", "", "", "", "");
                         if (result.Contains("Wipout Successfully."))
                         {
-                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Wipeout Successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             MainForm.objMR_StudentsList.udfnList();
                             this.Close();
                         }

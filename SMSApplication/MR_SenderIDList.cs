@@ -135,9 +135,8 @@ namespace SMSApplication
         {
             try
             {
-                MainForm.objMR_SenderID = new MR_SenderID();
-                MainForm.objMR_SenderID.MdiParent = this.ParentForm;
-                MainForm.objMR_SenderID.Show();
+                MainForm.objMR_SenderID = new MR_SenderID(); 
+                MainForm.objMR_SenderID.ShowDialog();
             }
             catch (Exception ex)
             {

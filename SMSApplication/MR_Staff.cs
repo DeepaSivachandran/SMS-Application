@@ -277,20 +277,21 @@ namespace SMSApplication
         //************ Save data *************
         public void udfnsave()
         {
-            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != -1 && Convert.ToString(cmbdesignation.SelectedValue) != "-1" && txtStaffName.Text != "" && txtMobileNo.Text != "" && txtAddress.Text != "" && txtpincode.Text !="" && txtcity.Text !="" && txtRfCardno.Text!="")
+            if (Convert.ToInt32(cmbBloodGroup.SelectedValue) != -1 && Convert.ToString(cmbdesignation.SelectedValue) != "-1" && txtStaffName.Text != "" && txtMobileNo.Text != "" && txtAddress.Text != "" && txtpincode.Text != "" && txtcity.Text != "" && txtRfCardno.Text != "")
             {
-
-                epMR_Staff.Clear();
+                if (txtMobileNo.Text.Length == 10 && txtpincode.Text.Length == 6)
+                {
+                    epMR_Staff.Clear();
                 txtStaffName.BackColor = Color.White;
                 txtMobileNo.BackColor = Color.White;
                 txtAddress.BackColor = Color.White;
                 cmbBloodGroup.BackColor = Color.White;
                 txtpincode.BackColor = Color.White;
-                txtcity.BackColor = Color.White; 
+                txtcity.BackColor = Color.White;
                 cmbdesignation.BackColor = Color.White;
                 SPDataService objspdservice = new SPDataService();
 
-                string result = "",status="0";
+                string result = "", status = "0";
 
                 if (rbActive.Checked == true)
                 {
@@ -302,16 +303,16 @@ namespace SMSApplication
                 }
                 if (btnSave.Text == "Save")
                 {
-                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status,"Staff Create",txtAddress.Text,txtAddress2.Text,textAddress3.Text, txtcity.Text,txtpincode.Text, txtRfCardno.Text,"1");
+                    result = objspdservice.udfnStaffMaster("Create", "0", txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Create", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text, "1");
 
                 }
 
                 else
                 {
-                    result = objspdservice.udfnStaffMaster("edit", VARSTAFFCODE, txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Update", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text,"1");
+                    result = objspdservice.udfnStaffMaster("edit", VARSTAFFCODE, txtStaffName.Text, txtMobileNo.Text, dpFromDate.Text, cmbBloodGroup.SelectedValue.ToString(), cmbdesignation.SelectedValue.ToString(), MainForm.pbUserID, status, "Staff Update", txtAddress.Text, txtAddress2.Text, textAddress3.Text, txtcity.Text, txtpincode.Text, txtRfCardno.Text, "1");
                 }
 
-                if (result.Contains("Saved Successfully.")|| result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
+                if (result.Contains("Saved Successfully.") || result.Contains("Updated Successfully.") || result.Contains("Deleted Successfully."))
                 {
                     MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     udfnclear();
@@ -321,9 +322,26 @@ namespace SMSApplication
                         this.Close();
                     }
                 }
-                else  
+                else
                 {
-                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
+                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else {
+                    if (txtMobileNo.Text.Length < 10)
+                    {
+                            epMR_Staff.SetError(txtMobileNo, "Please enter the valid  mobile number");
+                            txtMobileNo.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                        tpSchemeName.ShowAlways = true;
+                        tpSchemeName.Show("Please enter the valid  mobile number", txtMobileNo, 5000);
+                    }
+                    if (txtpincode.Text.Length < 6)
+                    {
+                            epMR_Staff.SetError(txtpincode, "Please enter valid pincode");
+                            txtpincode.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                            tpSchemeName.ShowAlways = true;
+                            tpSchemeName.Show("Please enter valid pincode", txtpincode, 5000);
+                        }
                 }
             }
             else

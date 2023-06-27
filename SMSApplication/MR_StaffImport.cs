@@ -20,6 +20,8 @@ namespace SMSApplication
         DataError objError;
         //******** Declare public variable ****************
         public string varsettingflag = "";
+
+        public IEnumerable<DataRow> duplicates; // Define duplicates as a public variable at the class level
         public MR_StaffImport()
         {
             InitializeComponent();
@@ -96,7 +98,7 @@ namespace SMSApplication
             {
                 try
                 {
-                    int vardublicate = 0,varMismatch=0, varenable=0,varflag=0, flag1 = 0, flag2 = 0;
+                    int vardublicate = 0,varMismatch=0, varenable=0,varflag=0, flag1 = 0, flag2 = 0,errorid=0;
                     if (!string.IsNullOrEmpty(txtFileName.Text))
                     {
                         string varExtension = Path.GetExtension(txtFileName.Text);
@@ -280,7 +282,7 @@ namespace SMSApplication
                         {
                             string varCount = "0";
                             vardublicate = 0;
-                            varMismatch = 0;
+                            varMismatch = 0; 
                             DataService objDataService = new DataService();
                             // 
                             varCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Staff WHERE STM_CardNo='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
@@ -290,48 +292,124 @@ namespace SMSApplication
                                 grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
                                 vardublicate++; 
                                 varflag++;
-                            }
-                            if(  grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() == ""|| grdStaffImport.Rows[i].Cells["clmaddress"].Value.ToString() == ""
+                            } 
+                            string pincode = grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString();
+                            string mobile = grdStaffImport.Rows[i].Cells["clmmobile"].Value.ToString();
+                            if (  grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() == ""|| grdStaffImport.Rows[i].Cells["clmaddress"].Value.ToString() == ""
                                 || grdStaffImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" || grdStaffImport.Rows[i].Cells["clmdesignation"].Value.ToString() == "" || 
                                 grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
                                  || grdStaffImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
                                 || grdStaffImport.Rows[i].Cells["clmblood"].Value.ToString() == "" || grdStaffImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
-                                || grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" )
+                                || grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" || pincode.Length != 6 || mobile.Length != 10)
                             {
                                 varMismatch++;
                                 flag1++;
                             }
                             DataTable dataTable = objDs.Tables[0];
                             int rowIndex = -1;
-                            
 
-                            var duplicates = dataTable.AsEnumerable()
+
+                            var idno = Convert.ToString(grdStaffImport.Rows[i].Cells["clmrfid"].Value);
+                            if (!string.IsNullOrEmpty(idno))
+                            {
+                                 duplicates = dataTable.AsEnumerable()
                       .GroupBy(row => row.Field<string>("RF ID Card No#"))
                       .Where(g => g.Key.Equals(Convert.ToString(grdStaffImport.Rows[i].Cells["clmrfid"].Value)))
-                      .SelectMany(g => g); 
-                            if (duplicates.Count() > 1)
-                            {
-                                vardublicate++;
+                      .SelectMany(g => g);
 
-                                varflag++;
-                                flag2++;
-                                grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                                if (duplicates != null)
+                                {
+                                    if (duplicates.Count() > 1) {
+                                    }
 
+
+                                    if (errorid == 0)
+                                    {
+
+                                        if (duplicates.Count() > 1 && (varCount == "0" ))
+                                        { 
+
+                                            vardublicate++;
+
+                                            varflag++;
+                                            flag2++;
+
+                                            grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
+                                        }
+                                    }
+
+                                }
+
+                                else
+                                {
+                                    vardublicate = 0;
+                                }
                             }
-                            
                             else
                             {
-                                vardublicate = 0;
+                                errorid++;
                             }
+                            
                             if (varMismatch != 0)
                             {
-                                grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                grdStaffImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ff8080");
+                                foreach (DataGridViewRow row in grdStaffImport.Rows)
+                                {
+                                    if (string.IsNullOrEmpty(row.Cells["clmrfid"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmrfid"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmdesignation"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmdesignation"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmstaffname"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmstaffname"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    } 
+                                    if (string.IsNullOrEmpty(row.Cells["clmaddress"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmaddress"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmmobile"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmmobile"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                     
+                                    if (string.IsNullOrEmpty(row.Cells["clmdob"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmdob"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmblood"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmblood"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmpincode"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmpincode"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (string.IsNullOrEmpty(row.Cells["clmcity"].Value?.ToString()))
+                                    {
+                                        row.Cells["clmcity"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (row.Cells["clmpincode"].Value.ToString().Length != 6)
+                                    {
+                                        row.Cells["clmpincode"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    
+                                    if (row.Cells["clmmobile"].Value.ToString().Length != 10)
+                                    {
+                                        row.Cells["clmmobile"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+
+                                }
                             } 
                         } 
                         oledbcon.Close();
                         if (varflag != 0 && vardublicate == 0)
                         {
                             lblDublicate.Text = Convert.ToString(varflag);
+
                         }
                         else
                         {
@@ -359,6 +437,21 @@ namespace SMSApplication
 
                                 btnImport.Enabled = true;
                             }
+                        }
+                        int total=0, varduplicate=0, varmismatch=0;
+                        total = Convert.ToInt32(lblTotal.Text);
+                        varduplicate = Convert.ToInt32(lblDublicate.Text);
+                        varmismatch = Convert.ToInt32(lblMismatch.Text);
+                        if (total < (varduplicate + varmismatch) || (varduplicate != 0 && varmismatch != 0 && varduplicate == varmismatch))
+                        {
+                            varduplicate = (total - varmismatch);
+
+                            lblDublicate.Text = Convert.ToString(varduplicate);
+                        }
+                        if (errorid != 0)
+                        {
+                            MessageBox.Show("Records not found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnImport.Enabled = false;
                         }
                     }
                 }
@@ -512,7 +605,7 @@ namespace SMSApplication
 
                         for (int i = 0; i < grdStaffImport.Rows.Count; i++)
                         {
-                            if (objDataService.blnFindRecord("TEMP_MR_Staff", "STM_NAME='" + grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() + "' and STM_CARDNO='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "' and ") == true)
+                            if (objDataService.blnFindRecord("MR_Staff", "STM_NAME='" + grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString() + "' and STM_CARDNO='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "' ") == true)
                             {
                                 btnImport.Enabled = false;
                             }
@@ -523,7 +616,11 @@ namespace SMSApplication
                                var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Staff WHERE STM_CardNo='" + grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'");
                                 if (varRegCount == "0")
                                 {
-                                    objDt.Rows.Add( grdStaffImport.Rows[i].Cells["clmstaffname"].Value,grdStaffImport.Rows[i].Cells["clmdob"].Value, grdStaffImport.Rows[i].Cells["clmblood"].Value, grdStaffImport.Rows[i].Cells["clmAddress"].Value, grdStaffImport.Rows[i].Cells["clmAddress2"].Value, grdStaffImport.Rows[i].Cells["clmAddress3"].Value, grdStaffImport.Rows[i].Cells["clmCity"].Value,  grdStaffImport.Rows[i].Cells["clmpincode"].Value, grdStaffImport.Rows[i].Cells["clmmobile"].Value, grdStaffImport.Rows[i].Cells["clmdesignation"].Value, grdStaffImport.Rows[i].Cells["clmrfid"].Value, 1,2);
+
+                                    string dobValue = grdStaffImport.Rows[i].Cells["clmdob"].Value.ToString();
+                                    DateTime dob = DateTime.Parse(dobValue);
+                                    string dobDateOnly = dob.ToString("yyyy-MM-dd");
+                                    objDt.Rows.Add( grdStaffImport.Rows[i].Cells["clmstaffname"].Value.ToString().ToUpper(), dobDateOnly, grdStaffImport.Rows[i].Cells["clmblood"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmAddress"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmAddress2"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmAddress3"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmCity"].Value.ToString().ToUpper(),  grdStaffImport.Rows[i].Cells["clmpincode"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmmobile"].Value, grdStaffImport.Rows[i].Cells["clmdesignation"].Value.ToString().ToUpper(), grdStaffImport.Rows[i].Cells["clmrfid"].Value.ToString().ToUpper(), 1,2);
                                 }
                                     
                                 }

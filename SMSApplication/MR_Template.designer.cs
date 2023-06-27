@@ -109,6 +109,7 @@
             this.txttempcontant.MaxLength = 500;
             this.txttempcontant.Multiline = true;
             this.txttempcontant.Name = "txttempcontant";
+            this.txttempcontant.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txttempcontant.Size = new System.Drawing.Size(498, 106);
             this.txttempcontant.TabIndex = 5;
             this.txttempcontant.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txttempcontant_KeyDown);
@@ -130,7 +131,7 @@
             this.groupBox1.Location = new System.Drawing.Point(432, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(187, 42);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
             // rbenglish
@@ -195,7 +196,7 @@
             this.lblSchemeCode.Location = new System.Drawing.Point(429, 102);
             this.lblSchemeCode.Name = "lblSchemeCode";
             this.lblSchemeCode.Size = new System.Drawing.Size(15, 17);
-            this.lblSchemeCode.TabIndex = 7;
+            this.lblSchemeCode.TabIndex = 99999;
             this.lblSchemeCode.Text = "0";
             this.lblSchemeCode.Visible = false;
             // 
@@ -205,7 +206,7 @@
             this.lblDStatus.Location = new System.Drawing.Point(13, 222);
             this.lblDStatus.Name = "lblDStatus";
             this.lblDStatus.Size = new System.Drawing.Size(43, 17);
-            this.lblDStatus.TabIndex = 3;
+            this.lblDStatus.TabIndex = 9999;
             this.lblDStatus.Text = "Status";
             this.lblDStatus.Visible = false;
             // 
@@ -256,7 +257,7 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(79, 29);
-            this.btnClose.TabIndex = 9;
+            this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnClose.UseVisualStyleBackColor = true;
@@ -271,7 +272,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 29);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
@@ -298,7 +299,7 @@
             this.lblobjDschemeName.Location = new System.Drawing.Point(13, 28);
             this.lblobjDschemeName.Name = "lblobjDschemeName";
             this.lblobjDschemeName.Size = new System.Drawing.Size(100, 17);
-            this.lblobjDschemeName.TabIndex = 0;
+            this.lblobjDschemeName.TabIndex = 9999;
             this.lblobjDschemeName.Text = "Template Name";
             // 
             // epMR_Template

@@ -20,6 +20,8 @@ namespace SMSApplication
         DataError objError;
         //******** Declare public variable ****************
         public string varsettingflag = "";
+        public IEnumerable<DataRow> duplicates; // Define duplicates as a public variable at the class level
+
         public MR_StudentImport()
         {
             InitializeComponent();
@@ -96,7 +98,7 @@ namespace SMSApplication
             {
                 try
                 {
-                    int vardublicate = 0,varMismatch=0, varenable=0, varflag=0, flag1 = 0, flag2 = 0; 
+                    int vardublicate = 0,varMismatch=0, varenable=0, varflag=0, flag1 = 0, flag2 = 0,errorid=0; 
                     if (!string.IsNullOrEmpty(txtFileName.Text))
                     {
                         string varExtension = Path.GetExtension(txtFileName.Text);
@@ -320,36 +322,60 @@ namespace SMSApplication
                                 vardublicate++;
                                 varflag++;
                             }
-                            if(  grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" 
+                            string pincode = grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString();
+                            string mobile = grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString();
+                            string altermobile = grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString();
+                            if (  grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() == "" 
                                 || grdStudentImport.Rows[i].Cells["clmStudentName"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString()==""  
                                 || grdStudentImport.Rows[i].Cells["clmaddress"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmmobile"].Value.ToString() == "" || 
-                                grdStudentImport.Rows[i].Cells["clmaltermobile"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == ""
-                                || grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString() == ""
-                                || grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmcity"].Value.ToString() == ""
-                                || grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" )
+                                grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString() == "" ||
+                                grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString() == "" 
+                                || grdStudentImport.Rows[i].Cells["clmcity"].Value.ToString() == "" || grdStudentImport.Rows[i].Cells["clmpincode"].Value.ToString() == "" || 
+                                pincode.Length > 6 || mobile.Length > 10 || altermobile.Length > 10
+                                || pincode.Length < 6 || mobile.Length < 10 || altermobile.Length < 10)
                             {
                                 varMismatch++;
                                 flag1++ ;
                             }
 
-                            DataTable dataTable = objDs.Tables[0];
+
+                            var admissionNo = Convert.ToString(grdStudentImport.Rows[i].Cells["clmadmission"].Value);
+
+                            DataTable dataTable = objDs.Tables[0]; 
                             int rowIndex = -1;
-                            var duplicates = dataTable.AsEnumerable()
+                            if (!string.IsNullOrEmpty(admissionNo) && admissionNo != null )
+                            {
+                                 duplicates = dataTable.AsEnumerable()
                           .GroupBy(row => row.Field<string>("Admission no#"))
                           .Where(g => g.Key.Equals(Convert.ToString(grdStudentImport.Rows[i].Cells["clmadmission"].Value)))
                           .SelectMany(g => g);
 
+                                if ( duplicates != null )
+                                {
+                                     
+                                    if (errorid == 0)
+                                    {
 
+                                        if (duplicates.Count() > 1 && (varCount == "0" && varCount1 == "0"))
+                                        {
+                                            vardublicate++;
+                                            varflag++;
+                                        }
+                                    }
 
-                            if (duplicates.Count()>1)
-                            {
-                                vardublicate++;
-                                varflag++; 
-                            } 
-                            else
-                            {
-                                vardublicate = 0;
+                                }
+                                else
+                                {
+                                    vardublicate = 0;
+                                }
                             }
+
+                            else {
+                                errorid++;
+                            }
+
+
+                           
                             if (vardublicate != 0 || varflag !=0)
                             {
                                 grdStudentImport.Rows[i].DefaultCellStyle.BackColor = System.Drawing.ColorTranslator.FromHtml("#ffff00");
@@ -407,7 +433,19 @@ namespace SMSApplication
                                     if ( string.IsNullOrEmpty(row.Cells["clmcity"].Value?.ToString()) )
                                     { 
                                         row.Cells["clmcity"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
-                                    } 
+                                    }
+                                    if (row.Cells["clmpincode"].Value.ToString().Length != 6)
+                                    {
+                                        row.Cells["clmpincode"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (row.Cells["clmaltermobile"].Value.ToString().Length != 10)
+                                    {
+                                        row.Cells["clmaltermobile"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
+                                    if (row.Cells["clmmobile"].Value.ToString().Length != 10)
+                                    {
+                                        row.Cells["clmmobile"].Style.BackColor = System.Drawing.ColorTranslator.FromHtml("#FF0000");
+                                    }
 
                                 }
                             }
@@ -444,6 +482,21 @@ namespace SMSApplication
                                 btnImport.Enabled = true;
                             }
                         }
+                        int total, varduplicate, varmismatch;
+                        total = Convert.ToInt32(lblTotal.Text);
+                        varduplicate = Convert.ToInt32(lblDublicate.Text);
+                        varmismatch = Convert.ToInt32(lblMismatch.Text);
+                        if (total < (varduplicate + varmismatch) || ((varduplicate != 0 && varmismatch != 0) && varduplicate == varmismatch))
+                        {
+                            varduplicate = (total - varmismatch);
+
+                           lblDublicate.Text = Convert.ToString(varduplicate)  ;
+                        }
+                        if (errorid !=0) {
+
+                            MessageBox.Show("Records not found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnImport.Enabled = false;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -470,13 +523,12 @@ namespace SMSApplication
         {
             try
             {
-                lblNoRecordsFound.Visible = false;
-                picLoader.Visible = true;
+                lblNoRecordsFound.Visible = false; 
+                grdStudentImport.SendToBack();
+                picLoader.Visible = true; 
+                picLoader.BringToFront();
                 Application.DoEvents();
-                
-                    grdStudentImport.BringToFront();
-                    grdStudentImport.SendToBack();
-                    udfnList();
+                udfnList();
                     grdStudentImport_Validated(sender, e);
                
             }
@@ -590,35 +642,35 @@ namespace SMSApplication
         // Created Date: 19/04/2019
         private void grdStudentImport_Validated(object sender, EventArgs e)
         {
-            try
-            {
-                DataService objservice = new DataService();
-                if (grdStudentImport.Rows.Count > 0)
-                {
-                    foreach (ListViewItem item in grdStudentImport.Rows)
-                    {
-                        for (int i = 0; i <= item.SubItems.Count - 1; i++)
-                        {
+            //try
+            //{
+            //    DataService objservice = new DataService();
+            //    if (grdStudentImport.Rows.Count > 0)
+            //    {
+            //        foreach (ListViewItem item in grdStudentImport.Rows)
+            //        {
+            //            for (int i = 0; i <= item.SubItems.Count - 1; i++)
+            //            {
 
-                            if (objservice.blnFindRecord("CP_Student", "RollNo='" + item.SubItems[1].Text + "'") == true)
-                            {
-                                item.SubItems[i].BackColor = Color.Pink;
-                                btnImport.Enabled = false;
-                            }
-                            else if (objValidation.FormatNumeric(item.SubItems[1].Text) == false || (item.SubItems[1].Text.Length != 6) || string.IsNullOrEmpty(item.SubItems[1].Text))
-                            {
-                                item.SubItems[i].BackColor = Color.Bisque;
-                                btnImport.Enabled = false;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                objError = new DataError();
-                objError.WriteFile(ex);
-            }
+            //                if (objservice.blnFindRecord("CP_Student", "RollNo='" + item.SubItems[1].Text + "'") == true)
+            //                {
+            //                    item.SubItems[i].BackColor = Color.Pink;
+            //                    btnImport.Enabled = false;
+            //                }
+            //                else if (objValidation.FormatNumeric(item.SubItems[1].Text) == false || (item.SubItems[1].Text.Length != 6) || string.IsNullOrEmpty(item.SubItems[1].Text))
+            //                {
+            //                    item.SubItems[i].BackColor = Color.Bisque;
+            //                    btnImport.Enabled = false;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    objError = new DataError();
+            //    objError.WriteFile(ex);
+            //}
         } 
         
         //Author:SIVARANJANA
@@ -659,7 +711,7 @@ namespace SMSApplication
 
                         for (int i = 0; i < grdStudentImport.Rows.Count; i++)
                         {
-                            if (objDataService.blnFindRecord("TEMP_MR_Student", "TEMP_SM_NAME='" + grdStudentImport.Rows[i].Cells["clmstudentname"].Value.ToString() + "' and TEMP_SM_CARDNO='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "' and ") == true)
+                            if (objDataService.blnFindRecord("MR_Student", "SM_NAME='" + grdStudentImport.Rows[i].Cells["clmstudentname"].Value.ToString() + "' and SM_CARDNO='" + grdStudentImport.Rows[i].Cells["clmrfid"].Value.ToString() + "'") == true)
                             {
                                 btnImport.Enabled = false;
                             }
@@ -670,7 +722,10 @@ namespace SMSApplication
                                var varRegCount = objDataService.displaydata("SELECT COUNT(*) FROM MR_Student WHERE SM_regNo='" + grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString() + "'");
                                 if (varRegCount == "0")
                                 {
-                                    objDt.Rows.Add( grdStudentImport.Rows[i].Cells["clmstudentname"].Value, grdStudentImport.Rows[i].Cells["clmclass"].Value, grdStudentImport.Rows[i].Cells["clmdob"].Value, grdStudentImport.Rows[i].Cells["clmadmission"].Value, grdStudentImport.Rows[i].Cells["clmblood"].Value, grdStudentImport.Rows[i].Cells["clmAddress"].Value, grdStudentImport.Rows[i].Cells["clmAddress2"].Value, grdStudentImport.Rows[i].Cells["clmAddress3"].Value, grdStudentImport.Rows[i].Cells["clmCity"].Value,  grdStudentImport.Rows[i].Cells["clmpincode"].Value, grdStudentImport.Rows[i].Cells["clmmobile"].Value, grdStudentImport.Rows[i].Cells["clmaltermobile"].Value, grdStudentImport.Rows[i].Cells["clmrfid"].Value, 1,2, grdStudentImport.Rows[i].Cells["clmparent"].Value);
+                                    string dobValue = grdStudentImport.Rows[i].Cells["clmdob"].Value.ToString();
+                                    DateTime dob = DateTime.Parse(dobValue);
+                                    string dobDateOnly = dob.ToString("yyyy-MM-dd");
+                                    objDt.Rows.Add( grdStudentImport.Rows[i].Cells["clmstudentname"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmclass"].Value.ToString().ToUpper(), dobDateOnly, grdStudentImport.Rows[i].Cells["clmadmission"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmblood"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmAddress"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmAddress2"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmAddress3"].Value.ToString().ToUpper(), grdStudentImport.Rows[i].Cells["clmCity"].Value.ToString().ToUpper(),  grdStudentImport.Rows[i].Cells["clmpincode"].Value, grdStudentImport.Rows[i].Cells["clmmobile"].Value, grdStudentImport.Rows[i].Cells["clmaltermobile"].Value, grdStudentImport.Rows[i].Cells["clmrfid"].Value, 1,2, grdStudentImport.Rows[i].Cells["clmparent"].Value.ToString().ToUpper());
                                 }
                                     
                                 }

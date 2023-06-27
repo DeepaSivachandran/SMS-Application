@@ -349,6 +349,13 @@ namespace SMSApplication
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    if (rbActive.Visible == true)
+                    {
+                        rbActive.Focus();
+                    }
+                    else {
+                        btnSave.Focus();
+                    }
                 }
                 if (e.Control && (e.KeyCode == Keys.A))
                 {

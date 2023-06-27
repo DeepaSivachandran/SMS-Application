@@ -274,5 +274,21 @@ namespace SMSApplication
                 objError.WriteFile(ex);
             }
         }
+
+        private void dpFromDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnclassview.Focus();
+            }
+        }
+
+        private void btnclassview_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnExport.Focus();
+            }
+        }
     }
 }

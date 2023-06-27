@@ -382,6 +382,11 @@ namespace SMSApplication
             }
         }
 
+        private void msktxtto_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
         private void rbin_CheckedChanged(object sender, EventArgs e)
         {
             if (rbin.Checked == true)

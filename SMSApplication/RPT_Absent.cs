@@ -470,13 +470,14 @@ namespace SMSApplication
         {
             try
             {
-                picLoader.Visible = true;
+
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
+                picLoader.Visible = true; 
+                picLoader.BringToFront();
                 Application.DoEvents();
                 udfnstaffpresentlist();
 
-                picLoader.BringToFront();
-                grpstaff.SendToBack();
-                grpstudent.SendToBack();
 
             }
             catch (Exception ex)
@@ -497,13 +498,14 @@ namespace SMSApplication
         {
             try
             {
-                picLoader.Visible = true;
+
+                grpstaff.SendToBack();
+                grpstudent.SendToBack();
+                picLoader.Visible = true; 
+                picLoader.BringToFront();
                 Application.DoEvents();
                 udfnstabsentlist();
 
-                picLoader.BringToFront();
-                grpstaff.SendToBack();
-                grpstudent.SendToBack();
             }
             catch (Exception ex)
             {
@@ -523,12 +525,12 @@ namespace SMSApplication
         {
             try
             {
-                picLoader.Visible = true;
-                Application.DoEvents();
-                udfnstaffabsentlist(); 
-                picLoader.BringToFront();
                 grpstaff.SendToBack();
                 grpstudent.SendToBack();
+                picLoader.Visible = true;
+                picLoader.BringToFront();
+                Application.DoEvents();
+                udfnstaffabsentlist(); 
 
             }
             catch (Exception ex)
@@ -542,6 +544,54 @@ namespace SMSApplication
                 picLoader.SendToBack();
                 grpstaff.BringToFront();
                 grpstudent.BringToFront();
+            }
+        }
+
+        private void dpstudentfrom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dpstudenttodate.Focus();
+            }
+        }
+
+        private void dpstudenttodate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnstudentpresent.Focus();
+            }
+        }
+
+        private void dpabsentstudent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnstudentabsent.Focus();
+            }
+        }
+
+        private void dpstafffromdate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dpstafftodate.Focus();
+            }
+        }
+
+        private void dpstafftodate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnstaffpresent.Focus();
+            }
+        }
+
+        private void dpstaffabsent_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnstaffabsent.Focus();
             }
         }
     }

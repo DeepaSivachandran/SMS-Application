@@ -113,9 +113,8 @@ namespace SMSApplication
         {
             try
             {
-                MainForm.objMR_Template = new MR_Template();
-                MainForm.objMR_Template.MdiParent = this.ParentForm;
-                MainForm.objMR_Template.Show();
+                MainForm.objMR_Template = new MR_Template(); 
+                MainForm.objMR_Template.ShowDialog();
             }
             catch (Exception ex)
             {

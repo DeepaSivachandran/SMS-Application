@@ -30,12 +30,20 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_TemplateList));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MR_TemplateList));
             this.grdTemplateList = new System.Windows.Forms.DataGridView();
+            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmtempid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmcontent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDNoRecordFound = new System.Windows.Forms.Label();
             this.tspMenu = new System.Windows.Forms.ToolStrip();
             this.tspFormHeader = new System.Windows.Forms.ToolStripLabel();
@@ -46,14 +54,6 @@
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.lblDcolumnIndex = new System.Windows.Forms.Label();
             this.picLoader = new System.Windows.Forms.PictureBox();
-            this.clmsno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmtempid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmSchemeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmcontent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdTemplateList)).BeginInit();
             this.tspMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLoader)).BeginInit();
@@ -105,6 +105,71 @@
             this.grdTemplateList.DoubleClick += new System.EventHandler(this.grdSchemeList_DoubleClick);
             this.grdTemplateList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdSchemeList_KeyDown);
             // 
+            // clmsno
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
+            this.clmsno.HeaderText = "S.No.";
+            this.clmsno.Name = "clmsno";
+            this.clmsno.ReadOnly = true;
+            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmsno.Width = 60;
+            // 
+            // clmtempid
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.clmtempid.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmtempid.HeaderText = "Template ID";
+            this.clmtempid.Name = "clmtempid";
+            this.clmtempid.ReadOnly = true;
+            // 
+            // clmSchemeName
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmSchemeName.HeaderText = "Template Name";
+            this.clmSchemeName.Name = "clmSchemeName";
+            this.clmSchemeName.ReadOnly = true;
+            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.clmSchemeName.Width = 200;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Sender ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Content Type";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // clmcontent
+            // 
+            this.clmcontent.HeaderText = "Content";
+            this.clmcontent.Name = "clmcontent";
+            this.clmcontent.ReadOnly = true;
+            this.clmcontent.Width = 250;
+            // 
+            // clmShortName
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.clmShortName.DefaultCellStyle = dataGridViewCellStyle5;
+            this.clmShortName.HeaderText = "Status";
+            this.clmShortName.Name = "clmShortName";
+            this.clmShortName.ReadOnly = true;
+            this.clmShortName.Width = 150;
+            // 
+            // clmid
+            // 
+            this.clmid.HeaderText = "ID";
+            this.clmid.Name = "clmid";
+            this.clmid.ReadOnly = true;
+            this.clmid.Visible = false;
+            // 
             // lblDNoRecordFound
             // 
             this.lblDNoRecordFound.AutoSize = true;
@@ -139,8 +204,8 @@
             this.tspFormHeader.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tspFormHeader.Margin = new System.Windows.Forms.Padding(15, 1, 0, 2);
             this.tspFormHeader.Name = "tspFormHeader";
-            this.tspFormHeader.Size = new System.Drawing.Size(95, 22);
-            this.tspFormHeader.Text = "Sms Templates";
+            this.tspFormHeader.Size = new System.Drawing.Size(97, 22);
+            this.tspFormHeader.Text = "SMS Templates";
             // 
             // tsbDelete
             // 
@@ -224,71 +289,6 @@
             this.picLoader.TabIndex = 958787;
             this.picLoader.TabStop = false;
             this.picLoader.Visible = false;
-            // 
-            // clmsno
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmsno.DefaultCellStyle = dataGridViewCellStyle2;
-            this.clmsno.HeaderText = "S.No.";
-            this.clmsno.Name = "clmsno";
-            this.clmsno.ReadOnly = true;
-            this.clmsno.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmsno.Width = 60;
-            // 
-            // clmtempid
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.clmtempid.DefaultCellStyle = dataGridViewCellStyle3;
-            this.clmtempid.HeaderText = "Template ID";
-            this.clmtempid.Name = "clmtempid";
-            this.clmtempid.ReadOnly = true;
-            // 
-            // clmSchemeName
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.clmSchemeName.DefaultCellStyle = dataGridViewCellStyle4;
-            this.clmSchemeName.HeaderText = "Template Name";
-            this.clmSchemeName.Name = "clmSchemeName";
-            this.clmSchemeName.ReadOnly = true;
-            this.clmSchemeName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.clmSchemeName.Width = 200;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Sender ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Content Type";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // clmcontent
-            // 
-            this.clmcontent.HeaderText = "Content";
-            this.clmcontent.Name = "clmcontent";
-            this.clmcontent.ReadOnly = true;
-            this.clmcontent.Width = 250;
-            // 
-            // clmShortName
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.clmShortName.DefaultCellStyle = dataGridViewCellStyle5;
-            this.clmShortName.HeaderText = "Status";
-            this.clmShortName.Name = "clmShortName";
-            this.clmShortName.ReadOnly = true;
-            this.clmShortName.Width = 150;
-            // 
-            // clmid
-            // 
-            this.clmid.HeaderText = "ID";
-            this.clmid.Name = "clmid";
-            this.clmid.ReadOnly = true;
-            this.clmid.Visible = false;
             // 
             // MR_TemplateList
             // 

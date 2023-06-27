@@ -312,7 +312,8 @@ namespace SMSApplication
 
                 if (inputvalue || inputvalue1 || input.Length == 10)
                 {
-                    
+                    if (grdstaffsms.RowCount > 0)
+                    {
                         SPDataService objspdservice = new SPDataService();
                         string result = "", status = "0", source = "1";
                         result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, txtsenderno.Text, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
@@ -326,11 +327,11 @@ namespace SMSApplication
                         {
                             MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                    
-                    //else
-                    //{
-                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Records found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -372,8 +373,8 @@ namespace SMSApplication
                     // PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=4 ");
                     mobile = objdservice.displaydata("select ST_ToContactNo from MR_Settings");
 
-
-                   
+                    if (grdstaffsms.RowCount > 0)
+                    {
                         SPDataService objspdservice = new SPDataService();
                         string result = "", status = "0", source = "1";
                         result = objspdservice.udfnsendsmsSTAFF("Create", lblDate.Text, msktxtfrom.Text, mobile, msktxtto.Text, Convert.ToString(grdstaffsms.RowCount), MainForm.pbUserID, "Send SMS Staff");
@@ -387,12 +388,18 @@ namespace SMSApplication
                         {
                             MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //}
+                    }
+                    else {
+                        if (grdstaffsms.RowCount <= 0)
+                        {
+                            MessageBox.Show("No Records Found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
                 }
                 else
                 {

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SMSApplication.ServiceClass;
+using System.Text.RegularExpressions;
+
 namespace SMSApplication
 {
     public partial class TRN_SMS_General : Form
@@ -431,46 +433,64 @@ namespace SMSApplication
                                 mainfominstance.timer2.Start();
 
                             }
-
-                            DataService objdservice = new DataService();
-                            SPDataService objspdservice = new SPDataService();
-                            string result = "", studentleft = "0", smscount = "0";
-                            //   PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
-                            // objdservice.CloseConnection();
-                            int varflag = 0;
-                            varstudentcode = "0";
-                            varstaffcode = "0";
-                            //if (PRESENTVAL == "0")
-                            //{
-                            varstaffcode = lblid.Text;
-                            //for (int i = 0; i < grdstudentsms.Rows.Count; i++)
-                            //{
-                            //    Boolean varbooleanvalue = Convert.ToBoolean(grdstudentsms.Rows[i].Cells["clmstudentcheck"].Value);
-                            //    if (varbooleanvalue == true)
-                            //    {
-                            //        varflag++;
-                            //    }
-
-                            //}
-
-                            if (btnsmssend.Enabled == true)
+                            string input = txtsenderno.Text.Trim();
+                            string PRESENTVAL = "0";
+                            // Define the regular expression pattern
+                            string pattern = @"^\d{10}(,\d{10})*$";
+                            string pattern1 = @"^\d{10},$";
+                            // Check if the input matches the pattern
+                            bool inputvalue = Regex.IsMatch(input, pattern);
+                            bool inputvalue1 = Regex.IsMatch(input, pattern1);
+                            if (inputvalue || inputvalue1 || input.Length == 10)
                             {
-                                result = objspdservice.udfnsendsmscompose("compose", varstaffcode, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "2", Convert.ToString(cmbtemplate.SelectedValue), txtsenderno.Text);
-                                if (result.Contains("SMS Send Successfully."))
+                                if (grdstaffsms.RowCount > 0)
                                 {
-                                    MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    // udfnclear();
-                                    // MainForm.objMR_StudentsList.udfnList();
+                                    DataService objdservice = new DataService();
+                                    SPDataService objspdservice = new SPDataService();
+                                    string result = "", studentleft = "0", smscount = "0";
+                                    //   PRESENTVAL = objdservice.displaydata(" SELECT COUNT(*) AS OUTVALUE FROM TRN_SMS  WHERE CONVERT(NVARCHAR, CONVERT(DATE,SMS_Date,101),103)=CONVERT(NVARCHAR,GETDATE(),103) AND SMS_SMSType=5 ");
+                                    // objdservice.CloseConnection();
+                                    int varflag = 0;
+                                    varstudentcode = "0";
+                                    varstaffcode = "0"; 
+                                    varstaffcode = lblid.Text;
+                                   
+                                    if (btnsmssend.Enabled == true)
+                                    {
+                                        result = objspdservice.udfnsendsmscompose("compose", varstaffcode, MainForm.pbUserID, "General SMS for staff", lblsmscount.Text, "2", Convert.ToString(cmbtemplate.SelectedValue), txtsenderno.Text);
+                                        if (result.Contains("SMS Send Successfully."))
+                                        {
+                                            MessageBox.Show(result, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            // udfnclear();
+                                            // MainForm.objMR_StudentsList.udfnList();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
                                 else
-                                {
-                                    MessageBox.Show(result, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                { 
+                                    if (grdstaffsms.RowCount <= 0)
+                                    {
+                                        MessageBox.Show("No Records Found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
+
                             }
                             else
                             {
-                                MessageBox.Show("Already Message Was Send", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                epMR_SMSStudent.SetError(txtsenderno, "Please enter Valid number.");
+                                txtsenderno.BackColor = System.Drawing.ColorTranslator.FromHtml("#fabdbd");
+                                tpConfirmPwd.ShowAlways = true;
+                                tpConfirmPwd.Show("Please enter valid number.", txtsenderno, 5000);
                             }
+
                         }
                         else
                         {
@@ -520,6 +540,29 @@ namespace SMSApplication
         }
 
         private void txtsenderno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbsender_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                cmbtemplate.Focus();
+            }
+        }
+
+        private void cmbtemplate_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnclassview.Focus();
+            }
+        }
+
+        private void GroupBox4_Enter(object sender, EventArgs e)
         {
 
         }
@@ -641,8 +684,7 @@ namespace SMSApplication
                     }
                     if (varflag == 0)
                     {
-                        MessageBox.Show("Please Select Atleast group.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                        MessageBox.Show("Please Select Atleast one group.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); 
                         return;
                     }
                     else

@@ -35,7 +35,9 @@ namespace SMSApplication
                     string path2 = Application.StartupPath + "\\" + foldername;
                     if (Directory.Exists(path2))
                     {
-                        string encriptedtext = _security.Encrypt("Activation", regkey.ToUpper());
+                        // string encriptedtext = _security.Encrypt("Activation", regkey.ToUpper());
+
+                        string encriptedtext = obj.Encrypt(string.Join("", MD5.Create().ComputeHash(Encoding.ASCII.GetBytes(varSerialNumber)).Select(s => s.ToString("x2"))));
                         string[] files = Directory.GetFiles(path2);
                         string filename = "";
                         foreach (string file in files)
@@ -47,50 +49,78 @@ namespace SMSApplication
                             FileInfo info = new FileInfo(path2);
                             if (info.Exists)
                             {
-                                var fileContents = System.IO.File.ReadAllText(path2);
+                               
+                                    var fileContents = System.IO.File.ReadAllText(path2);
                                 string[] values = fileContents.Replace("\r", "").Split('\n');
-                                if (values.Length > 1)
+                                if (obj.internetconnection() == true)
                                 {
-                                    ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
-                                    ActivationService.ActivationService activser = new ActivationService.ActivationService();
-                                    string rs = ""; string st = "";
-                                    string key = obj.Decrypt(values[0]);
-                                    string otp = obj.Decrypt(values[1]);
-                                    string customername = obj.Decrypt(values[2]);
-                                    string mobileno = obj.Decrypt(values[3]);
-                                    string emailid = obj.Decrypt(values[4]);
-                                    string address = obj.Decrypt(values[5]);
-                                    rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");                                  
-                                    if (rs == "Success" || rs == "Activated")
+                                    if (values.Length > 1)
                                     {
-                                        st = "success";
-                                    }
-                                    else if (rs == "Blocked")
-                                    {
-                                        st = "error";
-                                    }
-                                    else { st = ""; rs = ""; }
-                                    if (st == "error" || st == "")
-                                    {
-                                        Application.EnableVisualStyles();
-                                        Application.SetCompatibleTextRenderingDefault(false);
-                                         Application.Run(new Activation());
+                                        if (encriptedtext == (values[0]))
+                                        {
+                                            ActivationService.ActivationService objActivationService = new ActivationService.ActivationService();
+                                            ActivationService.ActivationService activser = new ActivationService.ActivationService();
+                                            string rs = ""; string st = "";
+                                            string key = obj.Decrypt(values[0]);
+                                            string otp = obj.Decrypt(values[1]);
+                                            string customername = obj.Decrypt(values[2]);
+                                            string mobileno = obj.Decrypt(values[3]);
+                                            string emailid = obj.Decrypt(values[4]);
+                                            string address = obj.Decrypt(values[5]);
+                                            rs = activser.udfnAuthenticate(customername, mobileno, emailid, address, key, "", otp, "29");
+                                            if (rs == "Success" || rs == "Activated")
+                                            {
+                                                st = "success";
+                                            }
+                                            else if (rs == "Blocked")
+                                            {
+                                                st = "error";
+                                            }
+                                            else { st = ""; rs = ""; }
+                                            if (st == "error" || st == "")
+                                            {
+                                                Application.EnableVisualStyles();
+                                                Application.SetCompatibleTextRenderingDefault(false);
+                                                Application.Run(new Activation());
+                                            }
+                                            else
+                                            {
+                                                Application.EnableVisualStyles();
+                                                Application.SetCompatibleTextRenderingDefault(false);
+                                                //Application.Run(new Expandablegrd());
+
+
+                                                Application.Run(new Authentication());
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Application.EnableVisualStyles();
+                                            Application.SetCompatibleTextRenderingDefault(false);
+                                            Application.Run(new Activation());
+                                        }
                                     }
                                     else
                                     {
                                         Application.EnableVisualStyles();
                                         Application.SetCompatibleTextRenderingDefault(false);
-                                        //Application.Run(new Expandablegrd());
-
-
-                                        Application.Run(new Authentication());
+                                        Application.Run(new Activation());
                                     }
                                 }
                                 else
                                 {
-                                    Application.EnableVisualStyles();
-                                    Application.SetCompatibleTextRenderingDefault(false);
-                                     Application.Run(new Activation());
+                                    if (encriptedtext == (values[0]))
+                                    { 
+                                        Application.EnableVisualStyles();
+                                        Application.SetCompatibleTextRenderingDefault(false); 
+                                        Application.Run(new Authentication());
+                                    }
+                                    else
+                                    { 
+                                        Application.EnableVisualStyles();
+                                        Application.SetCompatibleTextRenderingDefault(false);
+                                        Application.Run(new Activation());
+                                    }
                                 }
                             }
                             else

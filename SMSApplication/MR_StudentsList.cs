@@ -30,9 +30,6 @@ namespace SMSApplication
         {
             try
             {
-                DataBind objDataBind = new DataBind(); 
-                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_classsection", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
-                objDataBind = null;
                 udfnList();
              //   ((MainForm)ParentForm).statusStrip1.Visible = true;
                 //*********** Disable sorting in grid ******
@@ -50,6 +47,10 @@ namespace SMSApplication
         {
             try
             {
+
+                DataBind objDataBind = new DataBind();
+                objDataBind.BindComboBoxListSelected("MR_Class", " CS_Id Not in (-1) Order by CS_classsection", "CS_ClassSection,CS_Id", cmbClass, "", "CS_ClassSection", "CS_Id");
+                objDataBind = null;
                 DataSet objDs;
                 //**** To call the function from SP ***************
                 SPDataService objdserv = new SPDataService();
@@ -128,8 +129,7 @@ namespace SMSApplication
             try
             {
                 MainForm.objMR_Student = new MR_Student();
-                MainForm.objMR_Student.MdiParent = this.ParentForm;
-                MainForm.objMR_Student.Show();
+                MainForm.objMR_Student.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -382,7 +382,9 @@ namespace SMSApplication
                                 }
                                 foreach (DataGridViewRow rowa in grdStudentList.Rows)
                                 {
-                                    ExcelSheet.Cells[rowa.Index + 4, cIndex] = rowa.Cells[col.Index].Value;
+
+                                    string cellValue = rowa.Cells[col.Index].Value?.ToString().ToUpper();
+                                    ExcelSheet.Cells[rowa.Index + 4, cIndex] = cellValue;
                                 }
                             }
                         }
@@ -430,9 +432,12 @@ namespace SMSApplication
 
 
                         MainForm.objMR_StudentWipout = new MR_StudentWipout();
-                        MainForm.objMR_StudentWipout.MdiParent = this.ParentForm;
-                        MainForm.objMR_StudentWipout.Show();
+                        MainForm.objMR_StudentWipout.ShowDialog();
                     }
+                }
+                else
+                {  
+                        MessageBox.Show("No Records Found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

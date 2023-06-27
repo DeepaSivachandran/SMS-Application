@@ -306,7 +306,7 @@
             this.label4.Location = new System.Drawing.Point(13, 150);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 17);
-            this.label4.TabIndex = 21;
+            this.label4.TabIndex = 999;
             this.label4.Text = "Blood Group";
             // 
             // txtMobileNo
@@ -429,7 +429,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 29);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
@@ -469,7 +469,7 @@
             this.MinimizeBox = false;
             this.Name = "MR_Staff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Staff";
+            this.Text = "Staff Details";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MR_Staff_FormClosing);
             this.Load += new System.EventHandler(this.MR_Staff_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MR_Staff_KeyDown);

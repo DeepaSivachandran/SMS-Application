@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using System.Net;
 
 namespace SMSApplication.ServiceClass
 {
@@ -112,26 +113,36 @@ namespace SMSApplication.ServiceClass
         
         public bool internetconnection()
         {
-             
-                Ping myPing = new Ping();
-                bool isConnected;
-                String host = "4.2.2.2";
-                byte[] buffer = new byte[32];
-                int timeout = 1000;
-                PingOptions pingOptions = new PingOptions();
-                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
-                PingReply reply1 = myPing.Send("8.8.8.8", timeout, buffer, pingOptions);
-                if (reply.Status == IPStatus.Success || reply1.Status == IPStatus.Success)
+
+            try
+            {
+                string[] dnsAddresses = { "8.8.8.8", "208.67.222.222" }; // DNS servers to ping for internet connectivity
+
+                foreach (string dnsAddress in dnsAddresses)
                 {
-                    return true;
+                    Ping myPing = new Ping();
+                    PingReply reply = myPing.Send(dnsAddress);
+
+                    if (reply.Status == IPStatus.Success)
+                    {
+                        IPHostEntry hostEntry = Dns.GetHostEntry("www.google.com");
+                        if (hostEntry.AddressList.Length > 0)
+                        {
+                            return true; // Internet is available
+                        }
+                    }
                 }
-                else
-                {
-                    return false;
-                }
-             
+            }
+            catch
+            {
+                // An exception occurred or internet is not available
+            }
+
+            return false; // Internet is not available
+
+
         }
-        
+
         public void fullresolutionsettingsForm(Form SSSExamCell)
         {
             try

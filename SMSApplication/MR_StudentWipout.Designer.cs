@@ -47,6 +47,7 @@
             this.txtConfirmPwd.PasswordChar = '*';
             this.txtConfirmPwd.Size = new System.Drawing.Size(158, 25);
             this.txtConfirmPwd.TabIndex = 5;
+            this.txtConfirmPwd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtConfirmPwd_KeyDown);
             // 
             // btnSave
             // 

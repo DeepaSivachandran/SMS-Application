@@ -564,7 +564,7 @@
             this.MinimizeBox = false;
             this.Name = "MR_Student";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "New Student";
+            this.Text = "Student Details";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MR_Student_FormClosing);
             this.Load += new System.EventHandler(this.MR_Student_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MR_Student_KeyDown);
